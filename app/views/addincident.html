@@ -9,7 +9,7 @@
     <div class="col-md-12 col-lg-10 content">
         <ul class="nav nav-tabs">
             <li ng-class="{active:tab.active}" ng-repeat="tab in tabs | orderBy : 'tab'">
-                <button class="btn" ng-disabled="!tab.completed && !tab.active" 
+                <button type="button" class="btn" ng-disabled="!tab.completed && !tab.active" 
                 ng-click="changeTab(tab)">{{tab.description}} <span ng-if="tab.completed" class="glyphicon glyphicon-ok"></span>
                 </button>
             </li>

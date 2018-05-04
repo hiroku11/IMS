@@ -55,7 +55,7 @@
         </div>
         <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
             <div class="col-sm-12 col-md-4">
-                <button class="btn btn-primary" ng-click="addCrimeDetails()">Save</button>
+                <button type="button" class="btn btn-primary" ng-click="addCrimeDetails()">Save</button>
 
             </div>
         </div>
@@ -197,16 +197,16 @@
             </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-4" ng-if="!editCrimeWitness">
-                    <button class="btn btn-primary" ng-click="addCrimeWitness()">Add Witness</button>
+                    <button type="button" class="btn btn-primary" ng-click="addCrimeWitness()">Add Witness</button>
                 </div>
                 <div class="col-sm-4" ng-if="editCrimeWitness">
-                    <button class="btn btn-success" ng-click="updateCrimeWitness(crimeWitness)">Update Crime witness</button>
+                    <button type="button" class="btn btn-success" ng-click="updateCrimeWitness(crimeWitness)">Update Crime witness</button>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal12">Add Existing Witness</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal12">Add Existing Witness</button>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal13" ng-click="clearUser()">Add Employee Witness</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal13" ng-click="clearUser()">Add Employee Witness</button>
                 </div>
             </div>
 
@@ -403,18 +403,18 @@
         </div>
         <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
             <div class="col-sm-4" ng-if="!editCrimeSuspect">
-                <button class="btn btn-primary" ng-click="addCrimeSuspect()" ng-disabled="!crimeAdded">Add Crime Suspect</button>
+                <button type="button" class="btn btn-primary" ng-click="addCrimeSuspect()" ng-disabled="!crimeAdded">Add Crime Suspect</button>
             </div>
             <div class="col-sm-4" ng-if="editCrimeSuspect">
-                <button class="btn btn-success" ng-click="updateCrimeSuspect(crimeSuspect)">Update Crime Suspect</button>
+                <button type="button" class="btn btn-success" ng-click="updateCrimeSuspect(crimeSuspect)">Update Crime Suspect</button>
             </div>
             <div class="col-sm-4" ng-if="loggedInUser.roles[0] == 'INVESTIGATOR' || 
                loggedInUser.roles[0] == 'CLAIMS_HANDLER' || loggedInUser.roles[0] == 'ADMIN'">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal14" ng-disabled="!crimeAdded">Add Existing Crime Suspect</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal14" ng-disabled="!crimeAdded">Add Existing Crime Suspect</button>
             </div>
             <div class="col-sm-4" ng-if="loggedInUser.roles[0] == 'INVESTIGATOR' || 
                loggedInUser.roles[0] == 'CLAIMS_HANDLER' || loggedInUser.roles[0] == 'ADMIN'">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal15" ng-disabled="!crimeAdded"
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal15" ng-disabled="!crimeAdded"
                 ng-click="clearUser()">Add Employee Crime Suspect</button>
             </div>
         </div>

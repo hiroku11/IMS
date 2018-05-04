@@ -342,7 +342,7 @@
         </div>
         <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
             <div class="col-sm-12">
-                <button class="btn btn-primary" ng-click="addLoss(loss)" ng-if="!editLoss">Add Loss</button>
+                <button type="button" class="btn btn-primary" ng-click="addLoss(loss)" ng-if="!editLoss">Add Loss</button>
             </div>
             <div class="col-sm-12 col-md-4" ng-if="editLoss">
                 <a class="btn btn-success" ng-click="updateLoss(loss)">Update Loss</a>
