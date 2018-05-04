@@ -1,0 +1,748 @@
+<div class="conatiner-fluid" ng-show="activeTab.tab==9">
+        <h2>Incident Summary</h2>
+        <h4>Log Incident</h4>
+        <span>Incident Reported By</span>
+        <div class="row">
+                <div class="col-sm-12 col-md-4">
+                        <label>User Id:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.loginId}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4 ">
+                        <label>Incident Id:</label>
+                        <label class="summary-text">{{incident.incidentId || incident.id}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4 ">
+                        <label>Unique incident Id:</label>
+                        <label class="summary-text">{{incident.uniqueIncidentId}}</label>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-4 col-sm-12">
+                        <label>First Name:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.firstName}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Middle Name:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.middleName}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Last Name:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.lastName}}</label>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-4 col-sm-12">
+                        <label>Organization:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.position.organization.description}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Department:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.position.department.description}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Position:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.position.positionLevel.description}}</label>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-4 col-sm-12">
+                        <label>Phone:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.phone}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Alternate Phone:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.alternatePhone}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Email:</label>
+                        <label class="summary-text">{{incidentSummary.incidentReportedBy.email}}</label>
+                </div>
+        </div>
+        <h4>Incident Details</h4>
+        <div class="row">
+                <div class="col-md-4 col-sm-12">
+                        <label>Place Of Incident:</label>
+                        <label class="summary-text">{{incidentSummary.placeOfIncident}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12" ng-if="incidentSummary.incidentType.id != 'OTHER'">
+                        <label>Incident Type:</label>
+                        <label class="summary-text">{{incidentSummary.incidentType.description}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12" ng-if="incidentSummary.incidentType.id == 'OTHER'">
+                        <label>Incident Type:</label>
+                        <label class="summary-text">{{incidentSummary.incidentTypeOther}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12" ng-if="incidentSummary.entryPoint.id != 'OTHER'">
+                        <label>Entry Point:</label>
+                        <label class="summary-text">{{incidentSummary.entryPoint.description}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12" ng-if="incidentSummary.entryPoint.id == 'OTHER'">
+                        <label>Entry Point:</label>
+                        <label class="summary-text">{{incidentSummary.entryPointOther}}</label>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-4 col-sm-12">
+                        <label>Incident Location:</label>
+                        <label class="summary-text">{{incidentSummary.incidentLocation.description}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12" ng-if="incidentSummary.incidentLocation.id != 'OTHER'">
+                        <label>Incident Location Details:</label>
+                        <label class="summary-text">{{incidentSummary.incidentLocationDetail.description}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12" ng-if="incidentSummary.incidentLocation.id == 'OTHER'">
+                        <label>Incident Location Details:</label>
+                        <label class="summary-text">{{incidentSummary.incidentLocationOther}}</label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Date Of Incident:</label>
+                        <label class="summary-text">{{incidentSummary.incidentOpenedDateTime}}</label>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4 col-lg-4">
+                        <label>Asset Damage:</label>
+                        <label class="summary-text">{{incidentSummary.assetDamage}}</label>
+                </div>
+                <div class="col-sm-4 col-lg-4">
+                        <label>Criminal Attack:</label>
+                        <label class="summary-text">{{incidentSummary.criminalAttack}}</label>
+                </div>
+                <div class="col-sm-4 col-lg-4">
+                        <label>Accident Damange:</label>
+                        <label class="summary-text">{{incidentSummary.accidentDamage}}</label>
+                </div>
+               
+        </div>
+        <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                                        <label>Incident Description:</label>
+                                        <label class="summary-text">{{incidentSummary.incidentDescription}}</label>
+                                </div>
+        </div>
+        <h4 ng-if="incidentSummary.suspects.length>0">Suspects</h4>
+        <table class="table table-bordered" ng-if="incidentSummary.suspects.length>0">
+                <thead>
+                        <tr>
+                                <th>Suspect type</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>County</th>
+                                <th>PostCode</th>
+                        </tr>
+
+                </thead>
+                <tbody>
+                        <tr ng-repeat="suspect in incidentSummary.suspects">
+                                <td>
+                                        {{suspect.suspectType != 'OTHER' ? suspect.suspectType.description : suspect.suspectTypeOther}}
+                                </td>
+                                <td>
+                                        {{suspect.firstName}} {{suspect.middleName}} {{suspect.lastName}}
+                                </td>
+                                <td>
+                                        {{suspect.age}}
+                                </td>
+                                <td>
+                                        {{suspect.genderType != 'OTHER' ? suspect.genderType.description : suspect.genderTypeOther}}
+                                </td>
+
+                                <td>
+                                        {{suspect.addresses[0].organizationName}} {{suspect.addresses[0].buildingName}} {{suspect.addresses[0].localityName}} {{suspect.addresses[0].streetName}}
+                                </td>
+                                <td>
+                                        {{suspect.addresses[0].city}}
+                                </td>
+                                <td>
+                                        {{suspect.addresses[0].county}}
+                                </td>
+                                <td>
+                                        {{suspect.addresses[0].postcode}}
+                                </td>
+
+                        </tr>
+                </tbody>
+        </table>
+        <h4 ng-if="incidentSummary.reportedLosses.length" >Reported Losses</h4>
+        <table class="table table-bordered" ng-if="incidentSummary.reportedLosses.length" >
+                <thead>
+                        <tr>
+                                <th>Loss Type</th>
+                                <th>Loss value</th>
+                                <th>External Agency</th>
+                                <th>Cost Estimation</th>
+                        </tr>
+
+                </thead>
+                <tbody>
+                        <tr ng-repeat="loss in incidentSummary.reportedLosses">
+                                <td>{{loss.losType.id != 'OTHER'?loss.lossType.description : loss.losTypeOther}}</td>
+                                <td>
+                                        {{loss.lossValue}}
+                                </td>
+                                <td>
+                                        {{loss.externalAgency.id != 'OTHER'? loss.externalAgency.description : loss.externalAgencyTypeOther}}
+                                </td>
+                                <td>
+                                        {{loss.costEstimation}}
+                                </td>
+                        </tr>
+                </tbody>
+        </table>
+        <h4>Accident Details</h4>
+        <div class="row">
+                <div class="col-sm-12 col-md-4">
+                        <label>Accident Type:</label>
+                        <label class="summary-text">{{incidentSummary.accident.accidentType.description}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Accident Description:</label>
+                        <label class="summary-text">{{incidentSummary.accident.accidentDescription}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Accident Date/Time:</label>
+                        <label class="summary-text">{{incidentSummary.accident.accidentDateTime}}</label>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12 col-md-4">
+                        <label>Accident Place:</label>
+                        <label class="summary-text">{{incidentSummary.accident.accidentPlace}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Accident Location:</label>
+                        <label class="summary-text">{{incidentSummary.accident.accidentLocation.id !='OTHER' ? incidentSummary.accident.accidentLocation.description
+                                : incidentSummary.accident.accidentLocationOther}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Accident Location Details:</label>
+                        <label class="summary-text">{{incidentSummary.accident.accidentLocationDetails.description}}</label>
+                </div>
+        </div>
+        <!-- witnesses -->
+        <table class="table table-bordered" ng-if="incidentSummary.accident.witnesses.length>0">
+                <thead>
+                        <tr>
+                                <th colspan="8" class="text-center">Witnesses</th>
+                        </tr>
+                        <tr>
+                                <th>Witness type</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>County</th>
+                                <th>PostCode</th>
+                        </tr>
+
+                </thead>
+                <tbody>
+                        <tr ng-repeat="witness in incidentSummary.accident.witnesses">
+                                <td>
+                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description : witness.witnessTypeOther}}
+                                </td>
+                                <td>
+                                        {{witness.firstName}} {{witness.middleName}} {{witness.lastName}}
+                                </td>
+                                <td>
+                                        {{witness.age}}
+                                </td>
+                                <td>
+                                        {{witness.genderType != 'OTHER' ? witness.genderType.description : witness.genderTypeOther}}
+                                </td>
+
+                                <td>
+                                        {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}} {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
+                                </td>
+                                <td>
+                                        {{witness.addresses[0].city}}
+                                </td>
+                                <td>
+                                        {{witness.addresses[0].county}}
+                                </td>
+                                <td>
+                                        {{witness.addresses[0].postcode}}
+                                </td>
+
+                        </tr>
+                </tbody>
+        </table>
+        <!-- injuredPersons -->
+        <table class="table table-bordered" ng-if="incidentSummary.accident.injuredPersons.length>0">
+                <thead>
+                        <tr>
+                                <th colspan="8" class="text-center">Injured Persons</th>
+                        </tr>
+                        <tr>
+                                <th>Person type</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>County</th>
+                                <th>PostCode</th>
+                        </tr>
+
+                </thead>
+                <tbody>
+                        <tr ng-repeat="injuredPerson in incidentSummary.accident.injuredPersons">
+                                <td>
+                                        {{injuredPerson.injuredPersonType != 'OTHER' ? injuredPerson.injuredPersonType.description : witness.witnessTypeOther}}
+                                </td>
+                                <td>
+                                        {{injuredPerson.firstName}} {{injuredPerson.middleName}} {{injuredPerson.lastName}}
+                                </td>
+                                <td>
+                                        {{injuredPerson.age}}
+                                </td>
+                                <td>
+                                        {{injuredPerson.genderType != 'OTHER' ? injuredPerson.genderType.description : injuredPerson.genderTypeOther}}
+                                </td>
+
+                                <td>
+                                        {{injuredPerson.addresses[0].organizationName}} {{injuredPerson.addresses[0].buildingName}} {{injuredPerson.addresses[0].localityName}}
+                                        {{injuredPerson.addresses[0].streetName}}
+                                </td>
+                                <td>
+                                        {{injuredPerson.addresses[0].city}}
+                                </td>
+                                <td>
+                                        {{injuredPerson.addresses[0].county}}
+                                </td>
+                                <td>
+                                        {{injuredPerson.addresses[0].postcode}}
+                                </td>
+
+                        </tr>
+                </tbody>
+        </table>
+        <!-- assetDetails -->
+        <h4>Asset Details</h4>
+        <div class="row">
+                <div class="col-sm-12 col-md-4">
+                        <label>Asset Category:</label>
+                        <label class="summary-text">{{incidentSummary.asset.assetCategory.description}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Other Description:</label>
+                        <label class="summary-text">{{incidentSummary.asset.otherDescription}}</label>
+                </div>
+        </div>
+        <table class="table table-bordered" ng-if="incidentSummary.asset.vehicles.length >0">
+                <thead>
+                        <tr>
+                                <th>Registration Id</th>
+                                <th>Engine Number</th>
+                                <th>Chasis Number</th>
+                                <th>Comment</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="vehicle in incidentSummary.asset.vehicles track by $index">
+                                <td>{{vehicle.vehicleRegistrationId}}</td>
+                                <td>{{vehicle.engineNumber}}</td>
+                                <td>{{vehicle.chasisNumber}}</td>
+                                <td>{{vehicle.commentDescription}}</td>
+                        </tr>
+                </tbody>
+        </table>
+        <table class="table table-bordered" ng-if="incidentSummary.asset.equipments.length >0">
+                <thead>
+                        <tr>
+                                <th>Equipment Id</th>
+                                <th>Serial Number</th>
+                                <th>Equipment Details</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="equipment in incidentSummary.asset.equipments">
+                                <td>{{equipment.equipmentId}}</td>
+                                <td>{{equipment.serialNumber}}</td>
+                                <td>{{equipment.equipmentDetails}}</td>
+                        </tr>
+                </tbody>
+        </table>
+        <table class="table table-bordered" ng-if="incidentSummary.asset.buildings.length >0">
+                <thead>
+                        <tr>
+                                <th>Building Id</th>
+                                <th>Building Name</th>
+                                <th>Building Description</th>
+
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="building in incidentSummary.asset.buildings">
+                                <td>{{building.buildingId}}</td>
+                                <td>{{building.buildingName}}</td>
+                                <td>{{building.buildingDescription}}</td>
+                        </tr>
+                </tbody>
+        </table>
+        <table class="table table-bordered" ng-if="incidentSummary.asset.assetTypeOthers.length >0">
+                <thead>
+                        <tr>
+                                <th>Asset Id</th>
+                                <th>Asset Name</th>
+                                <th>Asset Description</th>
+
+
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="asset in incidentSummary.asset.assetTypeOthers track by $index">
+                                <td>{{asset.assetTypeOtherId}}</td>
+                                <td>{{asset.assetTypeOtherName}}</td>
+                                <td>{{asset.assetTypeOtherDescription}}</td>
+                        </tr>
+                </tbody>
+        </table>
+
+        <!-- crimeDetails -->
+        <h4>Crime Details</h4>
+        <div class="row">
+                <div class="col-sm-12 col-md-4">
+                        <label>Crime Description:</label>
+                        <label class="summary-text">{{incidentSummary.crime.crimeDescription}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Crime Date Time:</label>
+                        <label class="summary-text">{{incidentSummary.crime.crimeDateTime}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Any Witness:</label>
+                        <label class="summary-text">{{incidentSummary.crime.anyWitness}}</label>
+                </div>
+        </div>
+        <table class="table table-bordered" ng-if="incidentSummary.crime.crimeSuspects.length>0">
+                <thead>
+                        <tr>
+                                <th colspan="8" class="text-center">Crime Suspects</th>
+                        </tr>
+                        <tr>
+                                <th>Suspect Type</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>County</th>
+                                <th>PostCode</th>
+                        </tr>
+
+                </thead>
+                <tbody>
+                        <tr ng-repeat="crimeSuspect in incidentSummary.crime.crimeSuspects">
+                                <td>
+                                        {{crimeSuspect.crimeSuspectType != 'OTHER' ? crimeSuspect.crimeSuspectType.description : crimeSuspect.crimeSuspectTypeOther}}
+                                </td>
+                                <td>
+                                        {{crimeSuspect.firstName}} {{crimeSuspect.middleName}} {{crimeSuspect.lastName}}
+                                </td>
+                                <td>
+                                        {{crimeSuspect.age}}
+                                </td>
+                                <td>
+                                        {{crimeSuspect.genderType != 'OTHER' ? crimeSuspect.genderType.description : crimeSuspect.genderTypeOther}}
+                                </td>
+
+                                <td>
+                                        {{crimeSuspect.addresses[0].organizationName}} {{crimeSuspect.addresses[0].buildingName}} {{crimeSuspect.addresses[0].localityName}}
+                                        {{crimeSuspect.addresses[0].streetName}}
+                                </td>
+                                <td>
+                                        {{crimeSuspect.addresses[0].city}}
+                                </td>
+                                <td>
+                                        {{crimeSuspect.addresses[0].county}}
+                                </td>
+                                <td>
+                                        {{crimeSuspect.addresses[0].postcode}}
+                                </td>
+
+                        </tr>
+                </tbody>
+        </table>
+
+        <table class="table table-bordered" ng-if="incidentSummary.crime.witnesses.length>0">
+                <thead>
+                        <tr>
+                                <th colspan="8" class="text-center">Crime Witnesses</th>
+                        </tr>
+                        <tr>
+                                <th>Witness type</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>County</th>
+                                <th>PostCode</th>
+                        </tr>
+
+                </thead>
+                <tbody>
+                        <tr ng-repeat="witness in incidentSummary.crime.witnesses">
+                                <td>
+                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description : witness.witnessTypeOther}}
+                                </td>
+                                <td>
+                                        {{witness.firstName}} {{witness.middleName}} {{witness.lastName}}
+                                </td>
+                                <td>
+                                        {{witness.age}}
+                                </td>
+                                <td>
+                                        {{witness.genderType != 'OTHER' ? witness.genderType.description : witness.genderTypeOther}}
+                                </td>
+
+                                <td>
+                                        {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}} {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
+                                </td>
+                                <td>
+                                        {{witness.addresses[0].city}}
+                                </td>
+                                <td>
+                                        {{witness.addresses[0].county}}
+                                </td>
+                                <td>
+                                        {{witness.addresses[0].postcode}}
+                                </td>
+
+                        </tr>
+                </tbody>
+        </table>
+        <h4 ng-if="isAdminRole">Claim Details</h4>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim ID:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimId}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claimant Name:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimantName}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Insured Name:</label>
+                        <label class="summary-text">{{incidentSummary.claim.insuredName}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Status:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimStatus.description}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Type:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimType.id !='OTHER'?incidentSummary.claim.claimType.description : incidentSummary.claim.claimTypeOther}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Request Type:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimRequestRegistrationType.id != 'OTHER'?incidentSummary.claim.claimRequestRegistrationType.description
+                                : incidentSummary.claim.claimRequestRegistrationTypeOther}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Policy No.:</label>
+                        <label class="summary-text">{{incidentSummary.claim.policyNumber}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Policy Holder Name:</label>
+                        <label class="summary-text">{{incidentSummary.claim.policyHolderName}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Policy Type:</label>
+                        <label class="summary-text">{{incidentSummary.claim.policyType.id !='OTHER' ? incidentSummary.claim.policyType.description :
+                                incidentSummary.claim.policyTypeOther}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Security Requested:</label>
+                        <label class="summary-text">{{incidentSummary.claim.securityRequested}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Training Requested:</label>
+                        <label class="summary-text">{{incidentSummary.claim.trainingRequested}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Handler:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimHandler.fullName}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='REQUESTED'" >
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Requested Amount:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimRequestedAmount}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Requested Date:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimRequestedDate}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Requested By:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimRequestedBy}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='APPROVED'">
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Approved By:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimApprovedBy}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Approved Amount:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimApprovedAmount}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Approved Date:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimApprovedDate}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='SETTLED'">
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Settlement By:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimSettlementBy}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Settlement Amount:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimSettlementAmount}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Settlement Date:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimSettlementDate}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='DECLINED'">
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Declined By:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimDeclinedBy}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Declined Date:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimDeclinedDate}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Declined Comments:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimDeclinedComments}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='REOPENED'">
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Reopened By:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimReopenedBy}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Reopened Date:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimReopenedDate}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Claim Reopened Comments:</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimReopenedComments}}</label>
+                </div>
+        </div>
+        <h4 ng-if="isAdminRole">Investigation</h4>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Security Requested:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.securityRequested}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Training Requested:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.trainingRequested}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Reviewed Investigation Records:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.reviewedInvestigationRecords}}</label>
+                </div>
+
+        </div>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Reviewed CCTV:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.reviewedCCTV}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Reviewed Pictures:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.reviewedPictures}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Reviewed Witness Statement:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.reviewedWitnessStatement}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Reviewed Learner Records:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.reviewedLearnerRecords}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Reviewed Asset Records:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.reviewedAssetRecords}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Reviewed Compliance Records:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.reviewedComplianceRecords}}</label>
+                </div>
+        </div>
+        <div class="row" ng-if="isAdminRole">
+                <div class="col-sm-12 col-md-4">
+                        <label>Investigator:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.investigator.fullName}}</label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                        <label>Investigator Detail:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.investigatorDetail}}</label>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                        <label>Investigator Statement:</label>
+                        <label class="summary-text">{{incidentSummary.investigation.investigatorStatement}}</label>
+                </div>
+               
+                       
+               
+        </div>
+        <div class="row" ng-if="isAdminRole">
+                        <div class="col-md-4 col-sm-12">
+                                        <label>Investigation Team Name</label>
+                                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].teamDescription}} </label>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <label>Investigation Team Lead ID</label>
+                                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].investigationTeamLeads[0].teamLeadLoginId}}</label>
+                                    </div>
+        </div>
+        <h4>Supporting Documents</h4>
+        <table class="table table-bordered">
+                <thead>
+                        <tr>
+                                <th>Document Type</th>
+                                <th>Document Name</th>
+                                <th>Description</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="doc in incidentSummary.documents track by $index">
+                                <td>{{doc.fileContentType}}</td>
+                                <td>{{doc.originalFileName}}</td>
+                                <td>{{doc.fileDescription}}</td>
+                        </tr>
+                </tbody>
+        </table>
+        <div class="row">
+                <div class="col-sm-6">
+                        <button ng-if="incidentSummary.incidentStatus == 'DRAFT'" class="btn btn-primary" type="button" ng-click="submitIncident()">Submit</button>
+                </div>
+                <div class="col-sm-6">
+                        <button type="button" ng-click="submitForm('summaryForm','back')" class="btn btn-secondary pull-right">Back</button>
+                </div>
+
+        </div>
+
+</div>

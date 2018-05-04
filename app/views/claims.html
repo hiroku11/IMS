@@ -1,0 +1,331 @@
+<div class="row header">
+    <ng-include src="'app/views/header.html'"></ng-include>
+</div>
+<div class="row" style="padding-top:0">
+    <div class="col-md-2 navbar hidden-md hidden-sm hidden-xs">
+        <ng-include src="'app/views/menu.html'"></ng-include>
+    </div>
+
+
+    <div class="col-md-10 content">
+        <div class="incidents">
+            <!-- <div class="pull-right advanced-search">
+                <a class="btn btn-primary" id="btnAdvanceSearch" data-toggle="modal" data-target="#myModal" ng-click="loadAPI()">Advanced Search</a>
+            </div> -->
+            <!-- <div class="pull-right searchbox">
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control" placeholder="Search" ng-model="search">
+                    <span class="input-group-addon">
+                <button>
+                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </span>
+                </div>
+            </div> -->
+            <h3>
+                <!-- <These buttons need to be changed according to the claims page> -->
+                <span class="incidentLabel">Claims |</span>
+                <!-- <a class="btn btn-primary"> Approve Claim</a>
+
+                <a class="btn btn-primary">Settle Claim</a>
+                <a class="btn btn-primary" >Reopen Claim</a>
+                <a class="btn btn-primary" >Decline Claim</a> -->
+
+            </h3>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" class="checkbox checkbox-primary" onclick="" style="display:inline" /> All
+                        </th>
+                        <th ng-click="changeSortBy('uniqueIncidentId')">Incident ID
+                            <span ng-if="sortBy == 'uniqueIncidentId' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'uniqueIncidentId' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+
+                        </th>
+                        <th ng-click="changeSortBy('reportedBy')">Reported By
+                            <span ng-if="sortBy == 'reportedBy' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'reportedBy' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+
+                        </th>
+
+                        <th ng-click="changeSortBy('incidentStatus')">Incident Status
+                            <span ng-if="sortBy == 'incidentStatus' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'incidentStatus' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                        </th>
+                        <th ng-click="changeSortBy('organizationDescription')">Organization
+                            <span ng-if="sortBy == 'organizationDescription' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'organizationDescription' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                        </th>
+                        <th ng-click="changeSortBy('departmentDescription')">Department
+                            <span ng-if="sortBy == 'departmentDescription' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'departmentDescription' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                        </th>
+                        <th ng-click="changeSortBy('investigatorFullName')">Investigator Name
+                            <span ng-if="sortBy == 'investigatorFullName' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'investigatorFullName' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                        </th>
+                        <!-- <th ng-click="changeSortBy('investigatorStatement')">Investigator Statement
+                            <span ng-if="sortBy == 'investigatorStatement' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'investigatorStatement' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                        </th> -->
+
+                        <th ng-click="changeSortBy('openedDateTime')">Date Opened
+                            <span ng-if="sortBy == 'openedDateTime' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'openedDateTime' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                        </th>
+                        <th ng-click="changeSortBy('closedDateTime')">Date Closed
+                            <span ng-if="sortBy == 'closedDateTime' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                            <span ng-if="sortBy == 'closedDateTime' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="claim in data | orderBy : sortBy : reverse">
+                        <td>
+                            <input type="checkbox" class="checkbox checkbox-primary" name="">
+                        </td>
+                        <td>
+                            <a ui-sref="editincident({uniqueIncidentId: claim.uniqueIncidentId})">{{claim.uniqueIncidentId}}</a>
+                        </td>
+                        <td>
+                            {{claim.reportedBy== null?"":claim.reportedBy}}
+                        </td>
+                        <td>
+                            {{claim.incidentStatus== null?"":claim.incidentStatus}}
+                        </td>
+                        <td>
+                            {{claim.organizationDescription== null?"":claim.organizationDescription}}
+                        </td>
+                        <td>
+                            {{claim.departmentDescription== null?"":claim.departmentDescription}}
+                        </td>
+                        <td>
+                            {{claim.investigatorFullName == null?"":claim.investigatorFullName}}
+                        </td>
+                        <!-- <td>
+                            {{investigation.investigatorStatement == null?"":claim.investigatorStatement}}
+                        </td> -->
+                        <td>
+                            {{claim.openedDateTime == null?"":claim.openedDateTime}}
+                        </td>
+                        <td>
+                            {{claim.closedDateTime == null?"":claim.closedDateTime}}
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <nav aria-label="Page navigation" ng-if="data && data.length > 0">
+                <select class="form-control" ng-options="entry.value as entry.value for entry in entry" ng-model="$parent.entryCount" ng-change="getEntries()"
+                />
+
+                <ul class="pagination" ng-if="data.length!=0">
+                    <li>
+                        <a aria-label="Previous" ng-click="goToPage(currentPage - 1)" ng-class="{disabled:currentPage==1}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="page in range(data.length,$parent.entryCount)" ng-class="{'active':currentPage == page}"><a ng-click="goToPage(page)">{{page}}</a></li>
+                    <li>
+                        <a aria-label="Next" ng-click="goToPage(currentPage + 1)" ng-class="{disabled:currentPage==Math.ceil(data.length/entryCount)}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+                <span>{{$parent.entryCount * currentPage - $parent.entryCount + 1}} - {{$parent.entryCount * currentPage > data.length ? data.length : $parent.entryCount * currentPage}} of {{data.length}}</span>
+            </nav>
+            <h3 class="text-center" ng-if="!data || data.length == 0">no records found!</h3>
+
+<!-- 
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">Advanced Search</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6 col-md-4">
+                                    <label>Incident ID</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-2">
+                                    <select class="form-control" ng-model="idOp">
+                                        <option value="EQ" selected>Equals</option>
+                                        <option value="NEQ">Not equals</option>
+                                        <option value="STARTS_WITH">Starts with</option>
+                                        <option value="ENDS_WITH">Ends with</option>
+                                        <option value="CONTAINS">Contains</option>
+                                        <option value="NOT_CONTAINS">Does not contain</option>
+                        
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <input type="text" class="form-control" ng-model="IncidentId" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Incident Opened Date</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-2">
+                                    <select class="form-control" ng-model="opendateop">
+                        <option value="GT" selected>Greater than or equal to</option>
+                        <option value="LT">Less than or equal to</option>
+                        
+                        
+                    </select>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <div class='input-group date' data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                                        <input type='text' class="form-control" ng-model="IncOpenedDate" />
+                                        <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Incident Closed Date</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-2">
+                                    <select class="form-control" ng-model="closedateop">    
+                        <option value="GT" selected>Greater than or equal to</option>
+                        <option value="LT">Less than or equal to</option>
+                        
+                        
+                    </select>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <div class='input-group date' data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                                        <input type='text' class="form-control" ng-model="IncClosedDate" />
+                                        <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Incident Status</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <select class="form-control" ng-model="IncidentStatus">
+                                        <option value="DRAFT" selected>Draft</option>
+                                        <option value="NEW">New</option>
+                                        <option value="ASSIGNED">Assigned</option>
+                                        <option value="IN_PROGRESS">In-progress</option>
+                                        <option value="SUSPENDED">Suspended</option>
+                                        <option value="CLOSED">Closed</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Person Injured</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <select class="form-control" ng-model="personInjured">
+                                     <option value="Y" selected>Yes</option>
+                                    <option value="N">No</option>
+                       
+                                </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Property Damage</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <select class="form-control" ng-model="propertyDamage">
+                                     <option value="Y" selected>Yes</option>
+                                    <option value="N">No</option>
+                       
+                                </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Crime Involved?</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <select class="form-control" ng-model="crimeInvolved">
+                                     <option value="Y" selected>Yes</option>
+                                    <option value="N">No</option>
+                       
+                                </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Incident Type</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+                                    <select class="form-control" ng-options="incidentType.id as incidentType.description for incidentType in incidentType" ng-model="SincidentType"
+                                    />
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Incident Category</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-6">
+
+                                    <input type="checkbox" ng-model="prop" />Property Damage <br/>
+                                    <input type="checkbox" ng-model="cAttack" />Criminal Attack <br/>
+                                    <input type="checkbox" ng-model="Acc" />Accident Damage<br/>
+                                    <input type="checkbox" ng-model="Asset" />Vehicle / Asset Damage<br/>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Location</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-3">
+                                    <select class="form-control" ng-options="incidentLoc.id as incidentLoc.description for incidentLoc in incidentLoc" ng-model="SincidentLoc"
+                                        ng-change="getIncidentLocDetail()" />
+
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-3">
+                                    <select class="form-control" ng-options="incidentLocDetail.id as incidentLocDetail.description for incidentLocDetail in incidentLocDetail"
+                                        ng-model="SincidentLocDetail" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-md-4">
+                                    <label>Reported By</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-md-3">
+                                    <input name="states" id="states" type="text" placeholder="enter a state" ng-model="user" ng-change="userLookup()" ng-model-options="{debounce:1000}" typeahead="userInfo as userInfo.fullName for userInfo in userInfo | limitTo:8" class="form-control">
+
+                                    <input class="form-control" placeholder="Type user name" ng-model="user" ng-change="userLookup()" ng-model-options="{debounce:1000}"
+                                        uib-typeahead="userIn.fullName as userIn.fullName for userIn in userInfo" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class=" modal-footer ">
+
+                            <a class="btn btn-primary " ng-click="advancedSearch()">Search</a>
+                            <a class="btn btn-primary " ng-click="clearSearchParams()">Clear</a>
+                            <a class="btn btn-danger " class="close " data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</div>
+</div>

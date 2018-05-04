@@ -1,0 +1,139 @@
+﻿<div class="row header">
+    <ng-include src="'app/views/header.html'"></ng-include>
+</div>
+<div class="row" style="padding-top:0">
+    <div class="col-md-2 navbar hidden-md hidden-sm hidden-xs">
+        <ng-include src="'app/views/menu.html'"></ng-include>
+    </div>
+    <div class="col-md-12 col-lg-10 content">
+
+        <div class="row" style="margin:0;">
+            <div class="col-md-3 col-sm-12">
+                <div class="row panel card">
+                    <div class="col-sm-3 stat-icon">
+                        <i class="glyphicon glyphicon-dashboard"></i>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="big-text">{{incidentReportCount.totalIncidents}}</div>
+                        <div class="">Total Incidents</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <div class="row panel card">
+                    <div class="col-sm-3 stat-icon">
+                        <i class="glyphicon glyphicon-eye-open"></i>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="big-text">{{incidentReportCount.openCount}}</div>
+                        <div class="">Open Incidents</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <div class="row panel card">
+                    <div class="col-sm-3 stat-icon">
+                        <i class="glyphicon glyphicon-adjust"></i>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="big-text">{{incidentReportCount.inProgressCount}}</div>
+                        <div class="">In Progress Incidents</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <div class="row panel card">
+
+                    <div class="col-sm-3 stat-icon">
+                        <i class="glyphicon glyphicon-eye-close"></i>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="big-text">{{incidentReportCount.closedCount}}</div>
+                        <div class="">Closed Incidents</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs" ng-init="graph=1">
+                    <li ng-class="{active:graph==1}" ng-click="graph=1"> <button class="btn">Total Incident Volume</button></li>
+                    <li ng-class="{active:graph==2}" ng-click="graph=2"><button class="btn">Incidents Grouped By Type</button></li>
+                    <li ng-class="{active:graph==3}" ng-click="graph=3"><button class="btn">Incident Grouped By Event Types</button></li>
+                </ul>
+                <div class="tab-content">
+                    <div ng-show="graph==1" class="section">
+                        <div class="section-header">
+                            <!--<div class="pull-right">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Last 6 Months
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Last 1 Month</a></li>
+                                    <li><a href="#">Last 3 Months</a></li>
+                                    <li><a href="#">Last 6 Months</a></li>
+                                    <li><a href="#">Last 1 Year</a></li>
+                                </ul>
+                            </div>-->
+                            <h3>Total Incident Volume</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12" id="incidentVolumeByStatusGraph" style="height: 500px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-show="graph==2" class="section">
+                    <div class="section-header">
+                        <!-- <div class="pull-right">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Last 6 Months
+                                    <span class="caret"></span>
+                                </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><a href="#">Last 1 Month</a></li>
+                                <li><a href="#">Last 3 Months</a></li>
+                                <li><a href="#">Last 6 Months</a></li>
+                                <li><a href="#">Last 1 Year</a></li>
+                            </ul>
+                        </div> -->
+                        <h3>Incidents Grouped By Type</h3>
+                    </div>
+                    <div class="section-content chart" id="incidentGroupedByType" style="height: 500px;">
+                    </div>
+                </div>
+
+                <div ng-show="graph==3" class="section">
+                    <div class="section-header">
+                        <!-- <div class="pull-right">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Last 6 Months
+                                    <span class="caret"></span>
+                                </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                            <li><a href="#">Last 1 Month</a></li>
+                            <li><a href="#">Last 3 Months</a></li>
+                            <li><a href="#">Last 6 Months</a></li>
+                            <li><a href="#">Last 1 Year</a></li>
+                        </ul>
+                    </div> -->
+                        <h3>Incident Grouped By Event Types</h3>
+                    </div>
+                    <div class="section-content chart" id="incidentGroupedByEvents" data-highcharts-chart="2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+</div>
+<div class="footer">
+
+
+</div>

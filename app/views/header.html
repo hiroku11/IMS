@@ -1,0 +1,70 @@
+﻿<div class="col-lg-4 col-sm-12">
+    <h2 class="logo">
+        <a href="#">
+            <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" />
+        </a>
+    </h2>
+    <div class="sm-navbar-container hidden-lg" ng-init="showMenu = false">
+        <span style="font-size:20px" data-elem="smallMenu" class="glyphicon glyphicon-menu-hamburger" ng-click="showMenu = true"></span>
+    </div>
+    <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
+        <li ng-class="{active:thisView=='dashboard'}" data-elem="smallMenu" ng-if="isAdminRole">
+            <a ui-sref="dashboard" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
+            </a>
+        </li>
+        <li ng-class="{active:thisView=='incidents'}">
+            <a ui-sref="incidents" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-time menu-icon"></i> Incidents
+            </a>
+        </li>
+        <li ng-class="{active:thisView=='claims'}" data-elem="smallMenu">
+            <a ui-sref="claims" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-gift menu-icon"></i> Claims
+            </a>
+        </li>
+        <li ng-class="{active:thisView=='investigations'}" data-elem="smallMenu">
+            <a ui-sref="investigations" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-search menu-icon"></i> Investigations
+            </a>
+        </li>
+       
+    </ul>
+</div>
+<div class="col-lg-4 col-sm-12 text-center">
+    <h3 class="welcome">Welcome {{loggedInUser.firstName}} {{loggedInUser.lastName==null?"":loggedInUser.lastName}}</h3>
+</div>
+<div class="col-lg-4 col-sm-12">
+    <div class="user-details">
+        <!-- <span class="user-circle">
+            <i class="glyphicon glyphicon-user"></i>
+        </span> Logged in as <a href="" id="user">{{loggedInUser.roles[0]}}</a> | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a> -->
+        <div role="presentation" class="dropdown">
+                <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image"/>
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                {{loggedInUser.roles[0]}}
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a>Profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="logOutUser()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on("click", function (event) {
+        //event.preventDefault();
+        event.stopPropagation();
+        let $elm = $(event.target);
+        if ($elm.data("elem") != "smallMenu") {
+            var scope = angular.element($(".sm-navbar")).scope();
+            if (typeof scope !== "undefined") {
+                scope.showMenu = false;
+                scope.$apply();
+            }
+        }
+
+    })
+</script>

@@ -1,0 +1,397 @@
+<div class="asset form-content" ng-show="activeTab.tab==4">
+    <h2>Assets Details</h2>
+    <form ng-submit="submitForm('assetsForm')">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <label>Category</label>
+                <select class="form-control" ng-options="assetCat.id as assetCat.description for assetCat in assetCat" ng-model="assetCategory.id">
+                        <option value=""></option>    
+                </select>
+
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <label>Statement Description</label>
+                <input class="form-control" ng-model="assetDetail.assetDescription">
+                </textarea>
+            </div>
+        </div>
+        <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+            <div class="col-sm-12 col-md-4">
+                <button class="btn btn-primary" ng-click="addAssetDetails()">Save</button>
+
+            </div>
+        </div>
+        <div class="other-section" ng-if="assetCategory.id == 'OTHER'">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Asset Id</label>
+                    <input class="form-control" type="text" ng-model="assetOther.assetTypeOtherId">
+                </div>
+                <div class="col-md-6">
+                    <label>Asset Name</label>
+                    <input class="form-control" type="text" ng-model="assetOther.assetTypeOtherName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Asset Description</label>
+                    <input class="form-control" type="text" ng-model="assetOther.assetTypeOtherDescription">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <label>Organization</label>
+                    <input name="" class="form-control" type="text" ng-model="assetOther.addresses[0].organizationName">
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label>Building</label>
+                    <input name="" class="form-control" type="text" ng-model="assetOther.addresses[0].buildingName">
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label>Street</label>
+                    <input name="" class="form-control" type="text" ng-model="assetOther.addresses[0].streetName">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <label>Locality </label>
+                    <input class="form-control" type="text" ng-model="assetOther.addresses[0].localityName">
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <label> Post Town</label>
+                    <input class="form-control" type="text" ng-model="assetOther.addresses[0].postTown">
+                </div>
+                <div class="col-sm-12 col-md-4  ">
+                    <label>Postal Code</label>
+                    <input class="form-control" type="text" ng-model="assetOther.addresses[0].postcode">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <label>City</label>
+                    <input class="form-control" type="text" ng-model="assetOther.addresses[0].city">
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <label>County</label>
+                    <input class="form-control" type="text" ng-model="assetOther.addresses[0].county">
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <label>Country</label>
+                    <input class="form-control" type="text" ng-model="assetOther.addresses[0].country">
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-12 col-md-4">
+                    <label>Door Number</label>
+                    <input class="form-control" type="tel" ng-model="assetOther.addresses[0].doorNumber">
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label>Block Number</label>
+                    <input class="form-control" type="tel" ng-model="assetOther.addresses[0].blockNumber">
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label>Apartment Number</label>
+                    <input class="form-control" type="tel" ng-model="assetOther.addresses[0].apartmentNumber">
+                </div>
+            </div>
+            <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                <div class="col-sm-12 col-md-4" ng-if="!editassetother">
+                    <button class="btn btn-primary" ng-click="addAssetOther()" ng-disabled="!assetAdded">Add Asset</button>
+                </div>
+                <div class="col-sm-12 col-md-4" ng-if="editassetother">
+                    <a class="btn btn-success" ng-click="updateAssetOther(assetOther)">
+                        Update Asset</a>
+                </div>
+            </div>
+            <table class="table table-bordered" ng-if="assetOthers.length >0">
+                <thead>
+                    <tr>
+                        <th>Asset Id</th>
+                        <th>Asset Name</th>
+                        <th>Asset Description</th>
+
+                        <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">&nbsp;</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="asset in assetOthers track by $index">
+                        <td>{{asset.assetTypeOtherId}}</td>
+                        <td>{{asset.assetTypeOtherName}}</td>
+                        <td>{{asset.assetTypeOtherDescription}}</td>
+
+                        <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                            <a ng-click="deleteAssetOther(asset)">
+                                 <i class="glyphicon glyphicon-trash"></i>
+                            </a> &nbsp;&nbsp;&nbsp;
+                            <a ng-click="loadAssetOther(asset)">
+
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+        <div class="building-section" ng-if="assetCategory.id == 'BUILDING'">
+            <h4>Building</h4>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label>Building ID</label>
+                    <input class="form-control" type="text" ng-model="building.buildingId">
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <label>Building Name </label>
+                    <input class="form-control" ng-model="building.buildingName">
+                    </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <label>Description</label>
+                    <input class="form-control" ng-model="building.buildingDescription">
+                    </textarea>
+                </div>
+            </div>
+            <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                <div class="col-sm-12 col-md-4" ng-if="!editBuilding">
+                    <button class="btn btn-primary" ng-click="addBuilding()" ng-disabled="!assetAdded">Add Building</button>
+                </div>
+                <div class="col-sm-12 col-md-4" ng-if="editBuilding">
+                    <a class="btn btn-success" ng-click="updateBuilding(building)">
+                        Update Building</a>
+                </div>
+            </div>
+            <div class="table-wrapper inline">
+                <table class="table table-bordered" ng-if="buildings.length >0">
+                    <thead>
+                        <tr>
+                            <th>Building Id</th>
+                            <th>Building Name</th>
+                            <th>Building Description</th>
+                            <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                                &nbsp;
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="building in buildings">
+                            <td>{{building.buildingId}}</td>
+                            <td>{{building.buildingName}}</td>
+                            <td>{{building.buildingDescription}}</td>
+                            <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                                <a ng-click="deleteBuilding(building)">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a> &nbsp;&nbsp;&nbsp;
+                                <a ng-click="loadBuilding(building)">
+
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="equipment-section" ng-if="assetCategory.id == 'EQUIPMENT'">
+            <h4>Equipment</h4>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label>Equipment ID</label>
+                    <input class="form-control" type="text" ng-model="equipment.equipmentId">
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <label>Serial No</label>
+                    <input class="form-control" type="text" ng-model="equipment.serialNumber">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label>Equipment Details</label>
+                    <textarea class="form-control" ng-model="equipment.equipmentDetails"></textarea>
+                </div>
+            </div>
+            <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                <div class="col-sm-12 col-md-4" ng-if="!editequipment">
+                    <button class="btn btn-primary" ng-click="addEquipement()" ng-disabled="!assetAdded">Add Equipment</button>
+                </div>
+                <div class="col-sm-12 col-md-4" ng-if="editequipment">
+                    <a class="btn btn-success" ng-click="updateEquipment(equipment)">
+                        Update Equipment</a>
+                </div>
+            </div>
+            <div class="table-wrapper inline">
+                <table class="table table-bordered" ng-if="equipments.length >0">
+                    <thead>
+                        <tr>
+                            <th>Equipment Id</th>
+                            <th>Serial Number</th>
+                            <th>Equipment Details</th>
+                            <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">&nbsp;</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="equipment in equipments">
+                            <td>{{equipment.equipmentId}}</td>
+                            <td>{{equipment.serialNumber}}</td>
+                            <td>{{equipment.equipmentDetails}}</td>
+                            <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                                <a ng-click="deleteEquipment(equipment)">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a> &nbsp;&nbsp;&nbsp;
+                                <a ng-click="loadEquipment(equipment)">
+
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <div class="vehicle-section" ng-if="assetCategory.id == 'VEHICLE'">
+            <h4>Vehicle</h4>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <label>Vehicle Registration ID </label>
+                    <input class="form-control" type="text" ng-model="vehicle.vehicleRegistrationId">
+                </div>
+                <!--<div class="col-sm-2" style="padding-top:1.7em">
+                        <a href="#" class="btn">Look up</a>
+                    </div>-->
+
+                <div class="col-sm-12 col-md-4">
+                    <label>Engine Number</label>
+                    <input class="form-control" type="text" ng-model="vehicle.engineNumber">
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <label>Chasis Number</label>
+                    <input class="form-control" type="text" ng-model="vehicle.chassisNumber">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label>Make</label>
+                    <input class="form-control" type="text" ng-model="vehicle.make">
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <label>Model</label>
+                    <input class="form-control" type="text" ng-model="vehicle.model">
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label>Vehicle Damage Details</label>
+                    <multiselect ng-model="vehicleDamageType.temp" options="vehDamageTypedesc">
+                    </multiselect>
+                 
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <label>Selected Vehicle</label>
+                    <input class="form-control" type="text" ng-model="vehicleDamageType.temp" readonly/>
+                       </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <label>Comments</label>
+                    <textarea class="form-control" ng-model="vehicle.commentDescription"></textarea>
+                </div>
+            </div>
+            <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                <div class="col-sm-12 col-md-4" ng-if="!editvehicle">
+                    <button class="btn btn-primary" ng-click="addVehicle()" ng-disabled="!assetAdded">Add Vehicle</button>
+                </div>
+                <div class="col-sm-12 col-md-4" ng-if="editvehicle">
+                    <a class="btn btn-success" ng-click="updateVehicle(vehicle)">
+                        Update Vehicle</a>
+                </div>
+            </div>
+            <table class="table table-bordered" ng-if="vehicles.length >0">
+                <thead>
+                    <tr>
+                        <th>Registration Id</th>
+                        <th>Engine Number</th>
+                        <th>Chasis Number</th>
+                        <th>Comment</th>
+                        <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">&nbsp;</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="vehicle in vehicles track by $index">
+                        <td>{{vehicle.vehicleRegistrationId}}</td>
+                        <td>{{vehicle.engineNumber}}</td>
+                        <td>{{vehicle.chassisNumber}}</td>
+                        <td>{{vehicle.commentDescription}}</td>
+                        <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                            <a ng-click="deleteVehicle(vehicle)">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a> &nbsp;&nbsp;&nbsp;
+                            <a ng-click="loadVehicle(vehicle)">
+
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="row ">
+            <div class="col-md-6 col-sm-12" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                <!-- <button type="submit" class="btn btn-info" ng-click="activeTab.formAction='save'">Save</button> -->
+                <button type="submit" class="btn btn-primary" ng-click="activeTab.formAction='saveContinue'">Continue</button>
+            </div>
+
+            <div class="col-md-6 col-sm-12 floatRight">
+                <button type="button" ng-click="submitForm('assetsForm','back')" class="btn btn-secondary pull-right">Back</button>
+                <button type="button" ng-click="submitForm('assetsForm','next')" class="btn btn-success pull-right" style="margin-right:5px">Next</button>
+            </div>
+
+        </div>
+    </form>
+
+</div>

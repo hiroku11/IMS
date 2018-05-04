@@ -1,0 +1,325 @@
+<div class="form-content" ng-if="activeTab.tab == 6">
+    <h2>Claim Details</h2>
+    <form ng-submit="submitForm('claimForm')">
+        <div class="row">
+                <div class="col-md-5 col-sm-12">
+                       
+                                <label>Claim Handler</label>
+                                <input class="form-control" type="text" ng-model="claimHandler" type="text" readonly>
+                               
+                            </div>
+                            <div class="col-sm-12 col-md-1" style="padding-top:1.7em;" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'"> 
+                                    <a class="btn btn-primary" data-toggle="modal" data-target="#claimHandler">Lookup</a>
+                            </div>
+                        
+                    <div class="col-md-6 col-sm-12">
+                            <label>Claim ID</label>
+                            <input class="form-control" type="text" ng-model="claimRefId" readonly>
+                        </div>
+                   
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label>Security Requested</label>
+                <select class="form-control" ng-model="claimDetail.securityRequested">
+                        <option value=""></option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Training Requested</label>
+                <select class="form-control" ng-model="claimDetail.trainingRequested">
+                        <option value=""></option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option> 
+                    </select>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Claim Status</label>
+                <select class="form-control" ng-options="claimStatus.id as claimStatus.description for claimStatus in claimStatus" ng-model="claimDetail.claimStatus.id">
+                        <option value="">--Please Select--</option>    
+                </select>
+
+            </div>
+        </div>
+
+        <div class="row">
+
+        
+
+            <div class="col-md-6 col-sm-12">
+                <label>Claim Request Registration Type</label>
+                <select class="form-control" ng-options="claimReg.id as claimReg.description for claimReg in claimReg" ng-model="claimDetail.claimRequestRegistrationType.id">
+                        <option value=""></option>    
+                </select>
+
+
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <label>If Claim Registration Type Others</label>
+                <input class="form-control" type="text"  ng-disabled="claimDetail.claimRequestRegistrationType.id != 'OTHER'" ng-model="claimDetail.claimRequestRegistrationTypeOther">
+            </div>
+           
+        </div>
+        <div class="row">
+                <div class="col-md-3 col-sm-12">
+                        <label>Claim Requested Date</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy" is-open="calendar.opened.claimRequestedDate" ng-focus="calendar.open($event,'claimRequestedDate')"
+                            datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" ng-model="claimDetail.claimRequestedDate"/>
+                            <span class="input-group-addon" ng-click="calendar.open($event,'claimRequestedDate')">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+        
+                        </p>
+        
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                            <label>Claim Requested By</label>
+                            <input class="form-control" type="text" ng-model="claimDetail.claimRequestedBy">
+                        </div>
+                <div class="col-md-3 col-sm-12">
+                        <label>Claim Requested Amount</label>
+                        <input class="form-control" type="text"   ng-model="claimDetail.claimRequestedAmount">
+                </div>
+                <div class="col-md-3 col-sm-12">
+                        <label>Claim Requested Comment</label>
+                        <input class="form-control" type="text"  ng-model="claimDetail.claimRequestedComments">
+                </div>
+               
+               
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4 col-sm-12">
+                <label>Claim Type</label>
+                <select class="form-control" ng-options="claimType.id as claimType.description for claimType in claimType" ng-model="claimDetail.claimType.id">
+                        <option value=""></option>    
+                </select>
+
+               
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>If Claim Type Others</label>
+                <input class="form-control" type="text"  ng-disabled="claimDetail.claimType.id != 'OTHER'" ng-model="claimDetail.claimTypeOther">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Claimant Name</label>
+                <input class="form-control" type="text" ng-model="claimDetail.claimantName">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label>Policy Number</label>
+                <input class="form-control" type="text" ng-model="claimDetail.policyNumber">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Policy Holder Name</label>
+                <input class="form-control" type="text" ng-model="claimDetail.policyHolderName">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                    <label>Insured Name</label>
+                    <input class="form-control" type="text" ng-model="claimDetail.insuredName">
+            </div>
+           
+        </div>
+
+        <div class="row">
+                <div class="col-md-6 col-sm-12">
+                        <label>Type of Policy</label>
+                        <select class="form-control" ng-options="policyType.id as policyType.description for policyType in policyType" ng-model="claimDetail.policyType.id">
+                                <option value=""></option>    
+                        </select>
+        
+                    </div>
+            <div class="col-md-6 col-sm-12" >
+                <label>If Type of Policy Others</label>
+                <input class="form-control" type="text" ng-disabled="claimDetail.policyType.id != 'OTHER'" ng-model="claimDetail.policyTypeOther">
+            </div>
+            
+           
+
+        </div>
+
+        <div class="row" ng-if="claimDetail.claimStatus.id=='APPROVED'">
+
+            <div class="col-md-3 col-sm-12">
+                <label>Claim Approved Date</label>
+                <p class="input-group">
+
+                        <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy"  is-open="calendar.opened.claimApprovedDate" ng-focus="calendar.open($event,'claimApprovedDate')"
+                            datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" ng-model="claimDetail.claimApprovedDate"/>
+                        <span class="input-group-addon" ng-click="calendar.open($event,'claimApprovedDate')">
+
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                    </p>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                    <label>Claim Approved By</label>
+                    <input class="form-control" type="text" ng-model="claimDetail.claimApprovedBy">
+                </div>
+           
+            <div class="col-md-3 col-sm-12">
+                    <label>Claim Approved Amount</label>
+                    <input class="form-control" type="text" ng-model="claimDetail.claimApprovedAmount">
+                </div>
+                <div class="col-md-3 col-sm-12">
+                        <label>Claim Approved Comment</label>
+                        <input class="form-control" type="text" ng-model="claimDetail.claimApprovedComments">
+                </div>
+            
+        </div>
+       <div class="row" ng-if="claimDetail.claimStatus.id=='SETTLED'">
+            <div class="col-md-3 col-sm-12">
+                    <label>Claim Settled Date</label>
+                    <p class="input-group">
+                            <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy"  is-open="calendar.opened.claimSettlementDate" ng-focus="calendar.open($event,'claimSettlementDate')"
+                                datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" ng-model="claimDetail.claimSettlementDate"/>
+                            <span class="input-group-addon" ng-click="calendar.open($event,'claimSettlementDate')">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+    
+                        </p>
+    
+                </div>
+                <div class="col-md-3 col-sm-12">
+                        <label>Claim Settled By</label>
+                        <input class="form-control" type="text" ng-model="claimDetail.claimSettlementBy">
+                    </div>
+               
+                <div class="col-md-3 col-sm-12">
+                        <label>Claim Settled Amount</label>
+                        <input class="form-control" type="text" ng-model="claimDetail.claimSettlementAmount">
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                            <label>Claim Settled Comment</label>
+                            <input class="form-control" type="text"  ng-model="claimDetail.claimSettlementComments">
+                    </div>
+    
+       </div>
+       <div class="row" ng-if="claimDetail.claimStatus.id=='DECLINED'">
+            <div class="col-md-4 col-sm-12">
+                    <label>Claim Declined Date</label>
+                    <p class="input-group">
+                            <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy"  is-open="calendar.opened.claimDeclinedDate" ng-focus="calendar.open($event,'claimDeclinedDate')"
+                                datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" ng-model="claimDetail.claimDeclinedDate"/>
+                            <span class="input-group-addon" ng-click="calendar.open($event,'claimDeclinedDate')">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+    
+                        </p>
+    
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Claim Declined By</label>
+                        <input class="form-control" type="text" ng-model="claimDetail.claimDeclinedBy">
+                    </div>
+               
+               
+                    <div class="col-md-4 col-sm-12">
+                            <label>Claim Declined Comment</label>
+                            <input class="form-control" type="text"  ng-model="claimDetail.claimDeclinedComments">
+                    </div>
+    
+       </div>
+       <div class="row" ng-if="claimDetail.claimStatus.id=='REOPENED'">
+            <div class="col-md-4 col-sm-12">
+                    <label>Claim ReOpened Date</label>
+                    <p class="input-group">
+                            <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy"  is-open="calendar.opened.claimReopenedDate" ng-focus="calendar.open($event,'claimReopenedDate')"
+                                datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" ng-model="claimDetail.claimReopenedDate"/>
+                            <span class="input-group-addon" ng-click="calendar.open($event,'claimReopenedDate')">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+    
+                        </p>
+    
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Claim ReOpened By</label>
+                        <input class="form-control" type="text" ng-model="claimDetail.claimReopenedBy">
+                    </div>
+               
+               
+                    <div class="col-md-4 col-sm-12">
+                            <label>Claim ReOpened Comment</label>
+                            <input class="form-control" type="text" ng-model="claimDetail.claimReopenedComments">
+                    </div>
+    
+       </div>
+        
+            <div class="row">
+                <div class="col-md-6 col-sm-12" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                    <button type="submit" class="btn btn-info" ng-click="activeTab.formAction='save'">Save</button>
+                    <button type="submit" class="btn btn-primary" ng-click="activeTab.formAction='saveContinue'">Save & Continue</button>
+                    
+                    <button class="btn btn-danger" ng-click="DeleteClaim()">Delete Claim</button>
+                    
+                </div>
+    
+                    <div class="col-md-6 col-sm-12 floatRight">
+                        <button type="button" ng-click="submitForm('claimForm','back')" class="btn btn-secondary pull-right">Back</button>
+                        <button type="button"  ng-click="submitForm('claimForm','next')" class="btn btn-success pull-right" style="margin-right:5px">Next</button>
+                    </div>
+    
+                </div>
+
+    </form>
+
+    <div id="claimHandler" class="modal fade" role="dialog" ng-init="getClaimHandler()">
+            <div class="modal-dialog">
+        
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Claim Handler Lookup</h3>
+                    </div>
+                    <div class="modal-body">
+                       
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:5%"></th>
+                                        <th>Name</th>
+                                        <th>Login Id</th>
+                                      
+                                        <th>Phone</th>
+                                        <th>Mail</th>
+        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="person in claimHandlerList">
+                                        <td>
+                                            <input type="radio" ng-click="assignClaimHandler(person)" name="claimAssign"/>
+                                            <!-- <input type="checkbox" class="checkbox checkbox-primary" ng-click="assignClaimHandler(person)" /> -->
+                                        </td>
+                                        <td>{{person.fullName}}</td>
+                                        <td>{{person.loginId}}</td>
+                                    
+                                        <td>{{person.phone}}</td>
+                                        <td>{{person.email}}</td>
+        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+        
+                    </div>
+                    <div class=" modal-footer ">
+        
+        
+                        <a class="btn btn-danger" class="close" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+</div>

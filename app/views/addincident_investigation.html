@@ -1,0 +1,204 @@
+<div class="form-content"  ng-show="activeTab.tab==7">
+        <h2>Investigation Details</h2>
+        <form ng-submit="submitForm('investigationForm')">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label>Security Requested</label>
+                    <select class="form-control" ng-model="investigationDetails.securityRequested">
+                            <option value=""></option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label>Training Requested</label>
+                    <select class="form-control" ng-model="investigationDetails.trainingRequested">
+                            <option value=""></option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+                </div>
+            </div>
+           
+    
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <label>First Name</label>
+                        <input class="form-control" placeholder="First Name" type="text" ng-model="invstigatorFirstName" readonly>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <label>Middle Name</label>
+                        <input class="form-control" placeholder="Middle Name" type="text" ng-model="invstigatorMiddleName" readonly>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <label>Last Name</label>
+                        <input class="form-control" placeholder="Last Name" type="text" ng-model="invstigatorLastName" readonly>
+                </div>
+                <div class="col-sm-12 col-md-2" style="padding-top:1.7em;" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#investigationHandler">Lookup</a>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <label>Investigation Team Name</label>
+                        <input disabled class="form-control" ng-model="investigationDetails.investigator.investigationTeams[0].teamDescription" type="text">
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label>Investigation Team Lead ID</label>
+                        <input disabled class="form-control" ng-model="investigationDetails.investigator.investigationTeams[0].investigationTeamLeads[0].teamLeadLoginId" type="text">
+                    </div>
+                </div>
+    
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Reviewed Investigation Record(s)</label>
+                    <select class="form-control" ng-model="investigationDetails.reviewedInvestigationRecords">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                            
+                    </select>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Reviewed CCTV</label>
+                    <select class="form-control" ng-model="investigationDetails.reviewedCCTV">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        
+                    </select>
+                </div>
+                
+                <div class="col-md-4 col-sm-12">
+                    <label>Reviewed Picture(s)</label>
+                    <select class="form-control"  ng-model="investigationDetails.reviewedPictures">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                          
+                    </select>
+                </div>
+    
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label>Reviewed Witness Statement(s)</label>
+                    <select class="form-control" ng-model="investigationDetails.reviewedWitnessStatement">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                           
+                    </select>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label>Reviewed Learner Record(s)</label>
+                    <select class="form-control" ng-model="investigationDetails.reviewedLearnerRecords">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                           
+                    </select>
+                </div>
+            </div>
+            <div class="row">	
+    
+                <div class="col-md-6 col-sm-12">
+                    <label>Reviewed Asset Record(s)</label>
+                    <select class="form-control" ng-model="investigationDetails.reviewedAssetRecords">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                           
+                    </select>
+                </div>
+    
+                <div class="col-md-6 col-sm-12">
+                    <label>Reviewed Compliance Record(s)</label>
+                    <select class="form-control" ng-model="investigationDetails.reviewedComplianceRecords">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                          
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label>Investigator Statement</label>
+                    <textarea class="form-control" ng-model="investigationDetails.investigatorStatement"> </textarea>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <label>Statement</label>
+                    <input class="form-control" type="file">
+                </div>
+            </div> -->
+            <div class="row ">
+                <div class="col-md-6 col-sm-12" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+                    <button type="submit" class="btn btn-info" ng-click="activeTab.formAction='save'">Save</button>
+                    <button type="submit" class="btn btn-primary" ng-click="activeTab.formAction='saveContinue'">Save & Continue</button>
+                </div>
+    
+                    <div class="col-md-6 col-sm-12 floatRight">
+                        <button type="button" ng-click="submitForm('investigationForm','back')" class="btn btn-secondary pull-right">Back</button>
+                        <button type="button" ng-click="submitForm('investigationForm','next')" class="btn btn-success pull-right" style="margin-right:5px">Next</button>
+                    </div>
+    
+                </div>
+        </form>
+        <div id="investigationHandler" class="modal fade" role="dialog" ng-init="getInvestigationHandler()">
+                <div class="modal-dialog">
+            
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">Investigation Handler Lookup</h3>
+                        </div>
+                        <div class="modal-body">
+                           
+                            <div class="row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:5%"></th>
+                                            <th>Name</th>
+                                            <th>Login Id</th>
+                                          
+                                            <th>Phone</th>
+                                            <th>Mail</th>
+            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="person in investigationHandlerList">
+                                            <td>
+                                                <input type="radio" ng-click="assignInvestigationHandler(person)" name="investigationAssign"/>
+                                                <!-- <input type="checkbox" class="checkbox checkbox-primary" ng-click="assignClaimHandler(person)" /> -->
+                                            </td>
+                                            <td>{{person.fullName}}</td>
+                                            <td>{{person.loginId}}</td>
+                                        
+                                            <td>{{person.phone}}</td>
+                                            <td>{{person.email}}</td>
+            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+            
+                        </div>
+                        <div class=" modal-footer ">
+            
+            
+                            <a class="btn btn-danger" class="close" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+    </div>
+    
+   

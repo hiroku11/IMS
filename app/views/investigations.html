@@ -1,0 +1,137 @@
+<div class="row header">
+        <ng-include src="'app/views/header.html'"></ng-include>
+    </div>
+    <div class="row" style="padding-top:0">
+        <div class="col-md-2 navbar hidden-md hidden-sm hidden-xs">
+            <ng-include src="'app/views/menu.html'"></ng-include>
+        </div>
+    
+    
+        <div class="col-md-10 content">
+            <div class="incidents">
+                <!-- <div class="pull-right advanced-search">
+                    <a class="btn btn-primary" id="btnAdvanceSearch" data-toggle="modal" data-target="#myModal" ng-click="loadAPI()">Advanced Search</a>
+                </div>
+                 <div class="pull-right searchbox">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="search">
+                        <span class="input-group-addon">
+                    <button>
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div> -->
+                <h3>
+                    <span class="incidentLabel">Investigations |</span>
+                </h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="checkbox checkbox-primary" onclick="" style="display:inline" /> All
+                            </th>
+                            <th ng-click="changeSortBy('uniqueIncidentId')">Incident ID
+                                <span ng-if="sortBy == 'uniqueIncidentId' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'uniqueIncidentId' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+
+                            </th>
+                            <th ng-click="changeSortBy('reportedBy')">Reported By
+                                <span ng-if="sortBy == 'reportedBy' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'reportedBy' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+
+                            </th>
+
+                            <th ng-click="changeSortBy('incidentStatus')">Incident Status
+                                <span ng-if="sortBy == 'incidentStatus' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'incidentStatus' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </th>
+                            <th ng-click="changeSortBy('organizationDescription')">Organization
+                                <span ng-if="sortBy == 'organizationDescription' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'organizationDescription' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </th>
+                            <th ng-click="changeSortBy('departmentDescription')">Department
+                                <span ng-if="sortBy == 'departmentDescription' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'departmentDescription' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </th>
+                            <th ng-click="changeSortBy('investigatorFullName')">Investigator Name
+                                <span ng-if="sortBy == 'investigatorFullName' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'investigatorFullName' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </th>
+                            <!-- <th ng-click="changeSortBy('investigatorStatement')">Investigator Statement
+                                <span ng-if="sortBy == 'investigatorStatement' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'investigatorStatement' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </th> -->
+
+                            <th ng-click="changeSortBy('openedDateTime')">Date Opened
+                                <span ng-if="sortBy == 'openedDateTime' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'openedDateTime' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </th>
+                            <th ng-click="changeSortBy('closedDateTime')">Date Closed
+                                <span ng-if="sortBy == 'closedDateTime' && !reverse" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-if="sortBy == 'closedDateTime' && reverse" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </th>
+    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="investigation in data | orderBy : sortBy : reverse">
+                            <td>
+                                <input type="checkbox" class="checkbox checkbox-primary" name="">
+                            </td>
+                            <td>
+                                <a ui-sref="editincident({uniqueIncidentId: investigation.uniqueIncidentId})">{{investigation.uniqueIncidentId}}</a>
+                            </td>
+                            <td>
+                                {{investigation.reportedBy== null?"":investigation.reportedBy}}
+                            </td>
+                            <td>
+                                {{investigation.incidentStatus== null?"":investigation.incidentStatus}}
+                            </td>
+                            <td>
+                                {{investigation.organizationDescription== null?"":investigation.organizationDescription}}
+                            </td>
+                            <td>
+                                {{investigation.departmentDescription== null?"":investigation.departmentDescription}}
+                            </td>
+                            <td>
+                                {{investigation.investigatorFullName == null?"":investigation.investigatorFullName}}
+                            </td>
+                            <!-- <td>
+                                {{investigation.investigatorStatement == null?"":claim.investigatorStatement}}
+                            </td> -->
+                            <td>
+                                {{investigation.openedDateTime == null?"":investigation.openedDateTime}}
+                            </td>
+                            <td>
+                                {{investigation.closedDateTime == null?"":investigation.closedDateTime}}
+                            </td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+    
+                <nav aria-label="Page navigation" ng-if="data && data.length > 0">
+                    <select class="form-control" ng-options="entry.value as entry.value for entry in entry" ng-model="$parent.entryCount" ng-change="getEntries()"
+                    />
+    
+                    <ul class="pagination" ng-if="data.length!=0">
+                        <li>
+                            <a aria-label="Previous" ng-click="goToPage(currentPage - 1)" ng-class="{disabled:currentPage==1}">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li ng-repeat="page in range(data.length,$parent.entryCount)" ng-class="{'active':currentPage == page}"><a ng-click="goToPage(page)">{{page}}</a></li>
+                        <li>
+                            <a aria-label="Next" ng-click="goToPage(currentPage + 1)" ng-class="{disabled:currentPage==Math.ceil(data.length/$parent.entryCount)}">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <span>{{$parent.entryCount * currentPage - $parent.entryCount + 1}} - {{$parent.entryCount * currentPage > data.length ? data.length : $parent.entryCount * currentPage}} of {{data.length}}</span>
+                </nav>
+                <h3 class="text-center" ng-if="!data || data.length == 0">no records found!</h3>
+    
+            </div>
+        </div>
+    </div>
+    </div>

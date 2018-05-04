@@ -1,0 +1,57 @@
+﻿<div class="row side-nav-user">
+    <div class="col-sm-12 row" style="vertical-align:middle;padding-right: 0;margin-left:0;">
+        <div class="col-sm-3" style="padding-left:0">
+            <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image" style="width:50px" />
+        </div>
+        <div class="col-sm-6 user-status-nav">
+            <span>{{loggedInUser.roles[0]}}</span><br />
+            <span class="fa fa-circle" style="color:rgb(11, 170, 11)"> Online</span>
+        </div>
+        <div class="col-sm-3 pull-right" style="padding-right:0">
+            <button class="btn pull-right btn-info btn-sm" style="vertical-align:middle">
+                <span class="fa fa-power-off "></span>
+            </button>
+        </div>
+    </div>
+</div>
+<ul>
+    <li ng-class="{active:thisView=='dashboard'}" ng-if="isAdminRole">
+        <a ui-sref="dashboard" title="">
+            <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
+        </a>
+    </li>
+    <li ng-class="{active:thisView=='incidents'}">
+        <a ui-sref="incidents" title="">
+            <i class="glyphicon glyphicon-time menu-icon"></i> Incidents
+        </a>
+    </li>
+    <li ng-class="{active:thisView=='claims'}" ng-if="isAdminRole">
+        <a ui-sref="claims" title="">
+            <i class="glyphicon glyphicon-gift menu-icon"></i> Claims
+        </a>
+    </li>
+    <li ng-class="{active:thisView=='investigations'}" ng-if="isAdminRole">
+        <a ui-sref="investigations" title="">
+            <i class="glyphicon glyphicon-search menu-icon"></i> Investigations
+        </a>
+    </li>
+    <!-- <li>
+        <a data-toggle="collapse" data-target="#submenu-1" title="">
+            <i class="glyphicon glyphicon-user menu-icon"></i> User Administration
+            <i class="glyphicon glyphicon-menu-right pull-right"></i>
+        </a>
+
+        <ul id="submenu-1" class="collapse">
+            <li ng-class="{active:thisView=='user'}">
+                <a ui-sref="users" title="">
+                    User
+                </a>
+            </li>
+            <li ng-class="{active:thisView=='roles'}">
+                <a ui-sref="roles" title="">
+                    Roles
+                </a>
+            </li>
+        </ul>
+    </li> -->
+</ul>

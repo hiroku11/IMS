@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>Incident Management Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- build:js js/vendor.min.js -->
+    <script src="assets/jQuery/jquery-2.2.4.min.js"></script>
+    <script src="assets/angularJS/angular.min.js"></script>
+    <script src="assets/angularJS/angular-ui-router.min.js"></script>
+    <script src="assets/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/ui.bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="assets/angular-multiselect/angular-multiselect.js"></script>
+    <script src="assets/FileSaver.min.js"></script>
+    <script src="assets/highcharts.js"></script>
+    <!-- endbuild -->
+
+ 
+   <!-- build:js js/main.min.js -->
+   <script src="app/module/app.js"></script>
+   <script src="app/module/AppService.js"></script>
+   <script src="app/controllers/loginController.js"></script>
+   <script src="app/controllers/dashboardController.js"></script>
+   <script src="app/controllers/incidentsController.js"></script>
+   <script src="app/controllers/addIncidentController.js"></script>
+   <script src="app/controllers/claimsController.js"></script>
+   <script src="app/controllers/investigationsController.js"></script>
+   <!-- endbuild -->
+   
+    <link href="assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/loader.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+</head>
+
+<body ng-app="riskManagementSystem">
+    <div class="container-fluid" ui-view>
+    </div>
+    <div ng-show="loaderVisibility" id="LoaderAnime">
+        <div id="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="loading"></div>
+        </div>
+    </div>
+    <div class="alert alert-success text-center" id="success-alert">
+        <strong>Success!</strong> <span id="success-message">Operation completed successfully</span>.
+    </div>
+    <div class="alert alert-success text-center" id="error-alert">
+        <strong>Error!</strong>  <span id="error-message">Some error occured. Please try again.</span>
+    </div>
+</body>
+<script>
+    $(".alert").hide();
+</script>
+
+</html>
