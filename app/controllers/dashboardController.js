@@ -6,7 +6,9 @@
     $scope.loggedInUser = rmsService.getLoggedInUser();
     //$scope.role = $scope.loggedInUser.roles[0];
     $scope.thisView = "dashboard";
-    $scope.logOutUser = rmsService.logOutUser;
+    $scope.logOutUser = function(){
+        rmsService.logOutUser();
+    }
     $scope.isAdminRole = rmsService.isAdminRole()
     if (!$scope.isAdminRole ) {
         $location.path("/incidents");

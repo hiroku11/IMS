@@ -12,7 +12,9 @@ var claimsController = riskManagementSystem.controller("claimsController", ["$sc
         }
         $scope.currentPage = 1;
         $scope.entryCount = 10;
-        $scope.logOutUser = rmsService.logOutUser;
+        $scope.logOutUser = function(){
+            rmsService.logOutUser();
+        }
         $scope.Math = window.Math;
         $scope.entry = [{ value: 10 }, { value: 20 }, { value: 50 }];
 
