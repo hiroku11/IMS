@@ -4,7 +4,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         $scope.thisView = "incidents";
         $scope.authorizedUser = rmsService.decryptToken();
         $scope.loggedInUser = rmsService.getLoggedInUser();
-        $scope.logOutUser = rmsService.logOutUser;
+        $scope.logOutUser = function(){
+            rmsService.logOutUser();
+        }
         $scope.isAdminRole = rmsService.isAdminRole();
         $scope.altInputFormats = ['M!/d!/yyyy','dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy'];
         $scope.maxDate = new Date();
