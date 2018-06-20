@@ -5,7 +5,7 @@
     }
     $scope.loginUser = function() {
         var req = {
-            url: 'https://e402aedc.ngrok.io/rmsrest/p/api/login',
+            url: 'https://125ae965.ngrok.io/rmsrest/p/api/login',
             method: "POST",
             headers: { 'Authorization': 'Basic ' + $window.btoa(unescape(encodeURIComponent($scope.username + ':' + $scope.password))) },
         }
