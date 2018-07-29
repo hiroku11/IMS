@@ -1,8 +1,7 @@
 var addIncidentController = riskManagementSystem.controller("addIncidentController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', '$state', 'dateformatterFilter',
     function ($scope, AppService, rmsService, $location, $window, $http, $state, dateformatterFilter) {
         $scope.token = localStorage.getItem('rmsAuthToken');
-        $scope.thisView = "incidents";
-        debugger
+        $scope.thisView = "incidents";        
         $scope.authorizedUser = rmsService.decryptToken();
         $scope.loggedInUser = rmsService.getLoggedInUser();
         $scope.whatFor = null;
