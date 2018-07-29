@@ -8,19 +8,21 @@ html {
 body {
     background-color: #ecedf0;
     overflow: hidden;
-
 }
-.hide{
+
+.hide {
     display: none !important;
 }
-.alert{
+
+.alert {
     position: fixed;
     bottom: 10px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    max-width:500px;
+    max-width: 500px;
 }
+
 .container-fluid {
     height: 100%;
     width: 100%;
@@ -28,17 +30,18 @@ body {
     /* padding-left: 15px; */
 }
 
-.row .side-nav-user{
-padding-right: 5px;
-padding-left: 5px;
-padding-top: 15px;
-padding-bottom: 15px;
+.row .side-nav-user {
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
+
 .content {
     overflow-y: auto;
     height: calc(100% - 120px);
     padding-right: 1em;
-    border-top:15px solid #8c1519 !important;
+    border-top: 15px solid #8c1519 !important;
 }
 
 * {
@@ -53,10 +56,11 @@ padding-bottom: 15px;
     background-color: #fff;
 }
 
-.table thead{
+.table thead {
     background-color: #8c1519;
     color: white;
 }
+
 .logo img {
     margin-top: 10px;
     width: 96px;
@@ -88,9 +92,11 @@ img {
     height: 50%;
     transform: translateY(50%);
 }
-.floatRight{
+
+.floatRight {
     float: right;
 }
+
 h2,
 h3 {
     margin-top: 0;
@@ -105,7 +111,6 @@ h4 {
     padding-bottom: 5px;
 }
 
-
 /*HP*/
 
 .user-details {
@@ -114,7 +119,7 @@ h4 {
 }
 
 .welcome {
-    padding-top: .5rem!important;
+    padding-top: .5rem !important;
 }
 
 .user-circle {
@@ -136,7 +141,6 @@ h4 {
     border-top: 15px solid;
     border-color: #8c1519;
     border-radius: 0;
-
 }
 
 .navbar ul {
@@ -145,17 +149,17 @@ h4 {
     list-style: none;
 }
 
-.navbar ul li{
+.navbar ul li {
     background-color: #9ca3a9;
-    border-bottom:2px solid white;
+    border-bottom: 2px solid white;
 }
 
-.navbar ul li:hover{
+.navbar ul li:hover {
     background-color: #8c1519;
-    border-bottom:2px solid white;
+    border-bottom: 2px solid white;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #8c1519;
     color: white;
 }
@@ -181,7 +185,8 @@ h5 {
 
 .navbar a {
     display: block;
-    padding: 10px;
+    padding: 5px;
+    padding-left: 10px;
     font-size: 1.1em;
     /*color: #8c1519;*/
     color: #d2d2d2;
@@ -216,10 +221,10 @@ h5 {
     color: #fff;
 }
 
-.navbar a i.menu-icon {
-    /*margin-left: -40px;*/
+/* .navbar a i.menu-icon {
+    margin-left: -40px;
     margin-right: 10px;
-}
+} */
 
 .navbar a:hover {
     text-decoration: none;
@@ -231,35 +236,34 @@ h5 {
     padding-left: 60px;
 }
 
-.navbar.sm-navbar{
-    top: -6px;
+.navbar.sm-navbar {
     position: absolute;
-    z-index: 9;
+    z-index: 99999;
     list-style: none;
     left: 0px;
     width: 100%;
+    min-width: 150px;
     height: auto;
-    background: #8c2919;
+    background: white;
     cursor: pointer;
+    border: none;
+    padding: 0;
+    height: 100%;
 }
 
-.sm-navbar::before
-{
-    -webkit-transform: rotate(-135deg);
-    transform: rotate(-135deg);
-    content: "";
+.sm-navbar li {
+    background-color: #9ca3a9;
+    margin-top: 3px;
+}
+
+.sm-navbar li.active{
+    background-color: #8c1519;
+}
+
+.sm-navbar-container {
+    top: 0;
     position: absolute;
-    top: 6px;
-    left: calc(100% - 25px);
-    width: 12px;
-    height: 12px;
-    background-color: #2e2e2e;
-}
-
-.sm-navbar-container{
-    top:0;
-    position:absolute;
-    right:5px
+    right: 5px
 }
 
 /*HP*/
@@ -270,20 +274,20 @@ h5 {
     padding-right: 1em;
 }
 
-.dropdown{
+.dropdown {
     float: right;
     width: 200px;
 }
 
-.dropdown .dropdown-menu{
+.dropdown .dropdown-menu {
     right: 0;
 }
 
-.user-image{
+.user-image {
     width: 40px;
 }
 
-.user-status-nav{
+.user-status-nav {
     padding-right: 0;
     min-width: 100px;
     white-space: nowrap;
@@ -291,6 +295,7 @@ h5 {
     text-overflow: ellipsis;
     padding-left: 0;
 }
+
 /*customized Scroll bar*/
 
 /* ::-webkit-scrollbar {
@@ -313,7 +318,6 @@ h5 {
  ::-webkit-scrollbar-thumb:window-inactive {
     background: #8c1519
 } */
-
 
 /*footer*/
 
@@ -347,7 +351,6 @@ h5 {
     vertical-align: middle;
 }
 
-
 /*incident page*/
 
 .stylish-input-group .input-group-addon {
@@ -368,20 +371,22 @@ h5 {
 }
 
 .stylish-input-group>* {
-    height: 36px!important;
+    height: 36px !important;
 }
 
 .searchbox {
     vertical-align: middle;
     padding-bottom: 10px;
     float: right;
-    width: 184px;
+    width: 150px;
 }
-.searchbox input{
+
+.searchbox input {
     height: 30px !important;
     padding: 5px;
 }
-.searchbox .input-group-addon{
+
+.searchbox .input-group-addon {
     height: 30px !important;
 }
 
@@ -449,7 +454,6 @@ nav span {
     margin-left: 10px;
 }
 
-
 /*icon inside button*/
 
 a i {
@@ -471,23 +475,25 @@ a i {
     .modal-content {
         width: 100% !important
     }
-    .floatRight{
+    .floatRight {
         float: left;
     }
 }
+
 @media only screen and (min-width: 410px) and (max-width:767px) {
-    .incidentLabel{
+    /* hide the menu item*/
+    .incidentLabel {
         display: none;
     }
-    .floatRight{
+    .floatRight {
         float: left;
     }
 }
+
 @media only screen and (min-width: 768px) and (max-width:1200px) {
     .inline-label {
         margin-top: 0.5em;
     }
-    
 }
 
 @media only screen and (min-width: 768px) and (max-width:991px) {
@@ -495,17 +501,20 @@ a i {
         width: 100% !important
     }
 }
-.show:hover{
-  cursor: pointer;
+
+.show:hover {
+    cursor: pointer;
 }
 
 .nav-tabs {
     border-bottom: 1px solid #555;
 }
-.nav-tabs>li>button{
+
+.nav-tabs>li>button {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
 .nav-tabs>li.active>button,
 .nav-tabs>li.active>button:focus,
 .nav-tabs>li>button:hover {
@@ -530,27 +539,30 @@ a i {
     padding-bottom: 50px;
 }
 
-.modal-open .modal{
+.modal-open .modal {
     overflow: hidden
 }
-.modal-body{
-   overflow: auto;
-   max-height: 500px;
+
+.modal-body {
+    overflow: auto;
+    max-height: 500px;
 }
 
-.uib-datepicker-popup{
+.uib-datepicker-popup {
     height: auto !important;
 }
+
 #man {
     height: 511px;
     width: 500px;
     background-image: url('../assets/images/man.png');
     margin-left: -57%;
 }
-#back{
+
+#back {
     height: 511px;
     width: 500px;
-    background-image: url('../assets/images/back.png'); 
+    background-image: url('../assets/images/back.png');
     margin-left: -32%;
 }
 
@@ -753,7 +765,6 @@ a i {
     position: fixed;
 }
 
-
 .Left.Thigh {
     width: 9px;
     height: 9px;
@@ -833,29 +844,34 @@ a i {
     top: 619px;
     position: fixed;
 }
+
 /* Back parts */
-.Back{
+
+.Back {
     width: 9px;
     height: 9px;
     left: 114px;
     top: 164px;
     position: fixed;
 }
-.Buttock{
+
+.Buttock {
     width: 9px;
     height: 9px;
     left: 501px;
     top: 435px;
     position: fixed;
 }
-.Hair{
+
+.Hair {
     width: 9px;
     height: 9px;
     left: 114px;
     top: 168px;
     position: fixed;
 }
-.Left.Calf{
+
+.Left.Calf {
     width: 9px;
     height: 9px;
     left: 450px;
@@ -863,99 +879,111 @@ a i {
     position: fixed;
 }
 
-.Left.Elbow{
+.Left.Elbow {
     width: 9px;
     height: 9px;
     left: 411px;
     top: 359px;
     position: fixed;
 }
-.Left.Forearm{
+
+.Left.Forearm {
     width: 9px;
     height: 9px;
     left: 406px;
     top: 374px;
     position: fixed;
 }
-.Left.Heel{
+
+.Left.Heel {
     width: 9px;
     height: 9px;
     left: 452px;
     top: 630px;
     position: fixed;
 }
-.Left.Hip{
+
+.Left.Hip {
     width: 9px;
     height: 9px;
     left: 440px;
     top: 367px;
     position: fixed;
 }
-.Left.Shoulder.Blade{
+
+.Left.Shoulder.Blade {
     width: 9px;
     height: 9px;
     left: 435px;
     top: 271px;
     position: fixed;
 }
-.Loin{
+
+.Loin {
     width: 9px;
     height: 9px;
     left: 114px;
     top: 396px;
     position: fixed;
 }
-.Nape{
+
+.Nape {
     width: 9px;
     height: 9px;
     left: 114px;
     top: 207px;
     position: fixed;
 }
-.Right.Calf{
+
+.Right.Calf {
     width: 9px;
     height: 9px;
     left: 510px;
     top: 556px;
     position: fixed;
 }
-.Right.Elbow{
+
+.Right.Elbow {
     width: 9px;
     height: 9px;
     left: 550px;
     top: 359px;
-  
     position: fixed;
 }
-.Right.Forearm{
+
+.Right.Forearm {
     width: 9px;
     height: 9px;
     left: 553px;
     top: 374px;
     position: fixed;
 }
-.Right.Heel{
+
+.Right.Heel {
     width: 9px;
     height: 9px;
     left: 492px;
     top: 630px;
     position: fixed;
 }
-.Right.Hip{
+
+.Right.Hip {
     width: 9px;
     height: 9px;
     left: 500px;
     top: 367px;
     position: fixed;
 }
-.Right.Shoulder.Blade{
+
+.Right.Shoulder.Blade {
     width: 9px;
     height: 9px;
     left: 497px;
     top: 271px;
     position: fixed;
 }
-.Waist{
+
+.Waist {
     width: 9px;
     height: 9px;
     left: 446px;
@@ -978,31 +1006,31 @@ a {
     border-color: #868e96;
 }
 
-.pac-container{
+.pac-container {
     z-index: 99999999;
     max-width: 400px;
 }
 
-#pac-input{
+#pac-input {
     max-width: 400px;
-    margin-top:8px;
+    margin-top: 8px;
 }
 
-.doc-actions  span{
+.doc-actions span {
     padding: 5px;
     font-size: 15px;
 }
 
-.stat-icon{
+.stat-icon {
     padding: 10px;
     font-size: 20px;
 }
 
-.table{
+.table {
     background-color: #fff;
 }
 
-.card{
+.card {
     background-color: #2e2e2e;
     color: white;
 }
@@ -1014,16 +1042,43 @@ a {
     word-break: break-all;
     vertical-align: middle;
     font-weight: normal;
-
 }
-.accident .dropdown-menu{
+
+.accident .dropdown-menu {
     overflow-y: auto;
     height: 500px;
-    width:100%;
- 
+    width: 100%;
 }
-.asset .dropdown-menu{
+
+.asset .dropdown-menu {
     overflow-y: auto;
     height: 250px;
-    width:100%;
+    width: 100%;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary,
+.btn-secondary,
+.btn-info,
+.btn-danger,
+.btn-success {
+    background-color: #9ca3a9 !important;
+    border: none;
+}
+
+.btn:active {
+    color: #fff;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(90, 115, 143, 0.5) !important;
+}
+
+.zero-padding {
+    padding: 0px !important;
+}
+
+.zero-margin {
+    margin: 0px !important;
 }

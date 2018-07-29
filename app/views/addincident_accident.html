@@ -5,16 +5,17 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <label>Date of Accident: (DD/MM/YYYY)</label>
-             
+
                 <p class="input-group">
-                    <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy" is-open="calendar.opened.accidentDate" ng-focus="calendar.open($event,'accidentDate')"
-                    datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" ng-model="accidentDetails.accidentDate"/>
+                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="calendar.opened.accidentDate" ng-focus="calendar.open($event,'accidentDate')"
+                        datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" ng-model="accidentDetails.accidentDate"
+                    />
                     <span class="input-group-addon" ng-click="calendar.open($event,'accidentDate')">
-                            <span class="glyphicon glyphicon-calendar"></span>
+                        <span class="glyphicon glyphicon-calendar"></span>
                     </span>
 
                 </p>
-             
+
             </div>
             <div class="col-md-4 col-sm-12">
                 <div>
@@ -35,8 +36,8 @@
             <div class="col-md-4 col-sm-12">
                 <label>Accident Location:</label>
                 <select class="form-control" ng-model="accidentDetails.accidentLocation.id" ng-options="incidentLoc.id as incidentLoc.description for incidentLoc in accidentLoc"
-                ng-change="getAccLocDetail()">
-                        <option value=""></option>
+                    ng-change="getAccLocDetail()">
+                    <option value=""></option>
                 </select>
 
             </div>
@@ -57,7 +58,7 @@
             <div class="col-sm-12 col-md-4">
                 <label>Accident Type</label>
                 <select class="form-control" ng-model="accidentDetails.accidentType.id">
-                        <option value=""></option>
+                    <option value=""></option>
                     <option value="NATURAL">Natural</option>
                     <option value="ACCIDENT">Accident</option>
                 </select>
@@ -65,7 +66,7 @@
             <div class="col-md-2 col-sm-12">
                 <label>Witness</label>
                 <select class="form-control" ng-model="accidentDetails.anyWitness">
-                        <option value=""></option>
+                    <option value=""></option>
                     <option value="Y">Yes</option>
                     <option value="N">No</option>
                 </select>
@@ -108,7 +109,7 @@
                     <input class="form-control" placeholder="Last Name" type="text" ng-model="witness.lastName">
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <label>Address</label>
                     <input name="" class="form-control" type="text" ng-model="witness.addresses[0].organizationName">
@@ -140,7 +141,7 @@
                     <div class="col-sm-10">
                         <label>Postal Code:</label>
                         <input class="form-control" type="text" ng-model="witness.addresses[0].postcode">
-                        <!-- <input class="form-control small-control" type="text"> -->
+                        <input class="form-control small-control" type="text">
                     </div>
                     <div class="col-sm-2" style="padding-top:1.7em;">
                         <a class="btn btn-primary">Lookup</a>
@@ -149,6 +150,76 @@
                 <div class="col-sm-12 col-md-6">
                     <label>Phone</label>
                     <input class="form-control" type="text" ng-model="witness.phone" />
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Organization Name (if any)</label>
+                    <input ng-model="witness.addresses[0].organizationName" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Block #/Name</label>
+                    <input ng-model="witness.addresses[0].blockNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Building Name</label>
+                    <input ng-model="witness.addresses[0].buildingName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 row zero-margin ">
+                    <div class="col-sm-4 zero-padding">
+                        <label>Post Code 1</label>
+                        <input ng-model="witness.addresses[0].postcode1" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4 zero-padding">
+                        <label>Post Code 2</label>
+                        <input ng-model="witness.addresses[0].postcode2" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4" style="padding-top:24px;padding-left:0;">
+                        <button ng-click="showPostcodeLookup('witness')" class="btn btn-info" type="button" style="padding:10px 12px;">
+                            <span class="fa fa-search"> Lookup</span>
+                        </button>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Locality Name</label>
+                    <input ng-model="witness.addresses[0].localityName" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>City</label>
+                    <input ng-model="witness.addresses[0].city" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Door #</label>
+                    <input ng-model="witness.addresses[0].doorNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Apartment #/Name</label>
+                    <input ng-model="witness.addresses[0].apartmentNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Street Name</label>
+                    <input ng-model="witness.addresses[0].streetName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Post Town</label>
+                    <input ng-model="witness.addresses[0].postTown" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>County</label>
+                    <input ng-model="witness.addresses[0].county" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Country</label>
+                    <input ng-model="witness.addresses[0].country" type="text" class="form-control">
                 </div>
             </div>
             <div class="row">
@@ -160,11 +231,11 @@
                 <div class="col-sm-12 col-md-6">
                     <label>Gender</label>
                     <select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="witness.genderType.id">
-                            <option value=""></option>    
+                        <option value=""></option>
                     </select>
                 </div>
             </div>
-       
+
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <label>Distinguishing Features</label>
@@ -232,7 +303,7 @@
                             <td>{{witness.addresses[0].organizationName}}</td>
                             <td>{{witness.addresses[0].city}}</td>
                             <td>{{witness.addresses[0].county}}</td>
-                            <td>{{witness.addresses[0].postcode}}</td>
+                            <td>{{witness.addresses[0].postcode1}}{{witness.addresses[0].postcode2}}</td>
                             <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                                 <a ng-click="deleteWitness(witness)" ng-if="witness.witnessCategory == 'NON-EMPLOYEE'">
                                     <i class="glyphicon glyphicon-trash"></i>
@@ -266,7 +337,7 @@
             <div class="col-sm-12 col-md-3">
                 <label>Type of injury</label>
                 <select ng-model="injuredPerson.injuryType.id" class="form-control" ng-options="injuryType.id as injuryType.description for injuryType in injuryTypes"
-                ng-change="getInjuryTypeDetail()">
+                    ng-change="getInjuryTypeDetail()">
                     <option value=""></option>
                 </select>
             </div>
@@ -274,7 +345,7 @@
                 <label>If Injury Type Other:</label>
                 <input class="form-control" type="text" ng-disabled="injuredPerson.injuryType.id !='OTHER'" ng-model="injuredPerson.injuryTypeOther">
             </div>
-            <div class="col-sm-12 col-md-3" >
+            <div class="col-sm-12 col-md-3">
                 <label>Injury Type Detail</label>
                 <select class="form-control" ng-model="injuredPerson.injuryTypeDetail.id" ng-disabled="!injuredPerson.injuryType.id || injuredPerson.injuryType.id == 'OTHER'"
                     ng-options="injuryTypeDetail.id as injuryTypeDetail.description for injuryTypeDetail in injuryTypeDetails"
@@ -320,7 +391,7 @@
             <div class="col-sm-12 col-md-2">
                 <label>Title:</label>
                 <select class="form-control" ng-model="injuredPerson.title">
-                        <option value=""></option>
+                    <option value=""></option>
                     <option>Mr</option>
                     <option>Mrs</option>
                     <option>Ms</option>
@@ -340,10 +411,10 @@
                 <label>Last Name:</label>
                 <input class="form-control" placeholder="Last Name" type="text" ng-model="injuredPerson.lastName">
             </div>
-           
+
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-12 col-md-4">
                 <label>Address</label>
                 <input name="" class="form-control" type="text" ng-model="injuredPerson.addresses[0].organizationName">
@@ -396,6 +467,76 @@
                 <label>Phone</label>
                 <input class="form-control" type="tel" ng-model="injuredPerson.phone">
             </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label>Organization Name (if any)</label>
+                <input ng-model="injuredPerson.addresses[0].organizationName" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Block #/Name</label>
+                <input ng-model="injuredPerson.addresses[0].blockNumber" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Building Name</label>
+                <input ng-model="injuredPerson.addresses[0].buildingName" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12 row zero-margin ">
+                <div class="col-sm-4 zero-padding">
+                    <label>Post Code 1</label>
+                    <input ng-model="injuredPerson.addresses[0].postcode1" type="text" class="form-control">
+                </div>
+                <div class="col-sm-4 zero-padding">
+                    <label>Post Code 2</label>
+                    <input ng-model="injuredPerson.addresses[0].postcode2" type="text" class="form-control">
+                </div>
+                <div class="col-sm-4" style="padding-top:24px;padding-left:0;">
+                    <button ng-click="showPostcodeLookup('injuredPerson')" class="btn btn-info" type="button" style="padding:10px 12px;">
+                        <span class="fa fa-search"> Lookup</span>
+                    </button>
+
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Locality Name</label>
+                <input ng-model="injuredPerson.addresses[0].localityName" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>City</label>
+                <input ng-model="injuredPerson.addresses[0].city" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label>Door #</label>
+                <input ng-model="injuredPerson.addresses[0].doorNumber" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Apartment #/Name</label>
+                <input ng-model="injuredPerson.addresses[0].apartmentNumber" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Street Name</label>
+                <input ng-model="injuredPerson.addresses[0].streetName" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label>Post Town</label>
+                <input ng-model="injuredPerson.addresses[0].postTown" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>County</label>
+                <input ng-model="injuredPerson.addresses[0].county" type="text" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label>Country</label>
+                <input ng-model="injuredPerson.addresses[0].country" type="text" class="form-control">
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6">
@@ -404,8 +545,8 @@
             </div>
             <div class="com-sm-12 col-md-6">
                 <label>Gender:</label>
-                <select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="injuredPerson.genderType.id" >
-                        <option value=""></option>    
+                <select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="injuredPerson.genderType.id">
+                    <option value=""></option>
                 </select>
             </div>
         </div>
@@ -441,7 +582,7 @@
             <div class="col-md-2 col-sm-12">
                 <label>Any first aid given</label>
                 <select class="form-control" ng-model="injuredPerson.firstAidGiven">
-                        <option value=""></option>
+                    <option value=""></option>
                     <option value="Y">Yes</option>
                     <option value="N">No</option>
                 </select>
@@ -506,7 +647,7 @@
                         <td>{{::person.addresses[0].organizationName}}</td>
                         <td>{{::person.addresses[0].city}}</td>
                         <td>{{::person.addresses[0].county}}</td>
-                        <td>{{::person.addresses[0].postcode}}</td>
+                        <td>{{::person.addresses[0].postcode1}}{{::person.addresses[0].postcode2}}</td>
                         <td> {{getPartsString(person)}}
                         </td>
                         <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
@@ -550,8 +691,7 @@
                             <label>Part of body injured</label>
                             <!--<multiselect ng-model="$parent.partsSelected" options="bodyPartsArray">
                             </multiselect>-->
-                            <multiselect ng-model="myObj.temp" options="bodyPartsArray" class="multislect"
-                            search-limit="100">
+                            <multiselect ng-model="myObj.temp" options="bodyPartsArray" class="multislect" search-limit="100">
                             </multiselect>
                         </div>
                         <!-- <div class="col-md-6 col-sm-12">
@@ -563,9 +703,9 @@
                         <div class="col-sm-12 col-md-6">
                             <div id="man">
                                 <div ng-repeat="d in bodyPartsFrontArray" class="show" ng-class="d" ng-click="changeBodyPart(d)">
-                                   
+
                                     <span ng-class="d" ng-if="myObj.temp.includes(d)" style="width:9px;height:9px;background-color:red;color:red;border-radius: 9px;">
-        
+
                                     </span>
                                 </div>
                             </div>
@@ -573,16 +713,16 @@
                         <div class="col-sm-12 col-md-6">
                             <div id="back">
                                 <div ng-repeat="d in bodyPartsBackArray" class="show" ng-class="d" ng-click="changeBodyPart(d)">
-                   
+
                                     <span ng-class="d" ng-if="myObj.temp.includes(d)" style="width:9px;height:9px;background-color:red;color:red;border-radius: 9px;">
-        
+
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                   
-                   
+
+
                 </div>
                 <div class="modal-footer ">
                     <a class="btn btn-danger" class="close " data-dismiss="modal">Close</a>

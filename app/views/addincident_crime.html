@@ -1,19 +1,20 @@
 <div class="form-content" ng-show="activeTab.tab==5">
-    <h2>Crime Details</h2>
-    <form ng-submit="submitForm('crimeForm')">
+	<h2>Crime Details</h2>
+	<form ng-submit="submitForm('crimeForm')">
 
-        <div class="row">
-            <div class="col-sm-12 col-md-4">
-                <label>Crime Date</label>
-                <p class="input-group">
-                    <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy" is-open="calendar.opened.crimeDate" ng-focus="calendar.open($event,'crimeDate')"
-                    datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" ng-model="crimeDetails.date"/>
-                    <span class="input-group-addon" ng-click="calendar.open($event,'crimeDate')">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+		<div class="row">
+			<div class="col-sm-12 col-md-4">
+				<label>Crime Date</label>
+				<p class="input-group">
+					<input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="calendar.opened.crimeDate" ng-focus="calendar.open($event,'crimeDate')"
+					 datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" ng-model="crimeDetails.date"
+					/>
+					<span class="input-group-addon" ng-click="calendar.open($event,'crimeDate')">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 
-                </p>
-                <!-- <p class="input-group">
+				</p>
+				<!-- <p class="input-group">
                     <input type="text"  class="form-control" uib-datepicker-popup="dd/MM/yyyy" 
                     ng-model="crimeDetails.date" 
                         ng-focus="calendar.open($event,'date')" 
@@ -27,67 +28,67 @@
                     </span>
 
                 </p> -->
-            </div>
-            <div class="col-sm-12 col-md-2">
-                <div>
-                    <label>Time Police Called</label>
-                </div>
-                <input class="form-control small-control" type="text" placeholder="HH" ng-model="crimeDetails.timeHrs">:
-                <input class="form-control small-control" type="text" placeholder="MM" ng-model="crimeDetails.timeMin">
+			</div>
+			<div class="col-sm-12 col-md-2">
+				<div>
+					<label>Time Police Called</label>
+				</div>
+				<input class="form-control small-control" type="text" placeholder="HH" ng-model="crimeDetails.timeHrs">:
+				<input class="form-control small-control" type="text" placeholder="MM" ng-model="crimeDetails.timeMin">
 
-            </div>
-           
-            <div class="col-sm-12 col-md-4">
-                <label>Any Witness</label>
-                <select class="form-control" ng-model="crimeDetails.anyWitness">
-                    <option value=""></option>
-                    <option value="Y">Yes</option>
-                    <option value="N">No</option>
-                </select>
+			</div>
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <label>Crime Description</label>
-                <textarea class="form-control" ng-model="crimeDetails.crimeDescription"> </textarea>
-            </div>
-        </div>
-        <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
-            <div class="col-sm-12 col-md-4">
-                <button type="button" class="btn btn-primary" ng-click="addCrimeDetails()">Save</button>
+			<div class="col-sm-12 col-md-4">
+				<label>Any Witness</label>
+				<select class="form-control" ng-model="crimeDetails.anyWitness">
+					<option value=""></option>
+					<option value="Y">Yes</option>
+					<option value="N">No</option>
+				</select>
 
-            </div>
-        </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<label>Crime Description</label>
+				<textarea class="form-control" ng-model="crimeDetails.crimeDescription"> </textarea>
+			</div>
+		</div>
+		<div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+			<div class="col-sm-12 col-md-4">
+				<button type="button" class="btn btn-primary" ng-click="addCrimeDetails()">Save</button>
 
-        <div ng-if="crimeDetails.anyWitness=='Y'">
-            <h4 class="form-title">Witness</h4>
-            <div class="row">
-                <div class="col-sm-12 col-md-3">
-                    <label>Title:</label>
-                    <select class="form-control" ng-model="crimeWitness.title">
-                            <option value=""></option>
-                        <option>Mr</option>
-                        <option>Mrs</option>
-                        <option>Ms</option>
-                        <option>Miss</option>
-                        <option>Master</option>
-                    </select>
-                </div>
-                <div class="col-sm-12 col-md-3">
-                    <label>First Name:</label>
-                    <input class="form-control" placeholder="First Name" type="text" ng-model="crimeWitness.firstName">
-                </div>
-                <div class="col-sm-12 col-md-3">
-                    <label>Middle Name:</label>
-                    <input class="form-control" placeholder="Middle Name" type="text" ng-model="crimeWitness.middleName">
-                </div>
-                <div class="col-sm-12 col-md-3">
-                    <label>Last Name:</label>
-                    <input class="form-control" placeholder="Last Name" type="text" ng-model="crimeWitness.lastName">
-                </div>
-            </div>
-            <div class="row">
+			</div>
+		</div>
+
+		<div ng-if="crimeDetails.anyWitness=='Y'">
+			<h4 class="form-title">Witness</h4>
+			<div class="row">
+				<div class="col-sm-12 col-md-3">
+					<label>Title:</label>
+					<select class="form-control" ng-model="crimeWitness.title">
+						<option value=""></option>
+						<option>Mr</option>
+						<option>Mrs</option>
+						<option>Ms</option>
+						<option>Miss</option>
+						<option>Master</option>
+					</select>
+				</div>
+				<div class="col-sm-12 col-md-3">
+					<label>First Name:</label>
+					<input class="form-control" placeholder="First Name" type="text" ng-model="crimeWitness.firstName">
+				</div>
+				<div class="col-sm-12 col-md-3">
+					<label>Middle Name:</label>
+					<input class="form-control" placeholder="Middle Name" type="text" ng-model="crimeWitness.middleName">
+				</div>
+				<div class="col-sm-12 col-md-3">
+					<label>Last Name:</label>
+					<input class="form-control" placeholder="Last Name" type="text" ng-model="crimeWitness.lastName">
+				</div>
+			</div>
+			<!-- <div class="row">
                 <div class="col-sm-12 col-md-4">
                     <label>Address</label>
                     <input name="" class="form-control" type="text" ng-model="crimeWitness.addresses[0].organizationName">
@@ -134,603 +135,672 @@
                     <div class="col-sm-10">
                         <label>Postal Code:</label>
                         <input class="form-control" type="text" ng-model="crimeWitness.addresses[0].postcode">
-                        <!-- <input class="form-control small-control" type="text"> -->
                     </div>
-                   
+
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <label>Phone:</label>
                     <input class="form-control" type="text" ng-model="crimeWitness.phone">
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <label>Age</label>
-                    <input type="number" class="form-control" ng-model="crimeWitness.age" />
-                </div>
+            </div> -->
 
-                <div class="col-sm-12 col-md-6">
-                    <div>
-                        <label>Gender</label>
-                    </div>
-                    <select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="crimeWitness.genderType.id">
-                            <option value=""></option>    
-                    </select>
-                </div>
-                <!-- <div class="col-sm-12 col-md-4">
+
+			<div class="row">
+				<div class="col-md-4 col-sm-12">
+					<label>Organization Name (if any)</label>
+					<input ng-model="crimeWitness.addresses[0].organizationName" type="text" class="form-control">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>Block #/Name</label>
+					<input ng-model="crimeWitness.addresses[0].blockNumber" type="text" class="form-control">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>Building Name</label>
+					<input ng-model="crimeWitness.addresses[0].buildingName" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-12 row zero-margin ">
+					<div class="col-sm-4 zero-padding">
+						<label>Post Code 1</label>
+						<input ng-model="crimeWitness.addresses[0].postcode1" type="text" class="form-control">
+					</div>
+					<div class="col-sm-4 zero-padding">
+						<label>Post Code 2</label>
+						<input ng-model="crimeWitness.addresses[0].postcode2" type="text" class="form-control">
+					</div>
+					<div class="col-sm-4" style="padding-top:24px;padding-left:0;">
+						<button ng-click="showPostcodeLookup('crimeWitness')" class="btn btn-info" type="button" style="padding:10px 12px;">
+							<span class="fa fa-search"> Lookup</span>
+						</button>
+
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>Locality Name</label>
+					<input ng-model="crimeWitness.addresses[0].localityName" type="text" class="form-control">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>City</label>
+					<input ng-model="crimeWitness.addresses[0].city" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-12">
+					<label>Door #</label>
+					<input ng-model="crimeWitness.addresses[0].doorNumber" type="text" class="form-control">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>Apartment #/Name</label>
+					<input ng-model="crimeWitness.addresses[0].apartmentNumber" type="text" class="form-control">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>Street Name</label>
+					<input ng-model="crimeWitness.addresses[0].streetName" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-12">
+					<label>Post Town</label>
+					<input ng-model="assetOther.addresses[0].postTown" type="text" class="form-control">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>County</label>
+					<input ng-model="assetOther.addresses[0].county" type="text" class="form-control">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>Country</label>
+					<input ng-model="assetOther.addresses[0].country" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<label>Age</label>
+					<input type="number" class="form-control" ng-model="crimeWitness.age" />
+				</div>
+
+				<div class="col-sm-12 col-md-6">
+					<div>
+						<label>Gender</label>
+					</div>
+					<select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="crimeWitness.genderType.id">
+						<option value=""></option>
+					</select>
+				</div>
+				<!-- <div class="col-sm-12 col-md-4">
                     <label>Gender others</label>
                     <input type="text" class="form-control" ng-model="crimeWitness.genderTypeOther" ng-disabled="crimeWitness.genderType.id != 'OTHER'"
                     />
 
                 </div> -->
-            </div>
-            <div class="row">
-              
-
-                <div class="col-md-3 col-sm-12">
-                    <label>Distinguishing Features</label>
-                    <select class="form-control" multiple ng-model="crimeWitness.distinguishingFeature" ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeatures  track by distinguishFeature.id"
-                        ng-change="getDistinguishFeaturesDetails(crimeWitness.distinguishingFeature)">
-
-                    </select>
-                </div>
-                <div class="col-md-3 col-sm-12">
-                    <label>Distinguishing Features Details</label>
-                    <select multiple class="form-control" ng-disabled="!crimeWitness.distinguishingFeature" ng-model="crimeWitness.distinguishingFeatureDetail"
-                        ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeaturesDetails track by distinguishFeature.id">
-                    </select>
-                </div>
-                <div class="col-md-2 col-sm-12 text-center move-buttons">
-                    <button ng-click="addFeatureToSelectedList(crimeWitness)" title="Move to right" class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-arrow-right"></span>
-                    </button>
-                    <button ng-disabled="crimeWitness.distinguishingFeaturesOptions && crimeWitness.distinguishingFeaturesOptions.length == 0"
-                        ng-click="removeFeatureToSelectedList(crimeWitness)" title="Move to left" class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-arrow-left"></span>
-                    </button>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <label>Selected Distinguishing Features</label>
-                    <select multiple class="form-control" ng-model="crimeWitness.distinguishingFeatures" ng-options="distinguishFeature.description for distinguishFeature in crimeWitness.distinguishingFeaturesOptions">
-                    </select>
-                </div>
-            </div>
-            <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
-                <div class="col-sm-4" ng-if="!editCrimeWitness">
-                    <button type="button" class="btn btn-primary" ng-click="addCrimeWitness()">Add Witness</button>
-                </div>
-                <div class="col-sm-4" ng-if="editCrimeWitness">
-                    <button type="button" class="btn btn-success" ng-click="updateCrimeWitness(crimeWitness)">Update Crime witness</button>
-                </div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal12">Add Existing Witness</button>
-                </div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal13" ng-click="clearUser()">Add Employee Witness</button>
-                </div>
-            </div>
-
-            <div id="tblWitness" class="table-wrapper inline" ng-if='crimeWitnesses.length > 0'>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Gender</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>County</th>
-                            <th>Postcode</th>
-                            <th>Phone</th>
-                            <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'"> &nbsp; </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="person in crimeWitnesses">
-                            <td>{{person.firstName}} {{person.LastName}}</td>
-
-                            <td>{{person.genderType.id}}</td>
-                            <td>{{person.addresses[0].organizationName}}</td>
-                            <td>{{person.addresses[0].city}}</td>
-                            <td>{{person.addresses[0].county}}</td>
-                            <td>{{person.addresses[0].postcode}}</td>
-                            <td>{{person.phone}}</td>
-                            <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
-                                <a ng-click="deleteCrimeWitness(person)" ng-if="person.witnessCategory == 'NON-EMPLOYEE'">
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </a>
-                                <a ng-click="loadCrimeWitness(person)" ng-if="person.witnessCategory == 'NON-EMPLOYEE'">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+			</div>
+			<div class="row">
 
 
-        <h4 class="form-title">Crime Suspect</h4>
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <label>Suspect Type</label>
-                <select class="form-control" ng-options="suspectType.id as suspectType.description for suspectType in suspectType" ng-model="crimeSuspect.crimeSuspectType.id">
-                    <option value=""></option>
-                </select>
+				<div class="col-md-3 col-sm-12">
+					<label>Distinguishing Features</label>
+					<select class="form-control" multiple ng-model="crimeWitness.distinguishingFeature" ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeatures  track by distinguishFeature.id"
+					 ng-change="getDistinguishFeaturesDetails(crimeWitness.distinguishingFeature)">
 
-            </div>
-            <div class="col-sm-12 col-md-6">
+					</select>
+				</div>
+				<div class="col-md-3 col-sm-12">
+					<label>Distinguishing Features Details</label>
+					<select multiple class="form-control" ng-disabled="!crimeWitness.distinguishingFeature" ng-model="crimeWitness.distinguishingFeatureDetail"
+					 ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeaturesDetails track by distinguishFeature.id">
+					</select>
+				</div>
+				<div class="col-md-2 col-sm-12 text-center move-buttons">
+					<button ng-click="addFeatureToSelectedList(crimeWitness)" title="Move to right" class="btn btn-default" type="button">
+						<span class="glyphicon glyphicon-arrow-right"></span>
+					</button>
+					<button ng-disabled="crimeWitness.distinguishingFeaturesOptions && crimeWitness.distinguishingFeaturesOptions.length == 0"
+					 ng-click="removeFeatureToSelectedList(crimeWitness)" title="Move to left" class="btn btn-default" type="button">
+						<span class="glyphicon glyphicon-arrow-left"></span>
+					</button>
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<label>Selected Distinguishing Features</label>
+					<select multiple class="form-control" ng-model="crimeWitness.distinguishingFeatures" ng-options="distinguishFeature.description for distinguishFeature in crimeWitness.distinguishingFeaturesOptions">
+					</select>
+				</div>
+			</div>
+			<div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+				<div class="col-sm-4" ng-if="!editCrimeWitness">
+					<button type="button" class="btn btn-primary" ng-click="addCrimeWitness()">Add Witness</button>
+				</div>
+				<div class="col-sm-4" ng-if="editCrimeWitness">
+					<button type="button" class="btn btn-success" ng-click="updateCrimeWitness(crimeWitness)">Update Crime witness</button>
+				</div>
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal12">Add Existing Witness</button>
+				</div>
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal13" ng-click="clearUser()">Add Employee Witness</button>
+				</div>
+			</div>
 
-                <label>Suspect Type If Other</label>
-                <input name="" class="form-control" ng-disabled="crimeSuspect.crimeSuspectType.id !='OTHER'" type="text" placeholder="If Suspect Others"
-                    ng-model="crimeSuspect.crimeSuspectTypeOther">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-3">
-                <label>Title:</label>
-                <select class="form-control" ng-model="crimeSuspect.title">
-                        <option value=""></option>
-                    <option>Mr</option>
-                    <option>Mrs</option>
-                    <option>Ms</option>
-                    <option>Miss</option>
-                    <option>Master</option>
-                </select>
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <label>First Name:</label>
-                <input class="form-control" placeholder="First Name" type="text" ng-model="crimeSuspect.firstName">
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <label>Middle Name:</label>
-                <input class="form-control" placeholder="Middle Name" type="text" ng-model="crimeSuspect.middleName">
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <label>Last Name:</label>
-                <input class="form-control" placeholder="Last Name" type="text" ng-model="crimeSuspect.lastName">
-            </div>
-        </div>
+			<div id="tblWitness" class="table-wrapper inline" ng-if='crimeWitnesses.length > 0'>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Gender</th>
+							<th>Address</th>
+							<th>City</th>
+							<th>County</th>
+							<th>Postcode</th>
+							<th>Phone</th>
+							<th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'"> &nbsp; </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in crimeWitnesses">
+							<td>{{person.firstName}} {{person.LastName}}</td>
 
-        <div class="row">
-            <div class="col-sm-12 col-md-4">
-                <label>Address</label>
-                <input name="" class="form-control" type="text" ng-model="crimeSuspect.addresses[0].organizationName">
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <label>Building</label>
-                <input name="" class="form-control" type="text" ng-model="crimeSuspect.addresses[0].buildingName">
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <label>Street</label>
-                <input name="" class="form-control" type="text" ng-model="crimeSuspect.addresses[0].streetName">
-            </div>
-        </div>
+							<td>{{person.genderType.id}}</td>
+							<td>{{person.addresses[0].organizationName}}</td>
+							<td>{{person.addresses[0].city}}</td>
+							<td>{{person.addresses[0].county}}</td>
+							<td>{{person.addresses[0].postcode}}</td>
+							<td>{{person.phone}}</td>
+							<td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+								<a ng-click="deleteCrimeWitness(person)" ng-if="person.witnessCategory == 'NON-EMPLOYEE'">
+									<i class="glyphicon glyphicon-trash"></i>
+								</a>
+								<a ng-click="loadCrimeWitness(person)" ng-if="person.witnessCategory == 'NON-EMPLOYEE'">
+									<i class="glyphicon glyphicon-pencil"></i>
+								</a>
+							</td>
 
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <label>Locality </label>
-                <input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].localityName">
-            </div>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-            <div class="col-sm-12 col-md-6">
-                <label> Post Town</label>
-                <input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].postTown">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-4">
-                <label>City</label>
-                <input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].city">
-            </div>
 
-            <div class="col-sm-12 col-md-4">
-                <label>County</label>
-                <input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].county">
-            </div>
+		<h4 class="form-title">Crime Suspect</h4>
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<label>Suspect Type</label>
+				<select class="form-control" ng-options="suspectType.id as suspectType.description for suspectType in suspectType" ng-model="crimeSuspect.crimeSuspectType.id">
+					<option value=""></option>
+				</select>
 
-            <div class="col-sm-12 col-md-4">
-                <label>Country</label>
-                <input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].country">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-6 row">
-                <div class="col-sm-10">
-                    <label>Postal Code:</label>
-                    <input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].postcode">
+			</div>
+			<div class="col-sm-12 col-md-6">
 
-                </div>
-               
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <label>Phone:</label>
-                <input class="form-control" type="text" ng-model="crimeSuspect.phone">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <label>Age</label>
-                <input type="number" class="form-control" ng-model="crimeSuspect.age" />
-            </div>
+				<label>Suspect Type If Other</label>
+				<input name="" class="form-control" ng-disabled="crimeSuspect.crimeSuspectType.id !='OTHER'" type="text" placeholder="If Suspect Others"
+				 ng-model="crimeSuspect.crimeSuspectTypeOther">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-3">
+				<label>Title:</label>
+				<select class="form-control" ng-model="crimeSuspect.title">
+					<option value=""></option>
+					<option>Mr</option>
+					<option>Mrs</option>
+					<option>Ms</option>
+					<option>Miss</option>
+					<option>Master</option>
+				</select>
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<label>First Name:</label>
+				<input class="form-control" placeholder="First Name" type="text" ng-model="crimeSuspect.firstName">
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<label>Middle Name:</label>
+				<input class="form-control" placeholder="Middle Name" type="text" ng-model="crimeSuspect.middleName">
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<label>Last Name:</label>
+				<input class="form-control" placeholder="Last Name" type="text" ng-model="crimeSuspect.lastName">
+			</div>
+		</div>
 
-            <div class="col-sm-12 col-md-6">
-                <div>
-                    <label>Gender</label>
-                </div>
-                <select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="crimeSuspect.genderType.id">
-                        <option value=""></option>    
-                </select>
-                <!--<input name="gender" type="radio"> <span>Male</span>
+		<div class="row">
+			<div class="col-sm-12 col-md-4">
+				<label>Address</label>
+				<input name="" class="form-control" type="text" ng-model="crimeSuspect.addresses[0].organizationName">
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<label>Building</label>
+				<input name="" class="form-control" type="text" ng-model="crimeSuspect.addresses[0].buildingName">
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<label>Street</label>
+				<input name="" class="form-control" type="text" ng-model="crimeSuspect.addresses[0].streetName">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<label>Locality </label>
+				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].localityName">
+			</div>
+
+			<div class="col-sm-12 col-md-6">
+				<label> Post Town</label>
+				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].postTown">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-4">
+				<label>City</label>
+				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].city">
+			</div>
+
+			<div class="col-sm-12 col-md-4">
+				<label>County</label>
+				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].county">
+			</div>
+
+			<div class="col-sm-12 col-md-4">
+				<label>Country</label>
+				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].country">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-6 row">
+				<div class="col-sm-10">
+					<label>Postal Code:</label>
+					<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].postcode">
+
+				</div>
+
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<label>Phone:</label>
+				<input class="form-control" type="text" ng-model="crimeSuspect.phone">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<label>Age</label>
+				<input type="number" class="form-control" ng-model="crimeSuspect.age" />
+			</div>
+
+			<div class="col-sm-12 col-md-6">
+				<div>
+					<label>Gender</label>
+				</div>
+				<select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="crimeSuspect.genderType.id">
+					<option value=""></option>
+				</select>
+				<!--<input name="gender" type="radio"> <span>Male</span>
                 <input name="gender" type="radio"> <span>Female</span>-->
-            </div>
-            <!-- <div class="col-sm-12 col-md-4">
+			</div>
+			<!-- <div class="col-sm-12 col-md-4">
                 <label>Gender Other</label>
                 <input type="text" class="form-control" ng-disabled="crimeSuspect.genderType.id != 'OTHER'" ng-model="crimeSuspect.genderTypeOther"
                 />
             </div> -->
-        </div>
-        <div class="row">
-          
+		</div>
+		<div class="row">
 
-            <div class="col-md-3 col-sm-12">
-                <label>Distinguishing Features</label>
-                <select class="form-control" multiple ng-model="crimeSuspect.distinguishingFeature" ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeatures  track by distinguishFeature.id"
-                    ng-change="getDistinguishFeaturesDetails(crimeSuspect.distinguishingFeature)">
 
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <label>Distinguishing Features Details</label>
-                <select multiple class="form-control" ng-disabled="!crimeSuspect.distinguishingFeature" ng-model="crimeSuspect.distinguishingFeatureDetail"
-                    ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeaturesDetails track by distinguishFeature.id">
-                </select>
-            </div>
-            <div class="col-md-2 col-sm-12 text-center move-buttons">
-                <button ng-click="addFeatureToSelectedList(crimeSuspect)" title="Move to right" class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-arrow-right"></span>
-                </button>
-                <button ng-disabled="crimeSuspect.distinguishingFeaturesOptions && crimeSuspect.distinguishingFeaturesOptions.length == 0"
-                    ng-click="removeFeatureToSelectedList(crimeSuspect)" title="Move to left" class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-arrow-left"></span>
-                </button>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <label>Selected Distinguishing Features</label>
-                <select multiple class="form-control" ng-model="crimeSuspect.distinguishingFeatures" ng-options="distinguishFeature.description for distinguishFeature in crimeSuspect.distinguishingFeaturesOptions">
-                </select>
-            </div>
-        </div>
-        <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
-            <div class="col-sm-4" ng-if="!editCrimeSuspect">
-                <button type="button" class="btn btn-primary" ng-click="addCrimeSuspect()" ng-disabled="!crimeAdded">Add Crime Suspect</button>
-            </div>
-            <div class="col-sm-4" ng-if="editCrimeSuspect">
-                <button type="button" class="btn btn-success" ng-click="updateCrimeSuspect(crimeSuspect)">Update Crime Suspect</button>
-            </div>
-            <div class="col-sm-4" ng-if="loggedInUser.roles[0] == 'INVESTIGATOR' || 
+			<div class="col-md-3 col-sm-12">
+				<label>Distinguishing Features</label>
+				<select class="form-control" multiple ng-model="crimeSuspect.distinguishingFeature" ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeatures  track by distinguishFeature.id"
+				 ng-change="getDistinguishFeaturesDetails(crimeSuspect.distinguishingFeature)">
+
+				</select>
+			</div>
+			<div class="col-md-3 col-sm-12">
+				<label>Distinguishing Features Details</label>
+				<select multiple class="form-control" ng-disabled="!crimeSuspect.distinguishingFeature" ng-model="crimeSuspect.distinguishingFeatureDetail"
+				 ng-options=" distinguishFeature.description for distinguishFeature in distinguishFeaturesDetails track by distinguishFeature.id">
+				</select>
+			</div>
+			<div class="col-md-2 col-sm-12 text-center move-buttons">
+				<button ng-click="addFeatureToSelectedList(crimeSuspect)" title="Move to right" class="btn btn-default" type="button">
+					<span class="glyphicon glyphicon-arrow-right"></span>
+				</button>
+				<button ng-disabled="crimeSuspect.distinguishingFeaturesOptions && crimeSuspect.distinguishingFeaturesOptions.length == 0"
+				 ng-click="removeFeatureToSelectedList(crimeSuspect)" title="Move to left" class="btn btn-default" type="button">
+					<span class="glyphicon glyphicon-arrow-left"></span>
+				</button>
+			</div>
+			<div class="col-md-4 col-sm-12">
+				<label>Selected Distinguishing Features</label>
+				<select multiple class="form-control" ng-model="crimeSuspect.distinguishingFeatures" ng-options="distinguishFeature.description for distinguishFeature in crimeSuspect.distinguishingFeaturesOptions">
+				</select>
+			</div>
+		</div>
+		<div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+			<div class="col-sm-4" ng-if="!editCrimeSuspect">
+				<button type="button" class="btn btn-primary" ng-click="addCrimeSuspect()" ng-disabled="!crimeAdded">Add Crime Suspect</button>
+			</div>
+			<div class="col-sm-4" ng-if="editCrimeSuspect">
+				<button type="button" class="btn btn-success" ng-click="updateCrimeSuspect(crimeSuspect)">Update Crime Suspect</button>
+			</div>
+			<div class="col-sm-4" ng-if="loggedInUser.roles[0] == 'INVESTIGATOR' || 
                loggedInUser.roles[0] == 'CLAIMS_HANDLER' || loggedInUser.roles[0] == 'ADMIN'">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal14" ng-disabled="!crimeAdded">Add Existing Crime Suspect</button>
-            </div>
-            <div class="col-sm-4" ng-if="loggedInUser.roles[0] == 'INVESTIGATOR' || 
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal14" ng-disabled="!crimeAdded">Add Existing Crime Suspect</button>
+			</div>
+			<div class="col-sm-4" ng-if="loggedInUser.roles[0] == 'INVESTIGATOR' || 
                loggedInUser.roles[0] == 'CLAIMS_HANDLER' || loggedInUser.roles[0] == 'ADMIN'">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal15" ng-disabled="!crimeAdded"
-                ng-click="clearUser()">Add Employee Crime Suspect</button>
-            </div>
-        </div>
-        <div class="table-wrapper inline" ng-if="crimesuspects.length > 0">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>County</th>
-                        <th>Postcode</th>
-                        <th>Phone</th>
-                        <th>Age</th>
-                        <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="person in crimesuspects">
-                        <td>{{person.firstName}} {{witness.LastName}}</td>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal15" ng-disabled="!crimeAdded" ng-click="clearUser()">Add Employee Crime Suspect</button>
+			</div>
+		</div>
+		<div class="table-wrapper inline" ng-if="crimesuspects.length > 0">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Gender</th>
+						<th>Address</th>
+						<th>City</th>
+						<th>County</th>
+						<th>Postcode</th>
+						<th>Phone</th>
+						<th>Age</th>
+						<th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="person in crimesuspects">
+						<td>{{person.firstName}} {{witness.LastName}}</td>
 
-                        <td>{{person.genderType.id}}</td>
-                        <td>{{person.addresses[0].organizationName}}</td>
-                        <td>{{person.addresses[0].city}}</td>
-                        <td>{{person.addresses[0].county}}</td>
-                        <td>{{person.addresses[0].postcode}}</td>
-                        <td>{{person.phone}}</td>
-                        <td>{{person.age}}</td>
-                        <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
-                            <a ng-click="deleteCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
-                                <i class="glyphicon glyphicon-trash"></i>
-                            </a>
-                            <a ng-click="loadCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </a>
+						<td>{{person.genderType.id}}</td>
+						<td>{{person.addresses[0].organizationName}}</td>
+						<td>{{person.addresses[0].city}}</td>
+						<td>{{person.addresses[0].county}}</td>
+						<td>{{person.addresses[0].postcode}}</td>
+						<td>{{person.phone}}</td>
+						<td>{{person.age}}</td>
+						<td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+							<a ng-click="deleteCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
+								<i class="glyphicon glyphicon-trash"></i>
+							</a>
+							<a ng-click="loadCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</a>
 
 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-        <!-- <div class="row">
+		<!-- <div class="row">
             <div class="col-sm-12 col-md-6">
                 <label>Statement</label>
                 <input class="form-control" type="file">
             </div>
         </div> -->
-        <div class="row ">
-            <div class="col-md-6 col-sm-12" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
-                <!-- <button type="submit" class="btn btn-info" ng-click="activeTab.formAction='save'">Save</button> -->
-                <button type="submit" class="btn btn-primary" ng-click="activeTab.formAction='saveContinue'">Continue</button>
-            </div>
+		<div class="row ">
+			<div class="col-md-6 col-sm-12" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
+				<!-- <button type="submit" class="btn btn-info" ng-click="activeTab.formAction='save'">Save</button> -->
+				<button type="submit" class="btn btn-primary" ng-click="activeTab.formAction='saveContinue'">Continue</button>
+			</div>
 
-            <div class="col-md-6 col-sm-12 floatRight">
-                <button type="button" ng-click="submitForm('crimeForm','back')" class="btn btn-secondary pull-right">Back</button>
-                <button type="button" ng-click="submitForm('crimeForm','next')" class="btn btn-success pull-right" style="margin-right:5px">Next</button>
-            </div>
+			<div class="col-md-6 col-sm-12 floatRight">
+				<button type="button" ng-click="submitForm('crimeForm','back')" class="btn btn-secondary pull-right">Back</button>
+				<button type="button" ng-click="submitForm('crimeForm','next')" class="btn btn-success pull-right" style="margin-right:5px">Next</button>
+			</div>
 
-        </div>
-    </form>
+		</div>
+	</form>
 
 </div>
 <div id="myModal12" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title">Existing Crime Witness Lookup</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 ">
-                        <label>Existing Crime Witness</label>
-                        <div class="input-group">
-                            <input class="form-control" ng-change="crimeWitnessLookup(existingCrimeWitness)" placeholder="Type user name" ng-model="existingCrimeWitness"
-                                ng-model-options="{'debounce':500}" />
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">Existing Crime Witness Lookup</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 ">
+						<label>Existing Crime Witness</label>
+						<div class="input-group">
+							<input class="form-control" ng-change="crimeWitnessLookup(existingCrimeWitness)" placeholder="Type user name" ng-model="existingCrimeWitness"
+							 ng-model-options="{'debounce':500}" />
 
-                            <span class="input-group-addon" ng-click="crimeWitnessLookup(existingCrimeWitness)">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </span>
-                        </div>
+							<span class="input-group-addon" ng-click="crimeWitnessLookup(existingCrimeWitness)">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>
+						</div>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th style="width:5%"></th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Phone</th>
-                                <th>Email</th>
+					</div>
+				</div>
+				<div class="row">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width:5%"></th>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Gender</th>
+								<th>Phone</th>
+								<th>Email</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="person in crimeWitnessData">
-                                <td>
-                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingWitness(person)"
-                                    />
-                                </td>
-                                <td>{{person.firstName}} {{person.LastName}}</td>
-                                <td>{{person.age}}</td>
-                                <td>{{person.genderTypeCode}}</td>
-                                <td>{{person.phone}}</td>
-                                <td>{{person.email}}</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="person in crimeWitnessData">
+								<td>
+									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingWitness(person)"
+									/>
+								</td>
+								<td>{{person.firstName}} {{person.LastName}}</td>
+								<td>{{person.age}}</td>
+								<td>{{person.genderTypeCode}}</td>
+								<td>{{person.phone}}</td>
+								<td>{{person.email}}</td>
 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-            </div>
-            <div class=" modal-footer ">
+			</div>
+			<div class=" modal-footer ">
 
 
-                <a class="btn btn-danger" class="close " data-dismiss="modal">Close</a>
-            </div>
-        </div>
+				<a class="btn btn-danger" class="close " data-dismiss="modal">Close</a>
+			</div>
+		</div>
 
-    </div>
+	</div>
 </div>
 <div id="myModal13" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title">Employee Crime Witness Lookup</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 ">
-                        <label>Employee Crime Witness</label>
-                        <div class="input-group">
-                            <input class="form-control" ng-change="userLookup(employeeCrimeWitness)" placeholder="Type user name" ng-model="employeeCrimeWitness"
-                                ng-model-options="{'debounce':500}" />
-                            <span class="input-group-addon" ng-click="userLookup(employeeCrimeWitness)">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </span>
-                        </div>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">Employee Crime Witness Lookup</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 ">
+						<label>Employee Crime Witness</label>
+						<div class="input-group">
+							<input class="form-control" ng-change="userLookup(employeeCrimeWitness)" placeholder="Type user name" ng-model="employeeCrimeWitness"
+							 ng-model-options="{'debounce':500}" />
+							<span class="input-group-addon" ng-click="userLookup(employeeCrimeWitness)">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>
+						</div>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th style="width:5%"></th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Phone</th>
-                                <th>Mail</th>
+					</div>
+				</div>
+				<div class="row">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width:5%"></th>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Gender</th>
+								<th>Phone</th>
+								<th>Mail</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="person in employeeUser">
-                                <td>
-                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeWitness(person)"
-                                    />
-                                </td>
-                                <td>{{person.firstName}} {{person.LastName}}</td>
-                                <td>{{person.age}}</td>
-                                <td>{{person.genderTypeCode}}</td>
-                                <td>{{person.phone}}</td>
-                                <td>{{person.email}}</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="person in employeeUser">
+								<td>
+									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeWitness(person)"
+									/>
+								</td>
+								<td>{{person.firstName}} {{person.LastName}}</td>
+								<td>{{person.age}}</td>
+								<td>{{person.genderTypeCode}}</td>
+								<td>{{person.phone}}</td>
+								<td>{{person.email}}</td>
 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-            </div>
-            <div class=" modal-footer ">
+			</div>
+			<div class=" modal-footer ">
 
 
-                <a class="btn btn-danger " class="close " data-dismiss="modal">Close</a>
-            </div>
-        </div>
+				<a class="btn btn-danger " class="close " data-dismiss="modal">Close</a>
+			</div>
+		</div>
 
-    </div>
+	</div>
 </div>
 <div id="myModal14" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title">Existing Crime Suspect Lookup</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 ">
-                        <label>Existing Crime Suspect</label>
-                        <div class="input-group">
-                            <input class="form-control" ng-change="crimeSuspectLookup(existingCrimeSuspect)" placeholder="Type user name" ng-model="existingCrimeSuspect"
-                                ng-model-options="{'debounce':500}" />
-                            <span class="input-group-addon" ng-click="crimeSuspectLookup(existingCrimeSuspect)">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </span>
-                        </div>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">Existing Crime Suspect Lookup</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 ">
+						<label>Existing Crime Suspect</label>
+						<div class="input-group">
+							<input class="form-control" ng-change="crimeSuspectLookup(existingCrimeSuspect)" placeholder="Type user name" ng-model="existingCrimeSuspect"
+							 ng-model-options="{'debounce':500}" />
+							<span class="input-group-addon" ng-click="crimeSuspectLookup(existingCrimeSuspect)">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>
+						</div>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th style="width:5%"></th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Phone</th>
-                                <th>Mail</th>
+					</div>
+				</div>
+				<div class="row">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width:5%"></th>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Gender</th>
+								<th>Phone</th>
+								<th>Mail</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="person in crimeSuspectData">
-                                <td>
-                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingSuspect(person)"
-                                    />
-                                </td>
-                                <td>{{person.firstName}} {{person.LastName}}</td>
-                                <td>{{person.age}}</td>
-                                <td>{{person.genderTypeCode}}</td>
-                                <td>{{person.phone}}</td>
-                                <td>{{person.email}}</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="person in crimeSuspectData">
+								<td>
+									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingSuspect(person)"
+									/>
+								</td>
+								<td>{{person.firstName}} {{person.LastName}}</td>
+								<td>{{person.age}}</td>
+								<td>{{person.genderTypeCode}}</td>
+								<td>{{person.phone}}</td>
+								<td>{{person.email}}</td>
 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-            </div>
-            <div class=" modal-footer ">
+			</div>
+			<div class=" modal-footer ">
 
 
-                <a class="btn btn-danger " class="close " data-dismiss="modal">Close</a>
-            </div>
-        </div>
+				<a class="btn btn-danger " class="close " data-dismiss="modal">Close</a>
+			</div>
+		</div>
 
-    </div>
+	</div>
 </div>
 <div id="myModal15" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title">Employee Crime Suspect Lookup</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 ">
-                        <label>Employee Crime Suspect</label>
-                        <div class="input-group">
-                            <input class="form-control" ng-change="userLookup(employeeCrimeSuspect)" placeholder="Type user name" ng-model="employeeCrimeSuspect"
-                                ng-model-options="{'debounce':500}" />
-                            <span class="input-group-addon" ng-click="userLookup(employeeCrimeSuspect)">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </span>
-                        </div>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">Employee Crime Suspect Lookup</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 ">
+						<label>Employee Crime Suspect</label>
+						<div class="input-group">
+							<input class="form-control" ng-change="userLookup(employeeCrimeSuspect)" placeholder="Type user name" ng-model="employeeCrimeSuspect"
+							 ng-model-options="{'debounce':500}" />
+							<span class="input-group-addon" ng-click="userLookup(employeeCrimeSuspect)">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>
+						</div>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th style="width:5%"></th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Phone</th>
-                                <th>Mail</th>
+					</div>
+				</div>
+				<div class="row">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width:5%"></th>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Gender</th>
+								<th>Phone</th>
+								<th>Mail</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="person in employeeUser">
-                                <td>
-                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeSuspect(person)"
-                                    />
-                                </td>
-                                <td>{{person.firstName}} {{person.LastName}}</td>
-                                <td>{{person.age}}</td>
-                                <td>{{person.genderTypeCode}}</td>
-                                <td>{{person.phone}}</td>
-                                <td>{{person.email}}</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="person in employeeUser">
+								<td>
+									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeSuspect(person)"
+									/>
+								</td>
+								<td>{{person.firstName}} {{person.LastName}}</td>
+								<td>{{person.age}}</td>
+								<td>{{person.genderTypeCode}}</td>
+								<td>{{person.phone}}</td>
+								<td>{{person.email}}</td>
 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-            </div>
-            <div class=" modal-footer ">
+			</div>
+			<div class=" modal-footer ">
 
 
-                <a class="btn btn-danger " class="close " data-dismiss="modal">Close</a>
-            </div>
-        </div>
+				<a class="btn btn-danger " class="close " data-dismiss="modal">Close</a>
+			</div>
+		</div>
 
-    </div>
+	</div>
 
 </div>

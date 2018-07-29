@@ -9,8 +9,8 @@
     <div class="col-md-12 col-lg-10 content">
         <ul class="nav nav-tabs">
             <li ng-class="{active:tab.active}" ng-repeat="tab in tabs | orderBy : 'tab'">
-                <button type="button" class="btn" ng-disabled="!tab.completed && !tab.active" 
-                ng-click="changeTab(tab)">{{tab.description}} <span ng-if="tab.completed" class="glyphicon glyphicon-ok"></span>
+                <button type="button" class="btn" ng-disabled="!tab.completed && !tab.active" ng-click="changeTab(tab)">{{tab.description}}
+                    <span ng-if="tab.completed" class="glyphicon glyphicon-ok"></span>
                 </button>
             </li>
         </ul>
@@ -103,41 +103,43 @@
                 <h4>Incident Details</h4>
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
-                        <label>Place of Incident</label> <a class="label label-primary" ng-click="openMap()"><span class="glyphicon glyphicon-map-marker"></span> Mark on Map</a>
+                        <label>Place of Incident</label>
+                        <a class="label label-primary" ng-click="openMap()">
+                            <span class="glyphicon glyphicon-map-marker"></span> Mark on Map</a>
                         <input ng-model="logIncidentDetails.placeOfIncident" class="form-control" type="url">
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <label>Incident Type</label>
                         <select class="form-control" ng-model="logIncidentDetails.incidentType.id" ng-options="incidentType.id as incidentType.description for incidentType in incidentType">
-                                <option value=""></option>    
+                            <option value=""></option>
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <label>Incident Type Other</label>
-                        <input type="text" class="form-control" ng-disabled="logIncidentDetails.incidentType.id!='OTHER'" ng-model="logIncidentDetails.incidentTypeOther" />
+                        <input type="text" class="form-control" ng-disabled="logIncidentDetails.incidentType.id!='OTHER'" ng-model="logIncidentDetails.incidentTypeOther"
+                        />
                     </div>
                 </div>
                 <div class="row">
-                        <div class="col-md-4 col-sm-12">
-            
-                                <label>Incident Status</label>
-                               
-                                <select class="form-control" ng-model="logIncidentDetails.incidentStatus"
-                                ng-disabled="!editIncidentMode || logIncidentDetails.incidentStatus == 'CLOSED'">
-                                    <option value="DRAFT" selected>Draft</option>
-                                    <option value="NEW">New</option>
-                                    <option value="ASSIGNED">Assigned</option>
-                                    <option value="IN_PROGRESS">In-progress</option>
-                                    <option value="SUSPENDED">Suspended</option>
-                                    <option value="CLOSED">Closed</option>
-                                </select>
-                            </div>
-                       
+                    <div class="col-md-4 col-sm-12">
+
+                        <label>Incident Status</label>
+
+                        <select class="form-control" ng-model="logIncidentDetails.incidentStatus" ng-disabled="!editIncidentMode || logIncidentDetails.incidentStatus == 'CLOSED'">
+                            <option value="DRAFT" selected>Draft</option>
+                            <option value="NEW">New</option>
+                            <option value="ASSIGNED">Assigned</option>
+                            <option value="IN_PROGRESS">In-progress</option>
+                            <option value="SUSPENDED">Suspended</option>
+                            <option value="CLOSED">Closed</option>
+                        </select>
+                    </div>
+
                     <div class="col-md-4 col-sm-12">
                         <label>Entry Point</label>
                         <select class="form-control" ng-model="logIncidentDetails.entryPoint.id" ng-options="entryPoint.id as entryPoint.description for entryPoint in entryPoint">
-                                <option value=""></option>    
-                        </select>                       
+                            <option value=""></option>
+                        </select>
 
                     </div>
 
@@ -153,29 +155,29 @@
 
                     <div class="col-sm-12 col-md-4">
                         <label>Incident Location</label>
-                        <select class="form-control" ng-model="logIncidentDetails.incidentLocation.id" ng-options="incidentLoc.id as incidentLoc.description for incidentLoc in incidentLocations" ng-change="getIncidentLocDetail()">
+                        <select class="form-control" ng-model="logIncidentDetails.incidentLocation.id" ng-options="incidentLoc.id as incidentLoc.description for incidentLoc in incidentLocations"
+                            ng-change="getIncidentLocDetail()">
                             <option value=''></option>
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <label>Incident Location Others:</label>
-                        <input class="form-control" type="text" ng-disabled="logIncidentDetails.incidentLocation.id !='OTHER'" ng-model="logIncidentDetails.incidentLocationOther" />
+                        <input class="form-control" type="text" ng-disabled="logIncidentDetails.incidentLocation.id !='OTHER'" ng-model="logIncidentDetails.incidentLocationOther"
+                        />
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <label>Incident Location Details</label>
-                        <select ng-model="logIncidentDetails.incidentLocationDetail.id" 
-                        class="ddropdown form-control" 
-                        ng-disabled="!logIncidentDetails.incidentLocation.id || logIncidentDetails.incidentLocation.id == 'OTHER'" 
-                        ng-options="incidentLocationDetail.id as incidentLocationDetail.description for incidentLocationDetail in incidentLocationDetails">
+                        <select ng-model="logIncidentDetails.incidentLocationDetail.id" class="ddropdown form-control" ng-disabled="!logIncidentDetails.incidentLocation.id || logIncidentDetails.incidentLocation.id == 'OTHER'"
+                            ng-options="incidentLocationDetail.id as incidentLocationDetail.description for incidentLocationDetail in incidentLocationDetails">
 
-                        <option value=''></option>
+                            <option value=''></option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <label>Incident Description</label>
-                        <textarea ng-model="logIncidentDetails.incidentDescription" class="form-control" ></textarea>
+                        <textarea ng-model="logIncidentDetails.incidentDescription" class="form-control"></textarea>
                     </div>
                 </div>
 
@@ -185,13 +187,14 @@
                         <label>Date of Incident: (DD/MM/YYYY)</label>
                         <p class="input-group">
                             <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="logIncidentDetails.dateIncident" ng-focus="calendar.open($event,'dateIncident')"
-                            is-open="calendar.opened.dateIncident" datepicker-options="dateOptions"  close-text="Close" on-open-focus="true" alt-input-formats="altInputFormats" />
+                                is-open="calendar.opened.dateIncident" datepicker-options="dateOptions" close-text="Close" on-open-focus="true"
+                                alt-input-formats="altInputFormats" />
                             <span class="input-group-addon" ng-click="calendar.open($event,'dateIncident')">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
 
                         </p>
-                        
+
                         <!-- <p class="input-group">
                             <input type="text" class="form-control"  uib-datepicker-popup="dd/MM/yyyy" ng-model="loss.date" ng-focus="calendar.open($event,'date')"
                              is-open="calendar.opened.date" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" ng-disabled="loss.externalAgencyContacted != 'Y'"/>
@@ -201,7 +204,9 @@
                         </p> -->
                     </div>
                     <div class="col-sm-12 col-md-2">
-                        <div><label>Time of Incident:</label></div>
+                        <div>
+                            <label>Time of Incident:</label>
+                        </div>
                         <input class="form-control small-control" type="text" placeholder="HH" ng-model="logIncidentDetails.timeHrsOfIncident">:
                         <input class="form-control  small-control" type="text" placeholder="MM" ng-model="logIncidentDetails.timeMinOfIncident">
                     </div>
@@ -217,19 +222,22 @@
                         <label>Incident Category</label>
                     </div>
                     <div class="col-sm-12">
-                        <label><input id="PersonInjured" value="Y" ng-model="logIncidentDetails.accidentDamage" type="checkbox" ng-change="addTab('accidentForm')"> Accident</label>
+                        <label>
+                            <input id="PersonInjured" value="Y" ng-model="logIncidentDetails.accidentDamage" type="checkbox" ng-change="addTab('accidentForm')"> Accident</label>
                     </div>
                     <div class="col-sm-12">
-                       <label> <input id="VehicleUsed" value="Y" ng-model="logIncidentDetails.assetDamage" type="checkbox" ng-change="addTab('assetsForm')"> Building/Vehicle/Equipment Damage</label>
+                        <label>
+                            <input id="VehicleUsed" value="Y" ng-model="logIncidentDetails.assetDamage" type="checkbox" ng-change="addTab('assetsForm')"> Building/Vehicle/Equipment Damage</label>
                     </div>
                     <div class="col-sm-12">
-                        <label><input id="CrimeInvolved" value="Y" ng-model="logIncidentDetails.criminalAttack" type="checkbox" ng-change="addTab('crimeForm')"> Criminal Attack</label>
+                        <label>
+                            <input id="CrimeInvolved" value="Y" ng-model="logIncidentDetails.criminalAttack" type="checkbox" ng-change="addTab('crimeForm')"> Criminal Attack</label>
 
                     </div>
-                    </div>
-                   
-                      
-               
+                </div>
+
+
+
 
                 <div class="row">
                     <div class="col-md-6" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
@@ -273,6 +281,81 @@
 
             </div>
         </div>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="postcodeModal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3 class="modal-title">Post code lookup</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row p-2">
+                            <div class="col-sm-12 col-md-3">
+                                <label>Post Code 1</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <input class="form-control" ng-model="postcode1" name="postcode1" />
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-sm-12 col-md-3">
+                                <label>Post Code 2</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <input class="form-control" ng-model="postcode2" name="postcode2" />
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                        <th>Door/Block/Apt No.</th>
+                                        <th>Org Name</th>
+                                        <th>Building Name</th>
+                                        <th>Street Name</th>
+                                        <th>Locality Name</th>
+                                        <th>Post Town</th>
+                                        <th>County</th>
+                                        <th>Country</th>
+                                        <th>PostCode 1</th>
+                                        <th>PostCode 2</th>
+                                        <th></th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="add in postCodeResults">
+                                        <td>{{add.doorNumber}}, {{add.blockNumber}}, {{add.apartmentNumber}}</td>
+                                        <td>{{add.organizationName}}</td>
+                                        <td>{{add.buildingName}}</td>
+                                        <td>{{add.streetName}}</td>
+                                        <td>{{add.localityName}}</td>
+                                        <td>{{add.postTown}}</td>
+                                        <td>{{add.county}}</td>
+                                        <td>{{add.country}}</td>
+                                        <td>{{add.postcode1}}</td>
+                                        <td>{{add.postcode2}}</td>
+                                        <td>
+                                          <span class="fa fa-plus btn btn-sm btn-outline-success" ng-click="selectLookupAddress(add)"></span>
+                                        </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="postcodeLookup()">Submit</button>
+                        <button type="button" class="btn btn-primary" ng-click="clearPostCodeLookup()">Clear</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
     </div>
     <div class="footer">
 

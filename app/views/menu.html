@@ -1,20 +1,21 @@
-﻿<div class="row side-nav-user">
+﻿<div class="row side-nav-user hidden-md hidden-xs">
     <div class="col-sm-12 row" style="vertical-align:middle;padding-right: 0;margin-left:0;">
-        <div class="col-sm-3" style="padding-left:0">
+        <div class="col-sm-3" style="padding-left:0; padding-right:0">
             <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image" style="width:50px" />
         </div>
-        <div class="col-sm-6 user-status-nav">
-            <span>{{loggedInUser.roles[0]}}</span><br />
+        <div class="col-sm-5 user-status-nav" style="padding-left:5px;">
+            <span>{{loggedInUser.loginId}}</span>
+            <br />
             <span class="fa fa-circle" style="color:rgb(11, 170, 11)"> Online</span>
         </div>
-        <div class="col-sm-3 pull-right" style="padding-right:0">
+        <div class="col-sm-2 pull-right" style="padding-right:0">
             <button ng-click="logOutUser()" type="button" class="btn pull-right btn-info btn-sm" style="vertical-align:middle">
                 <span class="fa fa-power-off "></span>
             </button>
         </div>
     </div>
 </div>
-<ul>
+<ul class="hidden-md hidden-xs">
     <li ng-class="{active:thisView=='dashboard'}" ng-if="isAdminRole">
         <a ui-sref="dashboard" title="">
             <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
