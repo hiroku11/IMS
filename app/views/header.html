@@ -1,13 +1,13 @@
-﻿<div class="col-lg-4 col-sm-12">
+﻿<div class="col-lg-4 col-sm-12 hidden-md hidden-xs">
     <h2 class="logo">
         <a href="#">
             <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" />
         </a>
     </h2>
-    <div class="sm-navbar-container hidden-lg" ng-init="showMenu = false">
+    <!-- <div class="sm-navbar-container hidden-lg" ng-init="showMenu = false">
         <span style="font-size:20px" data-elem="smallMenu" class="glyphicon glyphicon-menu-hamburger" ng-click="showMenu = true"></span>
-    </div>
-    <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
+    </div> -->
+    <!-- <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
         <li ng-class="{active:thisView=='dashboard'}" data-elem="smallMenu" ng-if="isAdminRole">
             <a ui-sref="dashboard" title="" data-elem="smallMenu">
                 <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
@@ -29,29 +29,93 @@
             </a>
         </li>
        
-    </ul>
+    </ul> -->
 </div>
-<div class="col-lg-4 col-sm-12 text-center">
-    <h3 class="welcome">Welcome {{loggedInUser.firstName}} {{loggedInUser.lastName==null?"":loggedInUser.lastName}}</h3>
+<div class="col-lg-4 col-sm-12 text-center hidden-md hidden-xs">
+    <!-- <h3 class="welcome">Welcome {{loggedInUser.firstName}} {{loggedInUser.lastName==null?"":loggedInUser.lastName}}</h3>
+     -->
+    <h3>Incident Management System</h3>
 </div>
-<div class="col-lg-4 col-sm-12">
+<div class="col-lg-4 col-sm-12 hidden-md hidden-xs">
     <div class="user-details">
         <!-- <span class="user-circle">
             <i class="glyphicon glyphicon-user"></i>
         </span> Logged in as <a href="" id="user">{{loggedInUser.roles[0]}}</a> | <a ng-click="logOutUser()" style="cursor:pointer">LogOut</a> -->
         <div role="presentation" class="dropdown">
-                <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image"/>
+            <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image" />
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                {{loggedInUser.roles[0]}}
+                {{loggedInUser.loginId}}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a>Profile</a></li>
+                <li>
+                    <a>Profile</a>
+                </li>
                 <li role="separator" class="divider"></li>
-                <li><a ng-click="logOutUser()">Logout</a></li>
+                <li>
+                    <a ng-click="logOutUser()">Logout</a>
+                </li>
             </ul>
         </div>
     </div>
+</div>
+
+<div class="col-lg-4 col-sm-12 hidden-lg">
+    <h5 class="logo" style="padding:0;margin:0">
+        <a href="#">
+            <img height="28px" width="43px" style="width:43px !important" src="assets/images/logo@1x.png" alt="gotorisk.co.uk" /> GotoRisk
+        </a>
+    </h5>
+    <div class="sm-navbar-container hidden-lg" ng-init="showMenu = false">
+        <span style="font-size:20px" data-elem="smallMenu" class="glyphicon glyphicon-menu-hamburger" ng-click="showMenu = !showMenu"></span>
+    </div>
+</div>
+
+<div style="position: fixed; left:0; top:0; padding:5px; width: 200px; height: 100%; z-index: 99999" class="hidden-lg">
+    <ul class="hidden-lg navbar sm-navbar" ng-show="showMenu">
+        <li style="padding-bottom:15px;background-color: white">
+            <span class="fa fa-close pull-right" ng-click="showMenu = false">Close</span>
+        </li>
+        <li style="background-color: white">
+            <div class="row zero-margin">
+                <div class="col-xs-3">
+                    <img src="assets/images/logo@0,5x.png" alt="gotorisk.co.uk" class="user-image" />
+                </div>
+                <div class="col-xs-6">
+                    <span>{{loggedInUser.loginId}}</span>
+                    <br>
+                    <span class="fa fa-circle text-success"> Online</span>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn float-right btn-info btn-sm" style="vertical-align:middle" (click)="logOut()">
+                        <span class="fa fa-power-off "></span>
+                    </button>
+
+                </div>
+            </div>
+        </li>
+        <li ng-class="{active:thisView=='dashboard'}" data-elem="smallMenu" ng-if="isAdminRole">
+            <a ui-sref="dashboard" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-dashboard menu-icon"></i> Dashboard
+            </a>
+        </li>
+        <li ng-class="{active:thisView=='incidents'}">
+            <a ui-sref="incidents" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-time menu-icon"></i> Incidents
+            </a>
+        </li>
+        <li ng-class="{active:thisView=='claims'}" data-elem="smallMenu">
+            <a ui-sref="claims" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-gift menu-icon"></i> Claims
+            </a>
+        </li>
+        <li ng-class="{active:thisView=='investigations'}" data-elem="smallMenu">
+            <a ui-sref="investigations" title="" data-elem="smallMenu">
+                <i class="glyphicon glyphicon-search menu-icon"></i> Investigations
+            </a>
+        </li>
+
+    </ul>
 </div>
 <script>
     $(document).on("click", function (event) {

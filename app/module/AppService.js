@@ -52,14 +52,15 @@
         }
         this.baseEndpointUrl = "https://125ae965.ngrok.io/rmsrest/s/";
         this.getLoggedInUser = function () {
-            if(!this.loggedInUser){
+            if (!this.loggedInUser) {
                 $location.path("/login");
             }
             if (this.loggedInUser) {
                 return this.loggedInUser;
             } else {
                 this.loggedInUser = {};
-                this.getLoggedInUser.userId = this.authorisedUserDetails.loginId;
+                this.loggedInUser.userId = this.authorisedUserDetails.loginId;
+                this.loggedInUser.loginId = this.authorisedUserDetails.loginId;
                 this.loggedInUser.lastName = this.authorisedUserDetails.lastName;
                 this.loggedInUser.firstName = this.authorisedUserDetails.firstName;
                 this.loggedInUser.roles = this.authorisedUserDetails.roles.map(function (item) {
@@ -93,16 +94,16 @@
                 let splittedDate = data.split("/");
                 data = splittedDate[1] + "/" + splittedDate[0] + "/" + splittedDate[2];
                 date = new Date(data);
-                let month= date.getMonth() + 1;
-                if(month.length == 1) {
-                    month= "0" + month;
+                let month = date.getMonth() + 1;
+                if (month.length == 1) {
+                    month = "0" + month;
                 }
-               
+
                 out = month + "/" + (date.getDate().toString().length == 1 ? '0' + date.getDate() : date.getDate()) + "/" + date.getFullYear();
             }
             return out;
         }
-        this.showAlert = function(success, message){
+        this.showAlert = function (success, message) {
             if (success) {
                 if (message) {
                     $("#success-message").text(message);
@@ -114,9 +115,9 @@
                 }
                 $("#error-alert").show()
             }
-            setTimeout(function(){
+            setTimeout(function () {
                 $("#success-alert,#error-alert").hide()
-            },3000)
+            }, 3000)
         }
 
     })

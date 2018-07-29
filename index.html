@@ -15,24 +15,24 @@
     <script src="assets/highcharts.js"></script>
     <!-- endbuild -->
 
- 
-   <!-- build:js js/main.min.js -->
-   <script src="app/module/app.js"></script>
-   <script src="app/module/AppService.js"></script>
-   <script src="app/controllers/loginController.js"></script>
-   <script src="app/controllers/dashboardController.js"></script>
-   <script src="app/controllers/incidentsController.js"></script>
-   <script src="app/controllers/addIncidentController.js"></script>
-   <script src="app/controllers/claimsController.js"></script>
-   <script src="app/controllers/investigationsController.js"></script>
-   <!-- endbuild -->
-   
+
+    <!-- build:js js/main.min.js -->
+    <script src="app/module/app.js"></script>
+    <script src="app/module/AppService.js"></script>
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/dashboardController.js"></script>
+    <script src="app/controllers/incidentsController.js"></script>
+    <script src="app/controllers/addIncidentController.js"></script>
+    <script src="app/controllers/claimsController.js"></script>
+    <script src="app/controllers/investigationsController.js"></script>
+    <!-- endbuild -->
+
     <link href="assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    
+
     <link href="css/site.css" rel="stylesheet" />
     <link href="css/loader.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiomJS84bB9JOsgqoCKUh47jTAjjVuAWU&libraries=places"></script>
 </head>
 
 <body ng-app="riskManagementSystem">
@@ -52,10 +52,12 @@
         </div>
     </div>
     <div class="alert alert-success text-center" id="success-alert">
-        <strong>Success!</strong> <span id="success-message">Operation completed successfully</span>.
+        <strong>Success!</strong>
+        <span id="success-message">Operation completed successfully</span>.
     </div>
     <div class="alert alert-success text-center" id="error-alert">
-        <strong>Error!</strong>  <span id="error-message">Some error occured. Please try again.</span>
+        <strong>Error!</strong>
+        <span id="error-message">Some error occured. Please try again.</span>
     </div>
 </body>
 <script>

@@ -1,7 +1,7 @@
 <div class="form-content" ng-show="activeTab.tab==2">
     <h2>Incident Details</h2>
-    <form ng-submit="submitForm('incidentDetailsForm')">   
-     <div ng-if="logIncidentDetails.accidentDamage || logIncidentDetails.vehicleOrAssetDamage  || logIncidentDetails.criminalAttack">
+    <form ng-submit="submitForm('incidentDetailsForm')">
+        <div ng-if="logIncidentDetails.accidentDamage || logIncidentDetails.vehicleOrAssetDamage  || logIncidentDetails.criminalAttack">
             <h3 class="form-title">Suspect</h3>
             <div class="row">
                 <div class="col-sm-12 col-md-6">
@@ -45,7 +45,7 @@
                 </div>
 
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-12 col-md-4">
                     <label>Address</label>
                     <input name="" class="form-control" type="text" ng-model="suspect.addresses[0].organizationName">
@@ -101,6 +101,76 @@
                 <div class="col-sm-12 col-md-6">
                     <label>Phone</label>
                     <input class="form-control" type="text" ng-model="suspect.phone">
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Organization Name (if any)</label>
+                    <input ng-model="suspect.addresses[0].organizationName" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Block #/Name</label>
+                    <input ng-model="suspect.addresses[0].blockNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Building Name</label>
+                    <input ng-model="suspect.addresses[0].buildingName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 row zero-margin ">
+                    <div class="col-sm-4 zero-padding">
+                        <label>Post Code 1</label>
+                        <input ng-model="suspect.addresses[0].postcode1" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4 zero-padding">
+                        <label>Post Code 2</label>
+                        <input ng-model="suspect.addresses[0].postcode2" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4" style="padding-top:24px;padding-left:0;">
+                        <button ng-click="showPostcodeLookup('suspect')" class="btn btn-info" type="button" style="padding:10px 12px;">
+                            <span class="fa fa-search"> Lookup</span>
+                        </button>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Locality Name</label>
+                    <input ng-model="suspect.addresses[0].localityName" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>City</label>
+                    <input ng-model="suspect.addresses[0].city" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Door #</label>
+                    <input ng-model="suspect.addresses[0].doorNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Apartment #/Name</label>
+                    <input ng-model="suspect.addresses[0].apartmentNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Street Name</label>
+                    <input ng-model="suspect.addresses[0].streetName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Post Town</label>
+                    <input ng-model="suspect.addresses[0].postTown" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>County</label>
+                    <input ng-model="suspect.addresses[0].county" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Country</label>
+                    <input ng-model="suspect.addresses[0].country" type="text" class="form-control">
                 </div>
             </div>
             <div class="row">
@@ -366,7 +436,8 @@
                         <td>{{loss.lossType.id}}</td>
                         <td>{{loss.lossValue}}</td>
                         <td>{{loss.date}}</td>
-                        <td>{{loss.timeHrsContacted}}<span ng-if="loss.timeHrsContacted">:</span>{{loss.timeMinContacted}}</td>
+                        <td>{{loss.timeHrsContacted}}
+                            <span ng-if="loss.timeHrsContacted">:</span>{{loss.timeMinContacted}}</td>
                         <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                             <a ng-click="deleteLoss(loss)">
                                 <i class="glyphicon glyphicon-trash"></i>
@@ -498,7 +569,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                          
+
                             <tr ng-repeat="person in employeeUser" ng-if="person.firstName != ''">
                                 <td>
                                     <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addEmployeeSuspect(person)"
