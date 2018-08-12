@@ -17,13 +17,14 @@
             localStorage.setItem("rmsAuthToken", token);
             AppService.HideLoader();
             if (!rmsService.isAdminRole()) {
-                $location.path("/incidents")
+                $location.path("/incidents");
             }
-            $location.path("/dashboard")
+            $location.path("/dashboard");
         }, function(error) {
             //show user that credentials are not correct
             $scope.signInError = true;
             AppService.HideLoader();
+            rmsService.showAlert(false, error);
         })
     }
 }])
