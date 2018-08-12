@@ -1,7 +1,7 @@
 var addIncidentController = riskManagementSystem.controller("addIncidentController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', '$state', 'dateformatterFilter',
     function ($scope, AppService, rmsService, $location, $window, $http, $state, dateformatterFilter) {
         $scope.token = localStorage.getItem('rmsAuthToken');
-        $scope.thisView = "incidents";        
+        $scope.thisView = "incidents";
         $scope.authorizedUser = rmsService.decryptToken();
         $scope.loggedInUser = rmsService.getLoggedInUser();
         $scope.whatFor = null;
@@ -922,7 +922,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $scope.loss.incident = {
                 id: $scope.incident.incidentId
             }
-
+            debugger
             let loss = rmsService.cloneObject($scope.loss);
             //$scope.loss.timeHrsContacted;
             //$scope.loss.timeMinContacted;
@@ -931,7 +931,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 loss.dateTimeContacted = date + " " + (loss.timeHrsContacted || '00') + ":" + (loss.timeMinContacted || '00') + ":00";
             }
             else {
-                loss.dateTimeContacted = date;
+                loss.timeHrsContacted = (new Date()).getHours();
+                loss.timeMinContacted = (new Date()).getMinutes();
+                loss.dateTimeContacted = rmsService.formatDate(new Date()) + ' ' + loss.timeHrsContacted + ':' + loss.timeMinContacted + ':00';
             }
 
 
@@ -1585,6 +1587,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             })
         }
         $scope.getAccLocDetail = function () {
+            if (!$scope.accidentDetails.accidentLocation) {
+                return;
+            }
             var req = {
                 url: rmsService.baseEndpointUrl + 'table-maintenance//accident-location-detail/accident-location/'
                     + $scope.accidentDetails.accidentLocation.id,
@@ -2411,7 +2416,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             }, function (error) {
                 AppService.HideLoader();
-                rmsService.showAlert(false, "Error updating injured person. Try again+");
+                rmsService.showAlert(false, error);
             })
         }
         //Witness 
@@ -3816,7 +3821,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $location.path("/incidents");
             }, function (error) {
                 AppService.HideLoader();
-                alert("Some issue occured while submitting the incident!");
+                // alert("Some issue occured while submitting the incident!");
             })
         }
 
@@ -3980,7 +3985,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.showPostcodeLookup = function (whatFor) {
-            
+
             $scope.clearPostCodeLookup();
             $scope.whatFor = whatFor;
             $('#postcodeModal').modal('show');
@@ -4031,7 +4036,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                             address.localityName = c.long_name;
                             break;
                         case 'postal_town':
-                            address.county = c.long_name;
+                            address.postTown = c.long_name;
                             break;
                         case 'administrative_area_level_2':
                             address.city = c.long_name;
@@ -4066,7 +4071,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         $scope.postcodeLookup = function () {
             AppService.ShowLoader();
             var req = {
-                url: "https://maps.googleapis.com/maps/api/geocode/json?sensor=false&key=AIzaSyAiomJS84bB9JOsgqoCKUh47jTAjjVuAWU&address=" + $scope.postcode1 + "+" + $scope.postcode2,
+                url: "https://maps.googleapis.com/maps/api/geocode/json?sensor=false&libraries=places&key=AIzaSyAiomJS84bB9JOsgqoCKUh47jTAjjVuAWU&address=" + $scope.postcode1 + "+" + $scope.postcode2,
                 method: "GET",
             }
             AppService.ShowLoader();

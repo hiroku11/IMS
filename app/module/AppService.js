@@ -110,14 +110,33 @@
                 }
                 $("#success-alert").show();
             } else {
-                if (message) {
-                    $("#error-message").text(message);
-                }
+                $("#error-message").text(this.getErrorMessage(message));
                 $("#error-alert").show()
             }
             setTimeout(function () {
                 $("#success-alert,#error-alert").hide()
             }, 3000)
+        }
+        this.getErrorMessage = function (error) {
+            if (typeof error === 'string') {
+                return error;
+            }
+            if (error.staus === 403) {
+                return 'Your are not authorised to perform this action.'
+            }
+            if (error.status >= 400 && error.status < 500) {
+                try {
+                    if (error.error.errorMessages[0].indexOf(":") == -1) {
+                        return error.error.errorMessages[0]
+                    }
+                    return error.error.errorMessages[0].split(":")[1];
+                } catch{
+                    return "Some error occured please try again.";
+                }
+            }
+            if (error.status >= 500) {
+                return "Some server error occured please try again.";
+            }
         }
 
     })
