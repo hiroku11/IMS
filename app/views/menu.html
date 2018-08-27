@@ -4,7 +4,7 @@
             <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image" style="width:50px" />
         </div>
         <div class="col-sm-5 user-status-nav" style="padding-left:5px;">
-            <span>{{loggedInUser.loginId}}</span>
+            <span>{{loggedInUser.loginId || loggedInUser.userLoginId}}</span>
             <br />
             <span class="fa fa-circle" style="color:rgb(11, 170, 11)"> Online</span>
         </div>

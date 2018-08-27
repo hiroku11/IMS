@@ -160,7 +160,7 @@ h4 {
 }
 
 .btn:hover {
-    background-color: #8c1519;
+    background-color: #8c1519 !important;
     color: white;
 }
 
