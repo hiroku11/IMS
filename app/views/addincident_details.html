@@ -386,8 +386,8 @@
                 <div>
                     <label>Time External Agency Called</label>
                 </div>
-                <input class="form-control small-control" type="text" placeholder="HH" ng-model="loss.timeHrsContacted" ng-disabled="loss.externalAgencyContacted != 'Y'">:
-                <input class="form-control  small-control" type="text" placeholder="MM" ng-model="loss.timeMinContacted" ng-disabled="loss.externalAgencyContacted != 'Y'">
+                <input class="form-control small-control" type="text" placeholder="HH" whole-number ng-model="loss.timeHrsContacted" ng-disabled="loss.externalAgencyContacted != 'Y'">:
+                <input class="form-control  small-control" type="text" placeholder="MM" whole-number ng-model="loss.timeMinContacted" ng-disabled="loss.externalAgencyContacted != 'Y'">
             </div>
         </div>
 
