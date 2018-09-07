@@ -4,15 +4,15 @@
         <span>Incident Reported By</span>
         <div class="row">
                 <div class="col-sm-12 col-md-4">
-                        <label>User Id:</label>
+                        <label>User ID:</label>
                         <label class="summary-text">{{incidentSummary.incidentReportedBy.loginId}}</label>
                 </div>
                 <div class="col-sm-12 col-md-4 ">
-                        <label>Incident Id:</label>
+                        <label>Incident ID:</label>
                         <label class="summary-text">{{incident.incidentId || incident.id}}</label>
                 </div>
                 <div class="col-sm-12 col-md-4 ">
-                        <label>Unique incident Id:</label>
+                        <label>Unique incident ID:</label>
                         <label class="summary-text">{{incident.uniqueIncidentId}}</label>
                 </div>
         </div>
@@ -112,13 +112,13 @@
                         <label>Accident Damange:</label>
                         <label class="summary-text">{{incidentSummary.accidentDamage}}</label>
                 </div>
-               
+
         </div>
         <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                                        <label>Incident Description:</label>
-                                        <label class="summary-text">{{incidentSummary.incidentDescription}}</label>
-                                </div>
+                <div class="col-md-12 col-sm-12">
+                        <label>Incident Description:</label>
+                        <label class="summary-text">{{incidentSummary.incidentDescription}}</label>
+                </div>
         </div>
         <h4 ng-if="incidentSummary.suspects.length>0">Suspects</h4>
         <table class="table table-bordered" ng-if="incidentSummary.suspects.length>0">
@@ -166,8 +166,8 @@
                         </tr>
                 </tbody>
         </table>
-        <h4 ng-if="incidentSummary.reportedLosses.length" >Reported Losses</h4>
-        <table class="table table-bordered" ng-if="incidentSummary.reportedLosses.length" >
+        <h4 ng-if="incidentSummary.reportedLosses.length">Reported Losses</h4>
+        <table class="table table-bordered" ng-if="incidentSummary.reportedLosses.length">
                 <thead>
                         <tr>
                                 <th>Loss Type</th>
@@ -336,7 +336,7 @@
         <table class="table table-bordered" ng-if="incidentSummary.asset.vehicles.length >0">
                 <thead>
                         <tr>
-                                <th>Registration Id</th>
+                                <th>Registration ID</th>
                                 <th>Engine Number</th>
                                 <th>Chasis Number</th>
                                 <th>Comment</th>
@@ -354,7 +354,7 @@
         <table class="table table-bordered" ng-if="incidentSummary.asset.equipments.length >0">
                 <thead>
                         <tr>
-                                <th>Equipment Id</th>
+                                <th>Equipment ID</th>
                                 <th>Serial Number</th>
                                 <th>Equipment Details</th>
                         </tr>
@@ -370,7 +370,7 @@
         <table class="table table-bordered" ng-if="incidentSummary.asset.buildings.length >0">
                 <thead>
                         <tr>
-                                <th>Building Id</th>
+                                <th>Building ID</th>
                                 <th>Building Name</th>
                                 <th>Building Description</th>
 
@@ -387,7 +387,7 @@
         <table class="table table-bordered" ng-if="incidentSummary.asset.assetTypeOthers.length >0">
                 <thead>
                         <tr>
-                                <th>Asset Id</th>
+                                <th>Asset ID</th>
                                 <th>Asset Name</th>
                                 <th>Asset Description</th>
 
@@ -559,7 +559,8 @@
                 <div class="col-sm-12 col-md-4">
                         <label>Policy Type:</label>
                         <label class="summary-text">{{incidentSummary.claim.policyType.id !='OTHER' ? incidentSummary.claim.policyType.description :
-                                incidentSummary.claim.policyTypeOther}}</label>
+                                incidentSummary.claim.policyTypeOther}}
+                        </label>
                 </div>
         </div>
         <div class="row" ng-if="isAdminRole">
@@ -576,7 +577,7 @@
                         <label class="summary-text">{{incidentSummary.claim.claimHandler.fullName}}</label>
                 </div>
         </div>
-        <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='REQUESTED'" >
+        <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='REQUESTED'">
                 <div class="col-sm-12 col-md-4">
                         <label>Claim Requested Amount:</label>
                         <label class="summary-text">{{incidentSummary.claim.claimRequestedAmount}}</label>
@@ -704,19 +705,19 @@
                         <label>Investigator Statement:</label>
                         <label class="summary-text">{{incidentSummary.investigation.investigatorStatement}}</label>
                 </div>
-               
-                       
-               
+
+
+
         </div>
         <div class="row" ng-if="isAdminRole">
-                        <div class="col-md-4 col-sm-12">
-                                        <label>Investigation Team Name</label>
-                                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].teamDescription}} </label>
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <label>Investigation Team Lead ID</label>
-                                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].investigationTeamLeads[0].teamLeadLoginId}}</label>
-                                    </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Investigation Team Name</label>
+                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].teamDescription}} </label>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                        <label>Investigation Team Lead ID</label>
+                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].investigationTeamLeads[0].teamLeadLoginId}}</label>
+                </div>
         </div>
         <h4>Supporting Documents</h4>
         <table class="table table-bordered">
