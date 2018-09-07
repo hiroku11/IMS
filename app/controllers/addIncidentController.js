@@ -88,8 +88,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 "id": "",
                 "description": null
             },
-            "timeHrsOfIncident": new Date().getHours(),
-            "timeMinOfIncident": new Date().getMinutes()
+            "timeHrsOfIncident": (new Date().getHours()).length == 1 ? '0' + (new Date().getHours()) : new Date().getHours(),
+            "timeMinOfIncident": (new Date().getMinutes()).length == 1 ? '0' + (new Date().getMinutes()) : new Date().getMinutes()
         }
 
         $scope.suspect = {

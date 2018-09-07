@@ -111,13 +111,13 @@ riskManagementSystem.directive('blurToCurrency', function ($filter) {
 
 riskManagementSystem.filter('dateformatter', function () {
     return function (input) {
-        if(input == null || typeof input == 'undefined'){
+        if (input == null || typeof input == 'undefined') {
             return null;
         }
         input = input || '';
         let out = '';
-        if(typeof input.getMonth === 'function'){
-           input = input.toLocaleDateString();
+        if (typeof input.getMonth === 'function') {
+            input = input.toLocaleDateString();
         }
         let date = new Date(input.split(" ")[0]);
         out = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
@@ -269,3 +269,19 @@ riskManagementSystem.directive("mapsDirective", function () {
         }
     };
 })
+
+riskManagementSystem.directive('wholeNumber', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.on('change', function () {
+                val = element.val();
+                if (val.length === 2) {
+                    element.val(val);
+                } else {
+                    element.val('0' + val);
+                }
+            });
+        }
+    }
+});
