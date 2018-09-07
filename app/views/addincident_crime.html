@@ -215,18 +215,21 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-12 col-md-6">
+				<div class="col-sm-12 col-md-3">
 					<label>Age</label>
 					<input type="number" class="form-control" ng-model="crimeWitness.age" />
 				</div>
 
-				<div class="col-sm-12 col-md-6">
+				<div class="col-sm-12 col-md-3">
 					<div>
 						<label>Gender</label>
 					</div>
 					<select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="crimeWitness.genderType.id">
 						<option value=""></option>
 					</select>
+				</div>
+				<div class="col-sm-6">
+
 				</div>
 				<!-- <div class="col-sm-12 col-md-4">
                     <label>Gender others</label>
@@ -377,7 +380,7 @@
 				<input name="" class="form-control" type="text" ng-model="crimeSuspect.addresses[0].streetName">
 			</div>
 		</div>
-<!-- 
+		<!-- 
 		<div class="row">
 			<div class="col-sm-12 col-md-6">
 				<label>Locality </label>

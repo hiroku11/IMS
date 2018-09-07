@@ -223,16 +223,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-3">
                     <label>Age</label>
                     <input type="number" class="form-control" ng-model="witness.age" />
                 </div>
 
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-3">
                     <label>Gender</label>
                     <select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="witness.genderType.id">
                         <option value=""></option>
                     </select>
+                </div>
+                <div class="col-sm-6">
+
                 </div>
             </div>
 
@@ -539,15 +542,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-3">
                 <label>Age</label>
                 <input type="number" class="form-control" ng-model="injuredPerson.age">
             </div>
-            <div class="com-sm-12 col-md-6">
+            <div class="com-sm-12 col-md-3">
                 <label>Gender:</label>
                 <select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="injuredPerson.genderType.id">
                     <option value=""></option>
                 </select>
+            </div>
+            <div class="col-sm-6">
+
             </div>
         </div>
         <div class="row">
