@@ -256,7 +256,7 @@ h5 {
     margin-top: 3px;
 }
 
-.sm-navbar li.active{
+.sm-navbar li.active {
     background-color: #8c1519;
 }
 
@@ -1083,6 +1083,10 @@ a {
     margin: 0px !important;
 }
 
-.btn-outline-success{
+.btn-outline-success {
     border: 1px solid lightgreen;
+}
+
+table {
+    margin-right: 5px !important;
 }
