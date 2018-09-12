@@ -547,7 +547,9 @@ a i {
     overflow: auto;
     max-height: 500px;
 }
-
+.accident .modal-body{
+    max-height: 700px;
+}
 .uib-datepicker-popup {
     height: auto !important;
 }
