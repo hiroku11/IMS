@@ -1498,6 +1498,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             })
         }
         $scope.getIncidentLocDetail = function () {
+            if (!$scope.logIncidentDetails || !$scope.logIncidentDetails.incidentLocation) {
+                return;
+            }
             var req = {
                 url: rmsService.baseEndpointUrl + 'table-maintenance/incident-location-detail/incident-location/'
                     + $scope.logIncidentDetails.incidentLocation.id,
