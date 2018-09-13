@@ -294,7 +294,7 @@
                     <div class="modal-body">
                         <div class="row p-2">
                             <div class="col-sm-12 col-md-2">
-                                <label>Postcode 1</label>
+                                <label>Postcode</label>
                             </div>
                             <div class="col-sm-12 col-md-4">
                                 <input class="form-control" ng-model="postcode1" name="postcode1" />
@@ -306,39 +306,39 @@
                                 <input class="form-control" ng-model="postcode2" name="postcode2" />
                             </div>
                         </div>
-                       
+
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                        <th>Door/Block/Apt No.</th>
-                                        <th>Org Name</th>
-                                        <th>Building Name</th>
-                                        <th>Street Name</th>
-                                        <th>Locality Name</th>
-                                        <th>Post Town</th>
-                                        <th>County</th>
-                                        <th>Country</th>
-                                        <th>PostCode 1</th>
-                                        <th>PostCode 2</th>
-                                        <th></th>
+                                    <th>Door/Block/Apt No.</th>
+                                    <th>Org Name</th>
+                                    <th>Building Name</th>
+                                    <th>Street Name</th>
+                                    <th>Locality Name</th>
+                                    <th>Post Town</th>
+                                    <th>County</th>
+                                    <th>City</th>
+                                    <th>Country</th>
+                                    <th>PostCode</th>
+                                    <th></th>
                                 </tr>
 
                             </thead>
                             <tbody>
                                 <tr ng-repeat="add in postCodeResults">
-                                        <td>{{add.doorNumber}}, {{add.blockNumber}}, {{add.apartmentNumber}}</td>
-                                        <td>{{add.organizationName}}</td>
-                                        <td>{{add.buildingName}}</td>
-                                        <td>{{add.streetName}}</td>
-                                        <td>{{add.localityName}}</td>
-                                        <td>{{add.postTown}}</td>
-                                        <td>{{add.county}}</td>
-                                        <td>{{add.country}}</td>
-                                        <td>{{add.postcode1}}</td>
-                                        <td>{{add.postcode2}}</td>
-                                        <td>
-                                          <span class="fa fa-plus btn btn-sm btn-outline-success" ng-click="selectLookupAddress(add)"></span>
-                                        </td>
+                                    <td>{{add.doorNumber}}, {{add.blockNumber}}, {{add.apartmentNumber}}</td>
+                                    <td>{{add.organizationName}}</td>
+                                    <td>{{add.buildingName}}</td>
+                                    <td>{{add.streetName}}</td>
+                                    <td>{{add.localityName}}</td>
+                                    <td>{{add.postTown}}</td>
+                                    <td>{{add.county}}</td>
+                                    <td>{{add.city}}</td>
+                                    <td>{{add.country}}</td>
+                                    <td>{{add.postcode1}} {{add.postcode2}}</td>
+                                    <td>
+                                        <span class="fa fa-plus btn btn-sm btn-outline-success" ng-click="selectLookupAddress(add)"></span>
+                                    </td>
                                 </tr>
                             </tbody>
 
