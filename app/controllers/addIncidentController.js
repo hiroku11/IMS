@@ -148,11 +148,15 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         $scope.assetOthers = [];
         $scope.equipments = [];
         $scope.building = {
-
+            "id" : null,
             "assetCategory": {
                 "id": "BUILDING",
                 "description": null
-            }
+            },
+            addresses: [{
+                "id": null,
+                "statusFlag": "ACTIVE"
+            }],
 
         }
         $scope.buildings = [];
@@ -4151,7 +4155,12 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.selectLookupAddress = function (add) {
-            $scope[$scope.whatFor].addresses[0] = add;
+            if($scope[$scope.whatFor].addresses){
+                $scope[$scope.whatFor].addresses[0] = add;
+            }
+           else{
+            $scope[$scope.whatFor].addresses = add;
+           }
             $('#postcodeModal').modal('hide');
             $scope.clearPostCodeLookup();
         }

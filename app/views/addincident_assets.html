@@ -7,10 +7,7 @@
                 <select class="form-control" ng-options="assetCat.id as assetCat.description for assetCat in assetCat" ng-model="assetCategory.id">
                     <option value=""></option>
                 </select>
-
-
-            </div>
-
+        </div>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12">
@@ -241,6 +238,75 @@
                     </textarea>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Organization Name (if any)</label>
+                    <input ng-model="building.addresses[0].organizationName" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Block # / Name</label>
+                    <input ng-model="building.addresses[0].blockNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Building Name</label>
+                    <input ng-model="building.addresses[0].buildingName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 row zero-margin ">
+                    <div class="col-sm-4 zero-padding">
+                        <label>Postcode</label>
+                        <input ng-model="building.addresses[0].postcode1" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4 zero-padding" style="padding-top:25px !important">
+                        <!-- <label>Postcode 2</label> -->
+                        <input ng-model="building.addresses[0].postcode2" type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4" style="padding-top:24px;padding-left:0;">
+                        <button ng-click="showPostcodeLookup('building')" class="btn btn-info" type="button" style="padding:10px 12px;">
+                            <span class="fa fa-search"> Lookup</span>
+                        </button>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Locality Name</label>
+                    <input ng-model="building.addresses[0].localityName" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>City</label>
+                    <input ng-model="building.addresses[0].city" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Door #</label>
+                    <input ng-model="building.addresses[0].doorNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Apartment # / Name</label>
+                    <input ng-model="building.addresses[0].apartmentNumber" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Street Name</label>
+                    <input ng-model="building.addresses[0].streetName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <label>Post Town</label>
+                    <input ng-model="building.addresses[0].postTown" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>County</label>
+                    <input ng-model="building.addresses[0].county" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label>Country</label>
+                    <input ng-model="building.addresses[0].country" type="text" class="form-control">
+                </div>
+            </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-12 col-md-4" ng-if="!editBuilding">
                     <button class="btn btn-primary" ng-click="addBuilding()" ng-disabled="!assetAdded">Add Building</button>
@@ -260,8 +326,7 @@
                             <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                                 &nbsp;
                             </th>
-
-                        </tr>
+                    </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="building in buildings">
@@ -273,8 +338,7 @@
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </a> &nbsp;&nbsp;&nbsp;
                                 <a ng-click="loadBuilding(building)">
-
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                   <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
 
                             </td>
