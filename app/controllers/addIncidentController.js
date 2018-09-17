@@ -1220,7 +1220,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.claimHandlerList = response.data;
             }, function (error) {
                 AppService.HideLoader();
-                rmsService.showAlert(false, error.data.errorMessages[0]);
+                rmsService.showAlert(false, error);
 
             })
         }
@@ -1250,7 +1250,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.investigationHandlerList = response.data;
             }, function (error) {
                 AppService.HideLoader();
-                rmsService.showAlert(false, error.data.errorMessages[0]);
+                rmsService.showAlert(false, error);
 
             })
         }
@@ -2260,7 +2260,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 AppService.HideLoader();
             }, function (error) {
                 AppService.HideLoader();
-                rmsService.showAlert(false, error.data.errorMessages[0]);
+                rmsService.showAlert(false, error);
             })
         }
 
@@ -2758,7 +2758,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 AppService.HideLoader();
             }, function (error) {
                 AppService.HideLoader();
-                rmsService.showAlert(false, error.data.errorMessages[0]);
+                rmsService.showAlert(false, error);
             })
         }
         $scope.deleteBuilding = function (building) {
