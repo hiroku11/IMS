@@ -148,7 +148,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         $scope.assetOthers = [];
         $scope.equipments = [];
         $scope.building = {
-            "id" : null,
+            "id": null,
             "assetCategory": {
                 "id": "BUILDING",
                 "description": null
@@ -3133,7 +3133,10 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.addCrimeSuspect = function () {
-
+            if (!$scope.crimeDetails.id) {
+                rmsService.showAlert(false, 'Please save crime details first.');
+                return;
+            }
             $scope.crimeSuspect.distinguishingFeatureDetails = $scope.crimeSuspect.distinguishingFeatures;
             var req = {
                 url: rmsService.baseEndpointUrl + 'crime/add-crime-suspect/crimeId/' +
@@ -4158,12 +4161,12 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.selectLookupAddress = function (add) {
-            if($scope[$scope.whatFor].addresses){
+            if ($scope[$scope.whatFor].addresses) {
                 $scope[$scope.whatFor].addresses[0] = add;
             }
-           else{
-            $scope[$scope.whatFor].addresses = add;
-           }
+            else {
+                $scope[$scope.whatFor].addresses = add;
+            }
             $('#postcodeModal').modal('hide');
             $scope.clearPostCodeLookup();
         }
