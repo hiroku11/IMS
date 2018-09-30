@@ -20,6 +20,7 @@
     riskManagementSystem.service("rmsService", function ($http, $window, $location) {
         this.authorisedUserDetails = false;
         this.decryptToken = function () {
+            var expired;
             if (this.authorisedUserDetails) {
                 return this.authorisedUserDetails
             }
@@ -35,7 +36,7 @@
                 this.authorisedUserDetails = decryptedUserDetails;
                 //check if the token has expired
                 if (new Date(decryptedUserDetails.expires) < new Date()) {
-                    var expired = true;
+                    expired = true;
                 }
             } else {
                 //if token not present redirect to login
