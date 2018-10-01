@@ -78,6 +78,12 @@
         }
         this.isAdminRole = function () {
             let adminRoles = ['INVESTIGATOR', 'CLAIMS_HANDLER', 'ADMIN'];
+            if (!this.loggedInUser) {
+                this.getLoggedInUser();
+                if (!this.loggedInUser) {
+                    return false;
+                }
+            }
             return adminRoles.some(role => this.loggedInUser.roles.includes(role));
         }
         this.cloneObject = function (obj) {
