@@ -44,7 +44,7 @@
         <div role="presentation" class="dropdown">
             <img src="assets/images/logo@1x.png" alt="gotorisk.co.uk" class="user-image" />
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                {{loggedInUser.loginId}}
+                {{loggedInUser.loginId || loggedInUser.userLoginId}}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">

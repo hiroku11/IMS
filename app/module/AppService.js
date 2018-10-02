@@ -54,9 +54,11 @@
         this.baseEndpointUrl = "https://125ae965.ngrok.io/rmsrest/s/";
         this.getLoggedInUser = function () {
             if (!this.loggedInUser) {
+                
                 $location.path("/login");
             }
             if (this.loggedInUser) {
+                this.loggedInUser.userId = this.authorisedUserDetails.loginId;
                 return this.loggedInUser;
             } else {
                 this.loggedInUser = {};
