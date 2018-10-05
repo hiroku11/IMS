@@ -247,7 +247,8 @@
 
                     <div class="col-md-6 floatRight">
                         <!-- <button type="button" ng-click="submitForm('logIncidentForm','back')" class="btn btn-secondary pull-right">Back</button> -->
-                        <button type="button" ng-click="submitForm('logIncidentForm','next')" class="btn btn-success pull-right" style="margin-right:5px">Next</button>
+                        <button type="button" ng-click="submitForm('logIncidentForm','next')" class="btn btn-success pull-right" style="margin-right:5px"
+                        ng-disabled ="!logIncidentDetails.incidentId">Next</button>
                     </div>
                 </div>
             </form>
