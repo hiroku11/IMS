@@ -3931,7 +3931,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
         $scope.prepareEditIncidentData = function () {
             let incidentSummary = rmsService.cloneObject($scope.incidentSummary);
-            $scope.incident.incidentId = incidentSummary.id;
+            $scope.incident.incidentId = incidentSummary.id.uniqueIncidentId;
+            $scope.logIncidentDetails.incidentId = incidentSummary
             $scope.incident.id = incidentSummary.id;
             $scope.incident.uniqueIncidentId = incidentSummary.uniqueIncidentId;
             $scope.userInfo = incidentSummary.incidentReportedBy;
