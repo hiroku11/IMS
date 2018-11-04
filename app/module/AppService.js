@@ -51,7 +51,7 @@
             }
 
         }
-        this.baseEndpointUrl = "https://125ae965.ngrok.io/rmsrest/s/";
+        this.baseEndpointUrl = "https://gotorisk.co.uk:8443/rmsrest/s/";
         this.getLoggedInUser = function () {
             if (!this.loggedInUser) {
                 

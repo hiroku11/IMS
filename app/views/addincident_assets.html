@@ -2,12 +2,15 @@
     <h2>Assets Details</h2>
     <form ng-submit="submitForm('assetsForm')">
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-8 col-md-6" style="padding-right:0;">
                 <label>Category</label>
                 <select class="form-control" ng-options="assetCat.id as assetCat.description for assetCat in assetCat" ng-model="assetCategory.id">
                     <option value=""></option>
                 </select>
-        </div>
+            </div>
+            <div ng-if="assetCategory.id" class="col-sm-4 col-md-6" style="padding-top:25px;padding-left:0;">
+                <button type="button" ng-click="showAssetLookup(assetCategory.id)" class="btn btn-secondary">Lookup</button>
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12">
@@ -326,7 +329,7 @@
                             <th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                                 &nbsp;
                             </th>
-                    </tr>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="building in buildings">
@@ -338,7 +341,7 @@
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </a> &nbsp;&nbsp;&nbsp;
                                 <a ng-click="loadBuilding(building)">
-                                   <i class="glyphicon glyphicon-pencil"></i>
+                                    <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
 
                             </td>
@@ -528,4 +531,1243 @@
         </div>
     </form>
 
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="assetLookup">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">{{assetCategory.description}} lookup</h3>
+            </div>
+
+            <div class="modal-body" style="height: 70%;">
+
+                <div ng-if="assetTypeLookup == 'building'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Building ID</label>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingId)" ng-model="lookupOptions.buildingId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.buildingId.value" ng-change="lookupFieldChange(lookupOptions.buildingId)"
+                                name="buildingId" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.buildingId.sort" ng-change="lookupSortChange(lookupOptions.buildingId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingId)" ng-model="lookupOptions.buildingId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Building Name</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingName)" ng-model="lookupOptions.buildingName.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.buildingName.value" ng-change="lookupFieldChange(lookupOptions.buildingName)"
+                                name="buildingName" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.buildingName.sort" ng-change="lookupSortChange(lookupOptions.buildingName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingName)" ng-model="lookupOptions.buildingName.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Building Description</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingDescription)" ng-model="lookupOptions.buildingDescription.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.buildingDescription.value" ng-change="lookupFieldChange(lookupOptions.buildingDescription)"
+                                name="buildingDescription">
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.buildingDescription.sort" ng-change="lookupSortChange(lookupOptions.buildingDescription)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingDescription)" ng-model="lookupOptions.buildingDescription.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="assetTypeLookup == 'equipment'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Equipment ID</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentId)" ng-model="lookupOptions.equipmentId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="equipmentId" ng-change="lookupFieldChange(lookupOptions.equipmentId)" name="equipmentid"
+                            />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.equipmentId.sort" ng-change="lookupSortChange(lookupOptions.equipmentId)"
+                                    name="equipmentidsort"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentId)" ng-model="lookupOptions.equipmentId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Equipment Name</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentName)" ng-model="lookupOptions.equipmentName.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.equipmentName.value" ng-change="lookupFieldChange(lookupOptions.equipmentName)"
+                                name="equipmentName" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.equipmentName.sort" ng-change="lookupSortChange(lookupOptions.equipmentName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentName)" ng-model="lookupOptions.equipmentName.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Equipment Tag</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select name="equipmentTagoperator" class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentTag)" ng-model="lookupOptions.equipmentTag.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.equipmentTag.value" ng-change="lookupFieldChange(lookupOptions.equipmentTag)"
+                                name="equipmentTag" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.equipmentTag.sort" ng-change="lookupSortChange(lookupOptions.equipmentTag)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentTag)" ng-model="lookupOptions.equipmentTag.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Make</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentMake)" ng-model="lookupOptions.equipmentMake.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.equipmentMake.value" ng-change="lookupFieldChange(lookupOptions.equipmentMake)"
+                                name="equipmentMake" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.equipmentMake.sort" ng-change="lookupSortChange(lookupOptions.equipmentMake)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentMake)" ng-model="lookupOptions.equipmentMake.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Model</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentModel)" ng-model="lookupOptions.equipmentModel.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.equipmentModel.value" ng-change="lookupFieldChange(lookupOptions.equipmentModel)"
+                                name="equipmentModel" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.equipmentModel.sort" ng-change="lookupSortChange(lookupOptions.equipmentModel)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentModel)" ng-model="lookupOptions.equipmentModel.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Order No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.orderNumber)" ng-model="lookupOptions.orderNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.orderNumber.value" ng-change="lookupFieldChange(lookupOptions.orderNumber)"
+                                name="orderNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.orderNumber.sort" ng-change="lookupSortChange(lookupOptions.orderNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.orderNumber)" ng-model="lookupOptions.orderNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Invoice No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.invoiceNumber)" ng-model="lookupOptions.invoiceNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.invoiceNumber.value" ng-change="lookupFieldChange(lookupOptions.invoiceNumber)"
+                                name="invoiceNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.invoiceNumber.sort" ng-change="lookupSortChange(lookupOptions.invoiceNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.invoiceNumber)" ng-model="lookupOptions.invoiceNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Serial No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.serialNumber)" ng-model="lookupOptions.serialNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.serialNumber.value" ng-change="lookupFieldChange(lookupOptions.serialNumber)"
+                                name="serialNumber" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.serialNumber.sort" ng-change="lookupSortChange(lookupOptions.serialNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.serialNumber)" ng-model="lookupOptions.serialNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="assetTypeLookup == 'vehicle'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Vehicle Reg ID</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.vehicleRegistrationId)" ng-model="lookupOptions.vehicleRegistrationId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="lookupOptions.vehicleRegistrationId.value" ng-change="lookupFieldChange(lookupOptions.vehicleRegistrationId)"
+                                name="vehicleRegistrationId" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.vehicleRegistrationId.sort" ng-change="lookupSortChange(lookupOptions.vehicleRegistrationId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.vehicleRegistrationId)" ng-model="lookupOptions.vehicleRegistrationId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Engine No</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.engineNumber)" ng-model="lookupOptions.engineNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.engineNumber)" ng-model="lookupOptions.engineNumber.value"
+                                name="engineNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.engineNumber.sort" ng-change="lookupSortChange(lookupOptions.engineNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.engineNumber)" ng-model="lookupOptions.engineNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Chassis No</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.chassisNumber)" ng-model="lookupOptions.chassisNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.chassisNumber)" ng-model="lookupOptions.chassisNumber.value"
+                                name="chassisNumber" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.chassisNumber.sort" ng-change="lookupSortChange(lookupOptions.chassisNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.chassisNumber)" ng-model="lookupOptions.chassisNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Make</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.make)" ng-model="lookupOptions.make.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-model="make" ng-change="lookupFieldChange(lookupOptions.make)" name="make" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.make.sort" ng-change="lookupSortChange(lookupOptions.make)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.make)" ng-model="lookupOptions.make.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col-sm-12 col-md-3">
+                            <label>Model</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.model)" ng-model="lookupOptions.model.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.model)" ng-model="lookupOptions.model.value" name="model"
+                            />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.model.sort" ng-change="lookupSortChange(lookupOptions.model)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.model)" ng-model="lookupOptions.model.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Month of Manufacturing.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.monthOfManufacturing)" ng-model="lookupOptions.monthOfManufacturing.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.monthOfManufacturing)" ng-model="lookupOptions.monthOfManufacturing.value">
+                                <option ng-value="null"></option>
+                                <option ng-repeat="month in dropDownsData.monthTypeList" ng-value="month.description">{{month.description}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.monthOfManufacturing.sort" ng-change="lookupSortChange(lookupOptions.monthOfManufacturing)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.monthOfManufacturing)" ng-model="lookupOptions.monthOfManufacturing.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Year of Manufacturing</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.yearOfManufacturing.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.yearOfManufacturing.value"
+                                name="yearOfManufacturing" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.yearOfManufacturing.sort" ng-change="lookupSortChange(lookupOptions.yearOfManufacturing)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.yearOfManufacturing.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>MOT Obtained Date</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.motObtainedDate.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.yearOfManufacturing)" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5"
+                                ng-model="lookupOptions.motObtainedDate.value" name="motObtainedDate" />
+                            <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.motObtainedDate.sort" ng-change="lookupSortChange(lookupOptions.motObtainedDate)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.motObtainedDate)" ng-model="lookupOptions.motObtainedDate.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="assetTypeLookup == 'other'">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>ID</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherId)" ng-model="lookupOptions.assetTypeOtherId.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherId)" ng-model="lookupOptions.assetTypeOtherId.value"
+                                name="assetTypeOtherId" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherId.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherId)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherId)" ng-model="lookupOptions.assetTypeOtherId.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Name</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherName)" ng-model="lookupOptions.assetTypeOtherName.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherName)" ng-model="lookupOptions.assetTypeOtherName.value"
+                                name="assetTypeOtherName" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherName.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherName)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherName)" ng-model="lookupOptions.assetTypeOtherName.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Description</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherDescription)" ng-model="lookupOptions.assetTypeOtherDescription.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherDescription)" ng-model="lookupOptions.assetTypeOtherDescription.value"
+                                name="assetTypeOtherDescription" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherDescription.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherDescription)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherDescription)" ng-model="lookupOptions.assetTypeOtherDescription.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Asset Tag</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTag)" ng-model="lookupOptions.assetTag.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTag)" ng-model="lookupOptions.assetTag.value"
+                                name="assetTag" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.assetTag.sort" ng-change="lookupSortChange(lookupOptions.assetTag)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTag)" ng-model="lookupOptions.assetTag.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Make</label>
+                        </div>
+
+                        <div class="ol-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetMake)" ng-model="lookupOptions.assetMake.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetMake)" ng-model="lookupOptions.assetMake.value"
+                                name="assetMake" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.assetMake.sort" ng-change="lookupSortChange(lookupOptions.assetMake)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetMake)" ng-model="lookupOptions.assetMake.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Model</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetModel)" ng-model="lookupOptions.assetModel.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetModel)" ng-model="lookupOptions.assetModel.value"
+                                name="assetModel" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.assetModel.sort" ng-change="lookupSortChange(lookupOptions.assetModel)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetModel)" ng-model="lookupOptions.assetModel.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Serial No.</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetSerialNumber)" ng-model="lookupOptions.assetSerialNumber.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetSerialNumber)" ng-model="lookupOptions.assetSerialNumber.value"
+                                name="assetSerialNumber" />
+
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.assetSerialNumber.sort" ng-change="lookupSortChange(lookupOptions.assetSerialNumber)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetSerialNumber)" ng-model="lookupOptions.assetSerialNumber.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label>Purchased date</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-3">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.purchasedDate)" ng-model="lookupOptions.purchasedDate.operator">
+                                <option value="EQ" selected>Equals</option>
+                                <option value="NEQ">Not equals</option>
+                                <option value="STARTS_WITH">Starts with</option>
+                                <option value="ENDS_WITH">Ends with</option>
+                                <option value="CONTAINS">Contains</option>
+                                <option value="NOT_CONTAINS">Does not contain</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.purchasedDate)" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
+                                ng-model="lookupOptions.purchasedDate.value" name="purchasedDate" />
+                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <span>
+                                <input type="checkbox" ng-model="lookupOptions.purchasedDate.sort" ng-change="lookupSortChange(lookupOptions.purchasedDate)"> Sort
+                            </span>
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.purchasedDate)" ng-model="lookupOptions.purchasedDate.order">
+                                <option value="ASC">ASC</option>
+                                <option value="DESC">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Department</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.department)" ng-model="lookupOptions.department.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.department)" ng-model="lookupOptions.department.value">
+                            <option ng-value="null"></option>
+                            <option ng-repeat="department in depType" ng-value="department.description">{{department.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" ng-model="lookupOptions.department.sort" ng-change="lookupSortChange(lookupOptions.department)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.department)" ng-model="lookupOptions.department.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Asset Condition</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetCondition)" ng-model="lookupOptions.assetCondition.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select ng-change="lookupFieldChange(lookupOptions.assetCondition)" class="form-control" ng-model="lookupOptions.assetCondition.value">
+                            <option ng-value="null"></option>
+                            <option ng-repeat="condition in dropDownsData.assetConditionList" ng-value="condition.description">{{condition.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" ng-model="lookupOptions.assetCondition.sort" ng-change="lookupSortChange(lookupOptions.assetCondition)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetCondition)" ng-model="lookupOptions.assetCondition.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Asset Status</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetStatus)" ng-model="lookupOptions.assetStatus.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select ng-change="lookupFieldChange(lookupOptions.assetStatus)" class="form-control" ng-model="lookupOptions.assetStatus.value">
+                            <option ng-value="null"></option>
+                            <option ng-repeat="option in dropDownsData.assetStatusList" ng-value="option.description">{{option.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" ng-model="lookupOptions.assetStatus.sort" ng-change="lookupSortChange(lookupOptions.assetStatus)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetStatus)" ng-model="lookupOptions.assetStatus.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Asset Type</label>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetType)" ng-model="lookupOptions.assetType.operator">
+                            <option value="EQ" selected>Equals</option>
+                            <option value="NEQ">Not equals</option>
+                            <option value="STARTS_WITH">Starts with</option>
+                            <option value="ENDS_WITH">Ends with</option>
+                            <option value="CONTAINS">Contains</option>
+                            <option value="NOT_CONTAINS">Does not contain</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <select ng-change="lookupFieldChange(lookupOptions.assetType)" class="form-control" ng-model="lookupOptions.assetType.value">
+                            <option ng-value="null"></option>
+                            <option ng-repeat="type in dropDownsData.assetTypeList" ng-value="type.description">{{type.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <span>
+                            <input type="checkbox" ng-model="lookupOptions.assetType.sort" ng-change="lookupSortChange(lookupOptions.assetType)"> Sort
+                        </span>
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetType)" ng-model="lookupOptions.assetType.order">
+                            <option value="ASC">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>Regulatory</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.regulatoryCompliance)" ng-model="lookupOptions.regulatoryCompliance.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>AMC</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.amcPresent)" ng-model="lookupOptions.amcPresent.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <label>Insurance</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.insurancePresent)" ng-model="lookupOptions.insurancePresent.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>Loan</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.loanPresent)" ng-model="lookupOptions.loanPresent.value">
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4 ">
+                        <label>License</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.licensePresent)" ng-model="lookupOptions.licensePresent.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12  col-md-4 ">
+                        <label>Warranty</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.warrantyPresent)" ng-model="lookupOptions.warrantyPresent.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <label>Inspection</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.inspectionPresent)" ng-model="lookupOptions.inspectionPresent.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <label>Service</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.servicePresent)" ng-model="lookupOptions.servicePresent.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <label>Rental or Lease</label>
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.rentalOrLeasePresent)" ng-model="lookupOptions.rentalOrLeasePresent.value">
+                            <option ng-value="null"></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr ng-if="assetTypeLookup == 'building'">
+                            <th>
+                                Building ID
+                            </th>
+                            <th>
+                                Building Name
+                            </th>
+                            <th>
+                                Organization
+                            </th>
+                            <th>
+                                Department
+                            </th>
+                            <th>
+                                Reg. Authority
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr ng-if="assetTypeLookup == 'equipment'">
+                            <th>
+                                Equipment ID
+                            </th>
+                            <th>
+                                Equipment Name
+                            </th>
+                            <th>
+                                Organization
+                            </th>
+                            <th>
+                                Department
+                            </th>
+                            <th>
+                                Reg. Authority
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr ng-if="assetTypeLookup == 'vehicle'">
+                            <th>
+                                Vehicle Reg #
+                            </th>
+                            <th>
+                                Make
+                            </th>
+                            <th>
+                                Model
+                            </th>
+                            <th>
+                                Engine #
+                            </th>
+                            <th>
+                                Chasis #
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr ng-if="assetTypeLookup == 'other'">
+                            <th>
+                                Asset ID
+                            </th>
+                            <th>
+                                Asset Name
+                            </th>
+                            <th>
+                                Organization
+                            </th>
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Reg. Authority
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="asset in lookupassets" ng-if="assetTypeLookup == 'equipment'">
+                            <td>
+                                {{asset.equipmentId}}
+                            </td>
+                            <td>
+                                {{asset.equipmentName}}
+                            </td>
+                            <td>
+                                {{asset.department.organization.description}}
+                            </td>
+                            <td>
+                                {{asset.department.description}}
+                            </td>
+                            <td>
+                                {{asset.regulatoryAuthorityName}}
+                            </td>
+                            <td>
+                                <span ng-click="selectAsset(asset)" class="fa fa-plus btn btn-sm btn-outline-danger"></span>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="asset in lookupassets" ng-if="assetTypeLookup == 'building'">
+                            <td>
+                                {{asset.buildingId}}
+                            </td>
+                            <td>
+                                {{asset.buildingName}}
+                            </td>
+                            <td>
+                                {{asset.department.organization.description}}
+                            </td>
+                            <td>
+                                {{asset.department.description}}
+                            </td>
+                            <td>
+                                {{asset.regulatoryAuthorityName}}
+                            </td>
+                            <td>
+                                <span ng-click="selectAsset(asset)" class="fa fa-plus btn btn-sm btn-outline-danger"></span>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="asset in lookupassets" ng-if="assetTypeLookup == 'other'">
+                            <td>
+                                {{other.assetTypeOtherId}}
+                            </td>
+                            <td>
+                                {{other.assetTypeOtherName}}
+                            </td>
+                            <td>
+                                {{other.department.organization.description}}
+                            </td>
+                            <td>
+                                {{other.department.description}}
+                            </td>
+                            <td>
+                                {{other.regulatoryAuthorityName}}
+                            </td>
+                            <td>
+                                <span ng-click="selectAsset(asset)" class="fa fa-plus btn btn-sm btn-outline-danger"></span>
+                            </td>
+                        </tr>
+
+                        <tr ng-repeat="asset in lookupassets" ng-if="assetTypeLookup == 'vehicle'">
+                            <td>
+                                {{asset.vehicleRegistrationId}}
+                            </td>
+                            <td>
+                                {{asset.make}}
+                            </td>
+                            <td>
+                                {{asset.model}}
+                            </td>
+                            <td>
+                                {{asset.engineNumber}}
+                            </td>
+                            <td>
+                                {{asset.chassisNumber}}
+                            </td>
+                            <td>
+                                <span ng-click="selectAsset(asset)" class="fa fa-plus btn btn-sm btn-outline-danger"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <nav aria-label="Page navigation" ng-if="lookupassets && lookupassets.length > 0">
+                    <select class="form-control" ng-options="entry.value as entry.value for entry in entry" ng-model="entryCount" ng-change="getEntries()"></select>
+                    <ul class="pagination">
+                        <li>
+                            <a aria-label="Previous" ng-click="goToPage(currentPage - 1)" ng-class="{disabled:currentPage==1}">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li ng-repeat="page in range(assetRecords,entryCount)" ng-class="{'active':currentPage == page}">
+                            <a ng-click="goToPage(page)">{{page}}</a>
+                        </li>
+                        <li>
+                            <a aria-label="Next" ng-click="goToPage(currentPage + 1)" ng-class="{disabled:currentPage==Math.ceil(assetRecords/entryCount)}">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <span>{{}}</span>
+                </nav>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="lookupAsset()">Submit</button>
+                <button type="button" class="btn btn-primary" ng-click="clearAssetLookup()">Clear</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
