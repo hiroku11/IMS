@@ -1,10 +1,27 @@
-var addIncidentController = riskManagementSystem.controller("addIncidentController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', '$state', 'dateformatterFilter',
-    function ($scope, AppService, rmsService, $location, $window, $http, $state, dateformatterFilter) {
+var addIncidentController = riskManagementSystem.controller("addIncidentController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', '$state', 'dateformatterFilter', 'helperFunctions',
+    function ($scope, AppService, rmsService, $location, $window, $http, $state, dateformatterFilter, helperFunctions) {
         $scope.token = localStorage.getItem('rmsAuthToken');
         $scope.thisView = "incidents";
         $scope.authorizedUser = rmsService.decryptToken();
         $scope.loggedInUser = rmsService.getLoggedInUser();
         $scope.whatFor = null;
+        $scope.assetRecords = 0;
+        $scope.currentPage = 1;
+        $scope.entryCount = 10;
+        $scope.assetTypeLookup = null;
+        $scope.lookupassets = null;
+        $scope.Math = window.Math;
+        $scope.entry = [{ value: 10 }, { value: 20 }, { value: 50 }];
+        $scope.range = helperFunctions.range;
+        $scope.dropDownsData = {
+            monthTypeList: null,
+            departmentList: null,
+            assetConditionList: null,
+            assetStatusList: null,
+            assetTypeList: null
+        }
+        $scope.assetLookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+        $scope.lookupOptions = {};
         $scope.logOutUser = function () {
             rmsService.logOutUser();
         }
@@ -992,6 +1009,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.getLossData = function () {
+            if (!$scope.incident.incidentId) {
+                return;
+            }
             var req = {
                 url: rmsService.baseEndpointUrl + 'reported-loss/reported-loss-table/incidentId/' + $scope.incident.incidentId,
                 method: "GET",
@@ -4193,11 +4213,210 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             })
         }
 
+        $scope.showAssetLookup = function (assetType) {
+            $scope.lookupassets = [];
+            $scope.currentPage = 1;
+            $scope.assetRecords = 0;
+            $scope.assetTypeLookup = assetType.toLowerCase();
+            $scope.initAssetSearchParams();
+            $("#assetLookup").modal('show');
+        }
+
+        $scope.initAssetSearchParams = function (clear) {
+            $scope.assetLookupParams = { "paging": { "currentPage": 0, "pageSize": 10 }, "sorts": [], "filters": [] };
+            const buildingProps = ['buildingId', 'buildingName', 'buildingDescription'];
+            const equipmentProps = ['equipmentId', 'equipmentName', 'equipmentTag', 'equipmentMake', 'equipmentModel', 'orderNumber', 'invoiceNumber', 'serialNumber'];
+            const assetotherProps = ['assetTypeOtherId', 'assetTypeOtherName', 'assetTypeOtherDescription', 'assetTag', 'assetMake',
+                'assetModel', 'assetSerialNumber', 'purchasedDate'];
+            const vehicletProps = ['vehicleRegistrationId', 'engineNumber', 'chassisNumber', 'make', 'model', 'motObtainedDate', 'yearOfManufacturing',
+                'monthOfManufacturing'];
+            let propsArray = ['department', 'assetCondition', 'assetStatus', 'assetType', 'regulatoryCompliance', 'amcPresent', 'insurancePresent', 'loanPresent',
+                'licensePresent', 'warrantyPresent', 'inspectionPresent', 'servicePresent', 'rentalOrLeasePresent'];
+            if ($scope.assetTypeLookup == 'equipment') {
+                propsArray = propsArray.concat(equipmentProps);
+            }
+            if ($scope.assetTypeLookup == 'building') {
+                propsArray = propsArray.concat(buildingProps);
+            }
+            if ($scope.assetTypeLookup == 'asset-type-other') {
+                propsArray = propsArray.concat(assetotherProps);
+            }
+            if ($scope.assetTypeLookup == 'vehicle') {
+                propsArray = propsArray.concat(vehicletProps);
+            }
+
+
+            propsArray.forEach((prop) => {
+                let parentFilter = {};
+                let parentSort = {};
+                // if (!clear) {
+                //     parentFilter = this.parentSearchParams.filters.filter((item) => item.field == prop);
+                //     parentSort = this.parentSearchParams.sorts.filter((item) => item.field == prop);
+                //     parentFilter.length != 0 ? parentFilter = parentFilter[0] : parentFilter = {};
+                //     parentSort.length != 0 ? parentSort = parentSort[0] : parentSort = {};
+                // }
+
+
+                $scope.lookupOptions[prop] = {
+                    field: prop,
+                    operator: "EQ",
+                    value: null,
+                    order: "ASC",
+                    sort: false
+                }
+            });
+
+            // this.parentSearchParams.filters.forEach(element => {
+
+            // });
+        }
+
+        $scope.lookupFieldChange = function ({ field, operator, value }) {
+            let fil = {
+                field,
+                operator,
+                value
+            }
+            const exists = $scope.assetLookupParams.filters.filter(filt => filt.field === field);
+            const obj = {};
+            obj[field] = value;
+            // fil.value = this._apiService.parseDateToApiFormat(obj)[field];
+            if (!exists.length) {
+                $scope.assetLookupParams.filters.push(fil);
+            } else {
+                exists[0].value = value;
+                exists[0].operator = operator;
+            }
+        }
+
+        $scope.lookupSortChange = function ({ field, sort, order }) {
+            let sor = {
+                field,
+                order
+            }
+            const exists = $scope.assetLookupParams.sorts.filter(s => s.field === field);
+            if (!exists.length && sort) {
+                $scope.assetLookupParams.sorts.push(sor);
+            } else if (exists.length && sort) {
+                exists[0].order = order;
+            } else {
+                const ind = this.searchParams.sorts.indexOf(exists[0]);
+                $scope.assetLookupParams.sorts.splice(ind, 1);
+            }
+
+        }
+
+        $scope.getAssetCategoriesList = function () {
+
+            let req = {
+                url: rmsService.baseEndpointUrl + 'table-maintenance/asset-category/asset-categories',
+                method: "GET",
+                headers: {
+                    'X-AUTH-TOKEN': $scope.token
+                }
+            }
+            $http(req).then(function (response) {
+                $scope.dropDownsData.assetCategoriesList = response.data;
+                // rmsService.showAlert(true, 'Incident submitted successfully.');
+            }, function (error) {
+                console.log(error);
+            });
+        }
+
+        $scope.getAssetTypeList = function () {
+
+            let req = {
+                url: rmsService.baseEndpointUrl + 'table-maintenance/asset-type/asset-types',
+                method: "GET",
+                headers: {
+                    'X-AUTH-TOKEN': $scope.token
+                }
+            }
+            $http(req).then(function (response) {
+                $scope.dropDownsData.assetTypeList = response.data;
+                // rmsService.showAlert(true, 'Incident submitted successfully.');
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        $scope.getAssetConditionList = function () {
+
+            let req = {
+                url: rmsService.baseEndpointUrl + 'table-maintenance/asset-condition/asset-conditions',
+                method: "GET",
+                headers: {
+                    'X-AUTH-TOKEN': $scope.token
+                }
+            }
+            $http(req).then(function (response) {
+                $scope.dropDownsData.assetConditionList = response.data;
+                // rmsService.showAlert(true, 'Incident submitted successfully.');
+            }, function (error) {
+                console.log(error);
+            });
+        }
+
+        $scope.getAssetStatusList = function () {
+            let req = {
+                url: rmsService.baseEndpointUrl + 'table-maintenance/asset-status/asset-statuses',
+                method: "GET",
+                headers: {
+                    'X-AUTH-TOKEN': $scope.token
+                }
+            }
+            $http(req).then(function (response) {
+                $scope.dropDownsData.assetStatusList = response.data;
+                // rmsService.showAlert(true, 'Incident submitted successfully.');
+            }, function (error) {
+                console.log(error);
+            });
+        }
+
+        $scope.getEntries = function () {
+            $scope.assetLookupParams.paging.pageSize = $scope.entryCount;
+            $scope.lookupAsset();
+        }
+        $scope.gotoPage = function (page) {
+            if (pageNo < 1 || pageNo > Math.ceil($scope.assetRecords / $scope.entryCount) || pageNo == $scope.currentPage) return;
+            $scope.currentPage = pageNo;
+            $scope.assetLookupParams.paging.currentPage = page - 1;
+            $scope.lookupAsset();
+        }
+        $scope.lookupAsset = function () {
+            // `/${this.assetType}/search-${this.assetType}s`
+            AppService.ShowLoader()
+            let req = {
+                url: rmsService.baseEndpointUrl + $scope.assetCategory.id.toLowerCase() + '/search-' + $scope.assetCategory.id.toLowerCase() + 's',
+                method: "GET",
+                headers: {
+                    'X-AUTH-TOKEN': $scope.token,
+                    Search: JSON.stringify({...$scope.assetLookupParams})
+                }
+            }
+            $http(req).then(function (response) {
+                AppService.HideLoader();
+                $scope.lookupassets = response.data[$scope.assetCategory.id.toLowerCase() + 's'].slice();
+                $scope.assetRecords = response.data.totalRecords;
+            }, function (error) {
+                AppService.HideLoader();
+                console.log(error);
+            });
+        }
+
+        $scope.selectAsset = function (asset) {
+            $scope[$scope.assetCategory.id.toLowerCase()] = asset;
+            if ($scope.assetCategory.id.toLowerCase() === 'other') {
+                $scope.assetOther = asset;
+            }
+        }
         //get data for dropdown and for other details
         $scope.getSuspectType();
         $scope.getAgency();
         $scope.getDistinguishFeatures();
-
+        $scope.getAssetCategoriesList();
+        $scope.getAssetConditionList();
+        $scope.getAssetStatusList();
+        $scope.getAssetTypeList();
         $scope.getEntrypoint();
         $scope.getIncidentLoc();
 
