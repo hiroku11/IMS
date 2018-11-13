@@ -4390,7 +4390,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 method: "GET",
                 headers: {
                     'X-AUTH-TOKEN': $scope.token,
-                    Search: JSON.stringify({...$scope.assetLookupParams})
+                    Search: JSON.stringify({ ...$scope.assetLookupParams })
                 }
             }
             $http(req).then(function (response) {
@@ -4408,6 +4408,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             if ($scope.assetCategory.id.toLowerCase() === 'other') {
                 $scope.assetOther = asset;
             }
+            rmsService.showAlert(true, $scope.assetCategory.id.toLowerCase() + ' selected');
         }
         //get data for dropdown and for other details
         $scope.getSuspectType();
