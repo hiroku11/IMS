@@ -1322,8 +1322,10 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             AppService.ShowLoader();
             $http(req).then(function (response) {
                 AppService.HideLoader();
-                $scope.incident.supportingDocuments = response.data;
+                $scope.incident.supportingDocuments = $scope.incident.supportingDocuments.concat(response.data);
                 rmsService.showAlert(true, 'Documnet added successfully.');
+                $scope.supportingDocumentsFormData = new FormData();
+                $scope.supportingDocuments = [{}, {}, {}, {}, {}];
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -3174,17 +3176,18 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Crime suspect added successfully.');
+                $scope.crimeSuspect = {
+                    addresses: [],
+                    distinguishingFeatureDetail: null,
+                    distinguishingFeature: null
+                }
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
             })
             //reinitialize the suspect so that new can be added
 
-            $scope.crimeSuspect = {
-                addresses: [],
-                distinguishingFeatureDetail: null,
-                distinguishingFeature: null
-            }
+
         }
         $scope.updateCrimeSuspect = function (person) {
             $scope.editCrimeSuspect = false;
@@ -3201,8 +3204,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
 
+                
+                $scope.crimeSuspect = {
+                    addresses: [],
+                    distinguishingFeatureDetail: null,
+                    distinguishingFeature: null
+                }
                 $scope.getCrimeSuspectData();
-                $scope.crimeSuspect.distinguishingFeatures = $scope.crimeSuspect.distinguishFeaturesDetails;
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Crime suspect updated successfully.');
 

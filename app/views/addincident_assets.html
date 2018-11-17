@@ -177,7 +177,7 @@
             </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-12 col-md-4" ng-if="!editassetother">
-                    <button class="btn btn-primary" ng-click="addAssetOther()" ng-disabled="!assetAdded">Add Asset</button>
+                    <button type="button" class="btn btn-primary" ng-click="addAssetOther()" ng-disabled="!assetAdded">Add Asset</button>
                 </div>
                 <div class="col-sm-12 col-md-4" ng-if="editassetother">
                     <a class="btn btn-success" ng-click="updateAssetOther(assetOther)">
@@ -474,7 +474,7 @@
             </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-12 col-md-4" ng-if="!editvehicle">
-                    <button class="btn btn-primary" ng-click="addVehicle()" ng-disabled="!assetAdded">Add Vehicle</button>
+                    <button type="button" class="btn btn-primary" ng-click="addVehicle()" ng-disabled="!assetAdded">Add Vehicle</button>
                 </div>
                 <div class="col-sm-12 col-md-4" ng-if="editvehicle">
                     <a class="btn btn-success" ng-click="updateVehicle(vehicle)">
