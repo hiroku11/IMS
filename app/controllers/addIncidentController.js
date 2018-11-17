@@ -132,15 +132,11 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             distinguishingFeature: null
         }
         $scope.vehicle = {
-
             "assetCategory": {
                 "id": "VEHICLE",
                 "description": null
             },
             "vehicleDamageTypes": []
-
-
-
         }
         $scope.vehicles = [];
         $scope.equipment = {
@@ -2892,7 +2888,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
                 $scope.vehicles = response.data;
-                $scope.vehicle = {};
+                $scope.vehicle = {
+                    "assetCategory": {
+                        "id": "VEHICLE",
+                        "description": null
+                    },
+                    "vehicleDamageTypes": []
+                }
                 $scope.vehicleDamageType.temp = [];
                 AppService.HideLoader();
             }, function (error) {
@@ -3204,7 +3206,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
 
-                
+
                 $scope.crimeSuspect = {
                     addresses: [],
                     distinguishingFeatureDetail: null,

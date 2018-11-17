@@ -68,9 +68,7 @@ riskManagementSystem.run(function ($rootScope, $location) {
         $location.path("/login");
     }
 
-    if (!expired) {
-        return this.authorisedUserDetails;
-    } else {
+    if (expired) {
         //if expired redirect to login
         $location.path("/login");
     }
