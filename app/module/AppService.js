@@ -29,6 +29,7 @@
                 $location.path("/login");
                 return;
             }
+            var expired;
             var base64Url = token.split('.')[0];
             var decryptedUserDetails = JSON.parse(window.atob(base64Url));
             if (decryptedUserDetails) {
@@ -37,9 +38,16 @@
                 if (new Date(decryptedUserDetails.expires) < new Date()) {
                     expired = true;
                 }
+
             } else {
                 //if token not present redirect to login
                 $location.path("/login");
+            }
+            if (expired) {
+                //if expired redirect to login
+                $location.path("/login");
+            } else {
+                return decryptedUserDetails;
             }
 
         }
