@@ -20,7 +20,6 @@
     riskManagementSystem.service("rmsService", function ($http, $window, $location) {
         this.authorisedUserDetails = false;
         this.decryptToken = function () {
-            var expired;
             if (this.authorisedUserDetails) {
                 return this.authorisedUserDetails
             }
@@ -30,6 +29,7 @@
                 $location.path("/login");
                 return;
             }
+            var expired;
             var base64Url = token.split('.')[0];
             var decryptedUserDetails = JSON.parse(window.atob(base64Url));
             if (decryptedUserDetails) {
@@ -38,39 +38,33 @@
                 if (new Date(decryptedUserDetails.expires) < new Date()) {
                     expired = true;
                 }
+
             } else {
                 //if token not present redirect to login
                 $location.path("/login");
             }
-
-            if (!expired) {
-                return this.authorisedUserDetails;
-            } else {
+            if (expired) {
                 //if expired redirect to login
                 $location.path("/login");
+            } else {
+                return decryptedUserDetails;
             }
 
         }
         this.baseEndpointUrl = "https://gotorisk.co.uk:8443/rmsrest/s/";
         this.getLoggedInUser = function () {
-            if (!this.loggedInUser) {
-                
-                $location.path("/login");
+            if (!this.authorisedUserDetails) {
+                this.decryptToken();
             }
-            if (this.loggedInUser) {
-                this.loggedInUser.userId = this.authorisedUserDetails.loginId;
-                return this.loggedInUser;
-            } else {
-                this.loggedInUser = {};
-                this.loggedInUser.userId = this.authorisedUserDetails.loginId;
-                this.loggedInUser.loginId = this.authorisedUserDetails.loginId;
-                this.loggedInUser.lastName = this.authorisedUserDetails.lastName;
-                this.loggedInUser.firstName = this.authorisedUserDetails.firstName;
-                this.loggedInUser.roles = this.authorisedUserDetails.roles.map(function (item) {
-                    return item.roleName;
-                });
-                return this.loggedInUser;
-            }
+            this.loggedInUser = {};
+            this.loggedInUser.userId = this.authorisedUserDetails.loginId;
+            this.loggedInUser.loginId = this.authorisedUserDetails.loginId;
+            this.loggedInUser.lastName = this.authorisedUserDetails.lastName;
+            this.loggedInUser.firstName = this.authorisedUserDetails.firstName;
+            this.loggedInUser.roles = this.authorisedUserDetails.roles.map(function (item) {
+                return item.roleName;
+            });
+            return this.loggedInUser;
         }
         this.logOutUser = function () {
             localStorage.removeItem("rmsAuthToken");

@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col-sm-8 col-md-6" style="padding-right:0;">
                 <label>Category</label>
-                <select class="form-control" ng-options="assetCat.id as assetCat.description for assetCat in assetCat" ng-model="assetCategory.id">
+                <select class="form-control" ng-options="assetCat.id as assetCat.description for assetCat in assetCat"
+                    ng-model="assetCategory.id">
                     <option value=""></option>
                 </select>
             </div>
@@ -177,7 +178,8 @@
             </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-12 col-md-4" ng-if="!editassetother">
-                    <button class="btn btn-primary" ng-click="addAssetOther()" ng-disabled="!assetAdded">Add Asset</button>
+                    <button type="button" class="btn btn-primary" ng-click="addAssetOther()" ng-disabled="!assetAdded">Add
+                        Asset</button>
                 </div>
                 <div class="col-sm-12 col-md-4" ng-if="editassetother">
                     <a class="btn btn-success" ng-click="updateAssetOther(assetOther)">
@@ -312,7 +314,8 @@
             </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-12 col-md-4" ng-if="!editBuilding">
-                    <button class="btn btn-primary" ng-click="addBuilding()" ng-disabled="!assetAdded">Add Building</button>
+                    <button class="btn btn-primary" type="button" ng-click="addBuilding()" ng-disabled="!assetAdded">Add
+                        Building</button>
                 </div>
                 <div class="col-sm-12 col-md-4" ng-if="editBuilding">
                     <a class="btn btn-success" ng-click="updateBuilding(building)">
@@ -376,7 +379,8 @@
             </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-12 col-md-4" ng-if="!editequipment">
-                    <button class="btn btn-primary" ng-click="addEquipement()" ng-disabled="!assetAdded">Add Equipment</button>
+                    <button class="btn btn-primary" type="button" ng-click="addEquipement()" ng-disabled="!assetAdded">Add
+                        Equipment</button>
                 </div>
                 <div class="col-sm-12 col-md-4" ng-if="editequipment">
                     <a class="btn btn-success" ng-click="updateEquipment(equipment)">
@@ -462,7 +466,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <label>Selected Vehicle</label>
-                    <input class="form-control" type="text" ng-model="vehicleDamageType.temp" readonly/>
+                    <input class="form-control" type="text" ng-model="vehicleDamageType.temp" readonly />
                 </div>
             </div>
 
@@ -474,7 +478,8 @@
             </div>
             <div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                 <div class="col-sm-12 col-md-4" ng-if="!editvehicle">
-                    <button class="btn btn-primary" ng-click="addVehicle()" ng-disabled="!assetAdded">Add Vehicle</button>
+                    <button type="button" class="btn btn-primary" ng-click="addVehicle()" ng-disabled="!assetAdded">Add
+                        Vehicle</button>
                 </div>
                 <div class="col-sm-12 col-md-4" ng-if="editvehicle">
                     <a class="btn btn-success" ng-click="updateVehicle(vehicle)">
@@ -524,7 +529,8 @@
 
             <div class="col-md-6 col-sm-12 floatRight">
                 <button type="button" ng-click="submitForm('assetsForm','next')" class="btn btn-success pull-right">Next</button>
-                <button type="button" ng-click="submitForm('assetsForm','back')" class="btn btn-secondary pull-right" style="margin-right:5px">Back</button>
+                <button type="button" ng-click="submitForm('assetsForm','back')" class="btn btn-secondary pull-right"
+                    style="margin-right:5px">Back</button>
 
             </div>
 
@@ -541,7 +547,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="modal-title">{{assetCategory.id.charAt(0).toUpperCase() + assetCategory.id.substr(1).toLowerCase()}} lookup</h3>
+                <h3 class="modal-title">{{assetCategory.id.charAt(0).toUpperCase() +
+                    assetCategory.id.substr(1).toLowerCase()}} lookup</h3>
             </div>
 
             <div class="modal-body" style="height: 70%;">
@@ -552,7 +559,8 @@
                             <label>Building ID</label>
                         </div>
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingId)" ng-model="lookupOptions.buildingId.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingId)"
+                                ng-model="lookupOptions.buildingId.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -568,9 +576,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.buildingId.sort" ng-change="lookupSortChange(lookupOptions.buildingId)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.buildingId.sort" ng-change="lookupSortChange(lookupOptions.buildingId)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingId)" ng-model="lookupOptions.buildingId.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingId)"
+                                ng-model="lookupOptions.buildingId.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -582,7 +592,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingName)" ng-model="lookupOptions.buildingName.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingName)"
+                                ng-model="lookupOptions.buildingName.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -598,9 +609,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.buildingName.sort" ng-change="lookupSortChange(lookupOptions.buildingName)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.buildingName.sort" ng-change="lookupSortChange(lookupOptions.buildingName)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingName)" ng-model="lookupOptions.buildingName.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingName)"
+                                ng-model="lookupOptions.buildingName.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -612,7 +625,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingDescription)" ng-model="lookupOptions.buildingDescription.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.buildingDescription)"
+                                ng-model="lookupOptions.buildingDescription.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -627,9 +641,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.buildingDescription.sort" ng-change="lookupSortChange(lookupOptions.buildingDescription)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.buildingDescription.sort" ng-change="lookupSortChange(lookupOptions.buildingDescription)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingDescription)" ng-model="lookupOptions.buildingDescription.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.buildingDescription)"
+                                ng-model="lookupOptions.buildingDescription.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -643,7 +659,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentId)" ng-model="lookupOptions.equipmentId.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentId)"
+                                ng-model="lookupOptions.equipmentId.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -654,15 +671,16 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-model="equipmentId" ng-change="lookupFieldChange(lookupOptions.equipmentId)" name="equipmentid"
-                            />
+                            <input class="form-control" ng-model="equipmentId" ng-change="lookupFieldChange(lookupOptions.equipmentId)"
+                                name="equipmentid" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
                                 <input type="checkbox" ng-model="lookupOptions.equipmentId.sort" ng-change="lookupSortChange(lookupOptions.equipmentId)"
                                     name="equipmentidsort"> Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentId)" ng-model="lookupOptions.equipmentId.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentId)"
+                                ng-model="lookupOptions.equipmentId.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -674,7 +692,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentName)" ng-model="lookupOptions.equipmentName.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentName)"
+                                ng-model="lookupOptions.equipmentName.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -690,9 +709,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.equipmentName.sort" ng-change="lookupSortChange(lookupOptions.equipmentName)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.equipmentName.sort" ng-change="lookupSortChange(lookupOptions.equipmentName)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentName)" ng-model="lookupOptions.equipmentName.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentName)"
+                                ng-model="lookupOptions.equipmentName.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -704,7 +725,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select name="equipmentTagoperator" class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentTag)" ng-model="lookupOptions.equipmentTag.operator">
+                            <select name="equipmentTagoperator" class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentTag)"
+                                ng-model="lookupOptions.equipmentTag.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -720,9 +742,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.equipmentTag.sort" ng-change="lookupSortChange(lookupOptions.equipmentTag)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.equipmentTag.sort" ng-change="lookupSortChange(lookupOptions.equipmentTag)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentTag)" ng-model="lookupOptions.equipmentTag.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentTag)"
+                                ng-model="lookupOptions.equipmentTag.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -735,7 +759,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentMake)" ng-model="lookupOptions.equipmentMake.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentMake)"
+                                ng-model="lookupOptions.equipmentMake.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -751,9 +776,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.equipmentMake.sort" ng-change="lookupSortChange(lookupOptions.equipmentMake)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.equipmentMake.sort" ng-change="lookupSortChange(lookupOptions.equipmentMake)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentMake)" ng-model="lookupOptions.equipmentMake.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentMake)"
+                                ng-model="lookupOptions.equipmentMake.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -765,7 +792,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentModel)" ng-model="lookupOptions.equipmentModel.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.equipmentModel)"
+                                ng-model="lookupOptions.equipmentModel.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -781,9 +809,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.equipmentModel.sort" ng-change="lookupSortChange(lookupOptions.equipmentModel)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.equipmentModel.sort" ng-change="lookupSortChange(lookupOptions.equipmentModel)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentModel)" ng-model="lookupOptions.equipmentModel.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.equipmentModel)"
+                                ng-model="lookupOptions.equipmentModel.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -795,7 +825,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.orderNumber)" ng-model="lookupOptions.orderNumber.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.orderNumber)"
+                                ng-model="lookupOptions.orderNumber.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -811,9 +842,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.orderNumber.sort" ng-change="lookupSortChange(lookupOptions.orderNumber)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.orderNumber.sort" ng-change="lookupSortChange(lookupOptions.orderNumber)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.orderNumber)" ng-model="lookupOptions.orderNumber.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.orderNumber)"
+                                ng-model="lookupOptions.orderNumber.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -825,7 +858,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.invoiceNumber)" ng-model="lookupOptions.invoiceNumber.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.invoiceNumber)"
+                                ng-model="lookupOptions.invoiceNumber.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -841,9 +875,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.invoiceNumber.sort" ng-change="lookupSortChange(lookupOptions.invoiceNumber)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.invoiceNumber.sort" ng-change="lookupSortChange(lookupOptions.invoiceNumber)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.invoiceNumber)" ng-model="lookupOptions.invoiceNumber.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.invoiceNumber)"
+                                ng-model="lookupOptions.invoiceNumber.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -855,7 +891,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.serialNumber)" ng-model="lookupOptions.serialNumber.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.serialNumber)"
+                                ng-model="lookupOptions.serialNumber.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -872,9 +909,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.serialNumber.sort" ng-change="lookupSortChange(lookupOptions.serialNumber)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.serialNumber.sort" ng-change="lookupSortChange(lookupOptions.serialNumber)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.serialNumber)" ng-model="lookupOptions.serialNumber.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.serialNumber)"
+                                ng-model="lookupOptions.serialNumber.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -888,7 +927,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.vehicleRegistrationId)" ng-model="lookupOptions.vehicleRegistrationId.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.vehicleRegistrationId)"
+                                ng-model="lookupOptions.vehicleRegistrationId.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -904,9 +944,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.vehicleRegistrationId.sort" ng-change="lookupSortChange(lookupOptions.vehicleRegistrationId)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.vehicleRegistrationId.sort" ng-change="lookupSortChange(lookupOptions.vehicleRegistrationId)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.vehicleRegistrationId)" ng-model="lookupOptions.vehicleRegistrationId.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.vehicleRegistrationId)"
+                                ng-model="lookupOptions.vehicleRegistrationId.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -918,7 +960,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.engineNumber)" ng-model="lookupOptions.engineNumber.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.engineNumber)"
+                                ng-model="lookupOptions.engineNumber.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -929,14 +972,16 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.engineNumber)" ng-model="lookupOptions.engineNumber.value"
-                                name="engineNumber" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.engineNumber)"
+                                ng-model="lookupOptions.engineNumber.value" name="engineNumber" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.engineNumber.sort" ng-change="lookupSortChange(lookupOptions.engineNumber)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.engineNumber.sort" ng-change="lookupSortChange(lookupOptions.engineNumber)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.engineNumber)" ng-model="lookupOptions.engineNumber.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.engineNumber)"
+                                ng-model="lookupOptions.engineNumber.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -948,7 +993,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.chassisNumber)" ng-model="lookupOptions.chassisNumber.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.chassisNumber)"
+                                ng-model="lookupOptions.chassisNumber.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -959,14 +1005,16 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.chassisNumber)" ng-model="lookupOptions.chassisNumber.value"
-                                name="chassisNumber" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.chassisNumber)"
+                                ng-model="lookupOptions.chassisNumber.value" name="chassisNumber" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.chassisNumber.sort" ng-change="lookupSortChange(lookupOptions.chassisNumber)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.chassisNumber.sort" ng-change="lookupSortChange(lookupOptions.chassisNumber)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.chassisNumber)" ng-model="lookupOptions.chassisNumber.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.chassisNumber)"
+                                ng-model="lookupOptions.chassisNumber.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -989,13 +1037,16 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-model="make" ng-change="lookupFieldChange(lookupOptions.make)" name="make" />
+                            <input class="form-control" ng-model="make" ng-change="lookupFieldChange(lookupOptions.make)"
+                                name="make" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.make.sort" ng-change="lookupSortChange(lookupOptions.make)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.make.sort" ng-change="lookupSortChange(lookupOptions.make)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.make)" ng-model="lookupOptions.make.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.make)"
+                                ng-model="lookupOptions.make.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1018,14 +1069,16 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.model)" ng-model="lookupOptions.model.value" name="model"
-                            />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.model)" ng-model="lookupOptions.model.value"
+                                name="model" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.model.sort" ng-change="lookupSortChange(lookupOptions.model)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.model.sort" ng-change="lookupSortChange(lookupOptions.model)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.model)" ng-model="lookupOptions.model.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.model)"
+                                ng-model="lookupOptions.model.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1037,7 +1090,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.monthOfManufacturing)" ng-model="lookupOptions.monthOfManufacturing.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.monthOfManufacturing)"
+                                ng-model="lookupOptions.monthOfManufacturing.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1048,16 +1102,19 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.monthOfManufacturing)" ng-model="lookupOptions.monthOfManufacturing.value">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.monthOfManufacturing)"
+                                ng-model="lookupOptions.monthOfManufacturing.value">
                                 <option ng-value="null"></option>
                                 <option ng-repeat="month in dropDownsData.monthTypeList" ng-value="month.description">{{month.description}}</option>
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.monthOfManufacturing.sort" ng-change="lookupSortChange(lookupOptions.monthOfManufacturing)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.monthOfManufacturing.sort" ng-change="lookupSortChange(lookupOptions.monthOfManufacturing)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.monthOfManufacturing)" ng-model="lookupOptions.monthOfManufacturing.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.monthOfManufacturing)"
+                                ng-model="lookupOptions.monthOfManufacturing.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1069,7 +1126,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.yearOfManufacturing.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)"
+                                ng-model="lookupOptions.yearOfManufacturing.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1080,14 +1138,16 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.yearOfManufacturing.value"
-                                name="yearOfManufacturing" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)"
+                                ng-model="lookupOptions.yearOfManufacturing.value" name="yearOfManufacturing" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.yearOfManufacturing.sort" ng-change="lookupSortChange(lookupOptions.yearOfManufacturing)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.yearOfManufacturing.sort" ng-change="lookupSortChange(lookupOptions.yearOfManufacturing)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.yearOfManufacturing.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.yearOfManufacturing)"
+                                ng-model="lookupOptions.yearOfManufacturing.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1099,7 +1159,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)" ng-model="lookupOptions.motObtainedDate.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.yearOfManufacturing)"
+                                ng-model="lookupOptions.motObtainedDate.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1110,15 +1171,18 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.yearOfManufacturing)" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5"
-                                ng-model="lookupOptions.motObtainedDate.value" name="motObtainedDate" />
+                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.yearOfManufacturing)"
+                                [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" ng-model="lookupOptions.motObtainedDate.value"
+                                name="motObtainedDate" />
                             <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.motObtainedDate.sort" ng-change="lookupSortChange(lookupOptions.motObtainedDate)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.motObtainedDate.sort" ng-change="lookupSortChange(lookupOptions.motObtainedDate)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.motObtainedDate)" ng-model="lookupOptions.motObtainedDate.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.motObtainedDate)"
+                                ng-model="lookupOptions.motObtainedDate.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1132,7 +1196,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherId)" ng-model="lookupOptions.assetTypeOtherId.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherId)"
+                                ng-model="lookupOptions.assetTypeOtherId.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1143,15 +1208,17 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherId)" ng-model="lookupOptions.assetTypeOtherId.value"
-                                name="assetTypeOtherId" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherId)"
+                                ng-model="lookupOptions.assetTypeOtherId.value" name="assetTypeOtherId" />
 
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherId.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherId)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherId.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherId)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherId)" ng-model="lookupOptions.assetTypeOtherId.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherId)"
+                                ng-model="lookupOptions.assetTypeOtherId.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1163,7 +1230,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherName)" ng-model="lookupOptions.assetTypeOtherName.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherName)"
+                                ng-model="lookupOptions.assetTypeOtherName.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1174,14 +1242,16 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherName)" ng-model="lookupOptions.assetTypeOtherName.value"
-                                name="assetTypeOtherName" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherName)"
+                                ng-model="lookupOptions.assetTypeOtherName.value" name="assetTypeOtherName" />
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherName.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherName)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherName.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherName)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherName)" ng-model="lookupOptions.assetTypeOtherName.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherName)"
+                                ng-model="lookupOptions.assetTypeOtherName.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1193,7 +1263,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherDescription)" ng-model="lookupOptions.assetTypeOtherDescription.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherDescription)"
+                                ng-model="lookupOptions.assetTypeOtherDescription.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1204,15 +1275,17 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherDescription)" ng-model="lookupOptions.assetTypeOtherDescription.value"
-                                name="assetTypeOtherDescription" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetTypeOtherDescription)"
+                                ng-model="lookupOptions.assetTypeOtherDescription.value" name="assetTypeOtherDescription" />
 
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherDescription.sort" ng-change="lookupSortChange(lookupOptions.assetTypeOtherDescription)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.assetTypeOtherDescription.sort"
+                                    ng-change="lookupSortChange(lookupOptions.assetTypeOtherDescription)"> Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherDescription)" ng-model="lookupOptions.assetTypeOtherDescription.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTypeOtherDescription)"
+                                ng-model="lookupOptions.assetTypeOtherDescription.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1240,9 +1313,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.assetTag.sort" ng-change="lookupSortChange(lookupOptions.assetTag)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.assetTag.sort" ng-change="lookupSortChange(lookupOptions.assetTag)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTag)" ng-model="lookupOptions.assetTag.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetTag)"
+                                ng-model="lookupOptions.assetTag.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1254,7 +1329,8 @@
                         </div>
 
                         <div class="ol-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetMake)" ng-model="lookupOptions.assetMake.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetMake)"
+                                ng-model="lookupOptions.assetMake.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1270,9 +1346,11 @@
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.assetMake.sort" ng-change="lookupSortChange(lookupOptions.assetMake)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.assetMake.sort" ng-change="lookupSortChange(lookupOptions.assetMake)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetMake)" ng-model="lookupOptions.assetMake.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetMake)"
+                                ng-model="lookupOptions.assetMake.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1284,7 +1362,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetModel)" ng-model="lookupOptions.assetModel.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetModel)"
+                                ng-model="lookupOptions.assetModel.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1294,15 +1373,17 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetModel)" ng-model="lookupOptions.assetModel.value"
-                                name="assetModel" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetModel)"
+                                ng-model="lookupOptions.assetModel.value" name="assetModel" />
 
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.assetModel.sort" ng-change="lookupSortChange(lookupOptions.assetModel)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.assetModel.sort" ng-change="lookupSortChange(lookupOptions.assetModel)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetModel)" ng-model="lookupOptions.assetModel.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetModel)"
+                                ng-model="lookupOptions.assetModel.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1314,7 +1395,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetSerialNumber)" ng-model="lookupOptions.assetSerialNumber.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetSerialNumber)"
+                                ng-model="lookupOptions.assetSerialNumber.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1325,15 +1407,17 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetSerialNumber)" ng-model="lookupOptions.assetSerialNumber.value"
-                                name="assetSerialNumber" />
+                            <input class="form-control" ng-change="lookupFieldChange(lookupOptions.assetSerialNumber)"
+                                ng-model="lookupOptions.assetSerialNumber.value" name="assetSerialNumber" />
 
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.assetSerialNumber.sort" ng-change="lookupSortChange(lookupOptions.assetSerialNumber)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.assetSerialNumber.sort" ng-change="lookupSortChange(lookupOptions.assetSerialNumber)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetSerialNumber)" ng-model="lookupOptions.assetSerialNumber.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetSerialNumber)"
+                                ng-model="lookupOptions.assetSerialNumber.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1345,7 +1429,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-3">
-                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.purchasedDate)" ng-model="lookupOptions.purchasedDate.operator">
+                            <select class="form-control" ng-change="lookupFieldChange(lookupOptions.purchasedDate)"
+                                ng-model="lookupOptions.purchasedDate.operator">
                                 <option value="EQ" selected>Equals</option>
                                 <option value="NEQ">Not equals</option>
                                 <option value="STARTS_WITH">Starts with</option>
@@ -1356,15 +1441,18 @@
                             </select>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.purchasedDate)" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1"
-                                ng-model="lookupOptions.purchasedDate.value" name="purchasedDate" />
+                            <input class="form-control" (dateTimeChange)="lookupFieldChange(lookupOptions.purchasedDate)"
+                                [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" ng-model="lookupOptions.purchasedDate.value"
+                                name="purchasedDate" />
                             <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
                         </div>
                         <div class="col-sm-12 col-md-2">
                             <span>
-                                <input type="checkbox" ng-model="lookupOptions.purchasedDate.sort" ng-change="lookupSortChange(lookupOptions.purchasedDate)"> Sort
+                                <input type="checkbox" ng-model="lookupOptions.purchasedDate.sort" ng-change="lookupSortChange(lookupOptions.purchasedDate)">
+                                Sort
                             </span>
-                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.purchasedDate)" ng-model="lookupOptions.purchasedDate.order">
+                            <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.purchasedDate)"
+                                ng-model="lookupOptions.purchasedDate.order">
                                 <option value="ASC">ASC</option>
                                 <option value="DESC">DESC</option>
                             </select>
@@ -1396,9 +1484,11 @@
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <span>
-                            <input type="checkbox" ng-model="lookupOptions.department.sort" ng-change="lookupSortChange(lookupOptions.department)"> Sort
+                            <input type="checkbox" ng-model="lookupOptions.department.sort" ng-change="lookupSortChange(lookupOptions.department)">
+                            Sort
                         </span>
-                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.department)" ng-model="lookupOptions.department.order">
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.department)"
+                            ng-model="lookupOptions.department.order">
                             <option value="ASC">ASC</option>
                             <option value="DESC">DESC</option>
                         </select>
@@ -1410,7 +1500,8 @@
                     </div>
 
                     <div class="col-sm-12 col-md-3">
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetCondition)" ng-model="lookupOptions.assetCondition.operator">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.assetCondition)"
+                            ng-model="lookupOptions.assetCondition.operator">
                             <option value="EQ" selected>Equals</option>
                             <option value="NEQ">Not equals</option>
                             <option value="STARTS_WITH">Starts with</option>
@@ -1421,16 +1512,19 @@
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                        <select ng-change="lookupFieldChange(lookupOptions.assetCondition)" class="form-control" ng-model="lookupOptions.assetCondition.value">
+                        <select ng-change="lookupFieldChange(lookupOptions.assetCondition)" class="form-control"
+                            ng-model="lookupOptions.assetCondition.value">
                             <option ng-value="null"></option>
                             <option ng-repeat="condition in dropDownsData.assetConditionList" ng-value="condition.description">{{condition.description}}</option>
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <span>
-                            <input type="checkbox" ng-model="lookupOptions.assetCondition.sort" ng-change="lookupSortChange(lookupOptions.assetCondition)"> Sort
+                            <input type="checkbox" ng-model="lookupOptions.assetCondition.sort" ng-change="lookupSortChange(lookupOptions.assetCondition)">
+                            Sort
                         </span>
-                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetCondition)" ng-model="lookupOptions.assetCondition.order">
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetCondition)"
+                            ng-model="lookupOptions.assetCondition.order">
                             <option value="ASC">ASC</option>
                             <option value="DESC">DESC</option>
                         </select>
@@ -1460,9 +1554,11 @@
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <span>
-                            <input type="checkbox" ng-model="lookupOptions.assetStatus.sort" ng-change="lookupSortChange(lookupOptions.assetStatus)"> Sort
+                            <input type="checkbox" ng-model="lookupOptions.assetStatus.sort" ng-change="lookupSortChange(lookupOptions.assetStatus)">
+                            Sort
                         </span>
-                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetStatus)" ng-model="lookupOptions.assetStatus.order">
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetStatus)"
+                            ng-model="lookupOptions.assetStatus.order">
                             <option value="ASC">ASC</option>
                             <option value="DESC">DESC</option>
                         </select>
@@ -1492,9 +1588,11 @@
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <span>
-                            <input type="checkbox" ng-model="lookupOptions.assetType.sort" ng-change="lookupSortChange(lookupOptions.assetType)"> Sort
+                            <input type="checkbox" ng-model="lookupOptions.assetType.sort" ng-change="lookupSortChange(lookupOptions.assetType)">
+                            Sort
                         </span>
-                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetType)" ng-model="lookupOptions.assetType.order">
+                        <select class="form-control d-inline w-50" ng-change="lookupSortChange(lookupOptions.assetType)"
+                            ng-model="lookupOptions.assetType.order">
                             <option value="ASC">ASC</option>
                             <option value="DESC">DESC</option>
                         </select>
@@ -1503,7 +1601,8 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4 ">
                         <label>Regulatory</label>
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.regulatoryCompliance)" ng-model="lookupOptions.regulatoryCompliance.value">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.regulatoryCompliance)"
+                            ng-model="lookupOptions.regulatoryCompliance.value">
                             <option ng-value="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1519,7 +1618,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <label>Insurance</label>
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.insurancePresent)" ng-model="lookupOptions.insurancePresent.value">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.insurancePresent)"
+                            ng-model="lookupOptions.insurancePresent.value">
                             <option ng-value="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1537,7 +1637,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4 ">
                         <label>License</label>
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.licensePresent)" ng-model="lookupOptions.licensePresent.value">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.licensePresent)"
+                            ng-model="lookupOptions.licensePresent.value">
                             <option ng-value="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1545,7 +1646,8 @@
                     </div>
                     <div class="col-sm-12  col-md-4 ">
                         <label>Warranty</label>
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.warrantyPresent)" ng-model="lookupOptions.warrantyPresent.value">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.warrantyPresent)"
+                            ng-model="lookupOptions.warrantyPresent.value">
                             <option ng-value="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1556,7 +1658,8 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
                         <label>Inspection</label>
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.inspectionPresent)" ng-model="lookupOptions.inspectionPresent.value">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.inspectionPresent)"
+                            ng-model="lookupOptions.inspectionPresent.value">
                             <option ng-value="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1564,7 +1667,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <label>Service</label>
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.servicePresent)" ng-model="lookupOptions.servicePresent.value">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.servicePresent)"
+                            ng-model="lookupOptions.servicePresent.value">
                             <option ng-value="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1572,7 +1676,8 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <label>Rental or Lease</label>
-                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.rentalOrLeasePresent)" ng-model="lookupOptions.rentalOrLeasePresent.value">
+                        <select class="form-control" ng-change="lookupFieldChange(lookupOptions.rentalOrLeasePresent)"
+                            ng-model="lookupOptions.rentalOrLeasePresent.value">
                             <option ng-value="null"></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
@@ -1742,7 +1847,8 @@
                 </table>
 
                 <nav aria-label="Page navigation" ng-if="lookupassets && lookupassets.length > 0">
-                    <select class="form-control" ng-options="entry.value as entry.value for entry in entry" ng-model="entryCount" ng-change="getEntries()"></select>
+                    <select class="form-control" ng-options="entry.value as entry.value for entry in entry" ng-model="entryCount"
+                        ng-change="getEntries()"></select>
                     <ul class="pagination">
                         <li>
                             <a aria-label="Previous" ng-click="goToPage(currentPage - 1)" ng-class="{disabled:currentPage==1}">

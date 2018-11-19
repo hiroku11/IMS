@@ -132,15 +132,11 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             distinguishingFeature: null
         }
         $scope.vehicle = {
-
             "assetCategory": {
                 "id": "VEHICLE",
                 "description": null
             },
             "vehicleDamageTypes": []
-
-
-
         }
         $scope.vehicles = [];
         $scope.equipment = {
@@ -1322,8 +1318,10 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             AppService.ShowLoader();
             $http(req).then(function (response) {
                 AppService.HideLoader();
-                $scope.incident.supportingDocuments = response.data;
+                $scope.incident.supportingDocuments = $scope.incident.supportingDocuments.concat(response.data);
                 rmsService.showAlert(true, 'Documnet added successfully.');
+                $scope.supportingDocumentsFormData = new FormData();
+                $scope.supportingDocuments = [{}, {}, {}, {}, {}];
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -2890,7 +2888,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
                 $scope.vehicles = response.data;
-                $scope.vehicle = {};
+                $scope.vehicle = {
+                    "assetCategory": {
+                        "id": "VEHICLE",
+                        "description": null
+                    },
+                    "vehicleDamageTypes": []
+                }
                 $scope.vehicleDamageType.temp = [];
                 AppService.HideLoader();
             }, function (error) {
@@ -3174,17 +3178,18 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Crime suspect added successfully.');
+                $scope.crimeSuspect = {
+                    addresses: [],
+                    distinguishingFeatureDetail: null,
+                    distinguishingFeature: null
+                }
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
             })
             //reinitialize the suspect so that new can be added
 
-            $scope.crimeSuspect = {
-                addresses: [],
-                distinguishingFeatureDetail: null,
-                distinguishingFeature: null
-            }
+
         }
         $scope.updateCrimeSuspect = function (person) {
             $scope.editCrimeSuspect = false;
@@ -3201,8 +3206,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
 
+
+                $scope.crimeSuspect = {
+                    addresses: [],
+                    distinguishingFeatureDetail: null,
+                    distinguishingFeature: null
+                }
                 $scope.getCrimeSuspectData();
-                $scope.crimeSuspect.distinguishingFeatures = $scope.crimeSuspect.distinguishFeaturesDetails;
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Crime suspect updated successfully.');
 
@@ -3957,14 +3967,18 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $scope.incident.uniqueIncidentId = incidentSummary.uniqueIncidentId;
             $scope.userInfo = incidentSummary.incidentReportedBy;
             for (let key in $scope.logIncidentDetails) {
-                if (key !== 'date' && key != 'timeHrsOfIncident' && key != 'timeMinOfIncident') {
+                if (key !== 'dateIncident' && key != 'timeHrsOfIncident' && key != 'timeMinOfIncident') {
                     $scope.logIncidentDetails[key] = incidentSummary[key];
                 }
+
                 if (key.indexOf("Date") > -1 && incidentSummary[key] != null) {
                     let dt = incidentSummary[key].split(" ");
-                    $scope.logIncidentDetails.dateIncident = new Date(rmsService.formatDate(dt[0]));
-                    $scope.logIncidentDetails.timeHrsOfIncident = dt[1].split(":")[0];
-                    $scope.logIncidentDetails.timeMinOfIncident = dt[1].split(":")[1];
+                    if (key === 'incidentOpenedDateTime') {
+                        $scope.logIncidentDetails.dateIncident = new Date(rmsService.formatDate(dt[0]));
+                        $scope.logIncidentDetails.timeHrsOfIncident = dt[1].split(":")[0];
+                        $scope.logIncidentDetails.timeMinOfIncident = dt[1].split(":")[1];
+                    }
+
                 }
                 if (incidentSummary[key] == 'Y') {
                     $scope.logIncidentDetails[key] = true;
@@ -4100,7 +4114,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $scope.getIncidentLocDetail();
             $scope.getAccLocDetail();
-
+            /// $scope.$apply();
         }
 
         if ($scope.editIncidentMode) {

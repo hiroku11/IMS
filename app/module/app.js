@@ -48,7 +48,31 @@ riskManagementSystem.config(['$stateProvider', '$urlRouterProvider', '$compilePr
     //investigations
 }]);
 
+riskManagementSystem.run(function ($rootScope, $location) {
+    var token = localStorage.getItem("rmsAuthToken");
+    var expired;
+    if (!token) {
+        $location.path("/login");
+        return;
+    }
+    var base64Url = token.split('.')[0];
+    var decryptedUserDetails = JSON.parse(window.atob(base64Url));
+    if (decryptedUserDetails) {
+        this.authorisedUserDetails = decryptedUserDetails;
+        //check if the token has expired
+        if (new Date(decryptedUserDetails.expires) < new Date()) {
+            expired = true;
+        }
+    } else {
+        //if token not present redirect to login
+        $location.path("/login");
+    }
 
+    if (expired) {
+        //if expired redirect to login
+        $location.path("/login");
+    }
+});
 
 riskManagementSystem.directive('autoComplete', function ($timeout) {
     return function (scope, iElement, iAttrs) {
