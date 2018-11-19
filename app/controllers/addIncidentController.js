@@ -3967,14 +3967,18 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $scope.incident.uniqueIncidentId = incidentSummary.uniqueIncidentId;
             $scope.userInfo = incidentSummary.incidentReportedBy;
             for (let key in $scope.logIncidentDetails) {
-                if (key !== 'date' && key != 'timeHrsOfIncident' && key != 'timeMinOfIncident') {
+                if (key !== 'dateIncident' && key != 'timeHrsOfIncident' && key != 'timeMinOfIncident') {
                     $scope.logIncidentDetails[key] = incidentSummary[key];
                 }
+
                 if (key.indexOf("Date") > -1 && incidentSummary[key] != null) {
                     let dt = incidentSummary[key].split(" ");
-                    $scope.logIncidentDetails.dateIncident = new Date(rmsService.formatDate(dt[0]));
-                    $scope.logIncidentDetails.timeHrsOfIncident = dt[1].split(":")[0];
-                    $scope.logIncidentDetails.timeMinOfIncident = dt[1].split(":")[1];
+                    if (key === 'incidentOpenedDateTime') {
+                        $scope.logIncidentDetails.dateIncident = new Date(rmsService.formatDate(dt[0]));
+                        $scope.logIncidentDetails.timeHrsOfIncident = dt[1].split(":")[0];
+                        $scope.logIncidentDetails.timeMinOfIncident = dt[1].split(":")[1];
+                    }
+
                 }
                 if (incidentSummary[key] == 'Y') {
                     $scope.logIncidentDetails[key] = true;
@@ -4110,7 +4114,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $scope.getIncidentLocDetail();
             $scope.getAccLocDetail();
-
+            /// $scope.$apply();
         }
 
         if ($scope.editIncidentMode) {
