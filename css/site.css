@@ -1,225 +1,230 @@
 body,
 html {
-    width: 100%;
-    height: 100%;
-    font-family: sans-serif;
+   width: 100%;
+   height: 100%;
+   font-family: sans-serif;
 }
 
 body {
-    background-color: #ecedf0;
-    overflow: hidden;
+   background-color: #ecedf0;
+   overflow: hidden;
 }
 
 .hide {
-    display: none !important;
+   display: none !important;
+}
+
+select.d-inline {
+   display: inline !important;
+   width: auto;
 }
 
 .alert {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    max-width: 500px;
-    z-index:99999;
+   position: fixed;
+   bottom: 10px;
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+   max-width: 500px;
+   z-index: 99999;
 }
 
 .container-fluid {
-    height: 100%;
-    width: 100%;
-    padding-right: 0px;
-    /* padding-left: 15px; */
+   height: 100%;
+   width: 100%;
+   padding-right: 0px;
+   /* padding-left: 15px; */
 }
 
 .row .side-nav-user {
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+   padding-right: 5px;
+   padding-left: 5px;
+   padding-top: 15px;
+   padding-bottom: 15px;
 }
 
 .content {
-    overflow-y: auto;
-    height: calc(100% - 120px);
-    padding-right: 1em;
-    border-top: 15px solid #8c1519 !important;
+   overflow-y: auto;
+   height: calc(100% - 120px);
+   padding-right: 1em;
+   border-top: 15px solid #8c1519 !important;
 }
 
 * {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -ms-box-sizing: border-box;
+   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -o-box-sizing: border-box;
+   -ms-box-sizing: border-box;
 }
 
 .header {
-    background-color: #fff;
+   background-color: #fff;
 }
 
 .table thead {
-    background-color: #8c1519;
-    color: white;
+   background-color: #8c1519;
+   color: white;
 }
 
 .logo img {
-    margin-top: 10px;
-    width: 96px;
+   margin-top: 10px;
+   width: 96px;
 }
 
 img {
-    vertical-align: middle;
+   vertical-align: middle;
 }
 
 img {
-    border: 0;
+   border: 0;
 }
 
 .row {
-    margin-right: 0px;
+   margin-right: 0px;
 }
 
 .logo-img {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
+   width: 96px;
+   height: 96px;
+   margin: 0 auto 10px;
+   display: block;
 }
 
 .login-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50%;
-    transform: translateY(50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 50%;
+   transform: translateY(50%);
 }
 
 .floatRight {
-    float: right;
+   float: right;
 }
 
 h2,
 h3 {
-    margin-top: 0;
+   margin-top: 0;
 }
 
 h4 {
-    border-bottom: 2px dashed #8c1519;
+   border-bottom: 2px dashed #8c1519;
 }
 
 .row {
-    padding-top: 5px;
-    padding-bottom: 5px;
+   padding-top: 5px;
+   padding-bottom: 5px;
 }
 
 /*HP*/
 
 .user-details {
-    text-align: right;
-    /*padding-top: 40px;*/
+   text-align: right;
+   /*padding-top: 40px;*/
 }
 
 .welcome {
-    padding-top: .5rem !important;
+   padding-top: .5rem !important;
 }
 
 .user-circle {
-    width: 24px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: #8c1519;
-    display: inline-block;
-    color: #fff;
-    text-align: center;
-    padding: 2px;
-    margin: 0 10px;
+   width: 24px;
+   height: 24px;
+   border-radius: 30px;
+   background-color: #8c1519;
+   display: inline-block;
+   color: #fff;
+   text-align: center;
+   padding: 2px;
+   margin: 0 10px;
 }
 
 .navbar {
-    padding: 5px;
-    height: 100%;
-    border: none;
-    border-top: 15px solid;
-    border-color: #8c1519;
-    border-radius: 0;
+   padding: 5px;
+   height: 100%;
+   border: none;
+   border-top: 15px solid;
+   border-color: #8c1519;
+   border-radius: 0;
 }
 
 .navbar ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+   margin: 0;
+   padding: 0;
+   list-style: none;
 }
 
 .navbar ul li {
-    background-color: #9ca3a9;
-    border-bottom: 2px solid white;
+   background-color: #9ca3a9;
+   border-bottom: 2px solid white;
 }
 
 .navbar ul li:hover {
-    background-color: #8c1519;
-    border-bottom: 2px solid white;
+   background-color: #8c1519;
+   border-bottom: 2px solid white;
 }
 
 .btn:hover {
-    background-color: #8c1519 !important;
-    color: white;
+   background-color: #8c1519 !important;
+   color: white;
 }
 
 a,
 a:visited,
 a:hover {
-    color: #8c1519;
+   color: #8c1519;
 }
 
 h5 {
-    margin-left: 20px;
+   margin-left: 20px;
 }
 
 .pagination>li>a,
 .pagination>li>span {
-    color: #8c1519;
+   color: #8c1519;
 }
 
 .pagination>li>a.disabled {
-    cursor: not-allowed;
+   cursor: not-allowed;
 }
 
 .navbar a {
-    display: block;
-    padding: 5px;
-    padding-left: 10px;
-    font-size: 1.1em;
-    /*color: #8c1519;*/
-    color: #d2d2d2;
-    /*border-bottom: 1px solid transparent;*/
+   display: block;
+   padding: 5px;
+   padding-left: 10px;
+   font-size: 1.1em;
+   /*color: #8c1519;*/
+   color: #d2d2d2;
+   /*border-bottom: 1px solid transparent;*/
 }
 
 .navbar li ul {
-    display: none;
+   display: none;
 }
 
 .navbar li.active ul {
-    display: block;
-    /*background-color: #fff;*/
-    /*border-bottom: 2px solid #8c1519;
+   display: block;
+   /*background-color: #fff;*/
+   /*border-bottom: 2px solid #8c1519;
 	position: relative;*/
 }
 
 .navbar ul>li.active>a {
-    background-color: #8c1519;
-    color: #fff;
+   background-color: #8c1519;
+   color: #fff;
 }
 
 .navbar ul ul a {
-    color: #d2d2d2;
+   color: #d2d2d2;
 }
 
 .navbar li.active li a:hover {
-    color: #fff;
+   color: #fff;
 }
 
 .navbar li.active>a {
-    color: #fff;
+   color: #fff;
 }
 
 /* .navbar a i.menu-icon {
@@ -228,73 +233,73 @@ h5 {
 } */
 
 .navbar a:hover {
-    text-decoration: none;
-    color: #fff;
-    /*border-bottom-color: #8c1519;*/
+   text-decoration: none;
+   color: #fff;
+   /*border-bottom-color: #8c1519;*/
 }
 
 .navbar ul ul a {
-    padding-left: 60px;
+   padding-left: 60px;
 }
 
 .navbar.sm-navbar {
-    position: absolute;
-    z-index: 99999;
-    list-style: none;
-    left: 0px;
-    width: 100%;
-    min-width: 150px;
-    height: auto;
-    background: white;
-    cursor: pointer;
-    border: none;
-    padding: 0;
-    height: 100%;
+   position: absolute;
+   z-index: 99999;
+   list-style: none;
+   left: 0px;
+   width: 100%;
+   min-width: 150px;
+   height: auto;
+   background: white;
+   cursor: pointer;
+   border: none;
+   padding: 0;
+   height: 100%;
 }
 
 .sm-navbar li {
-    background-color: #9ca3a9;
-    margin-top: 3px;
+   background-color: #9ca3a9;
+   margin-top: 3px;
 }
 
 .sm-navbar li.active {
-    background-color: #8c1519;
+   background-color: #8c1519;
 }
 
 .sm-navbar-container {
-    top: 0;
-    position: absolute;
-    right: 5px
+   top: 0;
+   position: absolute;
+   right: 5px
 }
 
 /*HP*/
 
 .navbar+div {
-    padding-left: 1em;
-    padding-top: 1em;
-    padding-right: 1em;
+   padding-left: 1em;
+   padding-top: 1em;
+   padding-right: 1em;
 }
 
 .dropdown {
-    float: right;
-    width: 200px;
+   float: right;
+   width: 200px;
 }
 
 .dropdown .dropdown-menu {
-    right: 0;
+   right: 0;
 }
 
 .user-image {
-    width: 40px;
+   width: 40px;
 }
 
 .user-status-nav {
-    padding-right: 0;
-    min-width: 100px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-left: 0;
+   padding-right: 0;
+   min-width: 100px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   padding-left: 0;
 }
 
 /*customized Scroll bar*/
@@ -324,93 +329,93 @@ h5 {
 
 .site-footer,
 .page-wrap:after {
-    height: 50px;
+   height: 50px;
 }
 
 .site-footer {
-    border-top: solid 8px rgba(49, 49, 49, 0);
-    background: rgb(0, 0, 0);
-    z-index: 999999;
-    position: absolute;
-    width: 100%;
-    box-shadow: 0px 0px 10px #000000;
-    color: #a5a5a5;
+   border-top: solid 8px rgba(49, 49, 49, 0);
+   background: rgb(0, 0, 0);
+   z-index: 999999;
+   position: absolute;
+   width: 100%;
+   box-shadow: 0px 0px 10px #000000;
+   color: #a5a5a5;
 }
 
 .site-footer .content {
-    text-align: center;
-    margin-top: 5px;
+   text-align: center;
+   margin-top: 5px;
 }
 
 .site-footer .copyright {
-    font-size: 22px;
-    vertical-align: middle;
+   font-size: 22px;
+   vertical-align: middle;
 }
 
 .site-footer span {
-    font-size: 12px;
-    vertical-align: middle;
+   font-size: 12px;
+   vertical-align: middle;
 }
 
 /*incident page*/
 
 .stylish-input-group .input-group-addon {
-    background: white !important;
-    border-radius: 0 20px 20px 0 !important;
+   background: white !important;
+   border-radius: 0 20px 20px 0 !important;
 }
 
 .stylish-input-group .form-control {
-    border-right: 0;
-    box-shadow: 0 0 0;
-    border-color: #ccc;
-    border-radius: 20px 0 0 20px;
+   border-right: 0;
+   box-shadow: 0 0 0;
+   border-color: #ccc;
+   border-radius: 20px 0 0 20px;
 }
 
 .stylish-input-group button {
-    border: 0;
-    background: transparent;
+   border: 0;
+   background: transparent;
 }
 
 .stylish-input-group>* {
-    height: 36px !important;
+   height: 36px !important;
 }
 
 .searchbox {
-    vertical-align: middle;
-    padding-bottom: 10px;
-    float: right;
-    width: 150px;
+   vertical-align: middle;
+   padding-bottom: 10px;
+   float: right;
+   width: 150px;
 }
 
 .searchbox input {
-    height: 30px !important;
-    padding: 5px;
+   height: 30px !important;
+   padding: 5px;
 }
 
 .searchbox .input-group-addon {
-    height: 30px !important;
+   height: 30px !important;
 }
 
 .small-control {
-    width: 60px;
-    display: inline-block;
+   width: 60px;
+   display: inline-block;
 }
 
 .advanced-search {
-    padding: 0 10px;
-    margin-left: 10px;
-    font-size: 22px;
-    cursor: pointer;
+   padding: 0 10px;
+   margin-left: 10px;
+   font-size: 22px;
+   cursor: pointer;
 }
 
 .advanced-search-panel {
-    background: #fff;
-    padding: 15px;
-    border-radius: 4px;
+   background: #fff;
+   padding: 15px;
+   border-radius: 4px;
 }
 
 .advanced-search-panel .row {
-    margin: 10px -15px;
+   margin: 10px -15px;
 }
 
 /* .table-bordered>tbody>tr>td,
@@ -423,640 +428,642 @@ h5 {
 } */
 
 .table-bordered {
-    /* border: 1px solid #8c1519; */
-    font-size: 14px;
+   /* border: 1px solid #8c1519; */
+   font-size: 14px;
 }
 
 table th {
-    font-weight: bold;
+   font-weight: bold;
 }
 
 nav select.form-control {
-    width: 80px;
-    display: inline-block;
-    float: left;
-    background: #fff url('images/caret.png') no-repeat center right 10px;
-    margin-right: 10px;
+   width: 80px;
+   display: inline-block;
+   float: left;
+   background: #fff url('images/caret.png') no-repeat center right 10px;
+   margin-right: 10px;
 }
 
 nav select.form-control:focus {
-    outline: none;
-    border-color: transparent;
-    box-shadow: none;
+   outline: none;
+   border-color: transparent;
+   box-shadow: none;
 }
 
 nav .pagination {
-    margin: 0;
+   margin: 0;
 }
 
 nav span {
-    display: inline-block;
-    vertical-align: 11px;
-    margin-left: 10px;
+   display: inline-block;
+   vertical-align: 11px;
+   margin-left: 10px;
 }
 
 /*icon inside button*/
 
 a i {
-    top: 2px;
-    right: 7px;
+   top: 2px;
+   right: 7px;
 }
 
 #myModal .row {
-    margin-bottom: 0.2em;
+   margin-bottom: 0.2em;
 }
 
 @media only screen and (min-width: 410px) and (max-width:767px) {
-    .incidentLabel {
-        display: none
-    }
-    .nav {
-        height: auto;
-    }
-    .modal-content {
-        width: 100% !important
-    }
-    .floatRight {
-        float: left;
-    }
+   .incidentLabel {
+      display: none
+   }
+   .nav {
+      height: auto;
+   }
+   .modal-content {
+      width: 100% !important
+   }
+   .floatRight {
+      float: left;
+   }
 }
 
 @media only screen and (min-width: 410px) and (max-width:767px) {
-    /* hide the menu item*/
-    .incidentLabel {
-        display: none;
-    }
-    .floatRight {
-        float: left;
-    }
+   /* hide the menu item*/
+   .incidentLabel {
+      display: none;
+   }
+   .floatRight {
+      float: left;
+   }
 }
 
 @media only screen and (min-width: 768px) and (max-width:1200px) {
-    .inline-label {
-        margin-top: 0.5em;
-    }
+   .inline-label {
+      margin-top: 0.5em;
+   }
 }
 
 @media only screen and (min-width: 768px) and (max-width:991px) {
-    .modal-content {
-        width: 100% !important
-    }
+   .modal-content {
+      width: 100% !important
+   }
 }
 
 .show:hover {
-    cursor: pointer;
+   cursor: pointer;
 }
 
 .nav-tabs {
-    border-bottom: 1px solid #555;
+   border-bottom: 1px solid #555;
 }
 
 .nav-tabs>li>button {
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
+   border-bottom-right-radius: 0px;
+   border-bottom-left-radius: 0px;
 }
 
 .nav-tabs>li.active>button,
 .nav-tabs>li.active>button:focus,
 .nav-tabs>li>button:hover {
-    background-color: #8c1519;
-    color: white;
-    /*background-color: #efd1d4;
+   background-color: #8c1519;
+   color: white;
+   /*background-color: #efd1d4;
     color: #555;*/
-    border: 1px solid #555;
-    ;
-    border-bottom-color: transparent;
+   border: 1px solid #555;
+   ;
+   border-bottom-color: transparent;
 }
 
 .nav-tabs>li>button {
-    border: 1px solid #555;
+   border: 1px solid #555;
 }
 
 .nav-tabs li button {
-    background-color: white;
+   background-color: white;
 }
 
 .form-content {
-    padding-bottom: 50px;
+   padding-bottom: 50px;
 }
 
 .modal-open .modal {
-    overflow: hidden
+   overflow: hidden
 }
 
 .modal-body {
-    overflow: auto;
-    max-height: 500px;
+   overflow: auto;
+   max-height: 500px;
 }
-.accident .modal-body{
-    max-height: 700px;
+
+.accident .modal-body {
+   max-height: 700px;
 }
+
 .uib-datepicker-popup {
-    height: auto !important;
+   height: auto !important;
 }
 
 #man {
-    height: 511px;
-    width: 500px;
-    background-image: url('../assets/images/man.png');
-    margin-left: -57%;
+   height: 511px;
+   width: 500px;
+   background-image: url('../assets/images/man.png');
+   margin-left: -57%;
 }
 
 #back {
-    height: 511px;
-    width: 500px;
-    background-image: url('../assets/images/back.png');
-    margin-left: -32%;
+   height: 511px;
+   width: 500px;
+   background-image: url('../assets/images/back.png');
+   margin-left: -32%;
 }
 
 .Face {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 181px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 181px;
+   position: fixed;
 }
 
 .Head {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 164px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 164px;
+   position: fixed;
 }
 
 .Left.Ear {
-    width: 9px;
-    height: 9px;
-    left: 87px;
-    top: 185px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 87px;
+   top: 185px;
+   position: fixed;
 }
 
 .Right.Ear {
-    width: 9px;
-    height: 9px;
-    left: 137px;
-    top: 184px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 137px;
+   top: 184px;
+   position: fixed;
 }
 
 .Left.Eye {
-    width: 9px;
-    height: 9px;
-    left: 96px;
-    top: 172px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 96px;
+   top: 172px;
+   position: fixed;
 }
 
 .Right.Eye {
-    width: 9px;
-    height: 9px;
-    left: 128px;
-    top: 172px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 128px;
+   top: 172px;
+   position: fixed;
 }
 
 .Nose {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 188px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 188px;
+   position: fixed;
 }
 
 .Mouth {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 197px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 197px;
+   position: fixed;
 }
 
 .Neck {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 212px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 212px;
+   position: fixed;
 }
 
 .Chin {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 201px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 201px;
+   position: fixed;
 }
 
 .Back.Neck {
-    width: 9px;
-    height: 9px;
-    left: 468px;
-    top: 354px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 468px;
+   top: 354px;
+   position: fixed;
 }
 
 .Left.Arm {
-    width: 9px;
-    height: 9px;
-    left: 54px;
-    top: 321px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 54px;
+   top: 321px;
+   position: fixed;
 }
 
 .Right.Arm {
-    width: 9px;
-    height: 9px;
-    left: 175px;
-    top: 321px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 175px;
+   top: 321px;
+   position: fixed;
 }
 
 .Left.Hand {
-    width: 9px;
-    height: 9px;
-    left: 44px;
-    top: 368px;
-    position: fixed
+   width: 9px;
+   height: 9px;
+   left: 44px;
+   top: 368px;
+   position: fixed
 }
 
 .Right.Hand {
-    width: 9px;
-    height: 9px;
-    left: 185px;
-    top: 368px;
-    position: fixed
+   width: 9px;
+   height: 9px;
+   left: 185px;
+   top: 368px;
+   position: fixed
 }
 
 .Left.Wrist {
-    width: 9px;
-    height: 9px;
-    left: 38px;
-    top: 384px;
-    position: fixed
+   width: 9px;
+   height: 9px;
+   left: 38px;
+   top: 384px;
+   position: fixed
 }
 
 .Right.Wrist {
-    width: 9px;
-    height: 9px;
-    left: 189px;
-    top: 384px;
-    position: fixed
+   width: 9px;
+   height: 9px;
+   left: 189px;
+   top: 384px;
+   position: fixed
 }
 
 .Left.Fingers {
-    height: 9px;
-    left: 23px;
-    top: 431px;
-    position: fixed
+   height: 9px;
+   left: 23px;
+   top: 431px;
+   position: fixed
 }
 
 .Right.Fingers {
-    width: 9px;
-    height: 9px;
-    left: 202px;
-    top: 431px;
-    position: fixed
+   width: 9px;
+   height: 9px;
+   left: 202px;
+   top: 431px;
+   position: fixed
 }
 
 .Left.Palm {
-    width: 9px;
-    height: 9px;
-    left: 29px;
-    top: 411px;
-    position: fixed
+   width: 9px;
+   height: 9px;
+   left: 29px;
+   top: 411px;
+   position: fixed
 }
 
 .Right.Palm {
-    width: 9px;
-    height: 9px;
-    left: 199px;
-    top: 411px;
-    position: fixed
+   width: 9px;
+   height: 9px;
+   left: 199px;
+   top: 411px;
+   position: fixed
 }
 
 .Left.Shoulder {
-    width: 9px;
-    height: 9px;
-    left: 169px;
-    top: 267px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 169px;
+   top: 267px;
+   position: fixed;
 }
 
 .Right.Shoulder {
-    width: 9px;
-    height: 9px;
-    left: 321px;
-    top: 267px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 321px;
+   top: 267px;
+   position: fixed;
 }
 
 .Chest {
-    width: 9px;
-    height: 9px;
-    left: 116px;
-    top: 267px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 116px;
+   top: 267px;
+   position: fixed;
 }
 
 .Stomach {
-    width: 9px;
-    height: 9px;
-    left: 116px;
-    top: 349px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 116px;
+   top: 349px;
+   position: fixed;
 }
 
 .Left.Thigh {
-    width: 9px;
-    height: 9px;
-    left: 89px;
-    top: 456px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 89px;
+   top: 456px;
+   position: fixed;
 }
 
 .Right.Thigh {
-    width: 9px;
-    height: 9px;
-    left: 144px;
-    top: 456px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 144px;
+   top: 456px;
+   position: fixed;
 }
 
 .Left.Knee {
-    width: 9px;
-    height: 9px;
-    left: 87px;
-    top: 521px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 87px;
+   top: 521px;
+   position: fixed;
 }
 
 .Right.Knee {
-    width: 9px;
-    height: 9px;
-    left: 142px;
-    top: 521px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 142px;
+   top: 521px;
+   position: fixed;
 }
 
 .Left.Foot {
-    width: 9px;
-    height: 9px;
-    left: 94px;
-    top: 635px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 94px;
+   top: 635px;
+   position: fixed;
 }
 
 .Right.Foot {
-    width: 9px;
-    height: 9px;
-    left: 134px;
-    top: 635px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 134px;
+   top: 635px;
+   position: fixed;
 }
 
 .Left.Leg {
-    width: 9px;
-    height: 9px;
-    left: 87px;
-    top: 573px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 87px;
+   top: 573px;
+   position: fixed;
 }
 
 .Right.Leg {
-    width: 9px;
-    height: 9px;
-    left: 143px;
-    top: 573px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 143px;
+   top: 573px;
+   position: fixed;
 }
 
 .Left.Ankle {
-    width: 9px;
-    height: 9px;
-    left: 92px;
-    top: 619px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 92px;
+   top: 619px;
+   position: fixed;
 }
 
 .Right.Ankle {
-    width: 9px;
-    height: 9px;
-    left: 136px;
-    top: 619px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 136px;
+   top: 619px;
+   position: fixed;
 }
 
 /* Back parts */
 
 .Back {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 164px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 164px;
+   position: fixed;
 }
 
 .Buttock {
-    width: 9px;
-    height: 9px;
-    left: 501px;
-    top: 435px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 501px;
+   top: 435px;
+   position: fixed;
 }
 
 .Hair {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 168px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 168px;
+   position: fixed;
 }
 
 .Left.Calf {
-    width: 9px;
-    height: 9px;
-    left: 450px;
-    top: 556px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 450px;
+   top: 556px;
+   position: fixed;
 }
 
 .Left.Elbow {
-    width: 9px;
-    height: 9px;
-    left: 411px;
-    top: 359px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 411px;
+   top: 359px;
+   position: fixed;
 }
 
 .Left.Forearm {
-    width: 9px;
-    height: 9px;
-    left: 406px;
-    top: 374px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 406px;
+   top: 374px;
+   position: fixed;
 }
 
 .Left.Heel {
-    width: 9px;
-    height: 9px;
-    left: 452px;
-    top: 630px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 452px;
+   top: 630px;
+   position: fixed;
 }
 
 .Left.Hip {
-    width: 9px;
-    height: 9px;
-    left: 440px;
-    top: 367px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 440px;
+   top: 367px;
+   position: fixed;
 }
 
 .Left.Shoulder.Blade {
-    width: 9px;
-    height: 9px;
-    left: 435px;
-    top: 271px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 435px;
+   top: 271px;
+   position: fixed;
 }
 
 .Loin {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 396px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 396px;
+   position: fixed;
 }
 
 .Nape {
-    width: 9px;
-    height: 9px;
-    left: 114px;
-    top: 207px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 114px;
+   top: 207px;
+   position: fixed;
 }
 
 .Right.Calf {
-    width: 9px;
-    height: 9px;
-    left: 510px;
-    top: 556px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 510px;
+   top: 556px;
+   position: fixed;
 }
 
 .Right.Elbow {
-    width: 9px;
-    height: 9px;
-    left: 550px;
-    top: 359px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 550px;
+   top: 359px;
+   position: fixed;
 }
 
 .Right.Forearm {
-    width: 9px;
-    height: 9px;
-    left: 553px;
-    top: 374px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 553px;
+   top: 374px;
+   position: fixed;
 }
 
 .Right.Heel {
-    width: 9px;
-    height: 9px;
-    left: 492px;
-    top: 630px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 492px;
+   top: 630px;
+   position: fixed;
 }
 
 .Right.Hip {
-    width: 9px;
-    height: 9px;
-    left: 500px;
-    top: 367px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 500px;
+   top: 367px;
+   position: fixed;
 }
 
 .Right.Shoulder.Blade {
-    width: 9px;
-    height: 9px;
-    left: 497px;
-    top: 271px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 497px;
+   top: 271px;
+   position: fixed;
 }
 
 .Waist {
-    width: 9px;
-    height: 9px;
-    left: 446px;
-    top: 358px;
-    position: fixed;
+   width: 9px;
+   height: 9px;
+   left: 446px;
+   top: 358px;
+   position: fixed;
 }
 
 .move-buttons {
-    padding-top: 50px;
-    padding-bottom: 50px;
+   padding-top: 50px;
+   padding-bottom: 50px;
 }
 
 a {
-    cursor: pointer;
+   cursor: pointer;
 }
 
 .btn-secondary {
-    color: #fff;
-    background-color: #868e96;
-    border-color: #868e96;
+   color: #fff;
+   background-color: #868e96;
+   border-color: #868e96;
 }
 
 .pac-container {
-    z-index: 99999999;
-    max-width: 400px;
+   z-index: 99999999;
+   max-width: 400px;
 }
 
 #pac-input {
-    max-width: 400px;
-    margin-top: 8px;
+   max-width: 400px;
+   margin-top: 8px;
 }
 
 .doc-actions span {
-    padding: 5px;
-    font-size: 15px;
+   padding: 5px;
+   font-size: 15px;
 }
 
 .stat-icon {
-    padding: 10px;
-    font-size: 20px;
+   padding: 10px;
+   font-size: 20px;
 }
 
 .table {
-    background-color: #fff;
+   background-color: #fff;
 }
 
 .card {
-    background-color: #2e2e2e;
-    color: white;
+   background-color: #2e2e2e;
+   color: white;
 }
 
 .summary-text {
-    padding-left: 5px;
-    padding-right: 5px;
-    text-overflow: ellipsis;
-    word-break: break-all;
-    vertical-align: middle;
-    font-weight: normal;
+   padding-left: 5px;
+   padding-right: 5px;
+   text-overflow: ellipsis;
+   word-break: break-all;
+   vertical-align: middle;
+   font-weight: normal;
 }
 
 .accident .dropdown-menu {
-    overflow-y: auto;
-    height: 500px;
-    width: 100%;
+   overflow-y: auto;
+   height: 500px;
+   width: 100%;
 }
 
 .asset .dropdown-menu {
-    overflow-y: auto;
-    height: 250px;
-    width: 100%;
+   overflow-y: auto;
+   height: 250px;
+   width: 100%;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
@@ -1066,30 +1073,30 @@ a {
 .btn-info,
 .btn-danger,
 .btn-success {
-    background-color: #9ca3a9 !important;
-    border: none;
+   background-color: #9ca3a9 !important;
+   border: none;
 }
 
 .btn:active {
-    color: #fff;
+   color: #fff;
 }
 
 .btn:focus {
-    box-shadow: 0 0 0 0.2rem rgba(90, 115, 143, 0.5) !important;
+   box-shadow: 0 0 0 0.2rem rgba(90, 115, 143, 0.5) !important;
 }
 
 .zero-padding {
-    padding: 0px !important;
+   padding: 0px !important;
 }
 
 .zero-margin {
-    margin: 0px !important;
+   margin: 0px !important;
 }
 
 .btn-outline-success {
-    border: 1px solid lightgreen;
+   border: 1px solid lightgreen;
 }
 
 table {
-    margin-right: 5px !important;
+   margin-right: 5px !important;
 }
