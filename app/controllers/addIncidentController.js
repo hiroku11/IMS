@@ -4407,9 +4407,17 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     Search: JSON.stringify({ ...$scope.assetLookupParams })
                 }
             }
+            if ($scope.assetCategory.id.toLowerCase() == 'other') {
+                req.url = rmsService.baseEndpointUrl + 'asset-type-other/search-asset-type-others'
+            }
             $http(req).then(function (response) {
                 AppService.HideLoader();
-                $scope.lookupassets = response.data[$scope.assetCategory.id.toLowerCase() + 's'].slice();
+
+                if ($scope.assetCategory.id.toLowerCase() == 'other') {
+                    $scope.lookupassets = response.data.assetTypeOthers;
+                } else {
+                    $scope.lookupassets = response.data[$scope.assetCategory.id.toLowerCase() + 's'].slice();
+                }
                 $scope.assetRecords = response.data.totalRecords;
             }, function (error) {
                 AppService.HideLoader();
