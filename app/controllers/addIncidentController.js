@@ -353,9 +353,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         //     $scope.$apply();
         // }
         $scope.triggerExternalAgency = function () {
-            if ($scope.loss.externalAgencyContacted == 'N') {
-                $scope.loss.externalAgency.id = "";
-            }
+            // if ($scope.loss.externalAgencyContacted == 'N') {
+            //     $scope.loss.externalAgency.id = "";
+            // }
         }
         var temp = [];
         $scope.myObj = { temp: [] };
@@ -949,11 +949,11 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.addLoss = function () {
-            if (!$scope.incident.incidentId) {
+            if (!$scope.incident.uniqueIncidentId) {
                 return;
             }
             $scope.loss.incident = {
-                id: $scope.incident.incidentId
+                id: $scope.incident.id
             }
             let loss = rmsService.cloneObject($scope.loss);
             //$scope.loss.timeHrsContacted;
@@ -978,10 +978,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 data: loss
             }
             AppService.ShowLoader();
-
             $http(req).then(function (response) {
                 $scope.getLossData();
-
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Loss added successfully.');
             }, function (error) {
@@ -1005,11 +1003,11 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.getLossData = function () {
-            if (!$scope.incident.incidentId) {
+            if (!$scope.incident.uniqueIncidentId) {
                 return;
             }
             var req = {
-                url: rmsService.baseEndpointUrl + 'reported-loss/reported-loss-table/incidentId/' + $scope.incident.incidentId,
+                url: rmsService.baseEndpointUrl + 'reported-loss/reported-loss-table/incidentId/' + $scope.incident.id,
                 method: "GET",
                 headers: {
                     'X-AUTH-TOKEN': $scope.token
@@ -1083,6 +1081,11 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             let loss = rmsService.cloneObject($scope.loss);
             //$scope.loss.timeHrsContacted;
             //$scope.loss.timeMinContacted;
+            if (!loss.incident) {
+                loss.incident = {
+                    id: $scope.incident.id
+                };
+            }
             var date = rmsService.formatDate(loss.date);
             if (date != null) {
                 loss.dateTimeContacted = date + " " + (loss.timeHrsContacted || '00') + ":" + (loss.timeMinContacted || '00') + ":00";
@@ -1119,7 +1122,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 "statusFlag": "ACTIVE",
                 "date": null,
                 "timeHrsContacted": null,
-                "timeMinContacted": null
+                "timeMinContacted": null,
+                "externalAgency": {}
             }
 
         }
@@ -3971,7 +3975,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
         $scope.prepareEditIncidentData = function () {
             let incidentSummary = rmsService.cloneObject($scope.incidentSummary);
-            $scope.incident.incidentId = incidentSummary.id.uniqueIncidentId;
+            $scope.incident.incidentId = incidentSummary.uniqueIncidentId;
             $scope.logIncidentDetails.incidentId = incidentSummary.uniqueIncidentId;
             $scope.incident.id = incidentSummary.id;
             $scope.incident.uniqueIncidentId = incidentSummary.uniqueIncidentId;
@@ -4032,7 +4036,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 "statusFlag": "ACTIVE",
                 "date": null,
                 "timeHrsContacted": null,
-                "timeMinContacted": null
+                "timeMinContacted": null,
+                "externalAgency": {}
 
             }
 
@@ -4056,6 +4061,10 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             }
             // $scope.witnesses = incidentSummary.accident.witnesses;
             // $scope.injuredPersons = incidentSummary.accident.injuredPersons;
+            $scope.incidentSummary.suspects = incidentSummary.suspects.concat(incidentSummary.employeeSuspects);
+            $scope.incidentSummary.accident.witnesses = incidentSummary.accident.witnesses.concat(incidentSummary.accident.employeeWitness);
+            $scope.incidentSummary.accident.injuredPersons = incidentSummary.accident.injuredPersons.concat(incidentSummary.accident.employeeInjuredPersons);
+            
             $scope.getWitnessData();
             $scope.getInjuredData();
 
@@ -4086,8 +4095,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.initializeCrimeTime();
             }
             $scope.crimeAdded = true;
-            //  $scope.crimeWitnesses = incidentSummary.crime.witnesses.concat(incidentSummary.crime.employeeWitnesses);
-            // $scope.crimesuspects = incidentSummary.crime.crimeSuspects.concat(incidentSummary.crime.employeeCrimeSuspects);
+            // $scope.incidentSummary.crime.witnesses = incidentSummary.crime.witnesses.concat(incidentSummary.crime.employeeWitnesses);
+            $scope.incidentSummary.crime.crimeSuspects = incidentSummary.crime.crimeSuspects.concat(incidentSummary.crime.employeeCrimeSuspects);
             $scope.getCrimeSuspectData();
             $scope.getCrimeWitnessData();
             if (incidentSummary.claim != null) {
