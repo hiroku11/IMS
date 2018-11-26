@@ -669,7 +669,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         $scope.addSuspect = function () {
             //  $scope.incidentDetails.newSuspects.push($scope.suspect);
             // $scope.suspects.push($scope.suspect);
-            if (!$scope.incident.incidentId) {
+            if (!$scope.incident.uniqueIncidentId) {
                 return;
             }
             let suspect = rmsService.cloneObject($scope.suspect);
@@ -1302,7 +1302,17 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
 
         $scope.addSupportingDocuments = function () {
+            var files = [];
             if (typeof $scope.supportingDocumentsFormData === 'undefined') {
+                rmsService.showAlert(false, 'Please select a document first.');
+                return;
+            }
+            for (var value of $scope.supportingDocumentsFormData.values()) {
+                files.push(value);
+            }
+
+            if (files.length === 0) {
+                rmsService.showAlert(false, 'Please select a document first.');
                 return;
             }
             $scope.supportingDocumentsFormData.append("uniqueIncidentId", $scope.incident.uniqueIncidentId);
@@ -1319,7 +1329,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $http(req).then(function (response) {
                 AppService.HideLoader();
                 $scope.incident.supportingDocuments = $scope.incident.supportingDocuments.concat(response.data);
-                rmsService.showAlert(true, 'Documnet added successfully.');
+                rmsService.showAlert(true, 'Document added successfully.');
                 $scope.supportingDocumentsFormData = new FormData();
                 $scope.supportingDocuments = [{}, {}, {}, {}, {}];
             }, function (error) {
@@ -1471,14 +1481,14 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
             var getIncident = $http(req);
             getIncident.then(function (response) {
                 $scope.suspectType = response.data;
                 console.log($scope.suspectType);
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
 
             })
         }
@@ -1493,12 +1503,12 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
             $http(req).then(function (response) {
                 $scope.incidentType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1511,12 +1521,12 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
             $http(req).then(function (response) {
                 $scope.incidentLocations = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getIncidentLocDetail = function () {
@@ -1550,13 +1560,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.entryPoint = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1569,13 +1579,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
             $http(req).then(function (response) {
                 //change the options as required by the multiselect plugin/module
                 $scope.distinguishFeatures = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1611,13 +1621,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            // AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.agencies = response.data;
-                AppService.HideLoader();
+                // AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                // AppService.HideLoader();
             })
         }
         $scope.getAccidentLoc = function () {
@@ -1629,13 +1639,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.accidentLoc = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getAccLocDetail = function () {
@@ -1667,13 +1677,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.accidentType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getAssetCategory = function () {
@@ -1684,13 +1694,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.assetCat = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         var bodyPart = [];
@@ -1703,7 +1713,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 bodyPart = response.data;
@@ -1722,7 +1732,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.bodyPartsArray = storeDesc;
                 $scope.bodyPartsFrontArray = bodyPartsFrontArray;
                 $scope.bodyPartsBackArray = bodyPartsBackArray;
-                AppService.HideLoader();
+                //AppService.HideLoader();
                 // $scope.bodyPartsFrontArray = ["Chest", "Chin", "Face", "Hair", "Head", 
                 //  "Left Ankle", "Left Arm", "Left Ear", "Left Elbow","Left Eye",
                 //  "Left Fingers", "Left Foot", "Left Forearm", "Left Hand", "Left Heel",
@@ -1737,7 +1747,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 // "Left Calf","Left Hip","Right Hip",""];
 
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getClaimRegType = function () {
@@ -1749,13 +1759,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.claimReg = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getClaimStatus = function () {
@@ -1767,13 +1777,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.claimStatus = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getClaimType = function () {
@@ -1785,13 +1795,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.claimType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getDepartment = function () {
@@ -1802,13 +1812,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.depType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getDocCategory = function () {
@@ -1820,13 +1830,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.docCategory = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getDocType = function () {
@@ -1838,13 +1848,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.docType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1857,13 +1867,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.empType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1876,13 +1886,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.eventType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1895,13 +1905,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.genderType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1914,13 +1924,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.injuredPersonTypes = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1932,12 +1942,12 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
             $http(req).then(function (response) {
                 $scope.injuryCauses = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -1949,13 +1959,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.injuryTypes = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
         $scope.getInjuryTypeDetail = function () {
@@ -2004,13 +2014,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 },
             }
-            AppService.ShowLoader();
+            // AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.lossType = response.data;
-                AppService.HideLoader();
+                // AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                // AppService.HideLoader();
             })
         }
 
@@ -2022,13 +2032,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.organization = response.data;
-                AppService.HideLoader();
+                // AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                // AppService.HideLoader();
             })
         }
 
@@ -2040,13 +2050,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            //AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.policyType = response.data;
-                AppService.HideLoader();
+                //AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                //AppService.HideLoader();
             })
         }
 
@@ -2076,13 +2086,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            // AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.positionLevel = response.data;
-                AppService.HideLoader();
+                // AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                // AppService.HideLoader();
             })
         }
 
@@ -2095,16 +2105,16 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            // AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.vehDamageType = response.data;
                 response.data.map(function (d) {
                     $scope.vehDamageTypedesc.push(d.description);
                 })
-                AppService.HideLoader();
+                // AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                // AppService.HideLoader();
             })
         }
         $scope.storeVehDamageType = function () {
@@ -2128,13 +2138,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
             }
-            AppService.ShowLoader();
+            // AppService.ShowLoader();
 
             $http(req).then(function (response) {
                 $scope.weaponType = response.data;
-                AppService.HideLoader();
+                // AppService.HideLoader();
             }, function (error) {
-                AppService.HideLoader();
+                // AppService.HideLoader();
             })
         }
 
@@ -4444,7 +4454,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         $scope.getIncidentLoc();
 
         $scope.getIncidentType();
-        $scope.getSuspectType();
+        //$scope.getSuspectType();
         $scope.getAccidentLoc();
         $scope.getAccidentType();
         $scope.getAssetCategory();

@@ -311,48 +311,6 @@
 				<input class="form-control" placeholder="Last Name" type="text" ng-model="crimeSuspect.lastName">
 			</div>
 		</div>
-		<!-- 
-		<div class="row">
-			<div class="col-sm-12 col-md-6">
-				<label>Locality </label>
-				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].localityName">
-			</div>
-
-			<div class="col-sm-12 col-md-6">
-				<label> Post Town</label>
-				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].postTown">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 col-md-4">
-				<label>City</label>
-				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].city">
-			</div>
-
-			<div class="col-sm-12 col-md-4">
-				<label>County</label>
-				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].county">
-			</div>
-
-			<div class="col-sm-12 col-md-4">
-				<label>Country</label>
-				<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].country">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 col-md-6 row">
-				<div class="col-sm-10">
-					<label>Postal Code:</label>
-					<input class="form-control" type="text" ng-model="crimeSuspect.addresses[0].postcode">
-
-				</div>
-
-			</div>
-			<div class="col-sm-12 col-md-6">
-				<label>Phone:</label>
-				<input class="form-control" type="text" ng-model="crimeSuspect.phone">
-			</div>
-		</div> -->
 
 		<div class="row">
 			<div class="col-md-4 col-sm-12">
@@ -502,7 +460,6 @@
 						<th>City</th>
 						<th>County</th>
 						<th>Postcode</th>
-						<th>Phone</th>
 						<th>Age</th>
 						<th ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">&nbsp;</th>
 					</tr>
@@ -516,7 +473,6 @@
 						<td>{{person.addresses[0].city}}</td>
 						<td>{{person.addresses[0].county}}</td>
 						<td>{{person.addresses[0].postcode}}</td>
-						<td>{{person.phone}}</td>
 						<td>{{person.age}}</td>
 						<td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
 							<a ng-click="deleteCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
