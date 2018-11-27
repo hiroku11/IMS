@@ -962,11 +962,11 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             if (date != null) {
                 loss.dateTimeContacted = date + " " + (loss.timeHrsContacted || '00') + ":" + (loss.timeMinContacted || '00') + ":00";
             }
-            else {
-                loss.timeHrsContacted = ((new Date()).getHours()).toString().length == 2 ? (new Date()).getHours() : '0' + (new Date()).getHours();
-                loss.timeMinContacted = ((new Date()).getMinutes()).toString().length == 2 ? (new Date()).getMinutes() : '0' + (new Date()).getMinutes();
-                loss.dateTimeContacted = rmsService.formatDate(new Date()) + ' ' + loss.timeHrsContacted + ':' + loss.timeMinContacted + ':00';
-            }
+            // else if(loss.externalAgencyContacted !== 'N'){
+            //     loss.timeHrsContacted = ((new Date()).getHours()).toString().length == 2 ? (new Date()).getHours() : '0' + (new Date()).getHours();
+            //     loss.timeMinContacted = ((new Date()).getMinutes()).toString().length == 2 ? (new Date()).getMinutes() : '0' + (new Date()).getMinutes();
+            //     loss.dateTimeContacted = rmsService.formatDate(new Date()) + ' ' + loss.timeHrsContacted + ':' + loss.timeMinContacted + ':00';
+            // }
 
 
             var req = {
@@ -4064,7 +4064,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $scope.incidentSummary.suspects = incidentSummary.suspects.concat(incidentSummary.employeeSuspects);
             $scope.incidentSummary.accident.witnesses = incidentSummary.accident.witnesses.concat(incidentSummary.accident.employeeWitness);
             $scope.incidentSummary.accident.injuredPersons = incidentSummary.accident.injuredPersons.concat(incidentSummary.accident.employeeInjuredPersons);
-            
+
             $scope.getWitnessData();
             $scope.getInjuredData();
 
