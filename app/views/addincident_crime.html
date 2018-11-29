@@ -252,12 +252,13 @@
 							<td>{{person.addresses[0].organizationName}}</td>
 							<td>{{person.addresses[0].city}}</td>
 							<td>{{person.addresses[0].county}}</td>
-							<td>{{person.addresses[0].postcode}}</td>
+							<td>{{person.addresses[0].postcode1}} {{person.addresses[0].postcode2}}</td>
 							<td>{{person.phone}}</td>
 							<td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
 								<a ng-click="deleteCrimeWitness(person)" ng-if="person.witnessCategory == 'NON-EMPLOYEE'">
 									<i class="glyphicon glyphicon-trash"></i>
 								</a>
+								&nbsp;&nbsp;
 								<a ng-click="loadCrimeWitness(person)" ng-if="person.witnessCategory == 'NON-EMPLOYEE'">
 									<i class="glyphicon glyphicon-pencil"></i>
 								</a>
@@ -477,7 +478,7 @@
 						<td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
 							<a ng-click="deleteCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
 								<i class="glyphicon glyphicon-trash"></i>
-							</a>
+							</a>&nbsp;&nbsp;
 							<a ng-click="loadCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
 								<i class="glyphicon glyphicon-pencil"></i>
 							</a>

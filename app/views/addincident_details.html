@@ -2,7 +2,7 @@
     <h2>Incident Details</h2>
     <form ng-submit="submitForm('incidentDetailsForm')">
         <div ng-if="logIncidentDetails.accidentDamage || logIncidentDetails.vehicleOrAssetDamage  || logIncidentDetails.criminalAttack">
-            <h3 class="form-title">Suspect</h3>
+            <h4 class="form-title">Suspect</h4>
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <label>Suspect Type</label>
@@ -304,7 +304,7 @@
                             <td>{{suspect.addresses[0].organizationName}}</td>
                             <td>{{suspect.addresses[0].city}}</td>
                             <td>{{suspect.addresses[0].county}}</td>
-                            <td>{{suspect.addresses[0].postcode}}</td>
+                            <td>{{suspect.addresses[0].postcode1}} {{suspect.addresses[0].postcode2}}</td>
                             <td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
                                 <a ng-click="deleteSuspect(suspect)" ng-if="suspect.suspectCategory == 'NON-EMPLOYEE'">
                                     <i class="glyphicon glyphicon-trash"></i>

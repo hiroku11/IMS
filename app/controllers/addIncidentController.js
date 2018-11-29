@@ -1514,6 +1514,24 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             })
         }
 
+        $scope.getWitnessTypes = function () {
+            // /table-maintenance/witness-type/witness-types
+            var req = {
+                url: rmsService.baseEndpointUrl + 'table-maintenance/witness-type/witness-types',
+                method: "GET",
+                headers: {
+                    'X-AUTH-TOKEN': $scope.token
+
+                },
+            }
+            //AppService.ShowLoader();
+            $http(req).then(function (response) {
+                $scope.witnessTypes = response.data;
+                //AppService.HideLoader();
+            }, function (error) {
+                //AppService.HideLoader();
+            })
+        }
 
         $scope.getIncidentType = function () {
             var req = {
@@ -2513,6 +2531,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
         //Witness 
         $scope.addWitness = function () {
+            if (!$scope.accidentDetails.id) {
+                rmsService.showAlert(false, 'Please save accident details first.');
+            }
             $scope.witness.distinguishingFeatureDetails = $scope.witness.distinguishingFeatures;
 
             var req = {
@@ -4105,8 +4126,16 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             // $scope.witnesses = incidentSummary.accident.witnesses;
             // $scope.injuredPersons = incidentSummary.accident.injuredPersons;
             $scope.incidentSummary.suspects = incidentSummary.suspects.concat(incidentSummary.employeeSuspects);
-            $scope.incidentSummary.accident.witnesses = incidentSummary.accident.witnesses.concat(incidentSummary.accident.employeeWitness);
-            $scope.incidentSummary.accident.injuredPersons = incidentSummary.accident.injuredPersons.concat(incidentSummary.accident.employeeInjuredPersons);
+            if ($scope.incidentSummary.accident == null) {
+                $scope.incidentSummary.accident = {}
+            }
+            if (incidentSummary.accident.witnesses) {
+                $scope.incidentSummary.accident.witnesses = incidentSummary.accident.witnesses.concat(incidentSummary.accident.employeeWitness);
+            }
+            if (incidentSummary.accident.injuredPersons) {
+                $scope.incidentSummary.accident.injuredPersons = incidentSummary.accident.injuredPersons.concat(incidentSummary.accident.employeeInjuredPersons);
+            }
+
 
             $scope.getWitnessData();
             $scope.getInjuredData();
@@ -4138,8 +4167,14 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.initializeCrimeTime();
             }
             $scope.crimeAdded = true;
+            if (!$scope.incidentSummary.crime) {
+                $scope.incidentSummary.crime = {};
+            }
             // $scope.incidentSummary.crime.witnesses = incidentSummary.crime.witnesses.concat(incidentSummary.crime.employeeWitnesses);
-            $scope.incidentSummary.crime.crimeSuspects = incidentSummary.crime.crimeSuspects.concat(incidentSummary.crime.employeeCrimeSuspects);
+            if (incidentSummary.crime.crimeSuspects) {
+                $scope.incidentSummary.crime.crimeSuspects = incidentSummary.crime.crimeSuspects.concat(incidentSummary.crime.employeeCrimeSuspects);
+            }
+
             $scope.getCrimeSuspectData();
             $scope.getCrimeWitnessData();
             if (incidentSummary.claim != null) {
@@ -4162,15 +4197,17 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             }
 
             $scope.investigationDetails = incidentSummary.investigation != null ? incidentSummary.investigation : $scope.investigationDetails;
-
             if (incidentSummary.investigation != null && incidentSummary.investigation.investigator == null) {
-
-
                 incidentSummary.investigation.investigator = {
                     "id": null,
                     "loginId": null,
                     "username": null
                 }
+            }
+            if (incidentSummary.investigation != null && incidentSummary.investigation.investigator != null) {
+                $scope.invstigatorFirstName = incidentSummary.investigation.investigator.firstName;
+                $scope.invstigatorLastName = incidentSummary.investigation.investigator.lastName;
+                $scope.invstigatorMiddleName = incidentSummary.investigation.investigator.middleName;
             }
 
 
@@ -4496,6 +4533,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         }
         //get data for dropdown and for other details
         $scope.getSuspectType();
+        $scope.getWitnessTypes();
         $scope.getAgency();
         $scope.getDistinguishFeatures();
         $scope.getAssetCategoriesList();
