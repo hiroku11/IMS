@@ -3998,7 +3998,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'X-AUTH-TOKEN': $scope.token
                 },
                 data: {
-                    "incidentId": $scope.incident.incidentId,
+                    "incidentId": $scope.incident.id,
                     "uniqueIncidentId": $scope.incident.uniqueIncidentId
                 }
             }
@@ -4018,7 +4018,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
         $scope.prepareEditIncidentData = function () {
             let incidentSummary = rmsService.cloneObject($scope.incidentSummary);
-            $scope.incident.incidentId = incidentSummary.uniqueIncidentId;
+            $scope.incident.incidentId = incidentSummary.id;
             $scope.logIncidentDetails.incidentId = incidentSummary.id;
             $scope.incident.id = incidentSummary.id;
             $scope.incident.uniqueIncidentId = incidentSummary.uniqueIncidentId;
