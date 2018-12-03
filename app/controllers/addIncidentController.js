@@ -1270,6 +1270,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $scope.claimDetail.claimHandler.loginId = person.loginId;
             $scope.claimDetail.claimHandler.username = person.username;
             $scope.claimHandler = person.firstName + " " + person.lastName;
+            $scope.claimHandlerDetails = person;
         }
         $scope.getInvestigationHandler = function () {
             var req = {
@@ -1308,7 +1309,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $scope.invstigatorFirstName = person.firstName;
             $scope.invstigatorMiddleName = person.middleName;
             $scope.invstigatorLastName = person.lastName;
-
+            $scope.investigatorDetails = person;
             //$scope.investigationHandler = person.firstName + " " + person.lastName;
         }
 
@@ -4187,6 +4188,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     }
                 }
                 if (incidentSummary.claim.claimHandler) {
+                    $scope.claimHandlerDetails = incidentSummary.claim.claimHandler;
                     $scope.claimHandler = incidentSummary.claim.claimHandler.firstName + " " + incidentSummary.claim.claimHandler.lastName;
 
                 }
@@ -4208,6 +4210,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.invstigatorFirstName = incidentSummary.investigation.investigator.firstName;
                 $scope.invstigatorLastName = incidentSummary.investigation.investigator.lastName;
                 $scope.invstigatorMiddleName = incidentSummary.investigation.investigator.middleName;
+                $scope.investigatorDetails = incidentSummary.investigation.investigator;
             }
 
 

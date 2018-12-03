@@ -473,7 +473,7 @@
 						<td>{{person.addresses[0].organizationName}}</td>
 						<td>{{person.addresses[0].city}}</td>
 						<td>{{person.addresses[0].county}}</td>
-						<td>{{person.addresses[0].postcode}}</td>
+						<td>{{person.addresses[0].postcode1}} {{person.addresses[0].postcode2}}</td>
 						<td>{{person.age}}</td>
 						<td ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
 							<a ng-click="deleteCrimeSuspect(person)" ng-if="person.crimeSuspectCategory == 'NON-EMPLOYEE'">
