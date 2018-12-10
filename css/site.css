@@ -1100,3 +1100,14 @@ a {
 table {
    margin-right: 5px !important;
 }
+.modal-body {
+   max-height: 400px;
+   overflow-y: auto;
+}
+
+
+@media (min-width: 992px) {
+   .modal-lg {
+       max-width: 1200px;
+   }
+}

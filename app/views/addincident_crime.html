@@ -6,9 +6,9 @@
 			<div class="col-sm-12 col-md-4">
 				<label>Crime Date</label>
 				<p class="input-group">
-					<input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="calendar.opened.crimeDate" ng-focus="calendar.open($event,'crimeDate')"
-					 datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" ng-model="crimeDetails.date"
-					/>
+					<input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="calendar.opened.crimeDate"
+					 ng-focus="calendar.open($event,'crimeDate')" datepicker-options="dateOptions" close-text="Close"
+					 alt-input-formats="altInputFormats" ng-model="crimeDetails.date" />
 					<span class="input-group-addon" ng-click="calendar.open($event,'crimeDate')">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -170,7 +170,8 @@
 					<div>
 						<label>Gender</label>
 					</div>
-					<select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="crimeWitness.genderType.id">
+					<select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType"
+					 ng-model="crimeWitness.genderType.id">
 						<option value=""></option>
 					</select>
 				</div>
@@ -226,7 +227,8 @@
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal12">Add Existing Witness</button>
 				</div>
 				<div class="col-sm-4">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal13" ng-click="clearUser()">Add Employee Witness</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal13" ng-click="clearUser()">Add
+						Employee Witness</button>
 				</div>
 			</div>
 
@@ -275,7 +277,8 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-6">
 				<label>Suspect Type</label>
-				<select class="form-control" ng-options="suspectType.id as suspectType.description for suspectType in suspectType" ng-model="crimeSuspect.crimeSuspectType.id">
+				<select class="form-control" ng-options="suspectType.id as suspectType.description for suspectType in suspectType"
+				 ng-model="crimeSuspect.crimeSuspectType.id">
 					<option value=""></option>
 				</select>
 
@@ -283,8 +286,8 @@
 			<div class="col-sm-12 col-md-6">
 
 				<label>Suspect Type If Other</label>
-				<input name="" class="form-control" ng-disabled="crimeSuspect.crimeSuspectType.id !='OTHER'" type="text" placeholder="If Suspect Others"
-				 ng-model="crimeSuspect.crimeSuspectTypeOther">
+				<input name="" class="form-control" ng-disabled="crimeSuspect.crimeSuspectType.id !='OTHER'" type="text"
+				 placeholder="If Suspect Others" ng-model="crimeSuspect.crimeSuspectTypeOther">
 			</div>
 		</div>
 		<div class="row">
@@ -392,7 +395,8 @@
 				<div>
 					<label>Gender</label>
 				</div>
-				<select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType" ng-model="crimeSuspect.genderType.id">
+				<select class="form-control" ng-options="genderType.id as genderType.description for genderType in genderType"
+				 ng-model="crimeSuspect.genderType.id">
 					<option value=""></option>
 				</select>
 				<!--<input name="gender" type="radio"> <span>Male</span>
@@ -437,18 +441,21 @@
 		</div>
 		<div class="row" ng-if="logIncidentDetails.incidentStatus != 'CLOSED'">
 			<div class="col-sm-4" ng-if="!editCrimeSuspect">
-				<button type="button" class="btn btn-primary" ng-click="addCrimeSuspect()" ng-disabled="!crimeAdded">Add Crime Suspect</button>
+				<button type="button" class="btn btn-primary" ng-click="addCrimeSuspect()" ng-disabled="!crimeAdded">Add Crime
+					Suspect</button>
 			</div>
 			<div class="col-sm-4" ng-if="editCrimeSuspect">
 				<button type="button" class="btn btn-success" ng-click="updateCrimeSuspect(crimeSuspect)">Update Crime Suspect</button>
 			</div>
 			<div class="col-sm-4" ng-if="loggedInUser.roles.indexOf('INVESTIGATOR') > -1  || 
                loggedInUser.roles.indexOf('CLAIMS_HANDLER') > -1 || loggedInUser.roles.indexOf('ADMIN') > -1">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal14" ng-disabled="!crimeAdded">Add Existing Crime Suspect</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal14" ng-disabled="!crimeAdded">Add
+					Existing Crime Suspect</button>
 			</div>
 			<div class="col-sm-4" ng-if="loggedInUser.roles.indexOf('INVESTIGATOR') > -1  || 
 				loggedInUser.roles.indexOf('CLAIMS_HANDLER') > -1 || loggedInUser.roles.indexOf('ADMIN') > -1">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal15" ng-disabled="!crimeAdded" ng-click="clearUser()">Add Employee Crime Suspect</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal15" ng-disabled="!crimeAdded"
+				 ng-click="clearUser()">Add Employee Crime Suspect</button>
 			</div>
 		</div>
 		<div class="table-wrapper inline" ng-if="crimesuspects.length > 0">
@@ -513,7 +520,7 @@
 
 </div>
 <div id="myModal12" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -526,8 +533,8 @@
 					<div class="col-sm-12 col-md-6 ">
 						<label>Existing Crime Witness</label>
 						<div class="input-group">
-							<input class="form-control" ng-change="crimeWitnessLookup(existingCrimeWitness)" placeholder="Type user name" ng-model="existingCrimeWitness"
-							 ng-model-options="{'debounce':500}" />
+							<input class="form-control" ng-change="crimeWitnessLookup(existingCrimeWitness)" placeholder="Type user name"
+							 ng-model="existingCrimeWitness" ng-model-options="{'debounce':500}" />
 
 							<span class="input-group-addon" ng-click="crimeWitnessLookup(existingCrimeWitness)">
 								<span class="glyphicon glyphicon-search"></span>
@@ -536,36 +543,32 @@
 
 					</div>
 				</div>
-				<div class="row">
-					<table class="table">
-						<thead>
-							<tr>
-								<th style="width:5%"></th>
-								<th>Name</th>
-								<th>Age</th>
-								<th>Gender</th>
-								<th>Phone</th>
-								<th>Email</th>
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="width:5%"></th>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Gender</th>
+							<th>Phone</th>
+							<th>Email</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="person in crimeWitnessData">
-								<td>
-									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingWitness(person)"
-									/>
-								</td>
-								<td>{{person.firstName}} {{person.LastName}}</td>
-								<td>{{person.age}}</td>
-								<td>{{person.genderTypeCode}}</td>
-								<td>{{person.phone}}</td>
-								<td>{{person.email}}</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in crimeWitnessData">
+							<td>
+								<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingWitness(person)" />
+							</td>
+							<td>{{person.firstName}} {{person.LastName}}</td>
+							<td>{{person.age}}</td>
+							<td>{{person.genderTypeCode}}</td>
+							<td>{{person.phone}}</td>
+							<td>{{person.email}}</td>
 
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class=" modal-footer ">
 
@@ -577,7 +580,7 @@
 	</div>
 </div>
 <div id="myModal13" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -599,36 +602,32 @@
 
 					</div>
 				</div>
-				<div class="row">
-					<table class="table">
-						<thead>
-							<tr>
-								<th style="width:5%"></th>
-								<th>Name</th>
-								<th>Age</th>
-								<th>Gender</th>
-								<th>Phone</th>
-								<th>Email</th>
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="width:5%"></th>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Gender</th>
+							<th>Phone</th>
+							<th>Email</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="person in employeeUser">
-								<td>
-									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeWitness(person)"
-									/>
-								</td>
-								<td>{{person.firstName}} {{person.LastName}}</td>
-								<td>{{person.age}}</td>
-								<td>{{person.genderTypeCode}}</td>
-								<td>{{person.phone}}</td>
-								<td>{{person.email}}</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in employeeUser">
+							<td>
+								<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeWitness(person)" />
+							</td>
+							<td>{{person.firstName}} {{person.LastName}}</td>
+							<td>{{person.age}}</td>
+							<td>{{person.genderTypeCode}}</td>
+							<td>{{person.phone}}</td>
+							<td>{{person.email}}</td>
 
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class=" modal-footer ">
 
@@ -640,7 +639,7 @@
 	</div>
 </div>
 <div id="myModal14" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -653,8 +652,8 @@
 					<div class="col-sm-12 col-md-6 ">
 						<label>Existing Crime Suspect</label>
 						<div class="input-group">
-							<input class="form-control" ng-change="crimeSuspectLookup(existingCrimeSuspect)" placeholder="Type user name" ng-model="existingCrimeSuspect"
-							 ng-model-options="{'debounce':500}" />
+							<input class="form-control" ng-change="crimeSuspectLookup(existingCrimeSuspect)" placeholder="Type user name"
+							 ng-model="existingCrimeSuspect" ng-model-options="{'debounce':500}" />
 							<span class="input-group-addon" ng-click="crimeSuspectLookup(existingCrimeSuspect)">
 								<span class="glyphicon glyphicon-search"></span>
 							</span>
@@ -662,35 +661,32 @@
 
 					</div>
 				</div>
-				<div class="row">
-					<table class="table">
-						<thead>
-							<tr>
-								<th style="width:5%"></th>
-								<th>Name</th>
-								<th>Age</th>
-								<th>Gender</th>
-								<th>Phone</th>
-								<th>Email</th>
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="width:5%"></th>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Gender</th>
+							<th>Phone</th>
+							<th>Email</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="person in crimeSuspectData">
-								<td>
-									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingSuspect(person)"
-									/>
-								</td>
-								<td>{{person.firstName}} {{person.LastName}}</td>
-								<td>{{person.age}}</td>
-								<td>{{person.genderTypeCode}}</td>
-								<td>{{person.phone}}</td>
-								<td>{{person.email}}</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in crimeSuspectData">
+							<td>
+								<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeExistingSuspect(person)" />
+							</td>
+							<td>{{person.firstName}} {{person.LastName}}</td>
+							<td>{{person.age}}</td>
+							<td>{{person.genderTypeCode}}</td>
+							<td>{{person.phone}}</td>
+							<td>{{person.email}}</td>
 
-							</tr>
-						</tbody>
-					</table>
-				</div>
+						</tr>
+					</tbody>
+				</table>
 
 			</div>
 			<div class=" modal-footer ">
@@ -703,7 +699,7 @@
 	</div>
 </div>
 <div id="myModal15" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -725,36 +721,32 @@
 
 					</div>
 				</div>
-				<div class="row">
-					<table class="table">
-						<thead>
-							<tr>
-								<th style="width:5%"></th>
-								<th>Name</th>
-								<th>Age</th>
-								<th>Gender</th>
-								<th>Phone</th>
-								<th>Email</th>
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="width:5%"></th>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Gender</th>
+							<th>Phone</th>
+							<th>Email</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="person in employeeUser">
-								<td>
-									<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeSuspect(person)"
-									/>
-								</td>
-								<td>{{person.firstName}} {{person.LastName}}</td>
-								<td>{{person.age}}</td>
-								<td>{{person.genderTypeCode}}</td>
-								<td>{{person.phone}}</td>
-								<td>{{person.email}}</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in employeeUser">
+							<td>
+								<input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected" ng-click="addCrimeEmployeeSuspect(person)" />
+							</td>
+							<td>{{person.firstName}} {{person.LastName}}</td>
+							<td>{{person.age}}</td>
+							<td>{{person.genderTypeCode}}</td>
+							<td>{{person.phone}}</td>
+							<td>{{person.email}}</td>
 
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class=" modal-footer ">
 

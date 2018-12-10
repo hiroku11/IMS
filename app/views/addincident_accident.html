@@ -714,7 +714,7 @@
         </div>
     </form>
     <div id="bodyModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content" style="height:auto;max-height:inherit;overflow-x: hidden;">
@@ -769,7 +769,7 @@
         </div>
     </div>
     <div id="myModal5" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -792,35 +792,34 @@
 
                         </div>
                     </div>
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th style="width:5%"></th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="person in injuredPersonData">
-                                    <td>
-                                        <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
-                                            ng-click="addExistingInjured(person)" />
-                                    </td>
-                                    <td>{{person.firstName}} {{person.LastName}}</td>
-                                    <td>{{person.age}}</td>
-                                    <td>{{person.genderTypeCode}}</td>
-                                    <td>{{person.phone}}</td>
-                                    <td>{{person.email}}</td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:5%"></th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Email</th>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in injuredPersonData">
+                                <td>
+                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
+                                        ng-click="addExistingInjured(person)" />
+                                </td>
+                                <td>{{person.firstName}} {{person.LastName}}</td>
+                                <td>{{person.age}}</td>
+                                <td>{{person.genderTypeCode}}</td>
+                                <td>{{person.phone}}</td>
+                                <td>{{person.email}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </div>
                 <div class=" modal-footer ">
@@ -833,7 +832,7 @@
         </div>
     </div>
     <div id="myModal6" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -855,35 +854,34 @@
 
                         </div>
                     </div>
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th style="width:5%"></th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="person in employeeUser">
-                                    <td>
-                                        <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
-                                            ng-click="addEmployeeInjured(person)" />
-                                    </td>
-                                    <td>{{person.firstName}} {{person.LastName}}</td>
-                                    <td>{{person.age}}</td>
-                                    <td>{{person.genderTypeCode}}</td>
-                                    <td>{{person.phone}}</td>
-                                    <td>{{person.email}}</td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:5%"></th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Email</th>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in employeeUser">
+                                <td>
+                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
+                                        ng-click="addEmployeeInjured(person)" />
+                                </td>
+                                <td>{{person.firstName}} {{person.LastName}}</td>
+                                <td>{{person.age}}</td>
+                                <td>{{person.genderTypeCode}}</td>
+                                <td>{{person.phone}}</td>
+                                <td>{{person.email}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </div>
                 <div class=" modal-footer ">
@@ -896,7 +894,7 @@
         </div>
     </div>
     <div id="myModal7" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -919,35 +917,35 @@
 
                         </div>
                     </div>
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th style="width:5%"></th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="person in witnessData">
-                                    <td>
-                                        <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
-                                            ng-click="addExistingWitness(person)" />
-                                    </td>
-                                    <td>{{person.firstName}} {{person.LastName}}</td>
-                                    <td>{{person.age}}</td>
-                                    <td>{{person.genderTypeCode}}</td>
-                                    <td>{{person.phone}}</td>
-                                    <td>{{person.email}}</td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:5%"></th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Email</th>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in witnessData">
+                                <td>
+                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
+                                        ng-click="addExistingWitness(person)" />
+                                </td>
+                                <td>{{person.firstName}} {{person.LastName}}</td>
+                                <td>{{person.age}}</td>
+                                <td>{{person.genderTypeCode}}</td>
+                                <td>{{person.phone}}</td>
+                                <td>{{person.email}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
 
                 </div>
                 <div class=" modal-footer ">
@@ -958,7 +956,7 @@
         </div>
     </div>
     <div id="myModal8" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -980,36 +978,33 @@
 
                         </div>
                     </div>
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th style="width:5%"></th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:5%"></th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Email</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="person in employeeUser">
-                                    <td>
-                                        <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
-                                            ng-click="addEmployeeWitness(person)" />
-                                    </td>
-                                    <td>{{person.firstName}} {{person.LastName}}</td>
-                                    <td>{{person.age}}</td>
-                                    <td>{{person.genderTypeCode}}</td>
-                                    <td>{{person.phone}}</td>
-                                    <td>{{person.email}}</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in employeeUser">
+                                <td>
+                                    <input type="checkbox" class="checkbox checkbox-primary" ng-model="person.selected"
+                                        ng-click="addEmployeeWitness(person)" />
+                                </td>
+                                <td>{{person.firstName}} {{person.LastName}}</td>
+                                <td>{{person.age}}</td>
+                                <td>{{person.genderTypeCode}}</td>
+                                <td>{{person.phone}}</td>
+                                <td>{{person.email}}</td>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class=" modal-footer ">
 

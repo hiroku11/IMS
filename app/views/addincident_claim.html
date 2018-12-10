@@ -22,7 +22,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr class="text-center">
-                            <td colspan="">Claim Handler Details</td>
+                            <td colspan="3">Claim Handler Details</td>
                         </tr>
                         <tr>
                             <th>Full Name</th>
@@ -316,7 +316,7 @@
     </form>
 
     <div id="claimHandler" class="modal fade" role="dialog" ng-init="getClaimHandler()">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -325,37 +325,33 @@
                     <h3 class="modal-title">Claim Handler Lookup</h3>
                 </div>
                 <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:5%"></th>
+                                <th>Name</th>
+                                <th>Login Id</th>
 
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th style="width:5%"></th>
-                                    <th>Name</th>
-                                    <th>Login Id</th>
+                                <th>Phone</th>
+                                <th>Email</th>
 
-                                    <th>Phone</th>
-                                    <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in claimHandlerList">
+                                <td>
+                                    <input type="radio" ng-click="assignClaimHandler(person)" name="claimAssign" />
+                                    <!-- <input type="checkbox" class="checkbox checkbox-primary" ng-click="assignClaimHandler(person)" /> -->
+                                </td>
+                                <td>{{person.fullName}}</td>
+                                <td>{{person.loginId}}</td>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="person in claimHandlerList">
-                                    <td>
-                                        <input type="radio" ng-click="assignClaimHandler(person)" name="claimAssign" />
-                                        <!-- <input type="checkbox" class="checkbox checkbox-primary" ng-click="assignClaimHandler(person)" /> -->
-                                    </td>
-                                    <td>{{person.fullName}}</td>
-                                    <td>{{person.loginId}}</td>
+                                <td>{{person.phone}}</td>
+                                <td>{{person.email}}</td>
 
-                                    <td>{{person.phone}}</td>
-                                    <td>{{person.email}}</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class=" modal-footer ">
                     <a class="btn btn-danger" class="close" data-dismiss="modal">Close</a>
