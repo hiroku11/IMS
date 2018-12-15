@@ -138,7 +138,8 @@
                 <tbody>
                         <tr ng-repeat="suspect in incidentSummary.suspects">
                                 <td>
-                                        {{suspect.suspectType != 'OTHER' ? suspect.suspectType.description : suspect.suspectTypeOther}}
+                                        {{suspect.suspectType != 'OTHER' ? suspect.suspectType.description :
+                                        suspect.suspectTypeOther}}
                                 </td>
                                 <td>
                                         {{suspect.firstName}} {{suspect.middleName}} {{suspect.lastName}}
@@ -147,11 +148,13 @@
                                         {{suspect.age}}
                                 </td>
                                 <td>
-                                        {{suspect.genderType != 'OTHER' ? suspect.genderType.description : suspect.genderTypeOther}}
+                                        {{suspect.genderType != 'OTHER' ? suspect.genderType.description :
+                                        suspect.genderTypeOther}}
                                 </td>
 
                                 <td>
-                                        {{suspect.addresses[0].organizationName}} {{suspect.addresses[0].buildingName}} {{suspect.addresses[0].localityName}} {{suspect.addresses[0].streetName}}
+                                        {{suspect.addresses[0].organizationName}} {{suspect.addresses[0].buildingName}}
+                                        {{suspect.addresses[0].localityName}} {{suspect.addresses[0].streetName}}
                                 </td>
                                 <td>
                                         {{suspect.addresses[0].city}}
@@ -184,7 +187,8 @@
                                         {{loss.lossValue}}
                                 </td>
                                 <td>
-                                        {{loss.externalAgency.id != 'OTHER'? loss.externalAgency.description : loss.externalAgencyTypeOther}}
+                                        {{loss.externalAgency.id != 'OTHER'? loss.externalAgency.description :
+                                        loss.externalAgencyTypeOther}}
                                 </td>
                                 <td>
                                         {{loss.costEstimation}}
@@ -214,7 +218,8 @@
                 </div>
                 <div class="col-sm-12 col-md-4">
                         <label>Accident Location:</label>
-                        <label class="summary-text">{{incidentSummary.accident.accidentLocation.id !='OTHER' ? incidentSummary.accident.accidentLocation.description
+                        <label class="summary-text">{{incidentSummary.accident.accidentLocation.id !='OTHER' ?
+                                incidentSummary.accident.accidentLocation.description
                                 : incidentSummary.accident.accidentLocationOther}}</label>
                 </div>
                 <div class="col-sm-12 col-md-4">
@@ -243,7 +248,8 @@
                 <tbody>
                         <tr ng-repeat="witness in incidentSummary.accident.witnesses">
                                 <td>
-                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description : witness.witnessTypeOther}}
+                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description :
+                                        witness.witnessTypeOther}}
                                 </td>
                                 <td>
                                         {{witness.firstName}} {{witness.middleName}} {{witness.lastName}}
@@ -252,11 +258,13 @@
                                         {{witness.age}}
                                 </td>
                                 <td>
-                                        {{witness.genderType != 'OTHER' ? witness.genderType.description : witness.genderTypeOther}}
+                                        {{witness.genderType != 'OTHER' ? witness.genderType.description :
+                                        witness.genderTypeOther}}
                                 </td>
 
                                 <td>
-                                        {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}} {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
+                                        {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}}
+                                        {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
                                 </td>
                                 <td>
                                         {{witness.addresses[0].city}}
@@ -292,20 +300,25 @@
                 <tbody>
                         <tr ng-repeat="injuredPerson in incidentSummary.accident.injuredPersons">
                                 <td>
-                                        {{injuredPerson.injuredPersonType != 'OTHER' ? injuredPerson.injuredPersonType.description : witness.witnessTypeOther}}
+                                        {{injuredPerson.injuredPersonType != 'OTHER' ?
+                                        injuredPerson.injuredPersonType.description : witness.witnessTypeOther}}
                                 </td>
                                 <td>
-                                        {{injuredPerson.firstName}} {{injuredPerson.middleName}} {{injuredPerson.lastName}}
+                                        {{injuredPerson.firstName}} {{injuredPerson.middleName}}
+                                        {{injuredPerson.lastName}}
                                 </td>
                                 <td>
                                         {{injuredPerson.age}}
                                 </td>
                                 <td>
-                                        {{injuredPerson.genderType != 'OTHER' ? injuredPerson.genderType.description : injuredPerson.genderTypeOther}}
+                                        {{injuredPerson.genderType != 'OTHER' ? injuredPerson.genderType.description :
+                                        injuredPerson.genderTypeOther}}
                                 </td>
 
                                 <td>
-                                        {{injuredPerson.addresses[0].organizationName}} {{injuredPerson.addresses[0].buildingName}} {{injuredPerson.addresses[0].localityName}}
+                                        {{injuredPerson.addresses[0].organizationName}}
+                                        {{injuredPerson.addresses[0].buildingName}}
+                                        {{injuredPerson.addresses[0].localityName}}
                                         {{injuredPerson.addresses[0].streetName}}
                                 </td>
                                 <td>
@@ -439,20 +452,26 @@
                 <tbody>
                         <tr ng-repeat="crimeSuspect in incidentSummary.crime.crimeSuspects">
                                 <td>
-                                        {{crimeSuspect.crimeSuspectType != 'OTHER' ? crimeSuspect.crimeSuspectType.description : crimeSuspect.crimeSuspectTypeOther}}
+                                        {{crimeSuspect.crimeSuspectType != 'OTHER' ?
+                                        crimeSuspect.crimeSuspectType.description :
+                                        crimeSuspect.crimeSuspectTypeOther}}
                                 </td>
                                 <td>
-                                        {{crimeSuspect.firstName}} {{crimeSuspect.middleName}} {{crimeSuspect.lastName}}
+                                        {{crimeSuspect.firstName}} {{crimeSuspect.middleName}}
+                                        {{crimeSuspect.lastName}}
                                 </td>
                                 <td>
                                         {{crimeSuspect.age}}
                                 </td>
                                 <td>
-                                        {{crimeSuspect.genderType != 'OTHER' ? crimeSuspect.genderType.description : crimeSuspect.genderTypeOther}}
+                                        {{crimeSuspect.genderType != 'OTHER' ? crimeSuspect.genderType.description :
+                                        crimeSuspect.genderTypeOther}}
                                 </td>
 
                                 <td>
-                                        {{crimeSuspect.addresses[0].organizationName}} {{crimeSuspect.addresses[0].buildingName}} {{crimeSuspect.addresses[0].localityName}}
+                                        {{crimeSuspect.addresses[0].organizationName}}
+                                        {{crimeSuspect.addresses[0].buildingName}}
+                                        {{crimeSuspect.addresses[0].localityName}}
                                         {{crimeSuspect.addresses[0].streetName}}
                                 </td>
                                 <td>
@@ -489,7 +508,8 @@
                 <tbody>
                         <tr ng-repeat="witness in incidentSummary.crime.witnesses">
                                 <td>
-                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description : witness.witnessTypeOther}}
+                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description :
+                                        witness.witnessTypeOther}}
                                 </td>
                                 <td>
                                         {{witness.firstName}} {{witness.middleName}} {{witness.lastName}}
@@ -498,11 +518,13 @@
                                         {{witness.age}}
                                 </td>
                                 <td>
-                                        {{witness.genderType != 'OTHER' ? witness.genderType.description : witness.genderTypeOther}}
+                                        {{witness.genderType != 'OTHER' ? witness.genderType.description :
+                                        witness.genderTypeOther}}
                                 </td>
 
                                 <td>
-                                        {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}} {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
+                                        {{witness.addresses[0].organizationName}} {{witness.addresses[0].buildingName}}
+                                        {{witness.addresses[0].localityName}} {{witness.addresses[0].streetName}}
                                 </td>
                                 <td>
                                         {{witness.addresses[0].city}}
@@ -539,11 +561,14 @@
                 </div>
                 <div class="col-sm-12 col-md-4">
                         <label>Claim Type:</label>
-                        <label class="summary-text">{{incidentSummary.claim.claimType.id !='OTHER'?incidentSummary.claim.claimType.description : incidentSummary.claim.claimTypeOther}}</label>
+                        <label class="summary-text">{{incidentSummary.claim.claimType.id
+                                !='OTHER'?incidentSummary.claim.claimType.description :
+                                incidentSummary.claim.claimTypeOther}}</label>
                 </div>
                 <div class="col-sm-12 col-md-4">
                         <label>Claim Request Type:</label>
-                        <label class="summary-text">{{incidentSummary.claim.claimRequestRegistrationType.id != 'OTHER'?incidentSummary.claim.claimRequestRegistrationType.description
+                        <label class="summary-text">{{incidentSummary.claim.claimRequestRegistrationType.id !=
+                                'OTHER'?incidentSummary.claim.claimRequestRegistrationType.description
                                 : incidentSummary.claim.claimRequestRegistrationTypeOther}}</label>
                 </div>
         </div>
@@ -558,7 +583,8 @@
                 </div>
                 <div class="col-sm-12 col-md-4">
                         <label>Policy Type:</label>
-                        <label class="summary-text">{{incidentSummary.claim.policyType.id !='OTHER' ? incidentSummary.claim.policyType.description :
+                        <label class="summary-text">{{incidentSummary.claim.policyType.id !='OTHER' ?
+                                incidentSummary.claim.policyType.description :
                                 incidentSummary.claim.policyTypeOther}}
                         </label>
                 </div>
@@ -572,10 +598,36 @@
                         <label>Training Requested:</label>
                         <label class="summary-text">{{incidentSummary.claim.trainingRequested}}</label>
                 </div>
-                <div class="col-sm-12 col-md-4">
-                        <label>Claim Handler:</label>
-                        <label class="summary-text">{{incidentSummary.claim.claimHandler.fullName}}</label>
+        </div>
+        <div class="row" ng-if="claimHandlerDetails">
+                <div class="col-sm-12">
+                        <table class="table table-bordered">
+                                <thead>
+                                        <tr class="text-center">
+                                                <td colspan="3">Claim Handler Details</td>
+                                        </tr>
+                                        <tr>
+                                                <th>Full Name</th>
+                                                <th>Phone</th>
+                                                <th>Email</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <td>
+                                                        {{claimHandler}}
+                                                </td>
+                                                <td>
+                                                        {{claimHandlerDetails.phone}}
+                                                </td>
+                                                <td>
+                                                        {{claimHandlerDetails.email}}
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
                 </div>
+
         </div>
         <div class="row" ng-if="isAdminRole && incidentSummary.claim.claimStatus.id=='REQUESTED'">
                 <div class="col-sm-12 col-md-4">
@@ -692,31 +744,60 @@
                 </div>
         </div>
         <div class="row" ng-if="isAdminRole">
-                <div class="col-sm-12 col-md-4">
-                        <label>Investigator:</label>
-                        <label class="summary-text">{{incidentSummary.investigation.investigator.fullName}}</label>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                        <label>Investigator Detail:</label>
-                        <label class="summary-text">{{incidentSummary.investigation.investigatorDetail}}</label>
-                </div>
-
-                <div class="col-sm-12 col-md-4">
+                <div class="col-sm-12">
                         <label>Investigator Statement:</label>
                         <label class="summary-text">{{incidentSummary.investigation.investigatorStatement}}</label>
                 </div>
-
-
-
         </div>
-        <div class="row" ng-if="isAdminRole">
-                <div class="col-md-4 col-sm-12">
-                        <label>Investigation Team Name</label>
-                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].teamDescription}} </label>
+        <div class="row">
+                <div class="col-sm-12">
+                        <table class="table table-bordered" ng-if="incidentSummary.investigation.investigator">
+                                <thead>
+                                        <tr>
+                                                <th>Full Name</th>
+                                                <th>Phone</th>
+                                                <th>Email</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <td>
+                                                        {{incidentSummary.investigation.investigator.firstName}}
+                                                        {{incidentSummary.investigation.investigator.lastName}}
+                                                </td>
+                                                <td>
+                                                        {{investigatorDetails.teamLeadPhone}}
+                                                </td>
+                                                <td>
+                                                        {{investigatorDetails.teamLeadEmail}}
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
                 </div>
-                <div class="col-md-4 col-sm-12">
-                        <label>Investigation Team Lead ID</label>
-                        <label class="summary-text">{{incidentSummary.investigation.investigator.investigationTeams[0].investigationTeamLeads[0].teamLeadLoginId}}</label>
+        </div>
+
+        <div ng-if="investigatorDetails && investigatorDetails.investigationTeams.length > 0" class="row" ng-repeat="team in investigatorDetails.investigationTeams">
+                <div class="col-sm-12">
+                        <table class="table table-bordered">
+                                <thead>
+                                        <tr>
+                                                <th colspan="3">{{team.teamDescription}}: Team Leads</th>
+                                        </tr>
+                                        <tr>
+                                                <th>Full Name</th>
+                                                <th>Phone</th>
+                                                <th>Email</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr ng-repeat="lead in team.investigationTeamLeads">
+                                                <td>{{lead.teamLeadFirstName}} {{lead.teamLeadLastName}}</td>
+                                                <td>{{lead.phone}}</td>
+                                                <td>{{lead.email}}</td>
+                                        </tr>
+                                </tbody>
+                        </table>
                 </div>
         </div>
         <h4>Supporting Documents</h4>
@@ -738,7 +819,8 @@
         </table>
         <div class="row">
                 <div class="col-sm-6">
-                        <button ng-if="incidentSummary.incidentStatus == 'DRAFT'" class="btn btn-primary" type="button" ng-click="submitIncident()">Submit</button>
+                        <button ng-if="incidentSummary.incidentStatus == 'DRAFT'" class="btn btn-primary" type="button"
+                                ng-click="submitIncident()">Submit</button>
                 </div>
                 <div class="col-sm-6">
                         <button type="button" ng-click="submitForm('summaryForm','back')" class="btn btn-secondary pull-right">Back</button>
