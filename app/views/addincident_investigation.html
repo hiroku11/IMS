@@ -40,7 +40,7 @@
                 <a class="btn btn-primary" data-toggle="modal" data-target="#investigationHandler">Lookup</a>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6 col-sm-12">
                 <label>Investigation Team Name</label>
                 <input disabled class="form-control" ng-model="investigationDetails.investigator.investigationTeams[0].teamDescription"
@@ -51,7 +51,7 @@
                 <input disabled class="form-control" ng-model="investigationDetails.investigator.investigationTeams[0].investigationTeamLeads[0].teamLeadLoginId"
                     type="text">
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-sm-12">
@@ -206,7 +206,7 @@
         </div>
     </form>
     <div id="investigationHandler" class="modal fade" role="dialog" ng-init="getInvestigationHandler()">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -216,36 +216,33 @@
                 </div>
                 <div class="modal-body">
 
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th style="width:5%"></th>
-                                    <th>Name</th>
-                                    <th>Login Id</th>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:5%"></th>
+                                <th>Name</th>
+                                <th>Login Id</th>
 
-                                    <th>Phone</th>
-                                    <th>Email</th>
+                                <th>Phone</th>
+                                <th>Email</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="person in investigationHandlerList">
-                                    <td>
-                                        <input type="radio" ng-click="assignInvestigationHandler(person)" name="investigationAssign" />
-                                        <!-- <input type="checkbox" class="checkbox checkbox-primary" ng-click="assignClaimHandler(person)" /> -->
-                                    </td>
-                                    <td>{{person.fullName}}</td>
-                                    <td>{{person.loginId}}</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in investigationHandlerList">
+                                <td>
+                                    <input type="radio" ng-click="assignInvestigationHandler(person)" name="investigationAssign" />
+                                    <!-- <input type="checkbox" class="checkbox checkbox-primary" ng-click="assignClaimHandler(person)" /> -->
+                                </td>
+                                <td>{{person.fullName}}</td>
+                                <td>{{person.loginId}}</td>
 
-                                    <td>{{person.phone}}</td>
-                                    <td>{{person.email}}</td>
+                                <td>{{person.phone}}</td>
+                                <td>{{person.email}}</td>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class=" modal-footer ">
 

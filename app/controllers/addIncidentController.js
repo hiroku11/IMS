@@ -688,7 +688,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
                 $scope.getSuspectData();
-                rmsService.showAlert(true, 'Suspect Added successfully.');
+                rmsService.showAlert(true, 'Suspect saved successfully.');
                 AppService.HideLoader();
             }, function (error) {
                 AppService.HideLoader();
@@ -816,7 +816,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getSuspectData();
                 $scope.suspect.distinguishingFeatures = $scope.suspect.distinguishFeaturesDetails;
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Suspect updated successfully.');
+                rmsService.showAlert(true, 'Suspect saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -845,7 +845,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.getSuspectData();
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Suspect added successfully');
+                    rmsService.showAlert(true, 'Suspect saved successfully');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -907,7 +907,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.getSuspectData();
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Suspect added successfully');
+                    rmsService.showAlert(true, 'Suspect saved successfully');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -988,7 +988,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $http(req).then(function (response) {
                 $scope.getLossData();
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Loss added successfully.');
+                rmsService.showAlert(true, 'Loss saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -1124,7 +1124,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getLossData();
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Loss updated successfully.');
+                rmsService.showAlert(true, 'Loss saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -1174,7 +1174,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 AppService.HideLoader();
                 $scope.accAdded = true;
                 $scope.accidentDetails.id = response.data.id;
-                rmsService.showAlert(true, 'Accident added successfully.');
+                rmsService.showAlert(true, 'Accident saved successfully.');
             }, function (error) {
                 //alert(error);
                 AppService.HideLoader();
@@ -1208,7 +1208,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 AppService.HideLoader();
                 $scope.claimDetail.id = response.data.id;
                 $scope.claimRefId = response.data.claimId;
-                rmsService.showAlert(true, 'Claim added successfully.');
+                rmsService.showAlert(true, 'Claim saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -1351,7 +1351,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $http(req).then(function (response) {
                 AppService.HideLoader();
                 $scope.incident.supportingDocuments = $scope.incident.supportingDocuments.concat(response.data);
-                rmsService.showAlert(true, 'Document added successfully.');
+                rmsService.showAlert(true, 'Document saved successfully.');
                 $scope.supportingDocumentsFormData = new FormData();
                 $scope.supportingDocuments = [{}, {}, {}, {}, {}];
             }, function (error) {
@@ -2206,7 +2206,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
                 AppService.HideLoader();
-                rmsService.showAlert(true, "Incident details added successfully");
+                rmsService.showAlert(true, "Incident details saved successfully");
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -2242,7 +2242,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 AppService.HideLoader();
                 $scope.crimeDetails.id = response.data.id;
                 $scope.crimeAdded = true;
-                rmsService.showAlert(true, "Crime details added successfully");
+                rmsService.showAlert(true, "Crime details saved successfully");
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -2291,7 +2291,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $http(req).then(function (response) {
                 $scope.getInjuredData();
                 AppService.HideLoader();
-                rmsService.showAlert(true, "Injured person added successfully");
+                rmsService.showAlert(true, "Injured person saved successfully");
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -2349,7 +2349,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $http(req).then(function (response) {
                     $scope.getInjuredData();
                     AppService.HideLoader();
-                    rmsService.showAlert(true, "Employee Injured person added successfully");
+                    rmsService.showAlert(true, "Employee Injured person saved successfully");
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -2523,7 +2523,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 }
                 $scope.myObj = { temp: [] };
                 AppService.HideLoader();
-                rmsService.showAlert(true, "Injured person updated successfully");
+                rmsService.showAlert(true, "Injured person saved successfully");
 
             }, function (error) {
                 AppService.HideLoader();
@@ -2553,7 +2553,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getWitnessData();
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Witness successfully added');
+                rmsService.showAlert(true, 'Witness saved ssuccessfully');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -2612,7 +2612,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.getWitnessData();
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Witness added successfully.');
+                    rmsService.showAlert(true, 'Witness saved successfully.');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -2706,7 +2706,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getWitnessData();
                 $scope.witness.distinguishingFeatures = $scope.witness.distinguishFeaturesDetails;
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Witness updated successfully.');
+                rmsService.showAlert(true, 'Witness saved successfully.');
                 $scope.witness = {
                     addresses: [],
                     distinguishingFeatureDetails: null,
@@ -2738,7 +2738,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.witness.distinguishingFeatures = $scope.witness.distinguishFeaturesDetails;
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Witness added successfully');
+                    rmsService.showAlert(true, 'Witness saved successfully');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -2794,7 +2794,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.assetDetail.id = response.data.id;
                 $scope.assetAdded = true;
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Asset added successfully');
+                rmsService.showAlert(true, 'Asset saved successfully');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -2817,7 +2817,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getBuilding();
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Building added successfully.');
+                rmsService.showAlert(true, 'Building saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -2899,7 +2899,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 $scope.getBuilding();
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Building successfully updated.');
+                rmsService.showAlert(true, 'Building saved successfully.');
                 $scope.building = {};
             }, function (error) {
                 AppService.HideLoader();
@@ -2924,7 +2924,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.vehicleDamageType.temp = [];
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Vehicle added successfully.');
+                rmsService.showAlert(true, 'Vehicle saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -3015,7 +3015,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 $scope.getVehicle();
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Vehicle updated successfully.');
+                rmsService.showAlert(true, 'Vehicle saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -3037,7 +3037,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getAssetOther();
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Asset other added successfully.');
+                rmsService.showAlert(true, 'Asset other saved successfully.');
                 $scope.assetOther = {};
             }, function (error) {
                 AppService.HideLoader();
@@ -3116,7 +3116,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getAssetOther();
                 $scope.assetOther = {};
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Asset other updated successfully.');
+                rmsService.showAlert(true, 'Asset other saved successfully.');
 
             }, function (error) {
                 AppService.HideLoader();
@@ -3141,7 +3141,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getEquipment();
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Equipment added successfully.');
+                rmsService.showAlert(true, 'Equipment saved successfully.');
                 $scope.equipment = {};
             }, function (error) {
                 AppService.HideLoader();
@@ -3190,7 +3190,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 $scope.getEquipment();
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Equipment updated successfully.');
+                rmsService.showAlert(true, 'Equipment saved successfully.');
                 $scope.equipment = {};
             }, function (error) {
                 AppService.HideLoader();
@@ -3246,7 +3246,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getCrimeSuspectData();
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Crime suspect added successfully.');
+                rmsService.showAlert(true, 'Crime suspect saved successfully.');
                 $scope.crimeSuspect = {
                     addresses: [],
                     distinguishingFeatureDetail: null,
@@ -3283,7 +3283,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 }
                 $scope.getCrimeSuspectData();
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Crime suspect updated successfully.');
+                rmsService.showAlert(true, 'Crime suspect saved successfully.');
 
             }, function (error) {
                 AppService.HideLoader();
@@ -3373,7 +3373,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.getCrimeSuspectData();
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Crime suspect added successfully.');
+                    rmsService.showAlert(true, 'Crime suspect saved successfully.');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -3423,7 +3423,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.getCrimeSuspectData();
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Crime suspect added successfully.');
+                    rmsService.showAlert(true, 'Crime suspect saved successfully.');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -3475,7 +3475,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getCrimeWitnessData();
 
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Crime witness added successfully.');
+                rmsService.showAlert(true, 'Crime witness saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -3506,7 +3506,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getCrimeWitnessData();
                 $scope.crimeWitness.distinguishingFeatures = $scope.crimeWitness.distinguishFeaturesDetails;
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Crime witness updated sccessfully.');
+                rmsService.showAlert(true, 'Crime witness saved sccessfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -3594,7 +3594,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.getCrimeWitnessData();
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Crime witness added successfully.');
+                    rmsService.showAlert(true, 'Crime witness saved successfully.');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -3644,7 +3644,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.getCrimeWitnessData();
 
                     AppService.HideLoader();
-                    rmsService.showAlert(true, 'Crime witness added successfully.');
+                    rmsService.showAlert(true, 'Crime witness saved successfully.');
                 }, function (error) {
                     AppService.HideLoader();
                     rmsService.showAlert(false, error);
@@ -3938,7 +3938,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $http(req).then(function (response) {
                 $scope.investigationDetails.id = response.data.id;
                 AppService.HideLoader();
-                rmsService.showAlert(true, 'Investigation details added successfully.');
+                rmsService.showAlert(true, 'Investigation details saved successfully.');
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
