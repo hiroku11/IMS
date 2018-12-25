@@ -358,7 +358,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-4">
                 <label>Any External Agency Contacted</label>
-                <select class="form-control" ng-model="loss.externalAgencyContacted" ng-click="triggerExternalAgency()">
+                <select class="form-control" ng-model="loss.externalAgencyContacted" ng-change="triggerExternalAgencyChange()">
                     <option value=""></option>
                     <option value="Y">Yes</option>
                     <option value="N">No</option>
@@ -367,7 +367,7 @@
             <div class="col-sm-12 col-md-4">
                 <label>External Agency Type</label>
                 <select class="form-control" ng-options="agencies.id as agencies.description for agencies in agencies"
-                    ng-model="loss.externalAgency.id" ng-disabled="loss.externalAgencyContacted != 'Y'">
+                    ng-change="triggerExternalAgencyChange()" ng-model="loss.externalAgency.id" ng-disabled="loss.externalAgencyContacted != 'Y'">
                     <option value=""></option>
                 </select>
             </div>
