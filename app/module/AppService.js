@@ -124,15 +124,28 @@
             if (typeof error === 'string') {
                 return error;
             }
-            if (error.staus === 403) {
+            if (error.status === 403) {
                 return 'Your are not authorised to perform this action.'
             }
             if (error.status >= 400 && error.status < 500) {
                 try {
-                    if (error.error.errorMessages[0].indexOf(":") == -1) {
-                        return error.error.errorMessages[0]
+                    if (error.error) {
+                        if (error.error.errorMessages[0].indexOf(":") == -1) {
+                            return error.error.errorMessages[0];
+                        } else {
+                            return error.error.errorMessages[0].split(":")[1];
+                        }
+
                     }
-                    return error.error.errorMessages[0].split(":")[1];
+                    if (error.data) {
+                        if (error.data.errorMessages[0].indexOf(":") == -1) {
+                            return error.data.errorMessages[0];
+                        } else {
+                            return error.data.errorMessages[0].split(":")[1];
+                        }
+                    }
+
+                    return "Some error occured please try again.";
                 } catch{
                     return "Some error occured please try again.";
                 }

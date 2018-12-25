@@ -353,10 +353,14 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         //     }
         //     $scope.$apply();
         // }
-        $scope.triggerExternalAgency = function () {
-            // if ($scope.loss.externalAgencyContacted == 'N') {
-            //     $scope.loss.externalAgency.id = "";
-            // }
+        $scope.triggerExternalAgencyChange = function () {
+            if ($scope.loss.externalAgencyContacted == 'N') {
+                $scope.loss.externalAgency = null;
+                $scope.loss.externalAgencyTypeOther = null;
+            } 
+            if ($scope.loss.externalAgency && $scope.loss.externalAgency.id !== 'OTHER') {
+                $scope.loss.externalAgencyTypeOther = null;
+            }
         }
         var temp = [];
         $scope.myObj = { temp: [] };
@@ -1417,6 +1421,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.logIncidentDetails.incidentId = response.data.id;
                 $scope.incident.incidentStatus = response.data.incidentStatus;
                 $scope.incident.incidentId = response.data.id;
+                $scope.incident.id = response.data.id;
                 $scope.incident.uniqueIncidentId = response.data.uniqueIncidentId;
                 AppService.HideLoader();
                 rmsService.showAlert(true, "Incident logged successfully");
