@@ -181,6 +181,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             "date": new Date(),
             "timeHrsContacted": null,//((new Date()).getHours()).toString().length == 2 ? (new Date()).getHours() : '0' + ((new Date()).getHours()),
             "timeMinContacted": null,//((new Date()).getMinutes()).toString().length == 2 ? (new Date()).getMinutes() : '0' + ((new Date()).getMinutes()),
+            "externalAgencyContacted": 'N',
             "externalAgency": {}
         }
         $scope.incidentDetails = {
@@ -996,6 +997,17 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getLossData();
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Loss saved successfully.');
+                //reinitialize the loss so that new can be added
+                $scope.loss = {
+                    "id": null,
+                    "incident": {},
+                    "statusFlag": "ACTIVE",
+                    "date": null,
+                    "externalAgencyContacted": 'N',
+                    "timeHrsContacted": null,
+                    "timeMinContacted": null
+
+                }
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
@@ -1004,16 +1016,6 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
 
             //$scope.incidentDetails.reportedLosses.push($scope.loss);
-            //reinitialize the loss so that new can be added
-            $scope.loss = {
-                "id": null,
-                "incident": {},
-                "statusFlag": "ACTIVE",
-                "date": null,
-                "timeHrsContacted": null,
-                "timeMinContacted": null
-
-            }
         }
 
         $scope.getLossData = function () {
@@ -1079,11 +1081,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.getLossData();
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Loss deleted successfully.');
+                //reinitialize the loss so that new can be added
                 $scope.loss = {
                     "id": null,
                     "incident": {},
                     "statusFlag": "ACTIVE",
                     "date": null,
+                    "externalAgencyContacted": 'N',
                     "timeHrsContacted": null,
                     "timeMinContacted": null
 
@@ -1129,25 +1133,26 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
                 $scope.getLossData();
-
                 AppService.HideLoader();
                 rmsService.showAlert(true, 'Loss saved successfully.');
+                //reinitialize the loss so that new can be added
+                //reinitialize the loss so that new can be added
+                $scope.loss = {
+                    "id": null,
+                    "incident": {},
+                    "statusFlag": "ACTIVE",
+                    "date": null,
+                    "externalAgencyContacted": 'N',
+                    "timeHrsContacted": null,
+                    "timeMinContacted": null
+
+                }
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
             })
 
             //$scope.incidentDetails.reportedLosses.push($scope.loss);
-            //reinitialize the loss so that new can be added
-            $scope.loss = {
-                "id": null,
-                "incident": {},
-                "statusFlag": "ACTIVE",
-                "date": null,
-                "timeHrsContacted": null,
-                "timeMinContacted": null,
-                "externalAgency": {}
-            }
 
         }
         $scope.addAccident = function () {
@@ -4103,14 +4108,15 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             });
             $scope.getSuspectData();
             $scope.getLossData();
+            //reinitialize the loss so that new can be added
             $scope.loss = {
                 "id": null,
                 "incident": {},
                 "statusFlag": "ACTIVE",
                 "date": null,
+                "externalAgencyContacted": 'N',
                 "timeHrsContacted": null,
-                "timeMinContacted": null,
-                "externalAgency": {}
+                "timeMinContacted": null
 
             }
 
