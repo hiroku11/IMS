@@ -179,8 +179,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             "incident": {},
             "statusFlag": "ACTIVE",
             "date": new Date(),
-            "timeHrsContacted": ((new Date()).getHours()).toString().length == 2 ? (new Date()).getHours() : '0' + ((new Date()).getHours()),
-            "timeMinContacted": ((new Date()).getMinutes()).toString().length == 2 ? (new Date()).getMinutes() : '0' + ((new Date()).getMinutes()),
+            "timeHrsContacted": null,//((new Date()).getHours()).toString().length == 2 ? (new Date()).getHours() : '0' + ((new Date()).getHours()),
+            "timeMinContacted": null,//((new Date()).getMinutes()).toString().length == 2 ? (new Date()).getMinutes() : '0' + ((new Date()).getMinutes()),
             "externalAgency": {}
         }
         $scope.incidentDetails = {
@@ -357,7 +357,10 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             if ($scope.loss.externalAgencyContacted == 'N') {
                 $scope.loss.externalAgency = null;
                 $scope.loss.externalAgencyTypeOther = null;
-            } 
+                $scope.loss.timeHrsContacted = null;
+                $scope.loss.timeMinContacted = null;
+                $scope.loss.date = null;
+            }
             if ($scope.loss.externalAgency && $scope.loss.externalAgency.id !== 'OTHER') {
                 $scope.loss.externalAgencyTypeOther = null;
             }
