@@ -178,7 +178,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             "id": null,
             "incident": {},
             "statusFlag": "ACTIVE",
-            "date": new Date(),
+            "date": null,
             "timeHrsContacted": null,//((new Date()).getHours()).toString().length == 2 ? (new Date()).getHours() : '0' + ((new Date()).getHours()),
             "timeMinContacted": null,//((new Date()).getMinutes()).toString().length == 2 ? (new Date()).getMinutes() : '0' + ((new Date()).getMinutes()),
             "externalAgencyContacted": 'N',
