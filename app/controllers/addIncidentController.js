@@ -985,7 +985,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
 
             var req = {
-                url: rmsService.baseEndpointUrl + 'reported-loss/create-reported-loss',
+                url: rmsService.baseEndpointUrl + 'reported-loss/create-or-update-reported-loss',
                 method: "POST",
                 headers: {
                     'X-AUTH-TOKEN': $scope.token
@@ -1122,7 +1122,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             }
             //loss.dateTimeContacted =  rmsService.formatDate(loss.date) + " " + (loss.timeHrsContacted||'00') + ":" + (loss.timeMinContacted||'00') +":00";
             var req = {
-                url: rmsService.baseEndpointUrl + 'reported-loss/update-reported-loss',
+                url: rmsService.baseEndpointUrl + 'reported-loss/create-or-update-reported-loss',
                 method: "PUT",
                 headers: {
                     'X-AUTH-TOKEN': $scope.token
@@ -1148,6 +1148,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 }
             }, function (error) {
+                $scope.editLoss = true;
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
             })
