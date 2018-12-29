@@ -1123,7 +1123,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             //loss.dateTimeContacted =  rmsService.formatDate(loss.date) + " " + (loss.timeHrsContacted||'00') + ":" + (loss.timeMinContacted||'00') +":00";
             var req = {
                 url: rmsService.baseEndpointUrl + 'reported-loss/create-or-update-reported-loss',
-                method: "PUT",
+                method: "POST",
                 headers: {
                     'X-AUTH-TOKEN': $scope.token
                 },
