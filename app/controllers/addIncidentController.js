@@ -178,7 +178,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             "id": null,
             "incident": {},
             "statusFlag": "ACTIVE",
-            "date": new Date(),
+            "date": null,
             "timeHrsContacted": null,//((new Date()).getHours()).toString().length == 2 ? (new Date()).getHours() : '0' + ((new Date()).getHours()),
             "timeMinContacted": null,//((new Date()).getMinutes()).toString().length == 2 ? (new Date()).getMinutes() : '0' + ((new Date()).getMinutes()),
             "externalAgencyContacted": 'N',
@@ -985,7 +985,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
 
             var req = {
-                url: rmsService.baseEndpointUrl + 'reported-loss/create-reported-loss',
+                url: rmsService.baseEndpointUrl + 'reported-loss/create-or-update-reported-loss',
                 method: "POST",
                 headers: {
                     'X-AUTH-TOKEN': $scope.token
@@ -1122,8 +1122,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             }
             //loss.dateTimeContacted =  rmsService.formatDate(loss.date) + " " + (loss.timeHrsContacted||'00') + ":" + (loss.timeMinContacted||'00') +":00";
             var req = {
-                url: rmsService.baseEndpointUrl + 'reported-loss/update-reported-loss',
-                method: "PUT",
+                url: rmsService.baseEndpointUrl + 'reported-loss/create-or-update-reported-loss',
+                method: "POST",
                 headers: {
                     'X-AUTH-TOKEN': $scope.token
                 },
@@ -1148,6 +1148,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 }
             }, function (error) {
+                $scope.editLoss = true;
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
             })
