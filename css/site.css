@@ -1101,7 +1101,7 @@ table {
    margin-right: 5px !important;
 }
 .modal-body {
-   max-height: 400px;
+   max-height: 400px !important;
    overflow-y: auto;
 }
 

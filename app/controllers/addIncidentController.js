@@ -4015,9 +4015,9 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             AppService.ShowLoader();
             $http(req).then(function (response) {
                 $scope.incidentSummary = response.data;
-                if ($scope.editIncidentMode) {
+                //if ($scope.editIncidentMode) {
                     $scope.prepareEditIncidentData();
-                }
+                //}
                 AppService.HideLoader();
                 //console.log(response.data);
             }, function (error) {
@@ -4146,7 +4146,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 $scope.incidentSummary.accident = {}
             }
             if (incidentSummary.accident.witnesses) {
-                $scope.incidentSummary.accident.witnesses = incidentSummary.accident.witnesses.concat(incidentSummary.accident.employeeWitness);
+                $scope.incidentSummary.accident.witnesses = incidentSummary.accident.witnesses.concat(incidentSummary.accident.employeeWitnesses);
             }
             if (incidentSummary.accident.injuredPersons) {
                 $scope.incidentSummary.accident.injuredPersons = incidentSummary.accident.injuredPersons.concat(incidentSummary.accident.employeeInjuredPersons);

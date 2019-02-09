@@ -138,7 +138,8 @@
                 <tbody>
                         <tr ng-repeat="suspect in incidentSummary.suspects">
                                 <td>
-                                        {{suspect.suspectType != 'OTHER' ? suspect.suspectType.description :
+                                        {{suspect.suspectType && suspect.suspectType.id != 'OTHER' ?
+                                        suspect.suspectType.description :
                                         suspect.suspectTypeOther}}
                                 </td>
                                 <td>
@@ -148,7 +149,8 @@
                                         {{suspect.age}}
                                 </td>
                                 <td>
-                                        {{suspect.genderType != 'OTHER' ? suspect.genderType.description :
+                                        {{suspect.genderType && suspect.genderType.id != 'OTHER' ?
+                                        suspect.genderType.description :
                                         suspect.genderTypeOther}}
                                 </td>
 
@@ -182,7 +184,7 @@
                 </thead>
                 <tbody>
                         <tr ng-repeat="loss in incidentSummary.reportedLosses">
-                                <td>{{loss.losType.id != 'OTHER'?loss.lossType.description : loss.losTypeOther}}</td>
+                                <td>{{loss.lossType.id != 'OTHER'?loss.lossType.description : loss.lossTypeOther}}</td>
                                 <td>
                                         {{loss.lossValue}}
                                 </td>
@@ -248,7 +250,8 @@
                 <tbody>
                         <tr ng-repeat="witness in incidentSummary.accident.witnesses">
                                 <td>
-                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description :
+                                        {{witness.witnessType && witness.witnessType.id != 'OTHER' ?
+                                        witness.witnessType.description :
                                         witness.witnessTypeOther}}
                                 </td>
                                 <td>
@@ -258,7 +261,8 @@
                                         {{witness.age}}
                                 </td>
                                 <td>
-                                        {{witness.genderType != 'OTHER' ? witness.genderType.description :
+                                        {{witness.genderType && witness.genderType.id != 'OTHER' ?
+                                        witness.genderType.description :
                                         witness.genderTypeOther}}
                                 </td>
 
@@ -300,8 +304,9 @@
                 <tbody>
                         <tr ng-repeat="injuredPerson in incidentSummary.accident.injuredPersons">
                                 <td>
-                                        {{injuredPerson.injuredPersonType != 'OTHER' ?
-                                        injuredPerson.injuredPersonType.description : witness.witnessTypeOther}}
+                                        {{injuredPerson.injuredPersonType && injuredPerson.injuredPersonType.id !=
+                                        'OTHER' ?
+                                        injuredPerson.injuredPersonType.description : injuredPerson.injuredPersonTypeOther}}
                                 </td>
                                 <td>
                                         {{injuredPerson.firstName}} {{injuredPerson.middleName}}
@@ -311,7 +316,8 @@
                                         {{injuredPerson.age}}
                                 </td>
                                 <td>
-                                        {{injuredPerson.genderType != 'OTHER' ? injuredPerson.genderType.description :
+                                        {{injuredPerson.genderType && injuredPerson.genderType.id != 'OTHER' ?
+                                        injuredPerson.genderType.description :
                                         injuredPerson.genderTypeOther}}
                                 </td>
 
@@ -452,7 +458,8 @@
                 <tbody>
                         <tr ng-repeat="crimeSuspect in incidentSummary.crime.crimeSuspects">
                                 <td>
-                                        {{crimeSuspect.crimeSuspectType != 'OTHER' ?
+                                        {{crimeSuspect.crimeSuspectType && crimeSuspect.crimeSuspectType.id != 'OTHER'
+                                        ?
                                         crimeSuspect.crimeSuspectType.description :
                                         crimeSuspect.crimeSuspectTypeOther}}
                                 </td>
@@ -464,7 +471,8 @@
                                         {{crimeSuspect.age}}
                                 </td>
                                 <td>
-                                        {{crimeSuspect.genderType != 'OTHER' ? crimeSuspect.genderType.description :
+                                        {{crimeSuspect.genderType && crimeSuspect.genderType.id != 'OTHER' ?
+                                        crimeSuspect.genderType.description :
                                         crimeSuspect.genderTypeOther}}
                                 </td>
 
@@ -508,7 +516,8 @@
                 <tbody>
                         <tr ng-repeat="witness in incidentSummary.crime.witnesses">
                                 <td>
-                                        {{witness.witnessType != 'OTHER' ? witness.witnessType.description :
+                                        {{witness.witnessType && witness.witnessType.id != 'OTHER' ?
+                                        witness.witnessType.description :
                                         witness.witnessTypeOther}}
                                 </td>
                                 <td>
@@ -518,7 +527,8 @@
                                         {{witness.age}}
                                 </td>
                                 <td>
-                                        {{witness.genderType != 'OTHER' ? witness.genderType.description :
+                                        {{witness.genderType && witness.genderType.id != 'OTHER' ?
+                                        witness.genderType.description :
                                         witness.genderTypeOther}}
                                 </td>
 
