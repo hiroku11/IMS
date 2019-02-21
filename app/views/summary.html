@@ -33,15 +33,18 @@
         <div class="row">
                 <div class="col-md-4 col-sm-12">
                         <label>Organization:</label>
-                        <label class="summary-text">{{incidentSummary.incidentReportedBy.position.organization.description}}</label>
+                        <label
+                                class="summary-text">{{incidentSummary.incidentReportedBy.position.organization.description}}</label>
                 </div>
                 <div class="col-md-4 col-sm-12">
                         <label>Department:</label>
-                        <label class="summary-text">{{incidentSummary.incidentReportedBy.position.department.description}}</label>
+                        <label
+                                class="summary-text">{{incidentSummary.incidentReportedBy.position.department.description}}</label>
                 </div>
                 <div class="col-md-4 col-sm-12">
                         <label>Position:</label>
-                        <label class="summary-text">{{incidentSummary.incidentReportedBy.position.positionLevel.description}}</label>
+                        <label
+                                class="summary-text">{{incidentSummary.incidentReportedBy.position.positionLevel.description}}</label>
                 </div>
         </div>
         <div class="row">
@@ -226,7 +229,8 @@
                 </div>
                 <div class="col-sm-12 col-md-4">
                         <label>Accident Location Details:</label>
-                        <label class="summary-text">{{incidentSummary.accident.accidentLocationDetails.description}}</label>
+                        <label
+                                class="summary-text">{{incidentSummary.accident.accidentLocationDetails.description}}</label>
                 </div>
         </div>
         <!-- witnesses -->
@@ -721,7 +725,8 @@
                 </div>
                 <div class="col-sm-12 col-md-4">
                         <label>Reviewed Investigation Records:</label>
-                        <label class="summary-text">{{incidentSummary.investigation.reviewedInvestigationRecords}}</label>
+                        <label
+                                class="summary-text">{{incidentSummary.investigation.reviewedInvestigationRecords}}</label>
                 </div>
 
         </div>
@@ -787,12 +792,16 @@
                 </div>
         </div>
 
-        <div ng-if="investigatorDetails && investigatorDetails.investigationTeams.length > 0" class="row" ng-repeat="team in investigatorDetails.investigationTeams">
+        <div ng-if="investigatorDetails && investigatorDetails.investigationTeams.length > 0" class="row"
+                ng-repeat="team in investigatorDetails.investigationTeams">
                 <div class="col-sm-12">
                         <table class="table table-bordered">
                                 <thead>
                                         <tr>
-                                                <th colspan="3">{{team.teamDescription}}: Team Leads</th>
+                                                <th colspan="3">{{team.teamDescription}}</th>
+                                        </tr>
+                                        <tr>
+                                                <th colspan="3">Team Leads</th>
                                         </tr>
                                         <tr>
                                                 <th>Full Name</th>
@@ -833,7 +842,8 @@
                                 ng-click="submitIncident()">Submit</button>
                 </div>
                 <div class="col-sm-6">
-                        <button type="button" ng-click="submitForm('summaryForm','back')" class="btn btn-secondary pull-right">Back</button>
+                        <button type="button" ng-click="submitForm('summaryForm','back')"
+                                class="btn btn-secondary pull-right">Back</button>
                 </div>
 
         </div>
