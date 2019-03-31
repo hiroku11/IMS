@@ -1,17 +1,20 @@
-﻿var incidentsController = riskManagementSystem.controller("incidentsController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', "helperFunctions","dateformatterFilter","$timeout", function ($scope, AppService, rmsService, $location, $window, $http, helperFunctions,dateformatterFilter,$timeout) {
-
-    $scope.token = localStorage.getItem('rmsAuthToken');
+﻿var incidentsController = riskManagementSystem.controller("incidentsController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', "helperFunctions", "dateformatterFilter", "$timeout", function ($scope, AppService, rmsService, $location, $window, $http, helperFunctions, dateformatterFilter, $timeout) {
+    if (rmsService.tokenExpiry()) {
+        $location.path("/login");
+        return;
+    }
+    // localStorage.getItem('rmsAuthToken'); = localStorage.getItem('rmsAuthToken');
     $scope.thisView = "incidents";
     $scope.authorizedUser = rmsService.decryptToken();
     $scope.loggedInUser = rmsService.getLoggedInUser();
     $scope.isAdminRole = rmsService.isAdminRole()
-    if (!$scope.isAdminRole ) {
+    if (!$scope.isAdminRole) {
         $location.path("/incidents");
     }
     // $scope.data = [];
     $scope.currentPage = 1;
     $scope.entryCount = 10;
-    $scope.logOutUser = function(){
+    $scope.logOutUser = function () {
         rmsService.logOutUser();
     }
     $scope.Math = window.Math;
@@ -50,15 +53,15 @@
     //pagination functions ends
 
     $scope.incidentSelectionChanged = function (incident) {
-        if(typeof incident == 'undefined' && $scope.allIncidentsSelected){
+        if (typeof incident == 'undefined' && $scope.allIncidentsSelected) {
             $scope.data.forEach(item => item.selected = true);
-        }else{
-            if(!incident.selected){
+        } else {
+            if (!incident.selected) {
                 $scope.allIncidentsSelected = false;
             }
         }
     }
-    
+
     $scope.getData = function (params) {
         // var filter = JSON.parse(params)
         var fil = {
@@ -67,26 +70,26 @@
             "filters": params
         }
         var req = {
-            url: rmsService.baseEndpointUrl+'search-incident',
+            url: rmsService.baseEndpointUrl + 'search-incident',
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token,
+                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                 'Search': JSON.stringify(fil)
             },
         }
         AppService.ShowLoader();
         var getIncident = $http(req);
         getIncident.then(function (response) {
-                $scope.data = response.data.incidents;
-                $scope.totalIncidentCount = response.data.totalRecords;
-                AppService.HideLoader();
+            $scope.data = response.data.incidents;
+            $scope.totalIncidentCount = response.data.totalRecords;
+            AppService.HideLoader();
         }, function (error) {
             AppService.HideLoader();
         })
     }
     $scope.getData();
-    $scope.reset = function(){
-      
+    $scope.reset = function () {
+
         $scope.clearSearchParams();
         $scope.getData();
         $scope.search = "";
@@ -185,7 +188,7 @@
 
 
         },
-       
+
         {
             "field": "reportedBy",
             "operator": "EQ",
@@ -216,10 +219,10 @@
 
     $scope.getIncidentType = function () {
         var req = {
-            url: rmsService.baseEndpointUrl+'table-maintenance/incident-type/incident-types',
+            url: rmsService.baseEndpointUrl + 'table-maintenance/incident-type/incident-types',
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token
+                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
             },
         }
         AppService.ShowLoader();
@@ -236,10 +239,10 @@
     }
     $scope.getIncidentCategory = function () {
         var req = {
-            url: rmsService.baseEndpointUrl+'table-maintenance/incident-category/incident-categories',
+            url: rmsService.baseEndpointUrl + 'table-maintenance/incident-category/incident-categories',
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token
+                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
             },
         }
@@ -257,10 +260,10 @@
     }
     $scope.getIncidentLoc = function () {
         var req = {
-            url: rmsService.baseEndpointUrl+'table-maintenance/incident-location/incident-locations',
+            url: rmsService.baseEndpointUrl + 'table-maintenance/incident-location/incident-locations',
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token
+                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
             },
         }
@@ -278,10 +281,10 @@
     }
     $scope.getIncidentLocDetail = function () {
         var req = {
-            url: rmsService.baseEndpointUrl+'table-maintenance/incident-location-detail/incident-location/' + $scope.SincidentLoc,
+            url: rmsService.baseEndpointUrl + 'table-maintenance/incident-location-detail/incident-location/' + $scope.SincidentLoc,
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token
+                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
             },
         }
@@ -299,10 +302,10 @@
             "paging": { "currentPage": 0, "pageSize": 50 }
         }
         var req = {
-            url: rmsService.baseEndpointUrl+'search-incident',
+            url: rmsService.baseEndpointUrl + 'search-incident',
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token,
+                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                 'Search': JSON.stringify(fil)
             },
         }
@@ -330,10 +333,10 @@
         }
 
         var req = {
-            url: rmsService.baseEndpointUrl+'user-lookup',
+            url: rmsService.baseEndpointUrl + 'user-lookup',
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token,
+                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                 'Search': JSON.stringify(fil)
 
 

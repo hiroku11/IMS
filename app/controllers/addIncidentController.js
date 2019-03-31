@@ -1,6 +1,10 @@
 var addIncidentController = riskManagementSystem.controller("addIncidentController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', '$state', 'dateformatterFilter', 'helperFunctions',
     function ($scope, AppService, rmsService, $location, $window, $http, $state, dateformatterFilter, helperFunctions) {
-        $scope.token = localStorage.getItem('rmsAuthToken');
+        // localStorage.getItem('rmsAuthToken'); = localStorage.getItem('rmsAuthToken');
+        if (rmsService.tokenExpiry()) {
+            $location.path("/login");
+            return;
+        }
         $scope.thisView = "incidents";
         $scope.authorizedUser = rmsService.decryptToken();
         $scope.loggedInUser = rmsService.getLoggedInUser();
@@ -316,7 +320,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'document/documents-for-incident/' + $scope.incident.uniqueIncidentId,
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                 },
             }
             AppService.ShowLoader();
@@ -688,7 +692,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'incident/add-suspect/uniqueIncidentId/' + $scope.incident.uniqueIncidentId,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: suspect
             }
@@ -715,7 +719,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'suspect/suspect-table/uniqueIncidentId/' + $scope.incident.uniqueIncidentId,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -740,7 +744,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     url: rmsService.baseEndpointUrl + 'incident/remove-suspect/uniqueIncidentId/' + $scope.incident.uniqueIncidentId + '/suspectId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -767,7 +771,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     url: rmsService.baseEndpointUrl + 'incident/remove-employee-suspect/uniqueIncidentId/' + $scope.incident.uniqueIncidentId + '/employeeId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -813,7 +817,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'suspect/update-suspect/',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.suspect
             }
@@ -843,7 +847,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     url: rmsService.baseEndpointUrl + 'incident/add-employee-suspect/uniqueIncidentId/' + $scope.incident.uniqueIncidentId + '/employeeId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
                     data: $scope.suspect
                 }
@@ -867,7 +871,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     url: rmsService.baseEndpointUrl + 'incident/remove-employee-suspect//uniqueIncidentId/' + $scope.incident.uniqueIncidentId + '/employeeId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -905,7 +909,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     url: rmsService.baseEndpointUrl + 'incident/add-existing-suspect/uniqueIncidentId/' + $scope.incident.uniqueIncidentId + '/suspectId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
                     data: $scope.suspect
                 }
@@ -931,7 +935,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     url: rmsService.baseEndpointUrl + 'incident/remove-suspect/uniqueIncidentId/' + $scope.incident.uniqueIncidentId + '/suspectId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -988,7 +992,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'reported-loss/create-or-update-reported-loss',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: loss
             }
@@ -1026,7 +1030,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'reported-loss/reported-loss-table/incidentId/' + $scope.incident.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
@@ -1071,7 +1075,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'reported-loss/delete-reported-loss/reportedLossId/' + loss.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -1125,7 +1129,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'reported-loss/create-or-update-reported-loss',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: loss
             }
@@ -1178,7 +1182,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'accident/add-or-update-accident',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: accident
             }
@@ -1211,7 +1215,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'claim/add-or-update-claim',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: claim
             }
@@ -1237,7 +1241,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'claim/delete-claim/claimId/' + $scope.claimDetail.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.claimDetail
             }
@@ -1259,7 +1263,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'claim-handler-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -1290,7 +1294,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'investigator-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -1355,7 +1359,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'document/save-documents',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     'Content-Type': undefined
                 },
                 data: $scope.supportingDocumentsFormData
@@ -1378,7 +1382,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'incident/add-incident',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
@@ -1419,7 +1423,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'incident/add-or-update-log-incident',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: logIncidentDetails
             }
@@ -1513,7 +1517,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/suspect-type/suspect-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1535,7 +1539,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/witness-type/witness-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1553,7 +1557,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/incident-type/incident-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1571,7 +1575,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/incident-location/incident-locations',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1592,7 +1596,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.logIncidentDetails.incidentLocation.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1611,7 +1615,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/entry-point/entry-points',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -1630,7 +1634,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/distinguishing-feature/distinguishing-features',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -1649,7 +1653,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/distinguishing-feature-detail/distinguishing-feature/' + feature[0].id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
@@ -1672,7 +1676,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/external-agency/external-agencies',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             // AppService.ShowLoader();
@@ -1689,7 +1693,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/accident-location/accident-locations',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1711,7 +1715,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.accidentDetails.accidentLocation.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1728,7 +1732,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/accident-type/accident-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -1745,7 +1749,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/asset-category/asset-categories',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -1763,7 +1767,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/body-part/body-parts',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1809,7 +1813,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/claim-request-registration-type/claim-request-registration-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1827,7 +1831,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/claim-status/claim-statuses',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1845,7 +1849,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/claim-type/claim-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1863,7 +1867,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/department/departments',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -1880,7 +1884,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/document-category/document-categories',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1898,7 +1902,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/document-type/document-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1917,7 +1921,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/employee-type/employee-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1936,7 +1940,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/event-type/event-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1955,7 +1959,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/gender-type/gender-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1974,7 +1978,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/injured-person-type/injured-person-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -1993,7 +1997,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/injury-cause/injury-causes',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -2010,7 +2014,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/injury-type/injury-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -2028,7 +2032,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.injuredPerson.injuryType.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
@@ -2046,7 +2050,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.injuredPerson.injuryTypeDetail.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
@@ -2064,7 +2068,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/loss-type/loss-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
             }
@@ -2083,7 +2087,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/organization/organizations',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -2101,7 +2105,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/policy-type/policy-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             //AppService.ShowLoader();
@@ -2119,7 +2123,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/position/positions',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
@@ -2137,7 +2141,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/position-level/position-levels',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             // AppService.ShowLoader();
@@ -2156,7 +2160,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/vehicle-damage-type/vehicle-damage-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             // AppService.ShowLoader();
@@ -2189,7 +2193,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/weapon-type/weapon-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             // AppService.ShowLoader();
@@ -2211,7 +2215,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'incident/add-incident-details',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
                 },
                 data: $scope.incidentDetails
@@ -2245,7 +2249,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'crime/add-or-update-crime',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: crimeDetails
             }
@@ -2296,7 +2300,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'accident/add-injured-person/accidentId/' + $scope.accidentDetails.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.injuredPerson
             }
@@ -2332,7 +2336,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'injured-person/injured-person-table/accidentId/' + $scope.accidentDetails.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
@@ -2355,7 +2359,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/employeeId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
                 }
                 AppService.ShowLoader();
@@ -2377,7 +2381,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/employeeId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -2403,7 +2407,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/injuredPersonId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -2426,7 +2430,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/injuredPersonId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -2454,7 +2458,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.accidentDetails.id + '/injuredPersonId/' + person.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -2517,7 +2521,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'injured-person/update-injured-person',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.injuredPerson
             }
@@ -2557,7 +2561,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.accidentDetails.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.witness
             }
@@ -2594,7 +2598,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.accidentDetails.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -2616,7 +2620,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/employeeId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -2640,7 +2644,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/employeeId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
                     data: $scope.suspect
                 }
@@ -2669,7 +2673,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.accidentDetails.id + '/witnessId/' + person.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -2708,7 +2712,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'witness/update-witness/',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.witness
             }
@@ -2741,7 +2745,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/witnessId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -2766,7 +2770,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.accidentDetails.id + '/witnessId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -2798,7 +2802,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'asset/add-or-update-asset',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.assetDetail
             }
@@ -2821,7 +2825,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.assetDetail.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.building
             }
@@ -2849,7 +2853,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.assetDetail.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -2873,7 +2877,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.assetDetail.id + '/buildingId/' + building.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -2902,7 +2906,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'building/update-building/',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.building
             }
@@ -2926,7 +2930,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'asset/add-vehicle/assetId/' + $scope.assetDetail.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.vehicle
             }
@@ -2961,7 +2965,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.assetDetail.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -2992,7 +2996,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.assetDetail.id + '/vehicleId/' + data.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3018,7 +3022,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'vehicle/update-vehicle/',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.vehicle
             }
@@ -3041,7 +3045,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'asset/add-asset-type-other/assetId/' + $scope.assetDetail.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.assetOther
             }
@@ -3071,7 +3075,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.assetDetail.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3094,7 +3098,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.assetDetail.id + '/assetTypeOtherId/' + data.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3118,7 +3122,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'asset-type-other/update-asset-type-other',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.assetOther
             }
@@ -3145,7 +3149,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.assetDetail.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.equipment
             }
@@ -3173,7 +3177,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     + $scope.assetDetail.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3193,7 +3197,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'equipment/update-equipment/',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.equipment
             }
@@ -3221,7 +3225,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.assetDetail.id + '/equipmentId/' + data.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3250,7 +3254,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.crimeDetails.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.crimeSuspect
             }
@@ -3280,7 +3284,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'crime-suspect/update-crime-suspect',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.crimeSuspect
             }
@@ -3313,7 +3317,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'crime-suspect/crime-suspect-table/crimeId/' + $scope.crimeDetails.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3337,7 +3341,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3377,7 +3381,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.crimeDetails.id + '/crimeSuspectId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3401,7 +3405,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.crimeDetails.id + '/crimeSuspectId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3427,7 +3431,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.crimeDetails.id + '/employeeId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3451,7 +3455,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.crimeDetails.id + '/employeeId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3479,7 +3483,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     $scope.crimeDetails.id,
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.crimeWitness
             }
@@ -3508,7 +3512,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'witness/update-witness',
                 method: "PUT",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.crimeWitness
             }
@@ -3535,7 +3539,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     'witness/witness-table/crimeId/' + $scope.crimeDetails.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3560,7 +3564,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
 
             }
@@ -3598,7 +3602,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     url: rmsService.baseEndpointUrl + 'crime/add-existing-witness/crimeId/' + $scope.crimeDetails.id + '/witnessId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3622,7 +3626,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.crimeDetails.id + '/witnessId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3648,7 +3652,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.crimeDetails.id + '/employeeId/' + person.id,
                     method: "PUT",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3672,7 +3676,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                         $scope.crimeDetails.id + '/employeeId/' + person.id,
                     method: "DELETE",
                     headers: {
-                        'X-AUTH-TOKEN': $scope.token
+                        'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                     },
 
                 }
@@ -3733,7 +3737,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
         //            url: rmsService.baseEndpointUrl+'incident/add-accident-details',
         //            method: "POST",
         //            headers: {
-        //                'X-AUTH-TOKEN': $scope.token
+        //                'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
 
         //            },
         //            data: $scope.accidentDetails
@@ -3768,7 +3772,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'user-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     'Search': JSON.stringify(fil)
 
 
@@ -3805,7 +3809,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'suspect-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     'Search': JSON.stringify(fil)
                 },
             }
@@ -3835,7 +3839,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'injured-person-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     'Search': JSON.stringify(fil)
                 },
             }
@@ -3864,7 +3868,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'witness-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     'Search': JSON.stringify(fil)
                 },
             }
@@ -3892,7 +3896,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'witness-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     'Search': JSON.stringify(fil)
                 },
             }
@@ -3920,7 +3924,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'crime-suspect-lookup',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     'Search': JSON.stringify(fil)
                 },
             }
@@ -3944,7 +3948,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'investigation/add-or-update-investigation',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: $scope.investigationDetails
             }
@@ -3967,7 +3971,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'document/delete-document/' + doc.id,
                 method: "DELETE",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 }
             }
             AppService.ShowLoader();
@@ -3987,7 +3991,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'document/download-document/' + doc.id,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 responseType: 'arraybuffer'
             }
@@ -4009,14 +4013,14 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'incident/uniqueIncidentId/' + $scope.incident.uniqueIncidentId,
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
             }
             AppService.ShowLoader();
             $http(req).then(function (response) {
                 $scope.incidentSummary = response.data;
                 //if ($scope.editIncidentMode) {
-                    $scope.prepareEditIncidentData();
+                $scope.prepareEditIncidentData();
                 //}
                 AppService.HideLoader();
                 //console.log(response.data);
@@ -4031,7 +4035,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'incident/submit-incident',
                 method: "POST",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 },
                 data: {
                     "incidentId": $scope.incident.id,
@@ -4443,7 +4447,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/asset-category/asset-categories',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 }
             }
             $http(req).then(function (response) {
@@ -4460,7 +4464,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/asset-type/asset-types',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 }
             }
             $http(req).then(function (response) {
@@ -4476,7 +4480,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/asset-condition/asset-conditions',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 }
             }
             $http(req).then(function (response) {
@@ -4492,7 +4496,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + 'table-maintenance/asset-status/asset-statuses',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken')
                 }
             }
             $http(req).then(function (response) {
@@ -4520,7 +4524,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 url: rmsService.baseEndpointUrl + $scope.assetCategory.id.toLowerCase() + '/search-' + $scope.assetCategory.id.toLowerCase() + 's',
                 method: "GET",
                 headers: {
-                    'X-AUTH-TOKEN': $scope.token,
+                    'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
                     Search: JSON.stringify({ ...$scope.assetLookupParams })
                 }
             }

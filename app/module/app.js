@@ -3,6 +3,43 @@ riskManagementSystem.config(['$stateProvider', '$urlRouterProvider', '$compilePr
 
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
     $urlRouterProvider.otherwise('/index.html');
+    $httpProvider.interceptors.push(['$location', '$injector', '$q', function ($location, $injector, $q) {
+        return {
+            request: function (config) {
+                return config;
+            },
+            requestError: function (rejection) {
+                return $q.reject(rejection);
+            },
+            response: function (result) {
+                let headers = result.headers();
+                if (headers['x-auth-token']) {
+                    localStorage.setItem('rmsAuthToken', headers['x-auth-token']);
+                }
+                return result;
+            },
+            responseError: function (response) {
+                if (response.status === 403) {
+                    var token = localStorage.getItem("rmsAuthToken");
+                    if (!token) {
+                        $location.path("/login");
+                        localStorage.removeItem('rmsAuthToken');
+                        return $q.reject(response);;
+                    }
+                    var base64Url = token.split('.')[0];
+                    var decryptedUserDetails = JSON.parse(window.atob(base64Url));
+                    if (decryptedUserDetails) {
+                        // check if the token has expired
+                        if (new Date(decryptedUserDetails.expires) < new Date()) {
+                            $location.path("/login");
+                            localStorage.removeItem('rmsAuthToken');
+                        }
+                    }
+                }
+                return $q.reject(response);
+            }
+        }
+    }]);
     $stateProvider.
         state('home', {
             url: "/index.html",

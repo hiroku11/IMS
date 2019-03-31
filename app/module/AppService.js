@@ -19,15 +19,35 @@
 
     riskManagementSystem.service("rmsService", function ($http, $window, $location) {
         this.authorisedUserDetails = false;
+        this.tokenExpiry = function () {
+            var token = localStorage.getItem("rmsAuthToken");
+            if (!token) {
+                $location.path("/login");
+                localStorage.removeItem('rmsAuthToken');
+                return false;
+            }
+            var expired = false;
+            var base64Url = token.split('.')[0];
+            var decryptedUserDetails = JSON.parse(window.atob(base64Url));
+            if (decryptedUserDetails) {
+                //check if the token has expired
+                if (new Date(decryptedUserDetails.expires) < new Date()) {
+                    expired = true;
+                }
+            }
+
+            return expired;
+        }
         this.decryptToken = function () {
-            if (this.authorisedUserDetails) {
+            if (this.authorisedUserDetails && new Date(this.authorisedUserDetails.expires) > new Date()) {
                 return this.authorisedUserDetails
             }
             //decrypt the authorization token.
             var token = localStorage.getItem("rmsAuthToken");
             if (!token) {
                 $location.path("/login");
-                return;
+                localStorage.removeItem('rmsAuthToken');
+                return false;
             }
             var expired;
             var base64Url = token.split('.')[0];
@@ -36,32 +56,39 @@
                 this.authorisedUserDetails = decryptedUserDetails;
                 //check if the token has expired
                 if (new Date(decryptedUserDetails.expires) < new Date()) {
-                    expired = true;
+                    expired = this.tokenExpiry();
                 }
 
             } else {
                 //if token not present redirect to login
                 $location.path("/login");
+                localStorage.removeItem('rmsAuthToken');
+                return false;
             }
             if (expired) {
                 //if expired redirect to login
                 $location.path("/login");
+                localStorage.removeItem('rmsAuthToken');
+                return false;
             } else {
                 return decryptedUserDetails;
             }
 
         }
-        this.baseEndpointUrl = "https://gotorisk.co.uk:8443/rmsrest/s/";
+        this.baseEndpointUrl = "https://217.34.35.39:8443/rmsrest/s/";
         this.getLoggedInUser = function () {
             if (!this.authorisedUserDetails) {
-                this.decryptToken();
+                if (!this.decryptToken()) {
+                    return false;
+                }
             }
             this.loggedInUser = {};
             this.loggedInUser.userId = this.authorisedUserDetails.loginId;
             this.loggedInUser.loginId = this.authorisedUserDetails.loginId;
             this.loggedInUser.lastName = this.authorisedUserDetails.lastName;
             this.loggedInUser.firstName = this.authorisedUserDetails.firstName;
-            this.loggedInUser.roles = this.authorisedUserDetails.roles.map(function (item) {
+            var roles = this.authorisedUserDetails.roles || this.authorisedUserDetails.userRoles;
+            this.loggedInUser.roles = roles.map(function (item) {
                 return item.roleName;
             });
             return this.loggedInUser;
@@ -74,7 +101,7 @@
         }
         this.isAdminRole = function () {
             let adminRoles = ['INVESTIGATOR', 'CLAIMS_HANDLER', 'ADMIN'];
-            if (!this.loggedInUser) {
+            if (!this.loggedInUser || !this.loggedInUser.roles) {
                 this.getLoggedInUser();
                 if (!this.loggedInUser) {
                     return false;
@@ -167,9 +194,6 @@
             return ranges;
         }
     })
-
-
-
 
 })();
 

@@ -1,7 +1,10 @@
 var investigationsController = riskManagementSystem.controller("investigationsController", ["$scope", "AppService", "rmsService", '$location', '$window', '$http', "helperFunctions",
 function ($scope, AppService, rmsService, $location, $window, $http, helperFunctions) {
-
-    $scope.token = localStorage.getItem('rmsAuthToken');
+    if (rmsService.tokenExpiry()) {
+        $location.path("/login");
+        return;
+    }
+   // localStorage.getItem('rmsAuthToken'); = localStorage.getItem('rmsAuthToken');
     $scope.thisView = "investigations";
     $scope.authorizedUser = rmsService.decryptToken();
     $scope.loggedInUser = rmsService.getLoggedInUser();
@@ -44,7 +47,7 @@ function ($scope, AppService, rmsService, $location, $window, $http, helperFunct
             url: rmsService.baseEndpointUrl+"incidents-for-investigator",
             method: "GET",
             headers: {
-                'X-AUTH-TOKEN': $scope.token,
+                'X-AUTH-TOKEN':localStorage.getItem('rmsAuthToken'),
             },
         }
         AppService.ShowLoader();
