@@ -205,11 +205,7 @@ riskManagementSystem.directive("ngUploadChange", function () {
 riskManagementSystem.directive("mapsDirective", function () {
     return {
         restrict: 'E',
-        template: `<div>
-        <input id="pac-input" class="form-control" type="text" placeholder="Search Box">
-        <div id = "sample" style = "width:570px; height:400px;"></div>
-        </div>
-        `,
+        template: '<div> <input id="pac-input" class="form-control" type="text" placeholder="Search Box"><div id = "sample" style = "width:570px; height:400px;"></div></div>',
         link: function (scope, element, attrs) {
 
             var markers = [];

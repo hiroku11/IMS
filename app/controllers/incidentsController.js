@@ -54,7 +54,7 @@
 
     $scope.incidentSelectionChanged = function (incident) {
         if (typeof incident == 'undefined' && $scope.allIncidentsSelected) {
-            $scope.data.forEach(item => item.selected = true);
+            $scope.data.forEach(function (item) { item.selected = true });
         } else {
             if (!incident.selected) {
                 $scope.allIncidentsSelected = false;

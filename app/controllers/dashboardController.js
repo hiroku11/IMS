@@ -44,7 +44,7 @@
             $scope.incidentVolumeByStatus = response.data;
             //$scope.setGraphMonths();
             console.log(response.data);
-            $scope.volumeByStatusMonths = $scope.incidentVolumeByStatus.map(item => {
+            $scope.volumeByStatusMonths = $scope.incidentVolumeByStatus.map(function (item) {
                 return item.monthYear;
             })
             $scope.createGraph("Incident volume by status", $scope.groupDataForGraph('monthYear', 'incidentVolumeByStatus', 'volumeByStatusMonths'), $scope.volumeByStatusMonths, 'incidentVolumeByStatusGraph');
@@ -56,7 +56,7 @@
 
     $scope.groupDataForGraph = function (property, array, category) {
         let group = {};
-        $scope[array].map((item) => {
+        $scope[array].map(function (item) {
             if (!group[item.incidentStatus]) {
                 group[item.incidentStatus] = { "name": item.incidentStatus, data: [] };
             }
@@ -143,7 +143,7 @@
         let promise = $http(req);
         promise.then(function (response) {
             $scope.incidentVolumeByTypeStatus = response.data;
-            $scope.incidentTypesByStatus = response.data.map(item => item.incidentType);
+            $scope.incidentTypesByStatus = response.data.map(function (item) { return item.incidentType });
             console.log(response.data);
             $scope.createGraph("Incident volume by incident type & status", $scope.groupDataForGraph('incidentType', 'incidentVolumeByTypeStatus', 'incidentTypesByStatus'), $scope.incidentTypesByStatus, 'incidentGroupedByType');
             //$scope.createGraph(incidentGroupedByType);
@@ -197,9 +197,9 @@
                 name: (key.charAt(0).toUpperCase() + key.slice(1)).replace(/([A-Z]+)/g, " $1"),
                 data: []
             }
-            $scope.incidentVolumeByEventType[key].forEach(item => {
+            $scope.incidentVolumeByEventType[key].forEach(function (item) {
                 obj.data[months.indexOf(item.monthYear)] = item.incidentCount;
-            })
+            });
             let groupLength = obj.data.length;
 
             for (let ind = 0; ind < groupLength; ind++) {
@@ -215,7 +215,7 @@
     $scope.getMonthsIncidentEvenetType = function () {
         let arr = [];
         for (let key in $scope.incidentVolumeByEventType) {
-            $scope.incidentVolumeByEventType[key].forEach(item => {
+            $scope.incidentVolumeByEventType[key].forEach(function (item) {
                 if (arr.indexOf(item.monthYear) == -1) {
                     arr.push(item.monthYear);
                 }

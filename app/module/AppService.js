@@ -1,21 +1,19 @@
 (function () {
-    'use strict';
-    var AppService = angular.module('riskManagementSystem')
-        .factory('AppService', function ($rootScope, $http, $location, $timeout) {
-            return {
-                ShowLoader: function (message) {
-                    (function () {
-                        $rootScope.loaderVisibility = true;
-                        $rootScope.loaderText = message;
-                    })();
-                },
-                HideLoader: function () {
-                    (function () {
-                        $rootScope.loaderVisibility = false;
-                    })();
-                }
-            };
-        })
+    riskManagementSystem.service('AppService', function ($rootScope, $http, $location, $timeout) {
+        return {
+            ShowLoader: function (message) {
+                (function () {
+                    $rootScope.loaderVisibility = true;
+                    $rootScope.loaderText = message;
+                })();
+            },
+            HideLoader: function () {
+                (function () {
+                    $rootScope.loaderVisibility = false;
+                })();
+            }
+        };
+    });
 
     riskManagementSystem.service("rmsService", function ($http, $window, $location) {
         this.authorisedUserDetails = false;
@@ -107,7 +105,8 @@
                     return false;
                 }
             }
-            return adminRoles.some(role => this.loggedInUser.roles.includes(role));
+            var _this = this;
+            return adminRoles.some(function (role) { return _this.loggedInUser.roles.includes(role) });
         }
         this.cloneObject = function (obj) {
             return JSON.parse(JSON.stringify(obj));
@@ -173,7 +172,7 @@
                     }
 
                     return "Some error occured please try again.";
-                } catch{
+                } catch (ex) {
                     return "Some error occured please try again.";
                 }
             }
@@ -182,7 +181,7 @@
             }
         }
 
-    })
+    });
 
     riskManagementSystem.service("helperFunctions", function () {
         this.range = function (count, itemPerPage) {
@@ -193,7 +192,7 @@
             }
             return ranges;
         }
-    })
+    });
 
 })();
 

@@ -1037,7 +1037,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
             $http(req).then(function (response) {
                 $scope.incidentDetails.reportedLosses = response.data;
-                $scope.incidentDetails.reportedLosses.map((loss) => {
+                $scope.incidentDetails.reportedLosses.map(function (loss) {
                     loss = $scope.lossDateFormat(loss);
                 });
                 AppService.HideLoader();
@@ -1276,7 +1276,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
 
-            })
+            });
         }
 
         $scope.assignClaimHandler = function (person) {
@@ -1346,7 +1346,8 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 rmsService.showAlert(false, 'Please select a document first.');
                 return;
             }
-            for (var value of $scope.supportingDocumentsFormData.values()) {
+            var dcs = $scope.supportingDocumentsFormData.values();
+            for (var value of dcs) {
                 files.push(value);
             }
 
@@ -1374,7 +1375,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             }, function (error) {
                 AppService.HideLoader();
                 rmsService.showAlert(false, error);
-            })
+            });
         }
 
         $scope.getUserInfo = function () {
@@ -1461,7 +1462,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
 
         $scope.removeFeatureToSelectedList = function (context) {
 
-            context.distinguishingFeatures.map((item, index) => {
+            context.distinguishingFeatures.map(function (item, index) {
                 context.distinguishingFeaturesOptions.splice(context.distinguishingFeaturesOptions.indexOf(item), 1);
                 if (item.parentId == context.distinguishingFeature[0].id) {
                     $scope.distinguishFeaturesDetails.push(rmsService.cloneObject(item));
@@ -1472,7 +1473,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             });
 
             context.distinguishingFeaturesOptions = rmsService.cloneObject(context.distinguishingFeatures);
-            $scope.distinguishFeaturesDetails.sort((a, b) => {
+            $scope.distinguishFeaturesDetails.sort(function (a, b) {
                 if (a.description < b.description)
                     return -1;
                 if (a.description > b.description)
@@ -1487,19 +1488,20 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     context.distinguishingFeaturesOptions = [];
                     context.distinguishingFeatures = [];
                 }
-                context.distinguishingFeatureDetail.map(item => {
+                context.distinguishingFeatureDetail.map(function (item) {
                     if (context.distinguishingFeaturesOptions.indexOf(item) == -1) {
                         context.distinguishingFeaturesOptions.push(rmsService.cloneObject(item));
                         context.distinguishingFeatures = rmsService.cloneObject(context.distinguishingFeaturesOptions);
                     }
                 });
-                context.distinguishingFeatures.map((item, index) => {
-                    $scope.distinguishFeaturesDetails.map((element, index) => {
-                        if (item.id == element.id)
+                context.distinguishingFeatures.map(function (item, index) {
+                    $scope.distinguishFeaturesDetails.map(function (element, index) {
+                        if (item.id == element.id) {
                             $scope.distinguishFeaturesDetails.splice(index, 1);
+                        }
                     });
                     //$scope.distinguishFeaturesDetails.splice( $scope.distinguishFeaturesDetails.indexOf(item),1)
-                })
+                });
 
             }
         }
@@ -1660,7 +1662,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $http(req).then(function (response) {
                 //change the options as required by the multiselect plugin/module
                 $scope.distinguishFeaturesDetails = response.data;
-                $scope.distinguishFeaturesDetails.map((item) => {
+                $scope.distinguishFeaturesDetails.map(function (item) {
                     item.parentId = feature[0].id;
                 })
                 $scope.distinguishFeaturesDetailsOptions = $scope.distinguishFeaturesDetails;
@@ -4108,7 +4110,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 "employeeSuspects": incidentSummary.employeeSuspects || [],
                 "reportedLosses": incidentSummary.reportedLosses || []
             }
-            $scope.incidentDetails.reportedLosses.map((loss) => {
+            $scope.incidentDetails.reportedLosses.map(function (loss) {
                 loss = $scope.lossDateFormat(loss);
             });
             $scope.getSuspectData();
@@ -4271,7 +4273,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 };
                 address.postcode1 = $scope.postcode1;
                 address.postcode2 = $scope.postcode2;
-                add.address_components.forEach((c) => {
+                add.address_components.forEach(function (c) {
                     switch (c.types[0]) {
                         case 'street_number':
                             address.streetName = c.long_name;
@@ -4310,7 +4312,6 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                     }
                 });
                 formattedAddresses.push(address);
-                console.log(address);
             });
 
             return formattedAddresses;
@@ -4381,7 +4382,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             }
 
 
-            propsArray.forEach((prop) => {
+            propsArray.forEach(function (prop) {
                 let parentFilter = {};
                 let parentSort = {};
                 // if (!clear) {
@@ -4412,7 +4413,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 operator,
                 value
             }
-            const exists = $scope.assetLookupParams.filters.filter(filt => filt.field === field);
+            const exists = $scope.assetLookupParams.filters.filter(function (filt) { return filt.field === field });
             const obj = {};
             obj[field] = value;
             // fil.value = this._apiService.parseDateToApiFormat(obj)[field];
@@ -4429,7 +4430,7 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
                 field,
                 order
             }
-            const exists = $scope.assetLookupParams.sorts.filter(s => s.field === field);
+            const exists = $scope.assetLookupParams.sorts.filter(function (s) { return s.field === field });
             if (!exists.length && sort) {
                 $scope.assetLookupParams.sorts.push(sor);
             } else if (exists.length && sort) {
@@ -4518,14 +4519,13 @@ var addIncidentController = riskManagementSystem.controller("addIncidentControll
             $scope.lookupAsset();
         }
         $scope.lookupAsset = function () {
-            // `/${this.assetType}/search-${this.assetType}s`
             AppService.ShowLoader()
             let req = {
                 url: rmsService.baseEndpointUrl + $scope.assetCategory.id.toLowerCase() + '/search-' + $scope.assetCategory.id.toLowerCase() + 's',
                 method: "GET",
                 headers: {
                     'X-AUTH-TOKEN': localStorage.getItem('rmsAuthToken'),
-                    Search: JSON.stringify({ ...$scope.assetLookupParams })
+                    Search: JSON.stringify(rmsService.cloneObject($scope.assetLookupParams))
                 }
             }
             if ($scope.assetCategory.id.toLowerCase() == 'other') {
