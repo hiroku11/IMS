@@ -4,6 +4,16 @@
         //     $location.path("/login");
         //     return;
         // }
+        $scope.isForgotPassword = false;
+        $scope.forgotPassword = function (isforg) {
+            $scope.isForgotPassword = isforg;
+            if (isforg) {
+                $scope.username = null;
+                $scope.password = null;
+                $scope.signInError = null
+            }
+        }
+
         if (rmsService.decryptToken()) {
             $scope.isAdminRole = rmsService.isAdminRole();
             if (!$scope.isAdminRole) {
@@ -13,6 +23,24 @@
             }
 
         }
+
+        $scope.resetPassword = function () {
+            var req = {
+                url: 'https://217.34.35.39:8443/rmsrest/p/user/reset-user-password',
+                method: "POST",
+                data: { userInput: $scope.resetLoginId }
+            }
+            AppService.ShowLoader();
+            var resetPromise = $http(req);
+            resetPromise.then(function (response) {
+                AppService.HideLoader();
+                rmsService.showAlert(true, 'A mail has been sent to your registered email. Please check mail for password reset');
+            }, function (error) {
+                AppService.HideLoader();
+                rmsService.showAlert(false, error);
+            })
+        }
+
         $scope.loginUser = function () {
             var req = {
                 url: 'https://217.34.35.39:8443/rmsrest/p/api/login',

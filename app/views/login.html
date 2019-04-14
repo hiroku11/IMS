@@ -2,10 +2,10 @@
     <div class="col-sm-8 col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <h3 class="signin-h3"> Sign in </h3>
+                <h3 class="signin-h3"> {{!isForgotPassword? 'Sign in' : 'Password Reset'}} </h3>
             </div>
             <div class="panel-body">
-                <form role="form" ng-submit="loginUser()">
+                <form role="form" ng-if="!isForgotPassword" ng-submit="loginUser()">
                     <fieldset>
                         <div class="row">
                             <div class="center-block">
@@ -19,7 +19,8 @@
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
-                                        <input class="form-control" ng-model="username" placeholder="Username" name="loginname" type="text" required autofocus>
+                                        <input class="form-control" ng-model="$parent.username" placeholder="Username"
+                                            name="loginname" type="text" required autofocus>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -27,7 +28,8 @@
                                         <span class="input-group-addon">
                                             <i class="fa fa-lock"></i>
                                         </span>
-                                        <input class="form-control" ng-model="password" placeholder="Password" name="password" type="password" required value="">
+                                        <input class="form-control" ng-model="$parent.password" placeholder="Password"
+                                            name="password" type="password" required value="">
                                     </div>
                                 </div>
                                 <div class="form-group text-danger" ng-if="signInError">
@@ -40,11 +42,40 @@
                         </div>
                     </fieldset>
                 </form>
-                <!-- <div class="row">
+                <div class="row" ng-if="!isForgotPassword">
                     <div class="col-sm-12 text-center">
-                        <a href="">Forgot Password?</a>
+                        <a class="forgot" ng-click="forgotPassword(true)">Forgot
+                            Password?</a>
                     </div>
-                </div> -->
+                </div>
+
+                <form ng-if="isForgotPassword" role="form">
+                    <fieldset>
+                        <div class="row">
+                            <div class="center-block">
+                                <img class="logo-img" src="assets/images/logo0.5.jpg" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                <div class="form-group">
+                                    <label style="font-size:16px">LoginId/Email</label>
+                                    <input class="form-control" ng-model="$parent.resetLoginId" type="text">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" ng-click="resetPassword()"
+                                        class="btn btn-lg btn-primary btn-block">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="row" ng-if="isForgotPassword">
+                    <div class="col-sm-12 text-center">
+                        <a class="forgot" ng-click="forgotPassword(false)">Login</a>
+                    </div>
+                </div>
             </div>
             <!--<div class="panel-footer ">
                 Don't have an account! <a href="#/login"> Sign Up Here </a>

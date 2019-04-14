@@ -1115,3 +1115,14 @@ table {
        max-width: 1200px;
    }
 }
+
+.forgot{
+   color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a.forgot:hover{
+   color: #0056b3;
+   text-decoration: none;
+}
