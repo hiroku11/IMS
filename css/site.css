@@ -559,7 +559,7 @@ a i {
 }
 
 .accident .modal-body {
-   max-height: 700px;
+   max-height: 700px !important;
 }
 
 .uib-datepicker-popup {
