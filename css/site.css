@@ -558,6 +558,20 @@ a i {
    max-height: 500px;
 }
 
+.bodyPartDiv{
+   width:9px;
+   height:9px;
+   position: absolute;
+   display: inline-block;
+}
+.bodyPartSpan{
+   width: 9px;
+   height: 9px;
+   background-color: red !important;
+   color: red;
+   border-radius: 9px;
+   display: inline-block;
+}
 .accident .modal-body {
    max-height: 700px !important;
 }
@@ -581,83 +595,53 @@ a i {
 }
 
 .Face {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 181px;
-   position: fixed;
+   left: 122px;
+   top: 22px;
 }
 
 .Head {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 164px;
-   position: fixed;
-}
-
-.Left.Ear {
-   width: 9px;
-   height: 9px;
-   left: 87px;
-   top: 185px;
-   position: fixed;
+   left: 121px;
+   top: 5px;
 }
 
 .Right.Ear {
-   width: 9px;
-   height: 9px;
-   left: 137px;
-   top: 184px;
-   position: fixed;
+   left: 94px;
+   top: 35px;
+}
+
+.Left.Ear {
+   left: 148px;
+   top: 35px;
 }
 
 .Left.Eye {
-   width: 9px;
-   height: 9px;
-   left: 96px;
-   top: 172px;
-   position: fixed;
+   left: 132px;
+   top: 25px;
 }
 
 .Right.Eye {
-   width: 9px;
-   height: 9px;
-   left: 128px;
-   top: 172px;
-   position: fixed;
+   left: 112px;
+   top: 25px;
 }
 
 .Nose {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 188px;
-   position: fixed;
+   left: 122px;
+   top: 40px;
 }
 
 .Mouth {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 197px;
-   position: fixed;
+   left: 122px;
+   top: 45px;
 }
 
 .Neck {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 212px;
-   position: fixed;
+   left: 122px;
+   top: 68px;
 }
 
 .Chin {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 201px;
-   position: fixed;
+   left: 122px;
+   top: 60px;
 }
 
 .Back.Neck {
@@ -669,244 +653,155 @@ a i {
 }
 
 .Left.Arm {
-   width: 9px;
-   height: 9px;
-   left: 54px;
-   top: 321px;
-   position: fixed;
+   left: 180px;
+   top: 160px;
 }
 
 .Right.Arm {
-   width: 9px;
-   height: 9px;
-   left: 175px;
-   top: 321px;
-   position: fixed;
+   left: 64px;
+   top: 160px;
 }
 
 .Left.Hand {
-   width: 9px;
-   height: 9px;
-   left: 44px;
-   top: 368px;
-   position: fixed
+   left: 199px;
+   top: 233px;
 }
 
 .Right.Hand {
-   width: 9px;
-   height: 9px;
-   left: 185px;
-   top: 368px;
-   position: fixed
+   left: 45px;
+   top: 230px;
 }
 
 .Left.Wrist {
-   width: 9px;
-   height: 9px;
-   left: 38px;
-   top: 384px;
-   position: fixed
+   left: 204px;
+   top: 247px;
 }
 
 .Right.Wrist {
-   width: 9px;
-   height: 9px;
-   left: 189px;
-   top: 384px;
-   position: fixed
+   left: 40px;
+   top: 247px;
 }
 
 .Left.Fingers {
-   height: 9px;
-   left: 23px;
-   top: 431px;
-   position: fixed
+   left: 213px;
+   top: 285px;
 }
 
 .Right.Fingers {
-   width: 9px;
-   height: 9px;
-   left: 202px;
-   top: 431px;
-   position: fixed
+   left: 32px;
+   top: 285px;
 }
 
 .Left.Palm {
-   width: 9px;
-   height: 9px;
-   left: 29px;
-   top: 411px;
-   position: fixed
+   left: 208px;
+   top: 266px;
 }
 
 .Right.Palm {
-   width: 9px;
-   height: 9px;
-   left: 199px;
-   top: 411px;
-   position: fixed
+   left: 36px;
+   top: 265px;
 }
 
 .Left.Shoulder {
-   width: 9px;
-   height: 9px;
-   left: 169px;
-   top: 267px;
-   position: fixed;
+   left: 165px;
+   top: 110px;
 }
 
 .Right.Shoulder {
-   width: 9px;
-   height: 9px;
-   left: 321px;
-   top: 267px;
-   position: fixed;
+   left: 79px;
+   top: 110px;
 }
 
 .Chest {
-   width: 9px;
-   height: 9px;
-   left: 116px;
-   top: 267px;
-   position: fixed;
+   left: 121px;
+   top: 120px;
 }
 
 .Stomach {
-   width: 9px;
-   height: 9px;
-   left: 116px;
-   top: 349px;
-   position: fixed;
+   left: 119px;
+   top: 196px;
 }
 
 .Left.Thigh {
-   width: 9px;
-   height: 9px;
-   left: 89px;
-   top: 456px;
-   position: fixed;
+   left: 147px;
+   top: 325px;
 }
 
 .Right.Thigh {
-   width: 9px;
-   height: 9px;
-   left: 144px;
-   top: 456px;
-   position: fixed;
+   left: 94px;
+   top: 325px;
 }
 
 .Left.Knee {
-   width: 9px;
-   height: 9px;
-   left: 87px;
-   top: 521px;
-   position: fixed;
+   left: 150px;
+   top: 386px;
 }
 
 .Right.Knee {
-   width: 9px;
-   height: 9px;
-   left: 142px;
-   top: 521px;
-   position: fixed;
+   left: 96px;
+   top: 385px;
 }
 
 .Left.Foot {
-   width: 9px;
-   height: 9px;
-   left: 94px;
-   top: 635px;
-   position: fixed;
+   left: 141px;
+   top: 488px;
 }
 
 .Right.Foot {
-   width: 9px;
-   height: 9px;
-   left: 134px;
-   top: 635px;
-   position: fixed;
+   left: 104px;
+   top: 393px;
 }
 
 .Left.Leg {
-   width: 9px;
-   height: 9px;
-   left: 87px;
-   top: 573px;
-   position: fixed;
+   left: 148px;
+   top: 345px;
 }
 
 .Right.Leg {
-   width: 9px;
-   height: 9px;
-   left: 143px;
-   top: 573px;
-   position: fixed;
+   left: 95px;
+   top: 345px;
 }
 
 .Left.Ankle {
-   width: 9px;
-   height: 9px;
-   left: 92px;
-   top: 619px;
-   position: fixed;
+   left: 142px;
+   top: 479px;
 }
 
 .Right.Ankle {
-   width: 9px;
-   height: 9px;
-   left: 136px;
-   top: 619px;
-   position: fixed;
+   left: 102px;
+   top: 479px;
 }
 
 /* Back parts */
 
 .Back {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 164px;
-   position: fixed;
+   left: 173px;
+   top: 165px;
 }
 
 .Buttock {
-   width: 9px;
-   height: 9px;
-   left: 501px;
-   top: 435px;
-   position: fixed;
+   left: 197px;
+   top: 271px;
 }
 
 .Hair {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 168px;
-   position: fixed;
+   left: 171px;
+   top: 14px;
 }
 
 .Left.Calf {
-   width: 9px;
-   height: 9px;
-   left: 450px;
-   top: 556px;
-   position: fixed;
+   left: 142px;
+   top: 417px;
 }
 
 .Left.Elbow {
-   width: 9px;
-   height: 9px;
-   left: 411px;
-   top: 359px;
-   position: fixed;
+   left: 107px;
+   top: 200px;
 }
 
 .Left.Forearm {
-   width: 9px;
-   height: 9px;
-   left: 406px;
-   top: 374px;
-   position: fixed;
+   left: 100px;
+   top: 225px;
 }
 
 .Left.Heel {
@@ -950,11 +845,8 @@ a i {
 }
 
 .Right.Calf {
-   width: 9px;
-   height: 9px;
-   left: 510px;
-   top: 556px;
-   position: fixed;
+   left: 199px;
+   top: 417px;
 }
 
 .Right.Elbow {
@@ -1060,7 +952,7 @@ a {
 
 .accident .dropdown-menu {
    overflow-y: auto;
-   height: 500px;
+   height: 320px;
    width: 100%;
 }
 
