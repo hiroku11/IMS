@@ -749,7 +749,7 @@ a i {
 
 .Right.Foot {
    left: 104px;
-   top: 393px;
+   top: 488px;
 }
 
 .Left.Leg {
@@ -805,43 +805,28 @@ a i {
 }
 
 .Left.Heel {
-   width: 9px;
-   height: 9px;
-   left: 452px;
-   top: 630px;
-   position: fixed;
+   left: 154px;
+   top: 498px;
 }
 
 .Left.Hip {
-   width: 9px;
-   height: 9px;
-   left: 440px;
-   top: 367px;
-   position: fixed;
+   left: 137px;
+   top: 243px;
 }
 
 .Left.Shoulder.Blade {
-   width: 9px;
-   height: 9px;
-   left: 435px;
-   top: 271px;
-   position: fixed;
+   left: 146px;
+   top: 121px;
 }
 
 .Loin {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 396px;
-   position: fixed;
+   left: 173px;
+   top: 257px;
 }
 
 .Nape {
-   width: 9px;
-   height: 9px;
-   left: 114px;
-   top: 207px;
-   position: fixed;
+   left: 172px;
+   top: 70px;
 }
 
 .Right.Calf {
@@ -850,51 +835,33 @@ a i {
 }
 
 .Right.Elbow {
-   width: 9px;
-   height: 9px;
-   left: 550px;
-   top: 359px;
-   position: fixed;
+   left: 237px;
+   top: 200px;
 }
 
 .Right.Forearm {
-   width: 9px;
-   height: 9px;
-   left: 553px;
-   top: 374px;
-   position: fixed;
+   left: 247px;
+   top: 235px;
 }
 
 .Right.Heel {
-   width: 9px;
-   height: 9px;
-   left: 492px;
-   top: 630px;
-   position: fixed;
+   left: 191px;
+   top: 495px;
 }
 
 .Right.Hip {
-   width: 9px;
-   height: 9px;
-   left: 500px;
-   top: 367px;
-   position: fixed;
+   left: 207px;
+   top: 243px;
 }
 
 .Right.Shoulder.Blade {
-   width: 9px;
-   height: 9px;
-   left: 497px;
-   top: 271px;
-   position: fixed;
+   left: 204px;
+   top: 121px;
 }
 
 .Waist {
-   width: 9px;
-   height: 9px;
-   left: 446px;
-   top: 358px;
-   position: fixed;
+   left: 173px;
+   top: 230px;
 }
 
 .move-buttons {
