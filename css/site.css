@@ -752,6 +752,16 @@ a i {
    top: 488px;
 }
 
+.Left.Toe{
+   top: 499px;
+   left: 138px;
+}
+
+.Right.Toe{
+   top: 499px;
+   left: 106px;
+}
+
 .Left.Leg {
    left: 148px;
    top: 345px;
