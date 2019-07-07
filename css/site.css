@@ -995,3 +995,8 @@ a.forgot:hover{
    color: #0056b3;
    text-decoration: none;
 }
+
+#bodyModal{
+    height: auto;
+    overflow-y: auto;
+}
